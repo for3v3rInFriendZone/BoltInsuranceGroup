@@ -50,12 +50,11 @@
 
     </head>
 
-    <body data-spy="scroll" data-target="#navigation" data-offset="120">
+    <body data-spy="scroll" data-target="#navigation" data-offset="120" ng-app="bolt-insurance-group">
 
 
         <!-- *** NAVBAR ***
         _________________________________________________________ -->
-
         <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
             <div class="container">
                 <div class="navbar-header">
@@ -327,25 +326,25 @@ _________________________________________________________ -->
             <!-- *** FOOTER ***
         _________________________________________________________ -->
 
-            <div class="section" id="footer">
-                <div class="container">
+        <div class="section" id="footer">
+            <div class="container">
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="col-sm-12 col-sm-offset-12">
+                    <div class="col-sm-12">
 
-                            <p class="social">
-                                <a href="#" class="external facebook" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="external gplus" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-github"></i></a>
-                                <a href="#" class="external twitter" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
-                                <a href="mailto:#" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
-                            </p>
-                        </div>
+                        <p class="social">
+                            <a href="#" class="external facebook" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="external gplus" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-github"></i></a>
+                            <a href="#" class="external twitter" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
+                            <a href="mailto:#" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
+                        </p>
                     </div>
-
                 </div>
-                <!-- /.container -->
+
             </div>
+            <!-- /.container -->
+        </div>
             <!-- /.section -->
 
             <!-- *** FOOTER END *** -->
@@ -368,6 +367,20 @@ _________________________________________________________ -->
         <!-- main js file -->
 
         <script src="assets/js/front.js"></script>
+
+        <!--  ******************************************* -->
+
+        <script src="./assets/js/angular/angular.js"></script>
+        <script src="./assets/js/angular-resource/angular-resource.js"></script>
+        <script src="./assets/js/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="./assets/js/angular-translate/angular-translate.js"></script>
+        <script src="./assets/js/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="./assets/js/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="./assets/js/angular-animate/angular-animate.js"></script>
+        <script src="./assets/js/angular-messages/angular-messages.js"></script>
+        <script src="./app/app.module.js"></script>
+        <script src="./app/components/core/core.module.js"></script>
+        <script src="./app/components/core/core.route.js"></script>
 
 
     </body>
