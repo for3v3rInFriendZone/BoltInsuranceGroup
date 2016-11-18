@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" ng-app="bolt-insurance-group">
 
     <head>
         <meta charset="utf-8">
@@ -33,10 +33,21 @@
         <!-- Mordernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
 
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script type="text/javascript" src="bower_components/angular-scroll/angular-scroll.js"></script>
+        <script type="text/javascript" src="bower_components/angular-scroll-animate/dist/angular-scroll-animate.js"></script>
+
+        <script type="text/javascript" src="app/app.module.js"></script>
+        <script type="text/javascript" src="app/components/core/core.module.js"></script>
+        <script type="text/javascript" src="app/components/core/core.route.js"></script>
+        <script type="text/javascript" src="app/components/core/core.init.js"></script>
+        <script type="text/javascript" src="app/components/core/core.controller.js"></script>
+
         <!-- Responsivity for older IE -->
         <!--[if lt IE 9]>
         <script src="js/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
         <meta property="og:title" content="BIG | Bolt Insurance Group">
         <meta property="og:site_name" content="BIG | Bolt Insurance Group">
@@ -52,309 +63,16 @@
 
     <body data-spy="scroll" data-target="#navigation" data-offset="120">
 
+   
+        <div ui-view name="navbar"></div>
+        <div ui-view name="content"></div>
+        <div ui-view name="footer"></div>
 
-        <!-- *** NAVBAR ***
-        _________________________________________________________ -->
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand scrollTo" href="#intro"><i class="fa fa-bolt"></i> BOLT INSURANCE GROUP</a>
-                </div>
-
-                <div class="navbar-collapse collapse" id="navigation">
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#intro">Intro</a>
-                        </li>
-                        <li><a href="#section1">Why BOLT </a>
-                        </li>
-                        <li><a href="#section2">Services we provide</a>
-                        </li>
-                        <li><a href="#section3">Testimonials</a>
-                        </li>
-                        <li><a href="#section4">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-
-            </div>
-        </div>
-        <!-- /#navbar -->
-
-        <!-- *** NAVBAR END *** -->
-
-
-        <div id="all">
-
-
-            <!-- *** INTRO IMAGE ***
-        _________________________________________________________ -->
-            <div id="intro" class="clearfix">
-                <div class="item">
-                    <div class="container">
-                        <div class="row">
-                            <h1 data-animate="bounceIn"> <u> Welcome to the BIG. </u> </h1>
-                            <p class="message" data-animate="fadeInUp">We are always with you.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- *** INTRO IMAGE END *** -->
-
-            <!-- *** ABOUT US ***
-        _________________________________________________________ -->
-
-            <div class="section  text-gray" id="section1">
-                <div class="container">
-                    <div class="col-md-12">
-
-
-                        <h2 class="title" data-animate="fadeInDown">Why Bolt?</h2>
-
-                        <div class="row">
-
-                            <div class="col-md-8 col-md-offset-2">
-
-                                <p class="text-large text-thin"  data-animate="fadeInUp"> Formed in December of 2003. and since then giving everything for you and yours wishes.</p>
-                                <p class="text-large text-thin margin-bottom" data-animate="flipInX">We are dedicated group, which only concern is your safety. Available for you 24/7 in any time of day and night. We started as small team of inspired people. But time has proved our qualities and thanks to you, we are one of few insurance groups that has been approved by Software Quality Assurance.</p>
-
-                                <p data-animate="fadeInRightBig"><img src="assets/img/team.jpg" alt="" class="img-circle img-responsive"></p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <!-- /.12 -->
-                </div>
-                <!-- /.container -->
-            </div>
-            <!-- /.section -->
-
-            <!-- *** ABOUT US END *** -->
-
-
-
-
-            <!-- *** SERVICES ***
-        _________________________________________________________ -->
-            <div class="section" id="section2">
-                <div class="container">
-                    <div class="col-md-12">
-                        <h2 class="title" data-animate="fadeInDown">Services we provide</h2>
-
-                        <p class="lead">The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. </p>
-
-                        <div class="row services">
-
-                            <div class="col-md-4" data-animate="fadeInUp">
-                                <div class="icon"><a href="www.google.com"><i class="fa fa-home"></i> </a>
-                                </div>
-                                <h3 class="heading">Great home</h3>
-                                <p>Junk MTV quiz graced by fox whelps. </p>
-                            </div>
-
-                            <div class="col-md-4" data-animate="fadeInUp">
-                                <div class="icon"><i class="fa fa-shopping-cart"></i>
-                                </div>
-                                <h3 class="heading">Stuff we would buy ourselves</h3>
-                                <p>Bawds jog, flick quartz, vex nymphs. </p>
-                            </div>
-
-                            <div class="col-md-4" data-animate="fadeInUp">
-                                <div class="icon"><i class="fa fa-euro"></i>
-                                </div>
-                                <h3 class="heading">Free trial</h3>
-                                <p>Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. </p>
-                            </div>
-
-                        </div>
-                        <div class="row services">
-
-                            <div class="col-md-4" data-animate="fadeInUp">
-                                <div class="icon"><i class="fa fa-bullhorn"></i>
-                                </div>
-                                <h3 class="heading">We will propagate your stuff</h3>
-                                <p>Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack.</p>
-                            </div>
-
-                            <div class="col-md-4" data-animate="fadeInUp">
-                                <div class="icon"><i class="fa fa-desktop"></i>
-                                </div>
-                                <h3 class="heading">Responsive web and app</h3>
-                                <p>Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. </p>
-                            </div>
-
-                            <div class="col-md-4" data-animate="fadeInUp">
-                                <div class="icon"><i class="fa fa-heart-o"></i>
-                                </div>
-                                <h3 class="heading">Dedicated support team</h3>
-                                <p>Quick, Baz, get my woven flax jodhpurs! "Now fax quiz Jack!" my brave ghost pled. </p>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <!-- /.12 -->
-                </div>
-                <!-- /.container -->
-            </div>
-            <!-- /.section -->
-
-            <!-- *** SERVICES END *** -->
-
-
-            <!-- *** TESTIMONIALS ***
-_________________________________________________________ -->
-
-            <div class="section text-gray" id="section3" data-animate="fadeInUp">
-
-                <div class="container">
-                    <div class="col-md-12">
-
-                        <div class="mb20">
-                            <h2 class="title" data-animate="fadeInUp">Customers said about us</h2>
-
-                            <p class="lead text-center" data-animate="fadeInUp">Have any complaints? Or you just want to say a nice word for us. Dont be afraid to say anything you want. We are open for any kind of suggestions or critics. </p>
-                        </div>
-
-                        <ul class="owl-carousel testimonials same-height-row" data-animate="fadeInUp">
-                            <li class="item">
-                                <div class="testimonial same-height-always">
-                                    <div class="text">
-                                        <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.</p>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="icon"><i class="fa fa-quote-left"></i></div>
-                                            <h5>John McIntyre</h5>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="testimonial same-height-always">
-                                    <div class="text">
-                                        <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream.</p>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="icon"><i class="fa fa-quote-left"></i></div>
-                                            <h5>John McIntyre</h5>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="testimonial same-height-always">
-                                    <div class="text">
-                                        <p>His room, a proper human room although a little too small, lay peacefully between its four familiar walls.</p>
-
-                                        <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="icon"><i class="fa fa-quote-left"></i></div>
-                                            <h5>John McIntyre</h5>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="testimonial same-height-always">
-                                    <div class="text">
-                                        <p>It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
-                                    </div>
-
-                                    <div class="bottom">
-                                        <div class="icon"><i class="fa fa-quote-left"></i></div>
-                                            <h5>John McIntyre</h5>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="testimonial same-height-always">
-                                    <div class="text">
-                                        <p>It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
-                                    </div>
-
-                                    <div class="bottom">
-                                        <div class="icon"><i class="fa fa-quote-left"></i></div>
-                                            <h5>John McIntyre</h5>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul> <!-- /.owl-carousel -->
-                        <button type="button" class="btn btn-primary">Add your comment</button>
-                    </div> <!-- /.12 -->
-                </div> <!-- /.container -->
-
-            </div><!-- /.section -->
-
-            <!-- *** TESTIMONIALS END *** -->
-
-            <!-- *** CONTACT ***
-        _________________________________________________________ -->
-
-            <div class="section" id="section4" >
-                <div class="container">
-                    <div class="col-md-8 col-md-offset-2">
-
-
-                        <h2 class="title" data-animate="fadeInDown">Contact us</h2>
-
-                        <p class="lead margin-bottom" data-animate="fadeInUp">Be always in touch with us, at any time of day or night. If you have any questions or issues, feel free to ask or send at our e-mail adress.</p>
-
-
-                        <ul class="list-unstyled text-large text-thin" data-animate="fadeInUp">
-                            <li><strong>E-mail:</strong> boltInsuranceGroup@gmail.com</li>
-                            <li><strong>Phone:</strong> +381625858580</li>
-                            <li><strong>Phone:</strong> +381635858580</li>
-                        </ul>
-
-                    </div>
-                    <!-- /.12 -->
-                </div>
-                <!-- /.container -->
-            </div>
-            <!-- /.section -->
-
-
-
-            <!-- *** FOOTER ***
-        _________________________________________________________ -->
-
-            <div class="section" id="footer">
-                <div class="container">
-
-                    <div class="row">
-
-                        <div class="col-sm-12 col-sm-offset-12">
-
-                            <p class="social">
-                                <a href="#" class="external facebook" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="external gplus" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-github"></i></a>
-                                <a href="#" class="external twitter" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
-                                <a href="mailto:#" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.container -->
-            </div>
-            <!-- /.section -->
-
-            <!-- *** FOOTER END *** -->
-        </div>
-
+  
         <!-- js base -->
         <script src="assets/js/jquery-1.11.0.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
-
 
         <!-- waypoints for scroll spy -->
         <script src="assets/js/waypoints.min.js"></script>
@@ -366,8 +84,8 @@ _________________________________________________________ -->
         <script src="assets/js/jquery.scrollTo.min.js"></script>
 
         <!-- main js file -->
-
         <script src="assets/js/front.js"></script>
+
 
 
     </body>
