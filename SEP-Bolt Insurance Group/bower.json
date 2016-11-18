@@ -20,5 +20,6 @@
     "angular-ui-router": "^0.3.2",
     "angular-scroll": "^1.0.0",
     "angular-scroll-animate": "^0.9.9"
+
   }
 }
