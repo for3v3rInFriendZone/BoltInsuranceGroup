@@ -11,7 +11,7 @@
 		$http.get('http://localhost:8080/core')
 		.success(function(data, status, header)
 		{
-			alert(data.name);
+			var findAll = data;
 		});
 
 		$scope.animateElementIn = function($el) {
