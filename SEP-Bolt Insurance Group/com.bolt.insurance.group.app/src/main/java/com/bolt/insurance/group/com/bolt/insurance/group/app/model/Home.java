@@ -1,5 +1,6 @@
 package com.bolt.insurance.group.com.bolt.insurance.group.app.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -10,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.databind.node.BigIntegerNode;
-
 @Entity
 @Table(name = "HOME")
-public class Home {
+public class Home implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,5 +1,7 @@
 package com.bolt.insurance.group.com.bolt.insurance.group.app.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "SUBGROUP")
-public class Subgroup {
+public class Subgroup implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

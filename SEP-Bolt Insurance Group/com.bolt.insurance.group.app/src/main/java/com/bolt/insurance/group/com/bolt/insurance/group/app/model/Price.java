@@ -1,5 +1,6 @@
 package com.bolt.insurance.group.com.bolt.insurance.group.app.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,12 @@ import javax.validation.constraints.NotNull;
 
 @Entity 
 @Table(name = "PRICE")
-public class Price {
+public class Price implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

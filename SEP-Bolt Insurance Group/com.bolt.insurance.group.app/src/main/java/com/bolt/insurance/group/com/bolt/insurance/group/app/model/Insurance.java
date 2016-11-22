@@ -1,5 +1,6 @@
 package com.bolt.insurance.group.com.bolt.insurance.group.app.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,14 +19,18 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
-public class Insurance {
+public class Insurance implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotNull
-	@Column(name = "START_DATE")
+	@Column(name = "START_DATE", nullable = false)
 	private Date startDate;
 	
 	@NotNull
@@ -37,34 +42,20 @@ public class Insurance {
 	private double amount;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "TYPE")
+	@JoinColumn(name = "TYPE", nullable = false)
 	private Type type;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "HOME")
+	@JoinColumn(name = "HOME", nullable = true)
 	private Home home;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "VEHICLE")
+	@JoinColumn(name = "VEHICLE", nullable = true)
 	private Vehicle vehicle;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "INSURANCE_RISK")
 	private List<Risk> risks;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "USER_OF_INSURANCE", joinColumns = {
-			@JoinColumn(name = "OWNER", columnDefinition = "VARCHAR(40)")
-	})
-	private List<User> users;
-		
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
 
 	public long getId() {
 		return id;
@@ -131,7 +122,7 @@ public class Insurance {
 	}
 
 	public Insurance(long id, Date startDate, Date endDate, double amount, Type type, Home home, Vehicle vehicle,
-			List<Risk> risks, List<User> users) {
+			List<Risk> risks) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
@@ -141,7 +132,6 @@ public class Insurance {
 		this.home = home;
 		this.vehicle = vehicle;
 		this.risks = risks;
-		this.users = users;
 	}
 
 	public Insurance() {
