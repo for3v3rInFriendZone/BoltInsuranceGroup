@@ -1,4 +1,4 @@
-package com.bolt.insurance.group.com.bolt.insurance.group.app.model;
+package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
 import java.util.Date;

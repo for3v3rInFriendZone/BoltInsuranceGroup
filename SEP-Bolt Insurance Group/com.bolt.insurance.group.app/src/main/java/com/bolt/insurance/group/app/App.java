@@ -1,4 +1,4 @@
-package com.bolt.insurance.group.com.bolt.insurance.group.app;
+package com.bolt.insurance.group.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

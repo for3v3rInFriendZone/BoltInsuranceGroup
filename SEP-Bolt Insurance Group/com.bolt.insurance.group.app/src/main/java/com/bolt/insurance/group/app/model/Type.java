@@ -1,4 +1,4 @@
-package com.bolt.insurance.group.com.bolt.insurance.group.app.model;
+package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
 
@@ -11,8 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "VEHICLE_TYPE")
-public class VehicleType implements Serializable{
+@Table(name = "TYPE")
+public class Type implements Serializable{
 
 	/**
 	 * 
@@ -43,13 +43,13 @@ public class VehicleType implements Serializable{
 		this.name = name;
 	}
 
-	public VehicleType(long id, String name) {
+	public Type(long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public VehicleType() {
+	public Type() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

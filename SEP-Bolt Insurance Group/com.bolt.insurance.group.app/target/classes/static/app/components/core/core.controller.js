@@ -8,12 +8,6 @@
 	BigController.$inject = ['$scope', '$http'];
 	function BigController($scope, $http) {
 
-		$http.get('http://localhost:8080/core')
-		.success(function(data, status, header)
-		{
-			var findAll = data;
-		});
-
 		$scope.animateElementIn = function($el) {
 
 			var animation = $el.attr('data-animation');
