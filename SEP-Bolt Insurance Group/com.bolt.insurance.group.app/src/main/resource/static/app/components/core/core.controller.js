@@ -17,8 +17,6 @@
 		    	$el.removeClass('not-visible');
 		     	$el.addClass('animated '+animation);
 			}
-
-
   		};
 	}
 })();

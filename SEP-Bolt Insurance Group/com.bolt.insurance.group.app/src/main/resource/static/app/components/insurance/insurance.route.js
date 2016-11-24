@@ -10,26 +10,22 @@
 	function config($urlRouterProvider, $stateProvider){
 		$urlRouterProvider.otherwise("/home");
 
-		$stateProvider
-    .state('insurance', {
-      url: '/insurance',
-      views: {
-        navbar: {
-
-          templateUrl: "app/components/insurance/header.html"
-
-        },
-        content: {
-
-          templateUrl: "app/components/insurance/insuranceForm.html"
-
-        },
-        footer: {
-
-          templateUrl: "app/components/insurance/footer.html"
-
-        }
-      }
+	$stateProvider
+    .state('insurance_users', {
+    	url: '/insurance/users',
+    	views: {
+    		navbar: {
+    			 templateUrl: 'app/components/insurance/header.html'
+    		},
+    		content: {
+    			 templateUrl: 'app/components/insurance/insurance_users.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
+    		},
+    		footer: {
+    			 templateUrl: 'app/components/insurance/footer.html'
+    		}
+    	}
     });
 	}
 })();
