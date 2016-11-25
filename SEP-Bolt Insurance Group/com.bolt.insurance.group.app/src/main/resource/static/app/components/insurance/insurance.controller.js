@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance')
 		.controller('InsuranceController', InsuranceController);
 
-	InsuranceController.$inject = ['$scope', 'insuranceModal'];
-	function InsuranceController($scope, insuranceModal) {
+	InsuranceController.$inject = ['$scope', 'userModal'];
+	function InsuranceController($scope, userModal) {
 		var inc = this;
 
 		$scope.animateElementIn = function($el) {
@@ -20,9 +20,7 @@
   		};
   		
   		inc.newUser = function(){
-  			insuranceModal.open().then(function(data) {
-				alert('sadasds');
-			});
+  			userModal.open();
 
   		};
 	}
