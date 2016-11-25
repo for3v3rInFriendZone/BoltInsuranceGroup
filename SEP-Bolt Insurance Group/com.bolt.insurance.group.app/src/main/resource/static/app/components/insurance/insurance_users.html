@@ -57,13 +57,9 @@
 						            <td>bbbbbb</td>
 						            <td>cccccc</td>
 						        </tr>
-						        <tr>
-						        	<td colspan="3">
-						        		 <button class="btn btn-success" type="button" ng-click="inc.newUser()"> <i class="fa fa-plus"> </i></button>
-						        	</td>
-						        </tr>
 		                    </tbody>
 	                    </table>
+	                    <div class="text-center"> <button class="btn btn-success" type="button" ng-click="inc.newUser()"> <i style="font-size: 22px;" class="fa fa-plus"> </i></button> </div>
               		</div>
               	</div>
               	
@@ -134,7 +130,7 @@
 			                        		Price
 			                        	</th>
 			                        </thead>
-			                        <tbody>
+			                        <tbody class="text-center">
 				                    	<tr>
 				                    		<td>
 				                    			Europe and North America <div class="text-center"> <input type="radio" name="radio1"/> </div>               
@@ -143,7 +139,7 @@
 				                    			Europe, North America and Asia<div class="text-center"> <input type="radio" name="radio1"/> </div>	               
 				                    		</td>
 				                    		<td>
-				                    			Whole world<div class="text-center"> <input type="radio" name="radio1"/> </div>		               
+				                    			Whole world <div class="text-center"> <br/> <input type="radio" name="radio1"/> </div>		               
 				                    		</td>
 				                    		<td>	                    
 				                    			<div class="col-md-7 col-md-offset-2">
@@ -161,7 +157,8 @@
 				                    	</tr>
 				                    	<tr>
 				                    		<td colspan="3">
-				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;">Insurance for your home or flat </span> &nbsp&nbsp <input  type="checkbox" ng-model="homeInsurance"/>
+				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;">Insurance for your home or flat </span> &nbsp&nbsp <input type="checkbox" ng-model="homeInsurance"/>
+				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your house or flat" ng-if="homeInsurance" ng-click="inc.newHome()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
 				                    		</td>
 				                    		<td>	                    
 				                    			<div class="col-md-7 col-md-offset-2">
@@ -180,6 +177,7 @@
 				                    	<tr>
 				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;">Insurance for roadside assistance </span> &nbsp&nbsp <input  type="checkbox" ng-model="roadInsurance"/>
+				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your vehicle" ng-if="roadInsurance" ng-click="inc.newVehicle()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
 				                    		</td>
 				                    		<td>	                    
 				                    			<div class="col-md-7 col-md-offset-2">
@@ -222,7 +220,7 @@
 	                        <a ui-sref="#"> <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button> </a>
 	                    </div>
               		</div>
-              	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+              	<br/><br/>
             </div>
        </div>
   </div>

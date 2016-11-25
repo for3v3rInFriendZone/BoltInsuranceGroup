@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance')
 		.controller('InsuranceController', InsuranceController);
 
-	InsuranceController.$inject = ['$scope', 'userModal'];
-	function InsuranceController($scope, userModal) {
+	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal'];
+	function InsuranceController($scope, userModal, homeModal, vehicleModal) {
 		var inc = this;
 
 		$scope.animateElementIn = function($el) {
@@ -23,6 +23,14 @@
   			userModal.open();
 
   		};
+  		
+  		inc.newHome = function() {
+			homeModal.open();
+		}
+  		
+  		inc.newVehicle = function() {
+  			vehicleModal.open();
+		}
   		
   		inc.today = new Date();
 
