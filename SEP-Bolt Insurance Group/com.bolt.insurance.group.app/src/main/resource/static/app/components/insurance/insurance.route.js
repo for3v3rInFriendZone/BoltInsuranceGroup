@@ -8,11 +8,10 @@
 
 	config.$inject = ['$urlRouterProvider', '$stateProvider'];
 	function config($urlRouterProvider, $stateProvider){
-		$urlRouterProvider.otherwise("/home");
 
 	$stateProvider
-    .state('insurance_users', {
-    	url: '/insurance/users',
+    .state('insurance', {
+    	url: '/insurance',
     	views: {
     		navbar: {
     			 templateUrl: 'app/components/insurance/header.html'

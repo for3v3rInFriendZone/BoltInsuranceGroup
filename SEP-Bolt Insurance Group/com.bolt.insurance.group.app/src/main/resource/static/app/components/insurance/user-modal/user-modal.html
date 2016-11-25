@@ -35,13 +35,19 @@
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
+           <input type="email" class="form-control" id="email" name="email" placeholder="Your email" ng-if="owner">
         </div>
     </div>
+    <div class="form-group text-center">
+        <div class="col-sm-8 col-sm-offset-2">
+           <label> Owner: <input type="checkbox" class="form-control" ng-model="owner" id="owner" name="owner" placeholder="Your email"/> </label>
+        </div>
+    </div>
+    </form>
 </div>
 <div class="modal-footer">
 	<div class="col-sm-6 col-sm-offset-2">
-	    <button class="btn btn-success" type="button" ng-click="imc.ok()">OK</button>
-	    <button class="btn btn-warning" type="button" ng-click="imc.cancel()">Cancel</button>
+	    <button class="btn btn-success" type="button" ng-click="umc.ok()">OK</button>
+	    <button class="btn btn-warning" type="button" ng-click="umc.cancel()">Cancel</button>
 	</div>
 </div>

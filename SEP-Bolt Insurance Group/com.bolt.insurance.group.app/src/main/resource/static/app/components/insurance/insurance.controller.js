@@ -23,5 +23,8 @@
   			userModal.open();
 
   		};
+  		
+  		inc.today = new Date();
+
 	}
 })();
