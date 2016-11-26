@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.core')
 		.controller('BigController', BigController);
 
-	BigController.$inject = ['$scope', '$http'];
-	function BigController($scope, $http) {
+	BigController.$inject = ['$scope', '$http', 'Restangular'];
+	function BigController($scope, $http, Restangular) {
 
 		$scope.animateElementIn = function($el) {
 
@@ -17,6 +17,16 @@
 		    	$el.removeClass('not-visible');
 		     	$el.addClass('animated '+animation);
 			}
+			
+			
   		};
+  		
+  		/* Ovo je bio test za RESTAngular
+		var test = Restangular.all('user');
+		test.getList().then(function(users) {
+			  $scope.allAccounts = users;
+			});
+		*/
+  		
 	}
 })();

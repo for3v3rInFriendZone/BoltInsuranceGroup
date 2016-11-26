@@ -52,15 +52,15 @@ public class Vehicle implements Serializable{
 	private String registration;
 	
 	@NotNull
-	@Column(name = "CHASSLES")
-	private String chassles;
+	@Column(name = "CHASSIS")
+	private String chassis;
 	
 	@NotNull
 	@Column(name = "BRAND")
 	private String brand;
 	
 	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "TYPE")
 	private VehicleType type;
 
@@ -120,12 +120,12 @@ public class Vehicle implements Serializable{
 		this.registration = registration;
 	}
 
-	public String getChassles() {
-		return chassles;
+	public String getChassis() {
+		return chassis;
 	}
 
-	public void setChassles(String chassles) {
-		this.chassles = chassles;
+	public void setChassis(String chassis) {
+		this.chassis = chassis;
 	}
 
 	public String getBrand() {
@@ -145,7 +145,7 @@ public class Vehicle implements Serializable{
 	}
 
 	public Vehicle(long id, String name, String surname, String address, BigDecimal jmbg, long yearOfProduction,
-			String registration, String chassles, String brand, VehicleType type) {
+			String registration, String chassis, String brand, VehicleType type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -154,7 +154,7 @@ public class Vehicle implements Serializable{
 		this.jmbg = jmbg;
 		this.yearOfProduction = yearOfProduction;
 		this.registration = registration;
-		this.chassles = chassles;
+		this.chassis = chassis;
 		this.brand = brand;
 		this.type = type;
 	}

@@ -33,6 +33,15 @@
 		}
   		
   		inc.today = new Date();
+  		var now = new Date();
+  		
+  		
+  		$scope.$watch("inc.today", function(newValue, oldValue) {
+  		    if(inc.today.getTime() < now.getTime()) {
+  		    	alert('nece da moze.');
+  		    	inc.today = new Date();
+  		    }
+  		});
 
 	}
 })();

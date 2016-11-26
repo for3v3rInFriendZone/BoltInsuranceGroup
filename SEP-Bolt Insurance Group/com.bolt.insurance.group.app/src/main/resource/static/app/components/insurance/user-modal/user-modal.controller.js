@@ -5,12 +5,12 @@
 		.module('bolt-insurance-group.insurance.user-modal')
 		.controller('UserModalController', UserModalController);
 
-	UserModalController.$inject = ['$uibModalInstance'];
-	function UserModalController($uibModalInstance) {
+	UserModalController.$inject = ['$uibModalInstance', 'User'];
+	function UserModalController($uibModalInstance, User) {
 		var pac = this;
 		pac.ok = ok;
 		pac.cancel = cancel;
-
+		
 		function ok() {
 			$uibModalInstance.dismiss();
 		}
