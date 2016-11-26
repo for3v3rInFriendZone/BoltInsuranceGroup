@@ -1,0 +1,231 @@
+<div id="all">
+  <div class="clearfix">
+      <div class="item">
+          <div class="container">
+          
+              <div class="row">
+	              	<div class="col-md-8 col-md-offset-2">
+	              	  <br/><br/><br/><br/>
+	                  <h2 class="text-center">Travel insurance</h2>    
+	                  <br/><br/>       
+	                  <table class="table table-hover table-bordered text-center">
+	                  	<thead>
+	                  		<th class="info text-center" colspan="2">
+	                    		How long your trip is going to be?
+	                    	</th>
+	                  	</thead>
+	                    <tbody>                  	
+					        <tr>
+					        	<td class="input-group">
+								    <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt1" is-open="popup1.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+									<span class="input-group-btn">
+									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+									</span>
+									<span class="input-group-addon">to</span>
+									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+									<span class="input-group-btn">
+									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+									</span>				        		
+					        	</td>
+					        </tr>				     		        
+	                    </tbody>
+	                  </table>
+	              	</div>
+              	</div>
+              	
+              	<hr/>
+              	<br/>
+              	
+              	<div class="row">
+              		<div class="col-md-8 col-md-offset-2">           
+	                    <table class="table table-hover table-bordered text-center">
+	                        <thead>
+	                        	<th class="info text-center" colspan="3">
+	                        		Insurance users
+	                        	</th>
+	                        </thead>
+		                    <thead> 
+		                    	<th class="success text-center">
+		                    		Name
+		                    	</th>   
+		                    	<th class="success text-center">
+		                    		Surname
+		                    	</th>   
+		                    	<th class="success text-center">
+		                    		Address
+		                    	</th>          
+		                    </thead>
+		                    <tbody>
+		                    	<tr ng-click="inc.newUser()">
+						            <td>aaaaaa</td>
+						            <td>bbbbbb</td>
+						            <td>cccccc</td>
+						        </tr>
+		                    </tbody>
+	                    </table>
+	                    <div class="text-center"> <button class="btn btn-success" type="button" ng-click="inc.newUser()"> <i style="font-size: 22px;" class="fa fa-plus"> </i></button> </div>
+              		</div>
+              	</div>
+              	
+              	<hr/>
+              	<br/>
+              	
+              	<div class="row">
+              		<div class="col-md-8 col-md-offset-2">
+              			<div class="form-group">
+					        <div class="col-sm-8">
+					            Do you want an insurance for sport risks?  <input type="checkbox" ng-model="sportCheckBox"/> 
+					        </div>
+					    </div> 
+					    <br/>          
+	                    <table class="table table-hover table-bordered" ng-if="sportCheckBox">
+	                    	<thead>
+	                        	<th class="info text-center" colspan="2">
+	                        		Sport insurance risks
+	                        	</th>
+	                        </thead>
+	                        <thead>
+	                        	<th class="success text-center">
+	                        		Choose one of the sports
+	                        	</th>
+	                        	<th class="success text-center">
+	                        		Sport danger coefficient
+	                        	</th>
+	                        </thead>
+	                        <tbody>
+		                    	<tr>
+		                    		<td>
+		                    			<div class="col-md-12">
+			                    			<select class="form-control">
+											  <option value="" selected></option>
+											  <option>Ketchup</option>
+											  <option>Relish</option>
+											</select>									
+		                    			</div>
+		                    		</td>
+		                    		<td>	                    
+		                    			<div class="col-md-3 col-md-offset-4">
+		                    				  <input class="form-control" type="text" disabled>
+		                    			</div>
+		                    			
+		                    		</td>
+						        </tr>
+		                    </tbody>
+	                    </table>
+	                </div>
+	            </div>  
+	            
+	            <hr/>
+	            <br/>
+	            
+	            <div class="row">
+              			<div class="col-md-8 col-md-offset-2">
+              					<table class="table table-hover table-bordered">
+			                    	<thead>
+			                        	<th class="info text-center" colspan="4">
+			                        	   Covering
+			                        	</th>
+			                        </thead>
+			                        <thead>
+			                        	<th class="success text-center" colspan="3">
+			                        		Travel health insurance
+			                        	</th>
+			                        	<th class="success text-center">
+			                        		Price
+			                        	</th>
+			                        </thead>
+			                        <tbody class="text-center">
+				                    	<tr>
+				                    		<td>
+				                    			Europe and North America <div class="text-center"> <input type="radio" name="radio1"/> </div>               
+				                    		</td>
+				                    		<td>
+				                    			Europe, North America and Asia<div class="text-center"> <input type="radio" name="radio1"/> </div>	               
+				                    		</td>
+				                    		<td>
+				                    			Whole world <div class="text-center"> <br/> <input type="radio" name="radio1"/> </div>		               
+				                    		</td>
+				                    		<td>	                    
+				                    			<div class="col-md-7 col-md-offset-2">
+				                    				  <input class="form-control" type="text" disabled>
+				                    			</div>			                    			
+				                    		</td>
+								        </tr>
+								        <tr>	                    
+				                    		<td class="success text-center" colspan="3">
+				                    			<b>Home insurance </b>	
+				                    		</td>		 
+				                    		<td class="success text-center">
+				                    			<b> Price </b>	
+				                    		</td>	                   			
+				                    	</tr>
+				                    	<tr>
+				                    		<td colspan="3">
+				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;">Insurance for your home or flat </span> &nbsp&nbsp <input type="checkbox" ng-model="homeInsurance"/>
+				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your house or flat" ng-if="homeInsurance" ng-click="inc.newHome()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
+				                    		</td>
+				                    		<td>	                    
+				                    			<div class="col-md-7 col-md-offset-2">
+				                    				  <input class="form-control" type="text" disabled>
+				                    			</div>			                    			
+				                    		</td>
+				                    	</tr>
+				                    	<tr>	                    
+				                    		<td class="success text-center" colspan="3">
+				                    			<b>Road insurance </b>	
+				                    		</td>		 
+				                    		<td class="success text-center">
+				                    			<b> Price </b>	
+				                    		</td>	                   			
+				                    	</tr>
+				                    	<tr>
+				                    		<td colspan="3">
+				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;">Insurance for roadside assistance </span> &nbsp&nbsp <input  type="checkbox" ng-model="roadInsurance"/>
+				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your vehicle" ng-if="roadInsurance" ng-click="inc.newVehicle()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
+				                    		</td>
+				                    		<td>	                    
+				                    			<div class="col-md-7 col-md-offset-2">
+				                    				  <input class="form-control" type="text" disabled>
+				                    			</div>			                    			
+				                    		</td>
+				                    	</tr>
+				                    	<tr >	                    
+				                    		<td class="success text-center" colspan="2">
+				                    			<b> Sum of insurances</b>	
+				                    		</td>		 
+				                    		<td class="success text-center">
+				                    			<b> Tax </b>	
+				                    		</td>
+				                    		<td class="success text-center">
+				                    			<b> Final price </b>	
+				                    		</td>	                   			
+				                    	</tr>
+				                    	<tr>
+				                    		<td colspan="2">
+				                    			 <input class="form-control" type="text" disabled/>
+				                    		</td>
+				                    		<td>	                    
+				                    			 <input class="form-control" type="text" disabled/>			                    			
+				                    		</td>
+				                    		<td>	                    
+				                    			 <input class="form-control" type="text" disabled/>			                    			
+				                    		</td>
+				                    	</tr>
+				                    </tbody>
+	                    	</table>
+              			</div>
+              		</div>
+              		
+              		<hr/>
+              		<br/>
+              		<div class="row">
+              			<div class="col-md-offset-9">
+	              			<a ui-sref="home"> <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button> </a>
+	                        <a ui-sref="#"> <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button> </a>
+	                    </div>
+              		</div>
+              	<br/><br/>
+            </div>
+       </div>
+  </div>
+</div> 

@@ -47,8 +47,7 @@ public class User implements Serializable{
 	
 	@Column(name = "PHONE")
 	private String phone;
-	
-	@NotNull
+
 	@Column(name = "MAIL")
 	private String mail;
 	

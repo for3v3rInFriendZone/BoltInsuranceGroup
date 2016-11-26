@@ -31,7 +31,7 @@ public class Subgroup implements Serializable{
 	@Column(name = "SUBNAME")
 	private String subname;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "RISK")
 	private Risk risk;
 

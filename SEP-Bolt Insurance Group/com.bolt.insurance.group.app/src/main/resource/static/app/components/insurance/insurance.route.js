@@ -8,28 +8,23 @@
 
 	config.$inject = ['$urlRouterProvider', '$stateProvider'];
 	function config($urlRouterProvider, $stateProvider){
-		$urlRouterProvider.otherwise("/home");
 
-		$stateProvider
+	$stateProvider
     .state('insurance', {
-      url: '/insurance',
-      views: {
-        navbar: {
-
-          templateUrl: "app/components/insurance/header.html"
-
-        },
-        content: {
-
-          templateUrl: "app/components/insurance/insuranceForm.html"
-
-        },
-        footer: {
-
-          templateUrl: "app/components/insurance/footer.html"
-
-        }
-      }
+    	url: '/insurance',
+    	views: {
+    		navbar: {
+    			 templateUrl: 'app/components/insurance/header.html'
+    		},
+    		content: {
+    			 templateUrl: 'app/components/insurance/insurance_users.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
+    		},
+    		footer: {
+    			 templateUrl: 'app/components/insurance/footer.html'
+    		}
+    	}
     });
 	}
 })();

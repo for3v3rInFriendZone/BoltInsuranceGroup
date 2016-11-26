@@ -55,14 +55,16 @@ public class ApiVehicleController {
 		Vehicle editedVehicle = vehicleService.findOne(vehicle.getId());
 		editedVehicle.setAddress(vehicle.getAddress());
 		editedVehicle.setBrand(vehicle.getBrand());
-		editedVehicle.setChassles(vehicle.getChassles());
+		editedVehicle.setChassis(vehicle.getChassis());
 		editedVehicle.setJmbg(vehicle.getJmbg());
 		editedVehicle.setName(vehicle.getName());
 		editedVehicle.setRegistration(vehicle.getRegistration());
 		editedVehicle.setSurname(vehicle.getSurname());
 		editedVehicle.setType(vehicle.getType());
 		editedVehicle.setYearOfProduction(vehicle.getYearOfProduction());
+		
 		vehicleService.save(editedVehicle);
+		
 		return new ResponseEntity<Vehicle>(editedVehicle, HttpStatus.OK);
 	}
 

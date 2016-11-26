@@ -30,15 +30,15 @@ public class Risk implements Serializable{
 	@Column(name = "RISK_NAME", nullable = false)
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "RISK_TYPE", nullable = false)
 	private Type type;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "PRICE", nullable = false)
 	private Price price;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "risks")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "risks")
 	private List<Insurance> insurances;
 
 	public long getId() {

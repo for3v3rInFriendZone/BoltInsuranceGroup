@@ -2,7 +2,8 @@
   "name": "sep.bolt.insurance.group",
   "homepage": "https://github.com/for3v3rInFriendZone/BoltInsuranceGroup",
   "authors": [
-    "jansulja <shuky11@rocketmail.com>"
+    "jansulja <shuky11@rocketmail.com>",
+    "for3v3rInFriendZone <strile93@gmail.com>"
   ],
   "description": "",
   "main": "index.html",
@@ -20,6 +21,8 @@
     "angular-ui-router": "^0.3.2",
     "angular-scroll": "^1.0.0",
     "angular-scroll-animate": "^0.9.9",
-    "restangular": "^1.5.2"
+    "angular-bootstrap": "^2.1.4",
+    "restangular": "^1.5.2",
+    "angularjs-datepicker": "^2.1.7"
   }
 }

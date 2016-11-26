@@ -2,5 +2,5 @@
 	"use strict";
 
 	angular
-		.module("bolt-insurance-group.insurance", ['ui.router']);
+		.module("bolt-insurance-group.insurance", ['ui.router', 'ui.bootstrap', 'restangular', '720kb.datepicker','bolt-insurance-group.insurance.user-modal', 'bolt-insurance-group.insurance.home-modal', 'bolt-insurance-group.insurance.vehicle-modal']);
 })();

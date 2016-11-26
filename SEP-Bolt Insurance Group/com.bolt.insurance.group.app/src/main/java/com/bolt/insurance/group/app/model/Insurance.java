@@ -41,19 +41,19 @@ public class Insurance implements Serializable{
 	@Column(name = "AMOUNT")
 	private double amount;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "TYPE", nullable = false)
 	private Type type;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "HOME", nullable = true)
 	private Home home;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "VEHICLE", nullable = true)
 	private Vehicle vehicle;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "INSURANCE_RISK")
 	private List<Risk> risks;
 
