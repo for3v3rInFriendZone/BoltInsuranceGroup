@@ -26,7 +26,7 @@ public class Subgroup implements Serializable{
 	private long id;
 	
 	@Column(name = "COEFFICIENT", nullable = false)
-	private String coefficient;
+	private Double coefficient;
 	
 	@Column(name = "SUBNAME")
 	private String subname;
@@ -43,11 +43,11 @@ public class Subgroup implements Serializable{
 		this.id = id;
 	}
 
-	public String getCoefficient() {
+	public Double getCoefficient() {
 		return coefficient;
 	}
 
-	public void setCoefficient(String coefficient) {
+	public void setCoefficient(Double coefficient) {
 		this.coefficient = coefficient;
 	}
 
@@ -67,7 +67,7 @@ public class Subgroup implements Serializable{
 		this.risk = risk;
 	}
 
-	public Subgroup(long id, String coefficient, String subname, Risk risk) {
+	public Subgroup(long id, Double coefficient, String subname, Risk risk) {
 		super();
 		this.id = id;
 		this.coefficient = coefficient;

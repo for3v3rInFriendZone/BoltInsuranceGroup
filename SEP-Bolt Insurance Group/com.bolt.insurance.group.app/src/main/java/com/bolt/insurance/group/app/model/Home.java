@@ -2,6 +2,7 @@ package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,8 +34,8 @@ public class Home implements Serializable{
 	private String surname;
 	
 	@NotNull
-	@Column(name = "OWNER_JMBG", unique = true)
-	private BigDecimal jmbg;
+	@Column(name = "OWNER_JMBG", unique = true, length = 13)
+	private String jmbg;
 	
 	@NotNull
 	@Column(name = "ADDRESS")
@@ -64,11 +65,11 @@ public class Home implements Serializable{
 		this.surname = surname;
 	}
 
-	public BigDecimal getJmbg() {
+	public String getJmbg() {
 		return jmbg;
 	}
 
-	public void setJmbg(BigDecimal jmbg) {
+	public void setJmbg(String jmbg) {
 		this.jmbg = jmbg;
 	}
 
@@ -80,7 +81,7 @@ public class Home implements Serializable{
 		this.address = address;
 	}
 
-	public Home(long id, String name, String surname, BigDecimal jmbg, String address) {
+	public Home(long id, String name, String surname, String jmbg, String address) {
 		super();
 		this.id = id;
 		this.name = name;

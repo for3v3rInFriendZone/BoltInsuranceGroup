@@ -1,7 +1,7 @@
 package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,8 +40,8 @@ public class Vehicle implements Serializable{
 	private String address;
 	
 	@NotNull
-	@Column(name = "OWNER_JMBG")
-	private BigDecimal jmbg;
+	@Column(name = "OWNER_JMBG", unique = true, length = 13)
+	private String jmbg;
 	
 	@NotNull
 	@Column(name = "YEAR_OF_PRODUCTION")
@@ -96,11 +96,11 @@ public class Vehicle implements Serializable{
 		this.address = address;
 	}
 
-	public BigDecimal getJmbg() {
+	public String getJmbg() {
 		return jmbg;
 	}
 
-	public void setJmbg(BigDecimal jmbg) {
+	public void setJmbg(String jmbg) {
 		this.jmbg = jmbg;
 	}
 
@@ -144,7 +144,7 @@ public class Vehicle implements Serializable{
 		this.type = type;
 	}
 
-	public Vehicle(long id, String name, String surname, String address, BigDecimal jmbg, long yearOfProduction,
+	public Vehicle(long id, String name, String surname, String address, String jmbg, long yearOfProduction,
 			String registration, String chassis, String brand, VehicleType type) {
 		super();
 		this.id = id;

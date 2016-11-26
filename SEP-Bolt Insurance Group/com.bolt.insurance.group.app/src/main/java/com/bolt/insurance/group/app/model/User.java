@@ -2,6 +2,7 @@ package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +36,7 @@ public class User implements Serializable{
 	
 	@NotNull
 	@Column(name = "JMBG", unique = true, length = 13)
-	private BigDecimal jmbg;
+	private String jmbg;
 	
 	@NotNull
 	@Column(name = "ADDRESS")
@@ -43,7 +44,7 @@ public class User implements Serializable{
 	
 	@NotNull
 	@Column(name = "PASSPORT", unique = true, length = 9)
-	private BigDecimal passport;
+	private String passport;
 	
 	@Column(name = "PHONE")
 	private String phone;
@@ -75,11 +76,11 @@ public class User implements Serializable{
 		this.surname = surname;
 	}
 
-	public BigDecimal getJmbg() {
+	public String getJmbg() {
 		return jmbg;
 	}
 
-	public void setJmbg(BigDecimal jmbg) {
+	public void setJmbg(String jmbg) {
 		this.jmbg = jmbg;
 	}
 
@@ -91,11 +92,11 @@ public class User implements Serializable{
 		this.address = address;
 	}
 
-	public BigDecimal getPassport() {
+	public String getPassport() {
 		return passport;
 	}
 
-	public void setPassport(BigDecimal passport) {
+	public void setPassport(String passport) {
 		this.passport = passport;
 	}
 
@@ -115,7 +116,7 @@ public class User implements Serializable{
 		this.mail = mail;
 	}
 
-	public User(long id, String firstName, String surname, BigDecimal jmbg, String address, BigDecimal passport,
+	public User(long id, String firstName, String surname, String jmbg, String address, String passport,
 			String phone, String mail) {
 		super();
 		this.id = id;
