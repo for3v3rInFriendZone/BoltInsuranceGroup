@@ -14,7 +14,7 @@
 		Vehicle.getList().then(function(vehicles){
 			pac.vehicles = vehicles;
 		});
-
+		
 		function ok() {
 			$uibModalInstance.dismiss();
 		}

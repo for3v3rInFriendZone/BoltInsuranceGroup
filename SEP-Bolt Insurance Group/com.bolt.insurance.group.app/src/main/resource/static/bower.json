@@ -22,6 +22,7 @@
     "angular-scroll": "^1.0.0",
     "angular-scroll-animate": "^0.9.9",
     "angular-bootstrap": "^2.1.4",
-    "restangular": "^1.5.2"
+    "restangular": "^1.5.2",
+    "angularjs-datepicker": "^2.1.7"
   }
 }

@@ -16,12 +16,16 @@
 	                  	</thead>
 	                    <tbody>                  	
 					        <tr>
-					        	<td>
-					        		<div class="input-daterange input-group col-md-8 col-md-1 col-md-offset-3">
-									    <input type="date" class="input-sm form-control" ng-model="inc.today" required/>
-									    <span class="input-group-addon">to</span>
-									    <input type="date" class="input-sm form-control" ng-model="dateTo" required/>
-									</div>
+					        	<td class="input-group">
+								    <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt1" is-open="popup1.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+									<span class="input-group-btn">
+									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+									</span>
+									<span class="input-group-addon">to</span>
+									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+									<span class="input-group-btn">
+									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+									</span>				        		
 					        	</td>
 					        </tr>				     		        
 	                    </tbody>

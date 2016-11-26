@@ -8,6 +8,26 @@
 	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal'];
 	function InsuranceController($scope, userModal, homeModal, vehicleModal) {
 		var inc = this;
+		 $scope.options = {
+			minDate: new Date(),
+			showWeeks: true
+		 };
+		 
+		  $scope.popup1 = {
+				    opened: false
+		  };
+		 
+		 $scope.open1 = function() {
+			    $scope.popup1.opened = true;
+		 };
+		 
+		 $scope.popup2 = {
+				    opened: false
+		  };
+		 
+		 $scope.open2 = function() {
+			    $scope.popup2.opened = true;
+		 };
 
 		$scope.animateElementIn = function($el) {
 			var animation = $el.attr('data-animation');
