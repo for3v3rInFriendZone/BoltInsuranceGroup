@@ -22,7 +22,7 @@
 									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>
 									<span class="input-group-addon">to</span>
-									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options2" ng-required="true" close-text="Close" />
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>				        		
@@ -40,7 +40,7 @@
               		<div class="col-md-8 col-md-offset-2">           
 	                    <table class="table table-hover table-bordered text-center">
 	                        <thead>
-	                        	<th class="info text-center" colspan="3">
+	                        	<th class="info text-center" colspan="4">
 	                        		Insurance users
 	                        	</th>
 	                        </thead>
@@ -53,13 +53,17 @@
 		                    	</th>   
 		                    	<th class="success text-center">
 		                    		Address
-		                    	</th>          
+		                    	</th>    
+		                    	<th class="success text-center">
+		                    		Remove
+		                    	</th>      
 		                    </thead>
 		                    <tbody>
-		                    	<tr ng-click="inc.newUser()">
-						            <td>aaaaaa</td>
-						            <td>bbbbbb</td>
-						            <td>cccccc</td>
+		                    	<tr ng-repeat="user in inc.users | orderBy:'id'">
+						            <td ng-click="inc.editUser(user.id)">{{user.firstName}}</td>
+						            <td ng-click="inc.editUser(user.id)">{{user.surname}}</td>
+						            <td ng-click="inc.editUser(user.id)">{{user.address}}</td>
+						            <td><button class="btn btn-default" type="button" ng-click="inc.removeUser(user.id, $index)"> <i style="font-size: 22px;" class="fa fa-trash-o"> </i></button></td>
 						        </tr>
 		                    </tbody>
 	                    </table>

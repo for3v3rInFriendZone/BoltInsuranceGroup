@@ -5,17 +5,32 @@
 		.module('bolt-insurance-group.insurance')
 		.controller('InsuranceController', InsuranceController);
 
-	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal'];
-	function InsuranceController($scope, userModal, homeModal, vehicleModal) {
+	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal', 'users', 'User'];
+	function InsuranceController($scope, userModal, homeModal, vehicleModal, users,  User) {
 		var inc = this;
+		inc.users = users;
+		
+		 /**
+		  * Options for a datepicker, in this instance, its for setting a min date.
+		  */
 		 $scope.options = {
 			minDate: new Date(),
 			showWeeks: true
 		 };
 		 
-		  $scope.popup1 = {
+		 /**
+		  * When first date is changed, the min date of second date must be of first date.
+		  */
+		 $scope.$watch("dt1", function(newValue, oldValue) {
+		     $scope.options2 = {
+			    	minDate: $scope.dt1,
+			    	showWeeks: true
+			 };
+		 });
+		 
+		 $scope.popup1 = {
 				    opened: false
-		  };
+		 };
 		 
 		 $scope.open1 = function() {
 			    $scope.popup1.opened = true;
@@ -23,13 +38,17 @@
 		 
 		 $scope.popup2 = {
 				    opened: false
-		  };
+		 };
 		 
 		 $scope.open2 = function() {
 			    $scope.popup2.opened = true;
 		 };
 
-		$scope.animateElementIn = function($el) {
+		 
+		 /**
+		  * This is for animations
+		  */
+		 $scope.animateElementIn = function($el) {
 			var animation = $el.attr('data-animation');
 
 			// For some browsers, `attr` is undefined; for others, `attr` is false. Check for both.
@@ -37,31 +56,54 @@
 		    	$el.removeClass('not-visible');
 		     	$el.addClass('animated '+animation);
 			}
-  		};
+  		 };
   		
-  		inc.newUser = function(){
-  			userModal.open();
-
-  		};
+  		 /**
+  		  * Opening a modal dialog for a user
+  		  */
+  		 inc.newUser = function(){
+  			userModal.open().then(function(data){
+  				inc.users.push(data);
+  			});
+  		 };
   		
-  		inc.newHome = function() {
+  		 /**
+  		  * Opening modal dialog for a home
+  		  */
+  		 inc.newHome = function() {
 			homeModal.open();
-		}
+		 }
   		
-  		inc.newVehicle = function() {
+  		 
+  		 /**
+  		  * Opening modal dialog for a vehicle
+  		  */
+  		 inc.newVehicle = function() {
   			vehicleModal.open();
-		}
-  		
-  		inc.today = new Date();
-  		var now = new Date();
-  		
-  		
-  		$scope.$watch("inc.today", function(newValue, oldValue) {
-  		    if(inc.today.getTime() < now.getTime()) {
-  		    	alert('nece da moze.');
-  		    	inc.today = new Date();
-  		    }
-  		});
+		 }
+  		 
+  		 /**
+  		  * When user informations are changed in database, it needs to be changed on view.
+  		  */
+  		 inc.editUser = function(userId){
+  			userModal.edit(userId).then(function(data){
+  				for(var i=0; i<inc.users.length; i++){
+  					if(inc.users[i].id === data.id){
+  						inc.users[i] = data;
+  						break;
+  					}
+  				}
+  			});
 
+  		 }
+  		 
+  		 inc.removeUser = function(userId, index){
+  			 User.get(userId).then(function(data){
+  				 data.remove();			
+  			 });
+  			 inc.users.splice(index, 1);
+  			 
+  		 }
+  		
 	}
 })();

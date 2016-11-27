@@ -1,53 +1,54 @@
 <div class="modal-header">
-    <h3 class="modal-title">Please enter informations for an insurance user</h3>
+    <h3 class="modal-title" ng-if="umc.status === 'new'">Please enter informations for a new insurance user</h3>
+    <h3 class="modal-title" ng-if="umc.status === 'edit'">Update informations for an insurance user <i> {{umc.user.firstName}}</i>&nbsp <i>{{umc.user.surname}}</i></h3>
 </div>
 <div class="modal-body">
     <form class="form-horizontal">
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<input class="form-control" type="text" id="name" name="name" placeholder="Your name"/>
+    		<label class="form-control text-center" style="background-color: lightblue; ">Your first name </label><input class="form-control" type="text" ng-model="umc.user.firstName" name="name" placeholder="Your name"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="surname" name="surname" placeholder="Your surname"/>
+            <label class="form-control text-center" style="background-color: lightblue;">Your surname </label> <input class="form-control" type="text" ng-model="umc.user.surname" name="surname" placeholder="Your surname"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="jmbg" name="jmbg" placeholder="Your JMBG">
+           <label class="form-control text-center" style="background-color: lightblue;">Your JMBG </label> <input class="form-control" type="text" ng-model="umc.user.jmbg" name="jmbg" placeholder="Your JMBG">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="address" name="address" placeholder="Your address">
+           <label class="form-control text-center" style="background-color: lightblue;">Your address </label> <input class="form-control" type="text" ng-model="umc.user.address" name="address" placeholder="Your address">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input class="form-control" id="passport" name="passport" placeholder="Your passport number">
+          <label class="form-control text-center" style="background-color: lightblue;">Your passport </label> <input class="form-control" ng-model="umc.user.passport" name="passport" placeholder="Your passport number">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input class="form-control" id="phone" name="phone" placeholder="Your phone number">
+          <label class="form-control text-center" style="background-color: lightblue;">Your phone number </label> <input class="form-control" ng-model="umc.user.phone" name="phone" placeholder="Your phone number">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input type="email" class="form-control" id="email" name="email" placeholder="Your email" ng-if="owner">
+          <label class="form-control text-center" style="background-color: lightblue;" ng-if="umc.user.owner">Your e-mail </label> <input type="email" class="form-control" ng-model="umc.user.email" name="email" placeholder="Your e-mail" ng-if="umc.user.owner">
         </div>
     </div>
     <div class="form-group text-center">
         <div class="col-sm-8 col-sm-offset-2">
-           <label> Owner: <input type="checkbox" class="form-control" ng-model="owner" id="owner" name="owner" placeholder="Your email"/> </label>
+           <label> Owner: <input type="checkbox" class="form-control" ng-model="umc.user.owner" /> </label>
         </div>
     </div>
     </form>
 </div>
 <div class="modal-footer">
-	<div class="col-sm-6 col-sm-offset-2">
-	    <button class="btn btn-success" type="button" ng-click="umc.ok()">OK</button>
+	<div class="col-sm-8 col-sm-offset-1">
+	    <button class="btn btn-success" type="button" ng-click="umc.ok()">Save</button>
 	    <button class="btn btn-warning" type="button" ng-click="umc.cancel()">Cancel</button>
 	</div>
 </div>

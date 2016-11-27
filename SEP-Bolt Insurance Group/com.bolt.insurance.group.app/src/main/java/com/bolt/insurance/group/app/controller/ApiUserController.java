@@ -49,10 +49,10 @@ public class ApiUserController {
 		return new ResponseEntity<User>(HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
-	public ResponseEntity<User> editUser(@RequestBody User user) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<User> editUser(@PathVariable("id") Long id, @RequestBody User user) {
 
-		User editedUser = userService.findOne(user.getId());
+		User editedUser = userService.findOne(id);
 		editedUser.setAddress(user.getAddress());
 		editedUser.setFirstName(user.getFirstName());
 		editedUser.setJmbg(user.getJmbg());
