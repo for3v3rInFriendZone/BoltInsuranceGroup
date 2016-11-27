@@ -29,7 +29,7 @@
       <dependency>
 	      <groupId>junit</groupId>
 	      <artifactId>junit</artifactId>
-	      <version>3.8.1</version>
+	      <version>3.8.1</version><!--$NO-MVN-MAN-VER$-->
 	      <scope>test</scope>
       </dependency>
       
@@ -60,8 +60,8 @@
 	  </dependency>
 	  <dependency> 
 		<groupId>org.drools</groupId>
-		<artifactId>drools-compiler</artifactId>
-		<version>6.0.1.Final</version>
+		<artifactId>drools-spring</artifactId>
+		<version>5.6.0.Final</version>
 	  </dependency>
 
   </dependencies>
