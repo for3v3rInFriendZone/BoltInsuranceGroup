@@ -5,37 +5,37 @@
     <form class="form-horizontal">
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<input class="form-control" type="text" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}"/>
+    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="year" name="year" placeholder="{{'YEAROFMANUFACTURE'|translate}}"/>
+            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="plates" name="plates" placeholder="{{'LICENCEPLATESNUMBER'|translate}}">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="chassis" name="chassis" placeholder="{{'NUMBEROFCHASSIS'|translate}}">
+            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.ownerjmbg" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}">
         </div>
     </div>
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<input class="form-control" type="text" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}"/>
+    		<label class="form-control text-center" style="background-color: lightblue; " translate="TYPEOFVEHICLE"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.typeofvehicle" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}"/>
+            <label class="form-control text-center" style="background-color: lightblue; " translate="YEAROFMANUFACTURE"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.yearofmanufacture" id="year" name="year" placeholder="{{'YEAROFMANUFACTURE'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}">
+            <label class="form-control text-center" style="background-color: lightblue; " translate="LICENCEPLATESNUMBER"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.licenceplatesnumber" id="plates" name="plates" placeholder="{{'LICENCEPLATESNUMBER'|translate}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-8 col-sm-offset-2">
+            <label class="form-control text-center" style="background-color: lightblue; " translate="NUMBEROFCHASSIS"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.numberofchassis" id="chassis" name="chassis" placeholder="{{'NUMBEROFCHASSIS'|translate}}">
         </div>
     </div>
     </form>

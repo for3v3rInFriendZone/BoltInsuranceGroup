@@ -59,7 +59,7 @@
 						            <td ng-click="inc.editUser($index)">{{user.firstName}}</td>
 						            <td ng-click="inc.editUser($index)">{{user.surname}}</td>
 						            <td ng-click="inc.editUser($index)">{{user.address}}</td>
-						            <td><button class="btn btn-default" type="button" ng-click="inc.removeUser($index)"> <i style="font-size: 22px;" class="fa fa-trash-o"> </i></button></td>
+						            <td> <i style="font-size: 22px;"ng-click="inc.removeUser($index)" class="fa fa-trash-o"> </i></td>
 						        </tr>
 		                    </tbody>
 	                    </table>
@@ -158,8 +158,44 @@
 				                    	</tr>
 				                    	<tr>
 				                    		<td colspan="3">
-				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span> &nbsp&nbsp <input type="checkbox" ng-model="homeInsurance"/>
-				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your house or flat" ng-if="homeInsurance" ng-click="inc.newHome()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
+				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span>
+				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your house or flat" ng-if="inc.homeInsurance" ng-click="inc.newHome()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
+				                    			
+				                    			<div ng-if="inc.homeindicator == 1">
+				                    			
+					                    			<table class="table table-hover table-bordered text-center">
+									                    <thead> 
+									                    	<th class="success text-center" translate="OWNERNAME">		                    		
+									                    	</th>   
+									                    	<th class="success text-center" translate="OWNERSURNAME">		                   	
+									                    	</th>   
+									                    	<th class="success text-center" translate="OWNERJMBG">		                   
+									                    	</th> 
+									                    	<th class="success text-center" translate="ADDRESS">		                   
+									                    	</th> 
+									                    	<th class="success text-center" translate="HOMEAREA">		                   
+									                    	</th> 
+									                    	<th class="success text-center" translate="AGEOFHOME">		                   
+									                    	</th>  
+									                    	<th class="success text-center" translate="ESTIMATEDVALUEOFHOME">		                   
+									                    	</th> 
+									                    	<th class="success text-center" translate="REMOVE">		                   
+									                    	</th> 
+									                         
+									                    </thead>
+									                    <tbody>
+													            <td ng-click="inc.editHome()">{{inc.home.ownername}}</td>
+													            <td ng-click="inc.editHome()">{{inc.home.ownersurname}}</td>
+													            <td ng-click="inc.editHome()">{{inc.home.ownerjmbg}}</td>
+													            <td ng-click="inc.editHome()">{{inc.home.address}}</td>
+													            <td ng-click="inc.editHome()">{{inc.home.homearea}}</td>
+													            <td ng-click="inc.editHome()">{{inc.home.ageofhome}}</td>
+													            <td ng-click="inc.editHome()">{{inc.home.estimatedvalueofhome}}</td>
+													            <td><i style="font-size: 22px;" ng-click="inc.removeHome()" class="fa fa-trash-o"> </i></td>
+									                    </tbody>
+								                    </table>
+				                    			</div>
+				                    			
 				                    		</td>
 				                    		<td>	                    
 				                    			<div class="col-md-7 col-md-offset-2">
@@ -177,8 +213,44 @@
 				                    	</tr>
 				                    	<tr>
 				                    		<td colspan="3">
-				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span> &nbsp&nbsp <input  type="checkbox" ng-model="roadInsurance"/>
-				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your vehicle" ng-if="roadInsurance" ng-click="inc.newVehicle()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
+				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span>
+				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your vehicle" ng-if="inc.roadInsurance" ng-click="inc.newVehicle()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
+				                    		
+						                    		<div ng-if="inc.vehicleindicator == 1">
+						                    			
+							                    			<table class="table table-hover table-bordered text-center">
+											                    <thead> 
+											                    	<th class="success text-center" translate="OWNERNAME">		                    		
+											                    	</th>   
+											                    	<th class="success text-center" translate="OWNERSURNAME">		                   	
+											                    	</th>   
+											                    	<th class="success text-center" translate="OWNERJMBG">		                   
+											                    	</th> 
+											                    	<th class="success text-center" translate="TYPEOFVEHICLE">		                   
+											                    	</th> 
+											                    	<th class="success text-center" translate="YEAROFMANUFACTURE">		                   
+											                    	</th> 
+											                    	<th class="success text-center" translate="LICENCEPLATESNUMBER">		                   
+											                    	</th>  
+											                    	<th class="success text-center" translate="NUMBEROFCHASSIS">		                   
+											                    	</th> 
+											                    	<th class="success text-center" translate="REMOVE">		                   
+											                    	</th> 
+											                         
+											                    </thead>
+											                    <tbody>
+															            <td ng-click="inc.editVehicle()">{{inc.vehicle.ownername}}</td>
+															            <td ng-click="inc.editVehicle()">{{inc.vehicle.ownersurname}}</td>
+															            <td ng-click="inc.editVehicle()">{{inc.vehicle.ownerjmbg}}</td>
+															            <td ng-click="inc.editVehicle()">{{inc.vehicle.typeofvehicle}}</td>
+															            <td ng-click="inc.editVehicle()">{{inc.vehicle.yearofmanufacture}}</td>
+															            <td ng-click="inc.editVehicle()">{{inc.vehicle.licenceplatesnumber}}</td>
+															            <td ng-click="inc.editVehicle()">{{inc.vehicle.numberofchassis}}</td>
+															            <td><i style="font-size: 22px;" ng-click="inc.removeVehicle()" class="fa fa-trash-o"> </i></td>
+											                    </tbody>
+										                    </table>
+						                    			</div>
+				                    		
 				                    		</td>
 				                    		<td>	                    
 				                    			<div class="col-md-7 col-md-offset-2">

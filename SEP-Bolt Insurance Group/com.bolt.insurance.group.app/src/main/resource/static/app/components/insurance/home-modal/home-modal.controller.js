@@ -5,17 +5,22 @@
 		.module('bolt-insurance-group.insurance.home-modal')
 		.controller('HomeModalController', HomeModalController);
 
-	HomeModalController.$inject = ['$uibModalInstance', 'Home'];
-	function HomeModalController($uibModalInstance, Home) {
-		var pac = this;
-		pac.ok = ok;
-		pac.cancel = cancel;
+	HomeModalController.$inject = ['$uibModalInstance', 'items', 'Home'];
+	function HomeModalController($uibModalInstance, items, Home) {
+		var hmc = this;
+		hmc.ok = ok;
+		hmc.cancel = cancel;
+		hmc.home = items.home;
+		hmc.status = items.status;
+		
+		
 		
 		function ok() {
-			$uibModalInstance.dismiss();
+			$uibModalInstance.close(hmc.home);
 		}
 
 		function cancel() {
+			console.log('USAO U CANCEL FUNKCIJU!');
 			$uibModalInstance.dismiss();
 		}
 	}
