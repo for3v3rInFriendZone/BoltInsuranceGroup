@@ -1,52 +1,53 @@
 <div class="modal-header">
-    <h3 class="modal-title" translate="PLEASEENTERINFOUSER"> </h3>
+    <h3 class="modal-title" ng-if="umc.status === 'new'" translate="PLEASEENTERINFOUSER"></h3>
+    <h3 class="modal-title" ng-if="umc.status === 'edit'" translate="UPDATEUSERINFO"></h3>
 </div>
 <div class="modal-body">
     <form class="form-horizontal">
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<input class="form-control" type="text" id="name" name="name" placeholder="{{'NAME'|translate}}"/>
+    		<label class="form-control text-center" style="background-color: lightblue; ">Your first name </label><input class="form-control" type="text" ng-model="umc.user.firstName" name="name" placeholder="Your name"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="surname" name="surname" placeholder="{{'SURNAME'|translate}}"/>
+            <label class="form-control text-center" style="background-color: lightblue;">Your surname </label> <input class="form-control" type="text" ng-model="umc.user.surname" name="surname" placeholder="Your surname"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="jmbg" name="jmbg" placeholder="{{'JMBG'|translate}}">
+           <label class="form-control text-center" style="background-color: lightblue;">Your JMBG </label> <input class="form-control" type="text" ng-model="umc.user.jmbg" name="jmbg" placeholder="Your JMBG">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="address" name="address" placeholder="{{'ADDRESS'|translate}}">
+           <label class="form-control text-center" style="background-color: lightblue;">Your address </label> <input class="form-control" type="text" ng-model="umc.user.address" name="address" placeholder="Your address">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input class="form-control" id="passport" name="passport" placeholder="{{'PASSPORTNUMBER'|translate}}">
+          <label class="form-control text-center" style="background-color: lightblue;">Your passport </label> <input class="form-control" ng-model="umc.user.passport" name="passport" placeholder="Your passport number">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input class="form-control" id="phone" name="phone" placeholder="{{'PHONE2'|translate}}">
+          <label class="form-control text-center" style="background-color: lightblue;">Your phone number </label> <input class="form-control" ng-model="umc.user.phone" name="phone" placeholder="Your phone number">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input type="email" class="form-control" id="email" name="email" placeholder="{{'EMAIL2'|translate}}" ng-if="owner">
+          <label class="form-control text-center" style="background-color: lightblue;" ng-if="umc.user.owner">Your e-mail </label> <input type="email" class="form-control" ng-model="umc.user.email" name="email" placeholder="Your e-mail" ng-if="umc.user.owner">
         </div>
     </div>
     <div class="form-group text-center">
         <div class="col-sm-8 col-sm-offset-2">
-           <label> <a translate="OWNEROFINSURANCE"></a> <input type="checkbox" class="form-control" ng-model="owner" id="owner" name="owner" placeholder="{{'EMAIL2'|translate}}"/> </label>
+           <label> Owner: <input type="checkbox" class="form-control" ng-model="umc.user.owner" /> </label>
         </div>
     </div>
     </form>
 </div>
 <div class="modal-footer">
-	<div class="col-sm-6 col-sm-offset-2">
+	<div class="col-sm-8 col-sm-offset-1">
 	    <button class="btn btn-success" type="button" ng-click="umc.ok()" translate="OK"></button>
 	    <button class="btn btn-warning" type="button" ng-click="umc.cancel()" translate="CANCEL"></button>
 	</div>

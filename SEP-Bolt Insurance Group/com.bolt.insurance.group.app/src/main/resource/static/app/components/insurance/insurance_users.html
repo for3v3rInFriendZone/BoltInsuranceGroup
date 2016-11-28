@@ -21,8 +21,9 @@
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>
-									<span class="input-group-addon" translate="TO"></span>
-									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+
+									<span class="input-group-addon" translate="TO"></span>				
+									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options2" ng-required="true" close-text="Close" />
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>				        		
@@ -40,26 +41,24 @@
               		<div class="col-md-8 col-md-offset-2">           
 	                    <table class="table table-hover table-bordered text-center">
 	                        <thead>
-	                        	<th class="info text-center" colspan="3" translate="INSURANCEUSERS">
-	                        		
+	                        	<th class="info text-center" colspan="4" translate="INSURANCEUSERS">
+	                        		Insurance users
 	                        	</th>
 	                        </thead>
 		                    <thead> 
-		                    	<th class="success text-center" translate="NAME">
-		                    		
+		                    	<th class="success text-center" translate="NAME">		                    		
 		                    	</th>   
-		                    	<th class="success text-center" translate="SURNAME">
-		                    		
+		                    	<th class="success text-center" translate="SURNAME">		                   	
 		                    	</th>   
-		                    	<th class="success text-center" translate="ADDRESS">
-		                    		
+		                    	<th class="success text-center" translate="ADDRESS">		                   
 		                    	</th>          
 		                    </thead>
 		                    <tbody>
-		                    	<tr ng-click="inc.newUser()">
-						            <td>aaaaaa</td>
-						            <td>bbbbbb</td>
-						            <td>cccccc</td>
+		                    	<tr ng-repeat="user in inc.users | orderBy:'id'">
+						            <td ng-click="inc.editUser(user.id)">{{user.firstName}}</td>
+						            <td ng-click="inc.editUser(user.id)">{{user.surname}}</td>
+						            <td ng-click="inc.editUser(user.id)">{{user.address}}</td>
+						            <td><button class="btn btn-default" type="button" ng-click="inc.removeUser(user.id, $index)"> <i style="font-size: 22px;" class="fa fa-trash-o"> </i></button></td>
 						        </tr>
 		                    </tbody>
 	                    </table>
@@ -96,16 +95,13 @@
 		                    	<tr>
 		                    		<td>
 		                    			<div class="col-md-12">
-			                    			<select class="form-control">
-											  <option value="" selected></option>
-											  <option>Ketchup</option>
-											  <option>Relish</option>
+			                    			<select class="form-control" ng-options="sport.subname for sport in inc.sports track by sport.subname" ng-model="inc.selectedSport">
 											</select>									
 		                    			</div>
 		                    		</td>
 		                    		<td>	                    
 		                    			<div class="col-md-3 col-md-offset-4">
-		                    				  <input class="form-control" type="text" disabled>
+		                    				  <input class="form-control" type="text" ng-model="inc.selectedSport.coefficient" disabled>
 		                    			</div>
 		                    			
 		                    		</td>
@@ -136,18 +132,18 @@
 			                        </thead>
 			                        <tbody class="text-center">
 				                    	<tr>
-				                    		<td translate="EUNA">
-				                    			<div class="text-center"> <input type="radio" name="radio1"/> </div>               
+				                    		<td>
+				                    			<label translate="EUNA"> </label> <div class="text-center"> <input type="radio" name="radio1" value="1500" ng-model="inc.sports.riskCoeff"/> </div>               
 				                    		</td>
-				                    		<td translate="EUNAA">
-				                    			<div class="text-center"> <input type="radio" name="radio1"/> </div>	               
+				                    		<td>
+				                    			<label translate="EUNAA"> </label> <div class="text-center"> <input type="radio" name="radio1" value="2500" ng-model="inc.sports.riskCoeff"/> </div>	               
 				                    		</td>
-				                    		<td translate="WHOLEWORLD">
-				                    			 <div class="text-center"> <br/> <input type="radio" name="radio1"/> </div>		               
+				                    		<td>
+				                    			<label translate="WHOLEWORLD"> </label> <div class="text-center"> <br/> <input type="radio" name="radio1" value="4500" ng-model="inc.sports.riskCoeff"/> </div>		               
 				                    		</td>
-				                    		<td>	                    
+				                    		<td>	                     
 				                    			<div class="col-md-7 col-md-offset-2">
-				                    				  <input class="form-control" type="text" disabled>
+				                    				  <input class="form-control" type="text" ng-model="inc.sports.riskCoeff" disabled>
 				                    			</div>			                    			
 				                    		</td>
 								        </tr>

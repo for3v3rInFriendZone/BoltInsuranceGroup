@@ -19,7 +19,10 @@
     	         controllerAs: 'inc'
     		},
     		content: {
-    			 templateUrl: 'app/components/insurance/insurance_users.html',
+				 resolve: {
+					users: getUsers
+				 },
+    			 templateUrl: 'app/components/insurance/insurance_users.html',   	
     			 controller: 'InsuranceController',
     	         controllerAs: 'inc'
     		},
@@ -30,5 +33,11 @@
     		}
     	}
     });
+	
+		getUsers.$inject = ['User'];
+		function getUsers(User) {
+			 return User.getList();
+		}
+	
 	}
 })();

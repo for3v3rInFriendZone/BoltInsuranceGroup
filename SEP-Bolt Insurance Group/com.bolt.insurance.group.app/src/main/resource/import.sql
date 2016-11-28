@@ -1,3 +1,5 @@
+
+
 INSERT INTO home(id, address, owner_jmbg, owner_name, owner_surname) VALUES (1, 'Nikolajevska 2', 2301453678396, 'Sasa', 'Matic');
 INSERT INTO home(id, address, owner_jmbg, owner_name, owner_surname) VALUES (2, 'Nikolajevska 3', 2301453678323, 'Dejan', 'Matic');
 INSERT INTO home(id, address, owner_jmbg, owner_name, owner_surname) VALUES (3, 'Nikolajevska 4', 2301453678334, 'Nikola', 'Matic');
@@ -52,7 +54,5 @@ INSERT INTO vehicle_type(id, name)VALUES (2, 'BMW');
 INSERT INTO vehicle_type(id, name)VALUES (3, 'Fiat');
 INSERT INTO vehicle_type(id, name)VALUES (4, 'Zastava');
 INSERT INTO vehicle_type(id, name)VALUES (5, 'Audi');
-
-
 
     
