@@ -1,16 +1,16 @@
 package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "INSURANCE_USER")
@@ -26,24 +26,19 @@ public class User implements Serializable{
 	@Column(name = "ID")
 	private long id;
 	
-	@NotNull
-	@Column(name = "FIRSTNAME")
+	@Column(name = "FIRSTNAME", nullable = false)
 	private String firstName;
 	
-	@NotNull
-	@Column(name = "SURNAME")
+	@Column(name = "SURNAME", nullable = false)
 	private String surname;
 	
-	@NotNull
-	@Column(name = "JMBG", unique = true, length = 13)
+	@Column(name = "JMBG", unique = true, length = 13, nullable = false)
 	private String jmbg;
 	
-	@NotNull
-	@Column(name = "ADDRESS")
+	@Column(name = "ADDRESS", nullable = false)
 	private String address;
 	
-	@NotNull
-	@Column(name = "PASSPORT", unique = true, length = 9)
+	@Column(name = "PASSPORT", unique = true, length = 9, nullable = false)
 	private String passport;
 	
 	@Column(name = "PHONE")
@@ -52,6 +47,13 @@ public class User implements Serializable{
 	@Column(name = "MAIL")
 	private String mail;
 	
+	@Column(name = "AGE")
+	private int age;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "SUBGROUP", nullable = true)
+	private Subgroup subgroup;
+
 	public long getId() {
 		return id;
 	}
@@ -60,6 +62,14 @@ public class User implements Serializable{
 		this.id = id;
 	}
 
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -114,6 +124,14 @@ public class User implements Serializable{
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	public Subgroup getSubgroup() {
+		return subgroup;
+	}
+
+	public void setSubgroup(Subgroup subgroup) {
+		this.subgroup = subgroup;
 	}
 
 	public User(long id, String firstName, String surname, String jmbg, String address, String passport,

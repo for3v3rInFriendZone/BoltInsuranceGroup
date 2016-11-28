@@ -1,5 +1,12 @@
 package com.bolt.insurance.group.rule
 
-/**
-treba ubaciti modele sa kojima se radi i nakon toga pisati pravila
-*/
+import com.bolt.insurance.group.app.model.Insurance
+import java.util.Date
+
+
+rule "osnovni paket"
+	when
+		$insurance :  Insurance( endDate > startDate )
+	then
+		System.out.println($insurance.endDate - $insurance.startDate)
+end

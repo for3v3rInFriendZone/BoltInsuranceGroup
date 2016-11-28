@@ -40,7 +40,11 @@ public class Risk implements Serializable{
 	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "risks")
 	private List<Insurance> insurances;
-
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "SUBGROUP")
+	private Subgroup subgroup;
+	
 	public long getId() {
 		return id;
 	}
@@ -79,6 +83,14 @@ public class Risk implements Serializable{
 
 	public void setInsurances(List<Insurance> insurances) {
 		this.insurances = insurances;
+	}
+
+	public Subgroup getSubgroup() {
+		return subgroup;
+	}
+
+	public void setSubgroup(Subgroup subgroup) {
+		this.subgroup = subgroup;
 	}
 
 	public Risk(long id, String name, Type type, Price price, List<Insurance> insurances) {

@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -33,12 +34,13 @@ public class Insurance implements Serializable{
 	@Column(name = "START_DATE", nullable = false)
 	private Date startDate;
 	
-	@NotNull
-	@Column(name = "END_DATE")
+	@Column(name = "END_DATE", nullable = false)
 	private Date endDate;
 	
-	@NotNull
-	@Column(name = "AMOUNT")
+	@Column(name = "DAYS")
+	private int days;
+	
+	@Column(name = "AMOUNT", nullable = false)
 	private double amount;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -56,6 +58,17 @@ public class Insurance implements Serializable{
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "INSURANCE_RISK")
 	private List<Risk> risks;
+	
+	@OneToMany
+	private List<User> users;
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
 	public long getId() {
 		return id;
@@ -119,6 +132,14 @@ public class Insurance implements Serializable{
 
 	public void setRisks(List<Risk> risks) {
 		this.risks = risks;
+	}
+
+	public int getDays() {
+		return days;
+	}
+
+	public void setDays(int days) {
+		this.days = days;
 	}
 
 	public Insurance(long id, Date startDate, Date endDate, double amount, Type type, Home home, Vehicle vehicle,

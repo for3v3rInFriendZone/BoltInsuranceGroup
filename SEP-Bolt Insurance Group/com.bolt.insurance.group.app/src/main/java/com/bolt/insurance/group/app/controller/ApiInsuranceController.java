@@ -1,7 +1,14 @@
 package com.bolt.insurance.group.app.controller;
 
+import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.drools.runtime.StatefulKnowledgeSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bolt.insurance.group.app.droolsconf.DroolsFileReader;
 import com.bolt.insurance.group.app.model.Insurance;
+import com.bolt.insurance.group.app.model.Risk;
+import com.bolt.insurance.group.app.model.Subgroup;
+import com.bolt.insurance.group.app.model.Type;
+import com.bolt.insurance.group.app.model.User;
 import com.bolt.insurance.group.app.service.InsuranceService;
+import com.bolt.insurance.group.app.service.NewUserService;
+import com.bolt.insurance.group.app.service.PriceService;
+import com.bolt.insurance.group.app.service.RiskService;
+import com.bolt.insurance.group.app.service.SubgroupService;
+import com.bolt.insurance.group.app.service.TypeService;
+import com.bolt.insurance.group.app.service.UserService;
 
 @RestController
 @RequestMapping(value = "/insurance")
@@ -20,6 +38,24 @@ public class ApiInsuranceController {
 
 	@Autowired
 	InsuranceService insuranceService;
+	
+	@Autowired
+	RiskService riskService;
+	
+	@Autowired
+	PriceService priceService;
+	
+	@Autowired
+	SubgroupService subgroupService;
+	
+	@Autowired
+	TypeService typeService;
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	NewUserService newUserService;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Insurance> saveInsurance(@RequestBody Insurance insurance) {
@@ -36,9 +72,64 @@ public class ApiInsuranceController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Insurance>> getInsuracnes() {
+	public ResponseEntity<List<Insurance>> getInsuracnes() throws ParseException, URISyntaxException {
 
-		List<Insurance> insurances = (List<Insurance>) insuranceService.findAll();
+		DroolsFileReader dfr = new DroolsFileReader();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date endDate = sdf.parse("21/12/2016");
+		Date startDate = sdf.parse("15/12/2016");
+		long milliseconds = endDate.getTime() - startDate.getTime();
+		int days = (int) TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
+		
+		//korisnici
+		List<User> users = new ArrayList<User>();
+		User u1 = userService.findOne((long) 1);
+		u1.setSubgroup(newUserService.setUserSubgroup(u1.getAge()));
+		User u2 = userService.findOne((long) 2);
+		u2.setSubgroup(newUserService.setUserSubgroup(u2.getAge()));
+		User u3 = userService.findOne((long) 3);
+		u3.setSubgroup(newUserService.setUserSubgroup(u3.getAge()));
+		users.add(u1);
+		users.add(u2);
+		users.add(u3);
+		
+		//tip osiguranja
+		Type t1 = typeService.findOne((long) 1);
+		
+		//rizici osiguranja
+		Risk r1 = riskService.findOne((long) 1);
+		Risk r2 = riskService.findOne((long) 2);
+		Risk r3 = riskService.findOne((long) 3);
+		
+		Subgroup s2 = subgroupService.findOne((long) 4);
+		
+		//podgrupe rizika
+		r2.setSubgroup(s2); //putuje u celu evropu
+		
+		List<Risk> r = new ArrayList<Risk>();
+		r.add(r1);
+		r.add(r2);
+		r.add(r3);
+		
+		Insurance i = new Insurance();
+		i.setId(1);
+		i.setStartDate(startDate);
+		i.setEndDate(endDate);
+		i.setAmount(0.0);
+		i.setRisks(r);
+		i.setType(t1);
+		i.setDays(days);
+		i.setUsers(users);
+		
+        StatefulKnowledgeSession ksession = dfr.getSession();  
+        
+        ksession.insert(i); 
+        ksession.fireAllRules();  
+        ksession.dispose();
+        
+        System.out.println("Amount" + i.getAmount());
+	    List<Insurance> insurances = (List<Insurance>) insuranceService.findAll();
 		return new ResponseEntity<List<Insurance>>(insurances, HttpStatus.OK);
 	}
 
