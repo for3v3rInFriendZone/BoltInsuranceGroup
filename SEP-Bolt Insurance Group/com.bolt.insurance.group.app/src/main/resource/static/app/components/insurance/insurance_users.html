@@ -100,16 +100,13 @@
 		                    	<tr>
 		                    		<td>
 		                    			<div class="col-md-12">
-			                    			<select class="form-control">
-											  <option value="" selected></option>
-											  <option>Ketchup</option>
-											  <option>Relish</option>
+			                    			<select class="form-control" ng-options="sport.subname for sport in inc.sports track by sport.subname" ng-model="inc.selectedSport">
 											</select>									
 		                    			</div>
 		                    		</td>
 		                    		<td>	                    
 		                    			<div class="col-md-3 col-md-offset-4">
-		                    				  <input class="form-control" type="text" disabled>
+		                    				  <input class="form-control" type="text" ng-model="inc.selectedSport.coefficient" disabled>
 		                    			</div>
 		                    			
 		                    		</td>
@@ -141,17 +138,17 @@
 			                        <tbody class="text-center">
 				                    	<tr>
 				                    		<td>
-				                    			Europe and North America <div class="text-center"> <input type="radio" name="radio1"/> </div>               
+				                    			Europe and North America <div class="text-center"> <input type="radio" name="radio1" value="1500" ng-model="inc.sports.riskCoeff"/> </div>               
 				                    		</td>
 				                    		<td>
-				                    			Europe, North America and Asia<div class="text-center"> <input type="radio" name="radio1"/> </div>	               
+				                    			Europe, North America and Asia<div class="text-center"> <input type="radio" name="radio1" value="2500" ng-model="inc.sports.riskCoeff"/> </div>	               
 				                    		</td>
 				                    		<td>
-				                    			Whole world <div class="text-center"> <br/> <input type="radio" name="radio1"/> </div>		               
+				                    			Whole world <div class="text-center"> <br/> <input type="radio" name="radio1" value="4500" ng-model="inc.sports.riskCoeff"/> </div>		               
 				                    		</td>
-				                    		<td>	                    
+				                    		<td>	                     
 				                    			<div class="col-md-7 col-md-offset-2">
-				                    				  <input class="form-control" type="text" disabled>
+				                    				  <input class="form-control" type="text" ng-model="inc.sports.riskCoeff" disabled>
 				                    			</div>			                    			
 				                    		</td>
 								        </tr>

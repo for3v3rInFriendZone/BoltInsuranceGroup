@@ -5,10 +5,11 @@
 		.module('bolt-insurance-group.insurance')
 		.controller('InsuranceController', InsuranceController);
 
-	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal', 'users', 'User'];
-	function InsuranceController($scope, userModal, homeModal, vehicleModal, users,  User) {
+	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal', 'users', 'User', 'Restangular'];
+	function InsuranceController($scope, userModal, homeModal, vehicleModal, users,  User, Restangular) {
 		var inc = this;
 		inc.users = users;
+		inc.sports = [];
 		
 		 /**
 		  * Options for a datepicker, in this instance, its for setting a min date.
@@ -104,6 +105,14 @@
   			 inc.users.splice(index, 1);
   			 
   		 }
+  		 
+  		 Restangular.all('subgroup').getList({'risk.id':3}).then(function(data) {
+  			for(var i=0; i<data.length; i++){
+  				if(data[i].risk.id === 3){
+  					inc.sports.push(data[i]);
+  				}
+  			}
+		});
   		
 	}
 })();

@@ -25,6 +25,10 @@ public class Price implements Serializable{
 	private long id;
 	
 	@NotNull
+	@Column(name = "VALUE")
+	private Double value;
+
+	@NotNull
 	@Column(name = "START_DATE")
 	private Date startDate;
 	
@@ -54,12 +58,21 @@ public class Price implements Serializable{
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	public Double getValue() {
+		return value;
+	}
 
-	public Price(long id, Date startDate, Date endDate) {
+	public void setValue(Double value) {
+		this.value = value;
+	}
+
+	public Price(long id, Date startDate, Date endDate, Double value) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.value = value;
 	}
 
 	public Price() {
