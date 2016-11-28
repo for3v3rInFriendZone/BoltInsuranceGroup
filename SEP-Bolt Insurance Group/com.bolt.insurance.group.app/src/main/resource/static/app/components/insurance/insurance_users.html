@@ -63,7 +63,10 @@
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <div class="text-center"> <button class="btn btn-success" type="button" ng-click="inc.newUser()"> <i style="font-size: 22px;" class="fa fa-plus"> </i></button> </div>
+	                    <div class="text-center">
+	                    	<label class="form-control"> Na polisi se nalazi [{{inc.personCollection.below18}} -> 18- ] korisnika, izmedju 18 i 60 [{{inc.personCollection.inBetween18And60}}] i [{{inc.personCollection.after60}}] 60+ </label>
+	                     	<button class="btn btn-success" type="button" ng-click="inc.newUser()"> <i style="font-size: 22px;" class="fa fa-plus"> </i></button>
+	                    </div>
               		</div>
               	</div>
               	
@@ -160,7 +163,6 @@
 				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span>
 				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your house or flat" ng-if="inc.homeInsurance" ng-click="inc.newHome()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
-				                    			
 				                    			<div ng-if="inc.homeindicator == 1">
 				                    			
 					                    			<table class="table table-hover table-bordered text-center">

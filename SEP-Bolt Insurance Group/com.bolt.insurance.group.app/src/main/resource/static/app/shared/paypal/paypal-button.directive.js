@@ -61,7 +61,7 @@
           var currencyCode = attrs.currencyCode || 'USD';
           var itemName = attrs.itemName;
           var amount = parseFloat(attrs.amount);
-          var buttonSize = attrs.buttonSize || 'SM';
+          var buttonSize = attrs.buttonSize || 'LG';
           var imgAlt = attrs.imgAlt || 'Make payments with PayPal - it\'s fast, free and secure!';
           if (!business) { return err('business not specified!'); }
           if (!itemName) { return err('item name not specified!'); }

@@ -12,6 +12,11 @@
 		var inc = this;
 		inc.sports = [];
 		inc.users = [];
+		inc.personCollection = {
+		    	below18: 0,
+		    	inBetween18And60: 0,
+		    	after60: 0
+		}
 		
 		inc.preEditedUser = {};
 		inc.preEditedHome = {};
@@ -76,9 +81,10 @@
 		/**
 		 * Opening a modal dialog for a user
 		 */
-		inc.newUser = function() {
+		inc.newUser = function() {			
 			userModal.open().then(function(data) {
-				inc.users.push(data);
+				inc.users.push(data);			
+				inc.calculateYearsFromJMBG(data);
 			});
 		};
 
@@ -141,10 +147,16 @@
 			$translate.use(key);
 		};
 
+		/**
+		 * Removing a selected user.
+		 */
 		inc.removeUser = function(index) {
 			inc.users.splice(index, 1);
 		}
 
+		/**
+		 * Getting data for a sport risk.
+		 */
 		Restangular.all('subgroup').getList({
 			'risk.id' : 3
 		}).then(function(data) {
@@ -155,6 +167,9 @@
 			}
 		});
 
+		/**
+		 * Method to edit a home.
+		 */
 		inc.editHome = function() {
 			
 			inc.preEditedHome = {};
@@ -167,12 +182,18 @@
 			});
 		}
 
+		/**
+		 * Removing a selected home.
+		 */
 		inc.removeHome = function() {
 			inc.homeindicator = 0;
 			inc.homeInsurance = true;
 			inc.home = {};
 		}
 
+		/**
+		 * Editing a selected vehicle
+		 */
 		inc.editVehicle = function() {
 			
 			inc.preEditedVehicle = {};
@@ -185,12 +206,42 @@
 			});
 		}
 
+		/**
+		 * Removing a selected vehicle
+		 */
 		inc.removeVehicle = function() {
 			inc.vehicleindicator = 0;
 			inc.roadInsurance = true;
 			inc.vehicle = {};
 		}
 		
+		inc.calculateYearsFromJMBG = function(user){	
+		    var bornDate = user.jmbg;
+				
+			if(parseInt(bornDate.substring(4,7)) < 800){
+				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/2" + bornDate.substring(4,7);
+			}else{
+				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/1" + bornDate.substring(4,7);
+			}
+				
+			bornDate = new Date(bornDate.substring(6,10), parseInt(bornDate.substring(3,5))-1, bornDate.substring(0,2));
+			var today = new Date();
+			var checkDate = today - bornDate;
+				
+			var years = Math.floor(checkDate / 31556952000);
+				
+			if(years < 18) {
+				inc.personCollection.below18 = inc.personCollection.below18+1;
+			}else if(years >= 18 && years < 60) {
+				inc.personCollection.inBetween18And60 = inc.personCollection.inBetween18And60+1;
+			}else{
+				inc.personCollection.after60 = inc.personCollection.after60+1;
+			}
+		    
+			
+			return inc.personCollection;
+				
+		}
 	}
 
 })();
