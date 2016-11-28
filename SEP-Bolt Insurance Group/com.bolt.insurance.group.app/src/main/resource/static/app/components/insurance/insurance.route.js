@@ -14,7 +14,9 @@
     	url: '/insurance',
     	views: {
     		navbar: {
-    			 templateUrl: 'app/components/insurance/header.html'
+    			 templateUrl: 'app/components/insurance/header.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
     		},
     		content: {
     			 templateUrl: 'app/components/insurance/insurance_users.html',
@@ -22,7 +24,9 @@
     	         controllerAs: 'inc'
     		},
     		footer: {
-    			 templateUrl: 'app/components/insurance/footer.html'
+    			 templateUrl: 'app/components/insurance/footer.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
     		}
     	}
     });

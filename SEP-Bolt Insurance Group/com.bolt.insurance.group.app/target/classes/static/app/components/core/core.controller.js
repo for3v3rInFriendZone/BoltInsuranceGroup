@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.core')
 		.controller('BigController', BigController);
 
-	BigController.$inject = ['$scope', '$http', 'Restangular'];
-	function BigController($scope, $http, Restangular) {
+	BigController.$inject = ['$scope', '$http', 'Restangular', '$translate'];
+	function BigController($scope, $http, Restangular, $translate) {
 
 		$scope.animateElementIn = function($el) {
 
@@ -20,6 +20,11 @@
 			
 			
   		};
+  		
+  		 $scope.changeLanguage = function(key){
+  			 console.log('USAO!!!');
+			   $translate.use(key);
+		   };
   		
   		/* Ovo je bio test za RESTAngular
 		var test = Restangular.all('user');

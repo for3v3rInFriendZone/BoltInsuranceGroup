@@ -1,48 +1,48 @@
 <div class="modal-header">
-    <h3 class="modal-title">Please enter informations about your house or flat</h3>
+    <h3 class="modal-title" translate="PLEASEENTERINFOOFHOME"></h3>
 </div>
 <div class="modal-body">
     <form class="form-horizontal">
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<input class="form-control" type="text" id="ownerName" name="ownerName" placeholder="Owner name"/>
+    		<input class="form-control" type="text" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="ownerSurname" name="ownerSurname" placeholder="Owner surname"/>
+            <input class="form-control" type="text" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="ownerJmbg" name="ownerJmbg" placeholder="Owner JMBG">
+            <input class="form-control" type="text" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="address" name="address" placeholder="Address of home">
+            <input class="form-control" type="text" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input class="form-control" id="homeArea" name="homeArea" placeholder="Home area">
+           <input class="form-control" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input class="form-control" id="ageOfHome" name="ageOfHome" placeholder="Age of home">
+           <input class="form-control" id="ageOfHome" name="ageOfHome" placeholder="{{'AGEOFHOME'|translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <input type="email" class="form-control" id="valueOfHome" name="valueOfHome" placeholder="Estimated value of home">
+           <input type="email" class="form-control" id="valueOfHome" name="valueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}">
         </div>
     </div>
     </form>
 </div>
 <div class="modal-footer">
 	<div class="col-sm-6 col-sm-offset-2">
-	    <button class="btn btn-success" type="button" ng-click="hmc.ok()">OK</button>
-	    <button class="btn btn-warning" type="button" ng-click="hmc.cancel()">Cancel</button>
+	    <button class="btn btn-success" type="button" ng-click="hmc.ok()" translate="OK"></button>
+	    <button class="btn btn-warning" type="button" ng-click="hmc.cancel()" translate="CANCEL"></button>
 	</div>
 </div>

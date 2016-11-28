@@ -1,48 +1,48 @@
 <div class="modal-header">
-    <h3 class="modal-title">Please enter informations about your house or flat</h3>
+    <h3 class="modal-title" translate="PLEASEENTERINFOOFVEHICLE">Please enter informations about your house or flat</h3>
 </div>
 <div class="modal-body">
     <form class="form-horizontal">
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<input class="form-control" type="text" id="type" name="type" placeholder="Type of vehicle"/>
+    		<input class="form-control" type="text" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="year" name="year" placeholder="Year of manufacture"/>
+            <input class="form-control" type="text" id="year" name="year" placeholder="{{'YEAROFMANUFACTURE'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="plates" name="plates" placeholder="Licence plates number">
+            <input class="form-control" type="text" id="plates" name="plates" placeholder="{{'LICENCEPLATESNUMBER'|translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="chassis" name="chassis" placeholder="Number of chassis">
+            <input class="form-control" type="text" id="chassis" name="chassis" placeholder="{{'NUMBEROFCHASSIS'|translate}}">
         </div>
     </div>
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<input class="form-control" type="text" id="ownerName" name="ownerName" placeholder="Owner name"/>
+    		<input class="form-control" type="text" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="ownerSurname" name="ownerSurname" placeholder="Owner surname"/>
+            <input class="form-control" type="text" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input class="form-control" type="text" id="ownerJmbg" name="ownerJmbg" placeholder="Owner JMBG">
+            <input class="form-control" type="text" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}">
         </div>
     </div>
     </form>
 </div>
 <div class="modal-footer">
 	<div class="col-sm-6 col-sm-offset-2">
-	    <button class="btn btn-success" type="button" ng-click="vmc.ok()">OK</button>
-	    <button class="btn btn-warning" type="button" ng-click="vmc.cancel()">Cancel</button>
+	    <button class="btn btn-success" type="button" ng-click="vmc.ok()" translate="OK"></button>
+	    <button class="btn btn-warning" type="button" ng-click="vmc.cancel()" translate="CANCEL"></button>
 	</div>
 </div>

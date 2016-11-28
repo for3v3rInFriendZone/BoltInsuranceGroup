@@ -1,4 +1,4 @@
-<div id="all">
+<div id="all" ng-controller="InsuranceController">
   <div class="clearfix">
       <div class="item">
           <div class="container">
@@ -6,12 +6,12 @@
               <div class="row">
 	              	<div class="col-md-8 col-md-offset-2">
 	              	  <br/><br/><br/><br/>
-	                  <h2 class="text-center">Travel insurance</h2>    
+	                  <h2 class="text-center" translate="TRAVELINSURANCE"></h2>    
 	                  <br/><br/>       
 	                  <table class="table table-hover table-bordered text-center">
 	                  	<thead>
-	                  		<th class="info text-center" colspan="2">
-	                    		How long your trip is going to be?
+	                  		<th class="info text-center" colspan="2" translate="HOWLONGYOURTRIP">
+	                    		
 	                    	</th>
 	                  	</thead>
 	                    <tbody>                  	
@@ -21,7 +21,7 @@
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>
-									<span class="input-group-addon">to</span>
+									<span class="input-group-addon" translate="TO"></span>
 									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options" ng-required="true" close-text="Close" />
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -40,19 +40,19 @@
               		<div class="col-md-8 col-md-offset-2">           
 	                    <table class="table table-hover table-bordered text-center">
 	                        <thead>
-	                        	<th class="info text-center" colspan="3">
-	                        		Insurance users
+	                        	<th class="info text-center" colspan="3" translate="INSURANCEUSERS">
+	                        		
 	                        	</th>
 	                        </thead>
 		                    <thead> 
-		                    	<th class="success text-center">
-		                    		Name
+		                    	<th class="success text-center" translate="NAME">
+		                    		
 		                    	</th>   
-		                    	<th class="success text-center">
-		                    		Surname
+		                    	<th class="success text-center" translate="SURNAME">
+		                    		
 		                    	</th>   
-		                    	<th class="success text-center">
-		                    		Address
+		                    	<th class="success text-center" translate="ADDRESS">
+		                    		
 		                    	</th>          
 		                    </thead>
 		                    <tbody>
@@ -74,22 +74,22 @@
               		<div class="col-md-8 col-md-offset-2">
               			<div class="form-group">
 					        <div class="col-sm-8">
-					            Do you want an insurance for sport risks?  <input type="checkbox" ng-model="sportCheckBox"/> 
+					           <a translate=DOYOUWANTINSURANCESPORTRIKS></a><input type="checkbox" ng-model="sportCheckBox"/> 
 					        </div>
 					    </div> 
 					    <br/>          
 	                    <table class="table table-hover table-bordered" ng-if="sportCheckBox">
 	                    	<thead>
-	                        	<th class="info text-center" colspan="2">
-	                        		Sport insurance risks
+	                        	<th class="info text-center" colspan="2" translate="SPORTINSURANCERISKS">
+	                        		
 	                        	</th>
 	                        </thead>
 	                        <thead>
-	                        	<th class="success text-center">
-	                        		Choose one of the sports
+	                        	<th class="success text-center" translate="CHOOSEONEOFTHESPORTS">
+	                        		
 	                        	</th>
-	                        	<th class="success text-center">
-	                        		Sport danger coefficient
+	                        	<th class="success text-center" translate="SPORTDANGERCOEFFICIENT">
+	                        		
 	                        	</th>
 	                        </thead>
 	                        <tbody>
@@ -122,28 +122,28 @@
               			<div class="col-md-8 col-md-offset-2">
               					<table class="table table-hover table-bordered">
 			                    	<thead>
-			                        	<th class="info text-center" colspan="4">
-			                        	   Covering
+			                        	<th class="info text-center" colspan="4" translate="COVERING">
+			                        	   
 			                        	</th>
 			                        </thead>
 			                        <thead>
-			                        	<th class="success text-center" colspan="3">
-			                        		Travel health insurance
+			                        	<th class="success text-center" colspan="3" translate="TRAVELHEALTHINSURANCE">
+			                        		
 			                        	</th>
-			                        	<th class="success text-center">
-			                        		Price
+			                        	<th class="success text-center" translate="PRICE">
+			                        		
 			                        	</th>
 			                        </thead>
 			                        <tbody class="text-center">
 				                    	<tr>
-				                    		<td>
-				                    			Europe and North America <div class="text-center"> <input type="radio" name="radio1"/> </div>               
+				                    		<td translate="EUNA">
+				                    			<div class="text-center"> <input type="radio" name="radio1"/> </div>               
 				                    		</td>
-				                    		<td>
-				                    			Europe, North America and Asia<div class="text-center"> <input type="radio" name="radio1"/> </div>	               
+				                    		<td translate="EUNAA">
+				                    			<div class="text-center"> <input type="radio" name="radio1"/> </div>	               
 				                    		</td>
-				                    		<td>
-				                    			Whole world <div class="text-center"> <br/> <input type="radio" name="radio1"/> </div>		               
+				                    		<td translate="WHOLEWORLD">
+				                    			 <div class="text-center"> <br/> <input type="radio" name="radio1"/> </div>		               
 				                    		</td>
 				                    		<td>	                    
 				                    			<div class="col-md-7 col-md-offset-2">
@@ -153,15 +153,15 @@
 								        </tr>
 								        <tr>	                    
 				                    		<td class="success text-center" colspan="3">
-				                    			<b>Home insurance </b>	
+				                    			<b translate="HOMEINSURANCE"> </b>	
 				                    		</td>		 
 				                    		<td class="success text-center">
-				                    			<b> Price </b>	
+				                    			<b translate="PRICE"> </b>	
 				                    		</td>	                   			
 				                    	</tr>
 				                    	<tr>
 				                    		<td colspan="3">
-				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;">Insurance for your home or flat </span> &nbsp&nbsp <input type="checkbox" ng-model="homeInsurance"/>
+				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span> &nbsp&nbsp <input type="checkbox" ng-model="homeInsurance"/>
 				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your house or flat" ng-if="homeInsurance" ng-click="inc.newHome()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
 				                    		</td>
 				                    		<td>	                    
@@ -172,15 +172,15 @@
 				                    	</tr>
 				                    	<tr>	                    
 				                    		<td class="success text-center" colspan="3">
-				                    			<b>Road insurance </b>	
+				                    			<b translate="ROADINSURANCE"> </b>	
 				                    		</td>		 
 				                    		<td class="success text-center">
-				                    			<b> Price </b>	
+				                    			<b translate="PRICE"> </b>	
 				                    		</td>	                   			
 				                    	</tr>
 				                    	<tr>
 				                    		<td colspan="3">
-				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;">Insurance for roadside assistance </span> &nbsp&nbsp <input  type="checkbox" ng-model="roadInsurance"/>
+				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span> &nbsp&nbsp <input  type="checkbox" ng-model="roadInsurance"/>
 				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your vehicle" ng-if="roadInsurance" ng-click="inc.newVehicle()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
 				                    		</td>
 				                    		<td>	                    
@@ -191,13 +191,13 @@
 				                    	</tr>
 				                    	<tr >	                    
 				                    		<td class="success text-center" colspan="2">
-				                    			<b> Sum of insurances</b>	
+				                    			<b translate="SUMOFINSURANCE"> </b>	
 				                    		</td>		 
 				                    		<td class="success text-center">
-				                    			<b> Tax </b>	
+				                    			<b translate="TAX"> </b>	
 				                    		</td>
 				                    		<td class="success text-center">
-				                    			<b> Final price </b>	
+				                    			<b translate="FINALPRICE"> </b>	
 				                    		</td>	                   			
 				                    	</tr>
 				                    	<tr>
