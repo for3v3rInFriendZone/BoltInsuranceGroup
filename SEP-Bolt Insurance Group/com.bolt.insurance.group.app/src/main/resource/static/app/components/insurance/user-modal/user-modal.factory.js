@@ -28,11 +28,12 @@
 			});
 			
 			return modalInstance.result.then(function(newUser) {
-				return User.post(newUser);
+				//return User.post(newUser);
+				return newUser;
 			});
 		}
 		
-		function editUserModal(userId){
+		function editUserModal(listOfUsers, userId){
 			var modalInstance = $uibModal.open({
 				animation: true,
 				templateUrl: 'app/components/insurance/user-modal/user-modal.html',
@@ -42,6 +43,7 @@
 					items: function(){
 						return {
 							id: userId,
+							list: listOfUsers,
 							status: 'edit'
 						}
 					}
@@ -49,7 +51,8 @@
 			});
 			
 			return modalInstance.result.then(function(editUser) {
-				return editUser.put();
+				//return editUser.put();
+				return editUser;
 			});
 		}
 	}

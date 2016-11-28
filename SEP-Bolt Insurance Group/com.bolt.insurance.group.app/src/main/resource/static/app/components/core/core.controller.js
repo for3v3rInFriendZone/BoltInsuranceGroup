@@ -26,12 +26,5 @@
 			   $translate.use(key);
 		   };
   		
-  		/* Ovo je bio test za RESTAngular
-		var test = Restangular.all('user');
-		test.getList().then(function(users) {
-			  $scope.allAccounts = users;
-			});
-		*/
-  		
 	}
 })();

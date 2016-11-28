@@ -11,6 +11,7 @@
 		umc.ok = ok;
 		umc.cancel = cancel;
 		umc.editId = items.id;
+		umc.listOfUsers = items.list;
 		umc.status = items.status;
 		
 		/**
@@ -20,11 +21,9 @@
 		if(umc.editId === undefined){
 			return;
 		}
-		User.get(umc.editId).then(function(data){
-			umc.user = data;
-		});
-	
-		
+
+		umc.user = umc.listOfUsers[umc.editId];
+			
 		function ok() {
 			$uibModalInstance.close(umc.user);
 		}

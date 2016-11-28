@@ -5,13 +5,12 @@
           
               <div class="row">
 	              	<div class="col-md-8 col-md-offset-2">
-	              	  <br/><br/><br/><br/>
+	              	  <br/><br/><br/><br/><br/><br/>
 	                  <h2 class="text-center" translate="TRAVELINSURANCE"></h2>    
 	                  <br/><br/>       
 	                  <table class="table table-hover table-bordered text-center">
 	                  	<thead>
-	                  		<th class="info text-center" colspan="2" translate="HOWLONGYOURTRIP">
-	                    		
+	                  		<th class="info text-center" colspan="2" translate="HOWLONGYOURTRIP">	                    		
 	                    	</th>
 	                  	</thead>
 	                    <tbody>                  	
@@ -51,14 +50,16 @@
 		                    	<th class="success text-center" translate="SURNAME">		                   	
 		                    	</th>   
 		                    	<th class="success text-center" translate="ADDRESS">		                   
+		                    	</th> 
+		                    	<th class="success text-center" translate="REMOVE">		                   
 		                    	</th>          
 		                    </thead>
 		                    <tbody>
 		                    	<tr ng-repeat="user in inc.users | orderBy:'id'">
-						            <td ng-click="inc.editUser(user.id)">{{user.firstName}}</td>
-						            <td ng-click="inc.editUser(user.id)">{{user.surname}}</td>
-						            <td ng-click="inc.editUser(user.id)">{{user.address}}</td>
-						            <td><button class="btn btn-default" type="button" ng-click="inc.removeUser(user.id, $index)"> <i style="font-size: 22px;" class="fa fa-trash-o"> </i></button></td>
+						            <td ng-click="inc.editUser($index)">{{user.firstName}}</td>
+						            <td ng-click="inc.editUser($index)">{{user.surname}}</td>
+						            <td ng-click="inc.editUser($index)">{{user.address}}</td>
+						            <td><button class="btn btn-default" type="button" ng-click="inc.removeUser($index)"> <i style="font-size: 22px;" class="fa fa-trash-o"> </i></button></td>
 						        </tr>
 		                    </tbody>
 	                    </table>

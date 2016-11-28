@@ -4,12 +4,12 @@
 	angular.module('bolt-insurance-group.insurance').controller(
 			'InsuranceController', InsuranceController);
 
-	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal', 'users', 'User', 'Restangular', '$translate'];
-	function InsuranceController($scope, userModal, homeModal, vehicleModal, users,  User, Restangular, $translate) {
+	InsuranceController.$inject = ['$scope', 'userModal', 'homeModal', 'vehicleModal', 'User', 'Restangular', '$translate'];
+	function InsuranceController($scope, userModal, homeModal, vehicleModal, User, Restangular, $translate) {
 		
 		var inc = this;
-		inc.users = users;
 		inc.sports = [];
+		inc.users = [];
 		
 		$scope.popup1 = {
 			opened : false
@@ -88,7 +88,7 @@
   		  * When user informations are changed in database, it needs to be changed on view.
   		  */
   		 inc.editUser = function(userId){
-  			userModal.edit(userId).then(function(data){
+  			userModal.edit(inc.users, userId).then(function(data){
   				for(var i=0; i<inc.users.length; i++){
   					if(inc.users[i].id === data.id){
   						inc.users[i] = data;
@@ -104,11 +104,8 @@
 			$translate.use(key);
 		};
 
-  		 inc.removeUser = function(userId, index){
-
-  			 User.get(userId).then(function(data){
-  				 data.remove();			
-  			 });
+  		 inc.removeUser = function(index){
+  			 
   			 inc.users.splice(index, 1); 
   		 }
   		 

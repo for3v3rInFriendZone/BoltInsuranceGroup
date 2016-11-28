@@ -6,42 +6,42 @@
     <form class="form-horizontal">
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<label class="form-control text-center" style="background-color: lightblue; ">Your first name </label><input class="form-control" type="text" ng-model="umc.user.firstName" name="name" placeholder="Your name"/>
+    		<label class="form-control text-center" style="background-color: lightblue; " translate="NAME"> </label><input class="form-control" type="text" ng-model="umc.user.firstName" name="name" placeholder="{{'NAME' | translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue;">Your surname </label> <input class="form-control" type="text" ng-model="umc.user.surname" name="surname" placeholder="Your surname"/>
+            <label class="form-control text-center" style="background-color: lightblue;" translate="SURNAME"></label> <input class="form-control" type="text" ng-model="umc.user.surname" name="surname" placeholder="{{'SURNAME' | translate}}"/>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue;">Your JMBG </label> <input class="form-control" type="text" ng-model="umc.user.jmbg" name="jmbg" placeholder="Your JMBG">
+           <label class="form-control text-center" style="background-color: lightblue;" translate="JMBG"> </label> <input class="form-control" type="text" ng-model="umc.user.jmbg" name="jmbg" placeholder="{{'JMBG' | translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue;">Your address </label> <input class="form-control" type="text" ng-model="umc.user.address" name="address" placeholder="Your address">
+           <label class="form-control text-center" style="background-color: lightblue;" translate="ADDRESS"> </label> <input class="form-control" type="text" ng-model="umc.user.address" name="address" placeholder="{{'ADDRESS' | translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-          <label class="form-control text-center" style="background-color: lightblue;">Your passport </label> <input class="form-control" ng-model="umc.user.passport" name="passport" placeholder="Your passport number">
+          <label class="form-control text-center" style="background-color: lightblue;" translate="PASSPORTNUMBER"> </label> <input class="form-control" ng-model="umc.user.passport" name="passport" placeholder="{{'PASSPORTNUMBER' | translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-          <label class="form-control text-center" style="background-color: lightblue;">Your phone number </label> <input class="form-control" ng-model="umc.user.phone" name="phone" placeholder="Your phone number">
+          <label class="form-control text-center" style="background-color: lightblue;" translate="PHONE2"> </label> <input class="form-control" ng-model="umc.user.phone" name="phone" placeholder="{{'PHONE2' | translate}}">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-          <label class="form-control text-center" style="background-color: lightblue;" ng-if="umc.user.owner">Your e-mail </label> <input type="email" class="form-control" ng-model="umc.user.email" name="email" placeholder="Your e-mail" ng-if="umc.user.owner">
+          <label class="form-control text-center" style="background-color: lightblue;" ng-if="umc.user.owner" translate="EMAIL">Your e-mail </label> <input type="email" class="form-control" ng-model="umc.user.email" name="email" placeholder="{{'EMAIL' | translate}}" ng-if="umc.user.owner">
         </div>
     </div>
     <div class="form-group text-center">
         <div class="col-sm-8 col-sm-offset-2">
-           <label> Owner: <input type="checkbox" class="form-control" ng-model="umc.user.owner" /> </label>
+           <label translate="OWNEROFINSURANCE"></label> <input type="checkbox" class="form-control" ng-model="umc.user.owner" /> 
         </div>
     </div>
     </form>
