@@ -37,13 +37,15 @@
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="CONSTRUCTIONYEAR"> </label> <input class="form-control" ng-model="hmc.home.ageofhome" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" required>
+           <label class="form-control text-center" style="background-color: lightblue; " translate="CONSTRUCTIONYEAR"> </label> <input class="form-control" ng-model="hmc.home.ageofhome" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required>
+           <p class="text-center" ng-show="hmc.form.ageOfHome.$error.pattern" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
            <p class="text-center" ng-show="hmc.form.ageOfHome.$touched && hmc.form.ageOfHome.$error.required" style="color: red;" translate="OWNERCONSTRUCTIONYEARFORM"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="ESTIMATEDVALUEOFHOME"> </label> <input class="form-control" ng-model="hmc.home.estimatedvalueofhome" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}" required>
+           <label class="form-control text-center" style="background-color: lightblue; " translate="ESTIMATEDVALUEOFHOME"> </label> <input class="form-control" ng-model="hmc.home.estimatedvalueofhome" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required>
+           <p class="text-center" ng-show="hmc.form.estimatedValueOfHome.$error.pattern" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
            <p class="text-center" ng-show="hmc.form.estimatedValueOfHome.$touched && hmc.form.estimatedValueOfHome.$error.required" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEFORM"> </p>
         </div>
     </div>

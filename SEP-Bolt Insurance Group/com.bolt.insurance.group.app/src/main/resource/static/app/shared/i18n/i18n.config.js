@@ -79,26 +79,36 @@
 			PLEASEENTERINFOOFVEHICLE: "Please enter informations about vehicle",
 			TYPEOFVEHICLE: "Type of vehicle",
 			YEAROFMANUFACTURE: "YearOfManufacture",
-			LICENCEPLATESNUMBER: "Licence plates number",
+			LICENCEPLATESNUMBER: "Licence plates digits",
 			NUMBEROFCHASSIS: "Number of chassis",
 			OWNERNAMEFORM: "Owner's name is required",
 			OWNERSURNAMEFORM: "Owner's surname is required",
-			OWNERJMBGFORM: "JMBG must be 13 characters long and only numbers",
+			OWNERJMBGFORM: "JMBG must be 13 characters long and only digits",
 			OWNERADDRESSFORM: "Owner's address is required",
-			OWNERAREAFORM: "Owner's home area is required and only numbers",
+			OWNERAREAFORM: "Owner's home area is required and only digits",
 			OWNERAREAREQUIREDFORM: "Owner's home area is required",
 			OWNERJMBGREQUIREDFORM: "Owner's JMBG is required",
-			OWNERCONSTRUCTIONYEARFORM: "Owner's contruction year of his home is required",
+			OWNERCONSTRUCTIONYEARFORM: "Contruction year is required",
 			OWNERESTIMATEDVALUEOFHOMEFORM: "Owner's estimated value of home is required",
 			NAMEFORM: "Name is required",
 			SURNAMEFORM: "Surname is required",
 			ADDRESSFORM: "Address is required",
-			PASSPORTFORM: "Passport must be 7 or 9 characters long and only numbers",
+			PASSPORTFORM: "Passport must be 7 or 9 characters long and only digits",
 			PASSPORTFORMREQUIRED: "Passport is required",
 			PHONEFORM: "Phone is required",
-			PHONEFORMPATTERN: "Phone must consist of only numbers",
+			PHONEFORMPATTERN: "Phone must consist of only digits",
 			EMAILFORM: "E-mail is required",
-			VALIDEMAILFORM: "This is not valid e-mail"
+			VALIDEMAILFORM: "This is not valid e-mail",
+			TYPEOFVEHICLEFORM: "Type of vehicle is required",
+			YEAROFMANUFACTUREFORM: "Year of manufacture must consist of 4 digits",
+			LICENCEPLATESNUMBERFORM: "Licence plates number is required",
+			NUMBEROFCHASSISFORM: "Number of chassis may contains up to 40 digits",
+			YEAROFMANUFACTUREREQUIREDFORM : "Year of manufacture is required",
+			NUMBEROFCHASSISREQUIREDFORM: "Number of chassis is required",
+			OWNERCONSTRUCTIONYEARREQUIREDFORM: "Contruction year must consist of 4 digits",
+			OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM: "Estimated value of house may contains up to 40 digits"
+			
+			
 			
 			
 			
@@ -171,7 +181,35 @@
 			YEAROFMANUFACTURE: "Godina proizvodnje",
 			LICENCEPLATESNUMBER: "Broj tablica",
 			NUMBEROFCHASSIS: "Broj šasije",
-			OWNERNAMEFORM: "Morate uneti naziv vlasnika"
+			OWNERNAMEFORM: "Morate uneti naziv vlasnika",
+			OWNERSURNAMEFORM: "Morate uneti prezime vlasnika",
+			OWNERJMBGFORM: "JMBG mora biti dužine 13 karaktera i sadrži samo cifre",
+			OWNERADDRESSFORM: "Morate uneti adresu vlasnika",
+			OWNERAREAFORM: "Površinu kuće/stana sadrži samo cifre",
+			OWNERAREAREQUIREDFORM: "Morate uneti površinu kuće/stana",
+			OWNERJMBGREQUIREDFORM: "Morate uneti JMBG",
+			OWNERCONSTRUCTIONYEARFORM: "Morate uneti godinu izgradnje kuće/stana",
+			OWNERESTIMATEDVALUEOFHOMEFORM: "Morate uneti procenjenu vrednost kuće",
+			NAMEFORM: "Morate uneti ime",
+			SURNAMEFORM: "Morate uneti prezime",
+			ADDRESSFORM: "Morate uneti adresu",
+			PASSPORTFORM: "Morate uneti broj pasoša, on sadrži od 7 do 9 cifara",
+			PASSPORTFORMREQUIRED: "Morate uneti broj pasoša",
+			PHONEFORM: "Morate uneti broj telefona",
+			PHONEFORMPATTERN: "Broj telefona može da sadrži samo cifre",
+			EMAILFORM: "Morate uneti e-mail",
+			VALIDEMAILFORM: "Uneti e-mail nije validan",
+			TYPEOFVEHICLEFORM: "Morate uneti tip vozila",
+			YEAROFMANUFACTUREFORM: "Godina proizvodnje sadrži 4 cifre",
+			YEAROFMANUFACTUREREQUIREDFORM : "Morate uneti godinu proizvodnje",
+			LICENCEPLATESNUMBERFORM: "Morate uneti registarski broj tablica",
+			NUMBEROFCHASSISFORM: "Broj šasije sadrži do 40 cifara",
+			NUMBEROFCHASSISREQUIREDFORM: "Morate uneti broj šasije",
+			OWNERCONSTRUCTIONYEARREQUIREDFORM: "Godina izgradnje kuće/stana sadrži 4 cifre",
+			OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM: "Procenjena vrednost kuće sadrži do 40 cifara"
+			
+			
+			
 		
 		});
 		

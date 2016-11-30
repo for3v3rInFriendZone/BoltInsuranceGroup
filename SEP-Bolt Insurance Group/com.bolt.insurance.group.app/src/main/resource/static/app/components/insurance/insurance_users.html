@@ -41,7 +41,6 @@
 	                    <table class="table table-hover table-bordered text-center">
 	                        <thead>
 	                        	<th class="info text-center" colspan="4" translate="INSURANCEUSERS">
-	                        		Insurance users
 	                        	</th>
 	                        </thead>
 		                    <thead> 
@@ -63,8 +62,15 @@
 						        </tr>
 		                    </tbody>
 	                    </table>
+	                    <table class="table table-hover table-bordered text-center">
+	                        <thead>
+	                        	<th class="info text-center" colspan="4">
+	                        	Na polisi se nalazi [{{inc.personCollection.below18}} -> 18- ] korisnika, izmedju 18 i 60 [{{inc.personCollection.inBetween18And60}}] i [{{inc.personCollection.after60}}] 60+
+	                        	</th>
+	                        </thead>
+	                    </table>
 	                    <div class="text-center">
-	                    	<label class="form-control"> Na polisi se nalazi [{{inc.personCollection.below18}} -> 18- ] korisnika, izmedju 18 i 60 [{{inc.personCollection.inBetween18And60}}] i [{{inc.personCollection.after60}}] 60+ </label>
+	                    
 	                     	<button class="btn btn-success" type="button" ng-click="inc.newUser()"> <i style="font-size: 22px;" class="fa fa-plus"> </i></button>
 	                    </div>
               		</div>
