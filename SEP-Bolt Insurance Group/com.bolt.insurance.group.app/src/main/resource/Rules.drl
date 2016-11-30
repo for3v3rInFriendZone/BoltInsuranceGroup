@@ -5,32 +5,20 @@ import com.bolt.insurance.group.app.model.Risk
 import com.bolt.insurance.group.app.model.Price
 import com.bolt.insurance.group.app.model.Subgroup
 import com.bolt.insurance.group.app.model.Type
-import com.bolt.insurance.group.app.service.RiskService
 import com.bolt.insurance.group.app.model.User
-import java.util.Date
 
 declare AlreadyProcessed
 end
 
-rule "ceo paket"
-no-loop true
-dialect "mvel"
-salience 2
+declare LocalPrice
+	price : double
+end
+
+rule "create variable"
+salience 100
 	when
-		not AlreadyProcessed()
-		$insurance : Insurance()
-		$risk : (Risk(name == "starost") from $insurance.risks) 
-			&& (Risk(name == "region") from $insurance.risks)
-			&& (Risk(name == "trajanje") from $insurance.risks)
-			&& (Risk(name == "sport") from $insurance.risks)
-			&& (Risk(name == "povrsina") from $insurance.risks)
-			&& (Risk(name == "starost_stana") from $insurance.risks)
-			&& (Risk(name == "procenjena_vrednost") from $insurance.risks)
-			&& (Risk(name == "vrsta_osiguranja") from $insurance.risks)
-			&& (Risk(name == "paket") from $insurance.risks)
 	then
-		
-		insert(new AlreadyProcessed());
+		insert(new LocalPrice());
 end
 
 rule "Osnovno osiguranje"
@@ -43,38 +31,377 @@ salience 1
 			&& (Risk(name == "region") from $insurance.risks)
 			&& (Risk(name == "trajanje") from $insurance.risks)
 	then
-		System.out.println("pogodio pravilo");
+		System.out.println("Osnovni paket");
+		
 		for(Risk r : $insurance.risks){
 			if(r.name == "starost"){
-				System.out.println("starost");
-				System.out.println($insurance.amount);
 				for(User u : $insurance.users){
-					System.out.println("korisnik");
-					System.out.println($insurance.amount);
 					modify($insurance){
 						setAmount($insurance.amount + u.subgroup.coefficient * r.price.value);
 					}
 				}
-			}else if(r.name == "region"){
-				System.out.println("region");
-				System.out.println($insurance.amount);
+			} else if (r.name == "region"){
 				modify($insurance){
-					setAmount($insurance.amount + r.subgroup.coefficient * r.price.value);
+					setAmount($insurance.amount + r.subgroup.get(0).coefficient * r.price.value);
 				}
-			}else if(r.name == "trajanje"){
-				System.out.println("trajanje");	
+			} else if (r.name == "trajanje"){
+				modify($insurance){
+					setAmount($insurance.amount + r.price.value * $insurance.days);
+				}
+			}
+		}
+		
+		if($insurance.users.size() > 2){
+			modify($insurance){
+				setAmount($insurance.amount - $insurance.amount * 0.2);
+			}
+		}
+		
+		insert(new AlreadyProcessed());
+end
+
+rule "Osnovni paket + sport"
+dialect "mvel"
+salience 2
+	when
+		not AlreadyProcessed()
+		$insurance : Insurance()
+		$risk : (Risk(name == "starost") from $insurance.risks)
+			&& (Risk(name == "region") from $insurance.risks)
+			&& (Risk(name == "trajanje") from $insurance.risks)
+			&& (Risk(name == "sport") from $insurance.risks)
+	then
+		System.out.println("Osnovni paket + spot");
+
+		for(Risk r : $insurance.risks){
+			if(r.name == "starost"){
+				for(User u : $insurance.users){
+					modify($insurance){
+						setAmount($insurance.amount + u.subgroup.coefficient * r.price.value);
+					}
+				}
+			} else if (r.name == "region" || r.name == "sport"){
+				modify($insurance){
+					setAmount($insurance.amount + r.subgroup.get(0).coefficient * r.price.value);
+				}
+			} else if (r.name == "trajanje"){
+				modify($insurance){
+					setAmount($insurance.amount + r.price.value * $insurance.days);
+				}
+			}
+		}
+
+		if($insurance.users.size() > 2){
+			modify($insurance){
+				setAmount($insurance.amount - $insurance.amount * 0.2);
+			}
+		}
+
+		insert(new AlreadyProcessed());
+end
+
+rule "new rule"
+dialect "mvel"
+salience 3
+	when
+		not AlreadyProcessed()
+		$price : LocalPrice()
+		$insurance : Insurance()
+		$risk : (Risk(name == "starost") from $insurance.risks)
+			&& (Risk(name == "region") from $insurance.risks)
+			&& (Risk(name == "trajanje") from $insurance.risks)
+			&& (Risk(name == "paket") from $insurance.risks)
+	then
+		System.out.println("Osnovni paket + auto");
+		$price.price = 0
+		for(Risk r : $insurance.risks){
+			if(r.name == "starost"){
+				for(User u : $insurance.users){
+					modify($insurance){
+						setAmount($insurance.amount + u.subgroup.coefficient * r.price.value);
+					}
+				}
+			} else if (r.name == "region"){
+				modify($insurance){
+					setAmount($insurance.amount + r.subgroup.get(0).coefficient * r.price.value);
+				}
+			} else if (r.name == "trajanje"){
+				modify($insurance){
+					setAmount($insurance.amount + r.price.value * $insurance.days);
+				}
+			} else if (r.name == "paket"){
+				for(Subgroup s : r.subgroup){
+					$price.price = $price.price + s.coefficient * r.price.value;
+				}
+
+				if(r.subgroup.size() == 4){
+					$price.price = $price.price - $price.price * 0.3;
+				} else if (r.subgroup.size() == 3){
+					$price.price = $price.price - $price.price * 0.2;
+				} else if (r.subgroup.size() == 2){
+					$price.price = $price.price - $price.price * 0.1;
+				}
+				
+				modify($insurance){
+					setAmount($insurance.amount + $price.price);
+				}
+			}
+		}
+
+		if($insurance.users.size() > 2){
+			modify($insurance){
+				setAmount($insurance.amount - $insurance.amount * 0.2);
+			}
+		}
+		insert(new AlreadyProcessed());
+end
+
+rule "Osnovni paket + auto + sport"
+dialect "mvel"
+salience 4
+	when
+		not AlreadyProcessed()
+		$price : LocalPrice()
+		$insurance : Insurance()
+		$risk : (Risk(name == "starost") from $insurance.risks)
+			&& (Risk(name == "region") from $insurance.risks)
+			&& (Risk(name == "trajanje") from $insurance.risks)
+			&& (Risk(name == "sport") from $insurance.risks)
+			&& (Risk(name == "paket") from $insurance.risks)
+	then
+		System.out.println("Osnovni paket + auto + sport");
+		$price.price = 0
+
+		for(Risk r : $insurance.risks){
+			if(r.name == "starost"){
+				for(User u : $insurance.users){
+					modify($insurance){
+						setAmount($insurance.amount + u.subgroup.coefficient * r.price.value);
+					}
+				}
+			} else if (r.name == "region" || r.name == "sport"){
+				modify($insurance){
+					setAmount($insurance.amount + r.subgroup.get(0).coefficient * r.price.value);
+				}
+			} else if (r.name == "trajanje"){
+				modify($insurance){
+					setAmount($insurance.amount + r.price.value * $insurance.days);
+				}
+			} else if (r.name == "paket"){
+				for(Subgroup s : r.subgroup){
+					$price.price = $price.price + s.coefficient * r.price.value;
+				}
+
+				if(r.subgroup.size() == 4){
+					$price.price = $price.price - $price.price * 0.3;
+				} else if (r.subgroup.size() == 3){
+					$price.price = $price.price - $price.price * 0.2;
+				} else if (r.subgroup.size() == 2){
+					$price.price = $price.price - $price.price * 0.1;
+				}
+
+				modify($insurance){
+					setAmount($insurance.amount + $price.price);
+				}
+			}
+		}
+
+		if($insurance.users.size() > 2){
+			modify($insurance){
+				setAmount($insurance.amount - $insurance.amount * 0.2);
+			}
+		}
+
+		insert(new AlreadyProcessed());
+end
+
+rule "Osnovni paket + stan"
+dialect "mvel"
+salience 3
+	when
+		not AlreadyProcessed()
+		$price : LocalPrice()
+		$insurance : Insurance()
+		$risk : (Risk(name == "starost") from $insurance.risks)
+			&& (Risk(name == "region") from $insurance.risks)
+			&& (Risk(name == "trajanje") from $insurance.risks)
+			&& (Risk(name == "povrsina") from $insurance.risks)
+			&& (Risk(name == "starost_stana") from $insurance.risks)
+			&& (Risk(name == "procenjena_vrednost") from $insurance.risks)
+			&& (Risk(name == "vrsta_osiguranja") from $insurance.risks)
+	then
+		System.out.println("Osnovni paket + stan");
+		$price.price = 0
+
+		for(Risk r : $insurance.risks){
+			if(r.name == "starost"){
+				for(User u : $insurance.users){
+					modify($insurance){
+						setAmount($insurance.amount + u.subgroup.coefficient * r.price.value);
+					}
+				}
+			} else if (r.name == "region" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost"){
+				modify($insurance){
+					setAmount($insurance.amount + r.subgroup.get(0).coefficient * r.price.value);
+				}
+			} else if(r.name == "vrsta_osiguranja"){
+				for(Subgroup s : r.subgroup){
+					$price.price = $price.price + s.coefficient * r.price.value;
+				}
+
+				if(r.subgroup.size() == 4){
+					$price.price = $price.price - $price.price * 0.3;
+				} else if (r.subgroup.size() == 3){
+					$price.price = $price.price - $price.price * 0.2;
+				} else if (r.subgroup.size() == 2){
+					$price.price = $price.price - $price.price * 0.1;
+				}
+
+				modify($insurance){
+					setAmount($insurance.amount + $price.price);
+				}
+			} else if (r.name == "trajanje"){
+				modify($insurance){
+					setAmount($insurance.amount + r.price.value * $insurance.days);
+				}
+			}
+		}
+
+		if($insurance.users.size() > 2){
+			modify($insurance){
+				setAmount($insurance.amount - $insurance.amount * 0.2);
+			}
+		}
+
+		insert(new AlreadyProcessed());
+end
+
+rule "Osnovni paket + stan + sport"
+dialect "mvel"
+salience 4
+	when
+		not AlreadyProcessed()
+		$price : LocalPrice()
+		$insurance : Insurance()
+		$risk : (Risk(name == "starost") from $insurance.risks)
+			&& (Risk(name == "region") from $insurance.risks)
+			&& (Risk(name == "trajanje") from $insurance.risks)
+			&& (Risk(name == "sport") from $insurance.risks)
+			&& (Risk(name == "povrsina") from $insurance.risks)
+			&& (Risk(name == "starost_stana") from $insurance.risks)
+			&& (Risk(name == "procenjena_vrednost") from $insurance.risks)
+			&& (Risk(name == "vrsta_osiguranja") from $insurance.risks)
+	then
+		System.out.println("Osnovni paket + auto + sport");
+		$price.price = 0
+
+		for(Risk r : $insurance.risks){
+			if(r.name == "starost"){
+				System.out.println("starost");
+				for(User u : $insurance.users){
+					modify($insurance){
+						setAmount($insurance.amount + u.subgroup.coefficient * r.price.value);
+					}
+				}
+			} else if (r.name == "region" || r.name == "sport" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost"){
+				modify($insurance){
+					setAmount($insurance.amount + r.subgroup.get(0).coefficient * r.price.value);
+				}
+			} else if (r.name == "vrsta_osiguranja"){
+				for(Subgroup s : r.subgroup){
+					$price.price = $price.price + s.coefficient * r.price.value;
+				}
+
+				if(r.subgroup.size() == 4){
+					$price.price = $price.price - $price.price * 0.3;
+				} else if (r.subgroup.size() == 3){
+					$price.price = $price.price - $price.price * 0.2;
+				} else if (r.subgroup.size() == 2){
+					$price.price = $price.price - $price.price * 0.1;
+				}
+
+				modify($insurance){
+					setAmount($insurance.amount + $price.price);
+				}
+			} else if (r.name == "trajanje"){
+				modify($insurance){
+					setAmount($insurance.amount + r.price.value * $insurance.days);
+				}
+			}
+		}
+
+		if($insurance.users.size() > 2){
+			modify($insurance){
+				setAmount($insurance.amount - $insurance.amount * 0.2);
+			}
+		}
+
+		insert(new AlreadyProcessed());
+end
+
+rule "Ceo paket"
+no-loop true
+dialect "mvel"
+salience 5
+	when
+		not AlreadyProcessed()
+		$price : LocalPrice()
+		$insurance : Insurance()
+		$risk : (Risk(name == "starost") from $insurance.risks)
+			&& (Risk(name == "region") from $insurance.risks)
+			&& (Risk(name == "trajanje") from $insurance.risks)
+			&& (Risk(name == "sport") from $insurance.risks)
+			&& (Risk(name == "povrsina") from $insurance.risks)
+			&& (Risk(name == "starost_stana") from $insurance.risks)
+			&& (Risk(name == "procenjena_vrednost") from $insurance.risks)
+			&& (Risk(name == "vrsta_osiguranja") from $insurance.risks)
+			&& (Risk(name == "paket") from $insurance.risks)
+	then
+
+		System.out.println("Ceo paket");
+		$price.price = 0
+
+		for(Risk r : $insurance.risks){
+			if(r.name == "starost"){
+				for(User u : $insurance.users){
+					modify($insurance){
+						setAmount($insurance.amount + u.subgroup.coefficient * r.price.value);
+					}
+				}
+			} else if (r.name == "region" || r.name == "sport" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost"){
+				modify($insurance){
+					setAmount($insurance.amount + r.subgroup.get(0).coefficient * r.price.value);
+				}
+			} else if (r.name == "vrsta_osiguranja" || r.name == "paket"){
+				for(Subgroup s : r.subgroup){
+					$price.price = $price.price + s.coefficient * r.price.value;
+				}
+
+				if(r.subgroup.size() == 4){
+					$price.price = $price.price - $price.price * 0.3;
+				} else if (r.subgroup.size() == 3){
+					$price.price = $price.price - $price.price * 0.2;
+				} else if (r.subgroup.size() == 2){
+					$price.price = $price.price - $price.price * 0.1;
+				}
+
+				modify($insurance){
+					setAmount($insurance.amount + $price.price);
+				}
+			} else if (r.name == "trajanje"){
+				System.out.println("trajanje");
 				System.out.println($insurance.amount);
 				modify($insurance){
 					setAmount($insurance.amount + r.price.value * $insurance.days);
 				}
 			}
 		}
-		System.out.println("Br korisnika" + $insurance.users.size);
+
 		if($insurance.users.size() > 2){
-			System.out.println("Cena :" + $insurance.amount);
 			modify($insurance){
 				setAmount($insurance.amount - $insurance.amount * 0.2);
 			}
 		}
+
 		insert(new AlreadyProcessed());
 end

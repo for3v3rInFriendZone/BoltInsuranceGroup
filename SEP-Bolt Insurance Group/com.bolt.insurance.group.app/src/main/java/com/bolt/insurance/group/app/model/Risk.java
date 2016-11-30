@@ -1,6 +1,7 @@
 package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,9 +43,8 @@ public class Risk implements Serializable{
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "risks")
 	private List<Insurance> insurances;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "SUBGROUP")
-	private Subgroup subgroup;
+	@OneToMany
+	private List<Subgroup> subgroup = new ArrayList<Subgroup>();
 	
 	public long getId() {
 		return id;
@@ -85,11 +86,11 @@ public class Risk implements Serializable{
 		this.insurances = insurances;
 	}
 
-	public Subgroup getSubgroup() {
+	public List<Subgroup> getSubgroup() {
 		return subgroup;
 	}
 
-	public void setSubgroup(Subgroup subgroup) {
+	public void setSubgroup(List<Subgroup> subgroup) {
 		this.subgroup = subgroup;
 	}
 
