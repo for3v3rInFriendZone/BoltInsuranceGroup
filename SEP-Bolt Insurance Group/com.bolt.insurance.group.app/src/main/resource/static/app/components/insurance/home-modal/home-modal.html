@@ -2,47 +2,56 @@
     <h3 class="modal-title" translate="PLEASEENTERINFOOFHOME"></h3>
 </div>
 <div class="modal-body">
-    <form class="form-horizontal">
+    <form class="state-form form-horizontal" name="hmc.form" novalidate>
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}"/>
+    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label>  <input class="form-control" type="text" ng-model="hmc.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> 
+    		<p class="text-center" ng-show="hmc.form.ownerName.$touched && hmc.form.ownerName.$error.required" style="color: red;" translate="OWNERNAMEFORM"></p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownersurname"id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}"/>
+            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/>
+            <p class="text-center" ng-show="hmc.form.ownerSurname.$touched && hmc.form.ownerSurname.$error.required" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownerjmbg" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}">
+            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownerjmbg" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+            <p class="text-center" ng-show="hmc.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
+            <p class="text-center" ng-show="hmc.form.ownerJmbg.$touched && hmc.form.ownerJmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <input class="form-control" type="text" ng-model="hmc.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}">
+            <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <input class="form-control" type="text" ng-model="hmc.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required>
+            <p class="text-center" ng-show="hmc.form.address.$touched && hmc.form.address.$error.required" style="color: red;" translate="OWNERADDRESSFORM"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="HOMEAREA"> </label> <input class="form-control" ng-model="hmc.home.homearea" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}">
+           <label class="form-control text-center" style="background-color: lightblue; " translate="HOMEAREA"> </label> <input class="form-control" ng-model="hmc.home.homearea" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required>
+           <p class="text-center" ng-show="hmc.form.homeArea.$error.pattern" style="color: red;" translate="OWNERAREAFORM"> </p>
+           <p class="text-center" ng-show="hmc.form.homeArea.$touched && hmc.form.homeArea.$error.required" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="AGEOFHOME"> </label> <input class="form-control" ng-model="hmc.home.ageofhome" id="ageOfHome" name="ageOfHome" placeholder="{{'AGEOFHOME'|translate}}">
+           <label class="form-control text-center" style="background-color: lightblue; " translate="CONSTRUCTIONYEAR"> </label> <input class="form-control" ng-model="hmc.home.ageofhome" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" required>
+           <p class="text-center" ng-show="hmc.form.ageOfHome.$touched && hmc.form.ageOfHome.$error.required" style="color: red;" translate="OWNERCONSTRUCTIONYEARFORM"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="ESTIMATEDVALUEOFHOME"> </label> <input class="form-control" ng-model="hmc.home.estimatedvalueofhome" id="estimatedvalueofhome" name="estimatedvalueofhome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}">
+           <label class="form-control text-center" style="background-color: lightblue; " translate="ESTIMATEDVALUEOFHOME"> </label> <input class="form-control" ng-model="hmc.home.estimatedvalueofhome" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}" required>
+           <p class="text-center" ng-show="hmc.form.estimatedValueOfHome.$touched && hmc.form.estimatedValueOfHome.$error.required" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEFORM"> </p>
         </div>
     </div>
     </form>
 </div>
 <div class="modal-footer">
 	<div class="col-sm-6 col-sm-offset-2">
-	    <button class="btn btn-success" type="button" ng-click="hmc.ok()" translate="OK"></button>
+	    <button class="btn btn-success" type="button" ng-disabled="hmc.form.$invalid" ng-click="hmc.ok()" translate="OK"></button>
 	    <button class="btn btn-warning" type="button" ng-click="hmc.cancel()" translate="CANCEL"></button>
 	</div>
 </div>

@@ -5,3 +5,8 @@
 #section1{
 	overflow-x:hidden; 
 }
+
+.state-form input.ng-invalid.ng-touched {
+	border:2px solid Red;
+	/*background-color: #FA787E;*/
+}

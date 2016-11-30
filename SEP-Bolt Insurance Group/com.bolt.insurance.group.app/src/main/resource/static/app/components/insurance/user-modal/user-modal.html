@@ -3,40 +3,51 @@
     <h3 class="modal-title" ng-if="umc.status === 'edit'" translate="UPDATEUSERINFO"></h3>
 </div>
 <div class="modal-body">
-    <form class="form-horizontal">
+    <form class="state-form form-horizontal" name="umc.form" novalidate>
     <div class="form-group">
     	<div class="col-sm-8 col-sm-offset-2">
-    		<label class="form-control text-center" style="background-color: lightblue; " translate="NAME"> </label><input class="form-control" type="text" ng-model="umc.user.firstName" name="name" placeholder="{{'NAME' | translate}}"/>
+    		<label class="form-control text-center" style="background-color: lightblue; " translate="NAME"> </label><input class="form-control" type="text" ng-model="umc.user.firstName" name="name" placeholder="{{'NAME' | translate}}"/ required>
+    		<p class="text-center" ng-show="umc.form.name.$touched && umc.form.name.$error.required" style="color: red;" translate="NAMEFORM"></p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue;" translate="SURNAME"></label> <input class="form-control" type="text" ng-model="umc.user.surname" name="surname" placeholder="{{'SURNAME' | translate}}"/>
+            <label class="form-control text-center" style="background-color: lightblue;" translate="SURNAME"></label> <input class="form-control" type="text" ng-model="umc.user.surname" name="surname" placeholder="{{'SURNAME' | translate}}"/ required>
+            <p class="text-center" ng-show="umc.form.surname.$touched && umc.form.surname.$error.required" style="color: red;" translate="SURNAMEFORM"></p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue;" translate="JMBG"> </label> <input class="form-control" type="text" ng-model="umc.user.jmbg" name="jmbg" placeholder="{{'JMBG' | translate}}">
+           <label class="form-control text-center" style="background-color: lightblue;" translate="JMBG"> </label> <input class="form-control" type="text" ng-model="umc.user.jmbg" name="jmbg" placeholder="{{'JMBG' | translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+           <p class="text-center" ng-show="umc.form.jmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p>
+           <p class="text-center" ng-show="umc.form.jmbg.$touched && umc.form.jmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue;" translate="ADDRESS"> </label> <input class="form-control" type="text" ng-model="umc.user.address" name="address" placeholder="{{'ADDRESS' | translate}}">
+           <label class="form-control text-center" style="background-color: lightblue;" translate="ADDRESS"> </label> <input class="form-control" type="text" ng-model="umc.user.address" name="address" placeholder="{{'ADDRESS' | translate}}" required>
+           <p class="text-center" ng-show="umc.form.address.$touched && umc.form.address.$error.required" style="color: red;" translate="ADDRESSFORM"></p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-          <label class="form-control text-center" style="background-color: lightblue;" translate="PASSPORTNUMBER"> </label> <input class="form-control" ng-model="umc.user.passport" name="passport" placeholder="{{'PASSPORTNUMBER' | translate}}">
+          <label class="form-control text-center" style="background-color: lightblue;" translate="PASSPORTNUMBER"> </label> <input class="form-control" ng-model="umc.user.passport" name="passport" placeholder="{{'PASSPORTNUMBER' | translate}}" maxlength="9" ng-pattern="/^[0-9]{7,9}$/" required>
+          <p class="text-center" ng-show="umc.form.passport.$error.pattern" style="color: red;" translate="PASSPORTFORM"> </p>
+           <p class="text-center" ng-show="umc.form.passport.$touched && umc.form.passport.$error.required" style="color: red;" translate="PASSPORTFORMREQUIRED"> </p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-          <label class="form-control text-center" style="background-color: lightblue;" translate="PHONE2"> </label> <input class="form-control" ng-model="umc.user.phone" name="phone" placeholder="{{'PHONE2' | translate}}">
+          <label class="form-control text-center" style="background-color: lightblue;" translate="PHONE2"> </label> <input class="form-control" ng-model="umc.user.phone" name="phone" placeholder="{{'PHONE2' | translate}}" required ng-pattern="/^[0-9]+$/">
+          <p class="text-center" ng-show="umc.form.phone.$touched && umc.form.phone.$error.required" style="color: red;" translate="PHONEFORM"></p>
+          <p class="text-center" ng-show="umc.form.phone.$error.pattern" style="color: red;" translate="PHONEFORMPATTERN"></p>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-          <label class="form-control text-center" style="background-color: lightblue;" ng-if="umc.user.owner" translate="EMAIL"> </label> <input type="email" class="form-control" ng-model="umc.user.email" name="email" placeholder="{{'EMAIL' | translate}}" ng-if="umc.user.owner">
+          <label class="form-control text-center" style="background-color: lightblue;" ng-if="umc.user.owner" translate="EMAIL"> </label> <input type="email" class="form-control" ng-model="umc.user.email" name="email" placeholder="{{'EMAIL' | translate}}" ng-if="umc.user.owner" required>
+          <p class="text-center" ng-show="umc.form.email.$touched && umc.form.email.$error.required" style="color: red;" translate="EMAILFORM"></p>
+          <p class="text-center" ng-show="umc.form.email.$error.email" style="color: red;" translate="VALIDEMAILFORM"></p>
         </div>
     </div>
     <div class="form-group text-center">
@@ -48,7 +59,7 @@
 </div>
 <div class="modal-footer">
 	<div class="col-sm-8 col-sm-offset-1">
-	    <button class="btn btn-success" type="button" ng-click="umc.ok()" translate="OK"></button>
+	    <button class="btn btn-success" type="button" ng-disabled="umc.form.$invalid" ng-click="umc.ok()" translate="OK"></button>
 	    <button class="btn btn-warning" type="button" ng-click="umc.cancel()" translate="CANCEL"></button>
 	</div>
 </div>

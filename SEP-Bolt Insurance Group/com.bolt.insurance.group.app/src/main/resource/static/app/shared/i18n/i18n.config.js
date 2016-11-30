@@ -14,7 +14,6 @@
 		})
 
 		$translateProvider.translations('en', {
-			QUESTION:"WHERE ARE YOU?",
 			INTRO: "INTRO",
 			WHYBOLT: "WHY BOLT?",
 			SERVICESWEPROVIDED: "Services we provide",
@@ -74,18 +73,37 @@
 			OWNERJMBG: "Owner jmbg",
 			ADDRESSOFHOME: "Address of house/flat",
 			HOMEAREA: "House/flat area",
-			AGEOFHOME: "Age of home/flat",
+			CONSTRUCTIONYEAR: "Contruction year of home/flat",
 			ESTIMATEDVALUEOFHOME: "Estimated value of house/flat",
 			PLEASEENTERINFOOFHOME: "Please enter informations about flat or house",
 			PLEASEENTERINFOOFVEHICLE: "Please enter informations about vehicle",
 			TYPEOFVEHICLE: "Type of vehicle",
 			YEAROFMANUFACTURE: "YearOfManufacture",
 			LICENCEPLATESNUMBER: "Licence plates number",
-			NUMBEROFCHASSIS: "Number of chassis"
+			NUMBEROFCHASSIS: "Number of chassis",
+			OWNERNAMEFORM: "Owner's name is required",
+			OWNERSURNAMEFORM: "Owner's surname is required",
+			OWNERJMBGFORM: "JMBG must be 13 characters long and only numbers",
+			OWNERADDRESSFORM: "Owner's address is required",
+			OWNERAREAFORM: "Owner's home area is required and only numbers",
+			OWNERAREAREQUIREDFORM: "Owner's home area is required",
+			OWNERJMBGREQUIREDFORM: "Owner's JMBG is required",
+			OWNERCONSTRUCTIONYEARFORM: "Owner's contruction year of his home is required",
+			OWNERESTIMATEDVALUEOFHOMEFORM: "Owner's estimated value of home is required",
+			NAMEFORM: "Name is required",
+			SURNAMEFORM: "Surname is required",
+			ADDRESSFORM: "Address is required",
+			PASSPORTFORM: "Passport must be 7 or 9 characters long and only numbers",
+			PASSPORTFORMREQUIRED: "Passport is required",
+			PHONEFORM: "Phone is required",
+			PHONEFORMPATTERN: "Phone must consist of only numbers",
+			EMAILFORM: "E-mail is required",
+			VALIDEMAILFORM: "This is not valid e-mail"
+			
+			
 			
 		});
 		$translateProvider.translations('sr', {
-			QUESTION:"GDE SI?",
 			INTRO: "Uvod",
 			WHYBOLT: "Zašto Bolt?",
 			REMOVE: "Obriši",
@@ -152,7 +170,8 @@
 			TYPEOFVEHICLE: "Tip vozila",
 			YEAROFMANUFACTURE: "Godina proizvodnje",
 			LICENCEPLATESNUMBER: "Broj tablica",
-			NUMBEROFCHASSIS: "Broj šasije"
+			NUMBEROFCHASSIS: "Broj šasije",
+			OWNERNAMEFORM: "Morate uneti naziv vlasnika"
 		
 		});
 		

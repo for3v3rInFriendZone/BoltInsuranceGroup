@@ -13,8 +13,6 @@
 		hmc.home = items.home;
 		hmc.status = items.status;
 		
-		
-		
 		function ok() {
 			$uibModalInstance.close(hmc.home);
 		}
