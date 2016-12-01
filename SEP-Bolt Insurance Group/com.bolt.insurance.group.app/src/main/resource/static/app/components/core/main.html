@@ -7,8 +7,8 @@
                 <div class="item">
                     <div class="container">
                         <div class="row">
-                             <h2  translate="WELCOMETOTHEBIG"></h2>
-                             <h3  translate="WEAREALWAYSWITHYOU"></h3>
+                             <p style="font-size: 40px;" translate="WELCOMETOTHEBIG"></p>
+                             <h2  translate="WEAREALWAYSWITHYOU"></h2>
                         </div>
                     </div>
                 </div>
@@ -21,17 +21,17 @@
             <div class="section  text-gray" id="section1">
                 <div class="container">
                     <div class="col-md-12">
-
-                        <h2  translate="WHYBOLT"></h2>
+						
+                        <div when-visible="animateElementIn" data-animation="fadeInDown" class="not-visible"> <h2 class="title" data-animation="fadeInDown" translate="WHYBOLT"></h2> </div>
 
                         <div class="row">
 
                             <div class="col-md-8 col-md-offset-2">
+							
+                             <div when-visible="animateElementIn" data-animation="fadeInUp" class="not-visible"> <p class="text-large text-thin"  data-animate="fadeInUp" translate="FORMEDIN"> </p> </div>
+                             <div when-visible="animateElementIn" data-animation="fadeInUp" class="not-visible"> <p class="text-large text-thin"  data-animate="fadeInUp" translate="WEAREDEDICATED"> </p> </div>
 
-                                <p translate="FORMEDIN"> </p>
-                                <p translate="WEAREDEDICATED"> </p>
-
-                                <p  when-visible="animateElementIn" data-animation="fadeInRightBig" class="not-visible"><img src="assets/img/team.jpg" alt="" class="img-circle img-responsive"></p>
+                                <p when-visible="animateElementIn" data-animation="fadeInRightBig" class="not-visible"><img src="assets/img/team.jpg" alt="" class="img-circle img-responsive"></p>
 
                             </div>
 
@@ -54,14 +54,14 @@
             <div class="section" id="section2">
                 <div class="container">
                     <div class="col-md-12">
-                        <h2 translate="SERVICESWEPROVIDED"></h2>
+                       <div when-visible="animateElementIn" data-animation="fadeInDown" class="not-visible"> <h2 class="title" translate="SERVICESWEPROVIDED"></h2> </div>
                         
                         <p class="lead" translate="WELCOMETOOUR"> </p>
                         
-                            <div  when-visible="animateElementIn" class="col-md-4 col-md-offset-4 not-visible" data-animation="fadeInUp">
-                                <a ui-sref="insurance"><img src="assets/img/travel-scams.jpg" class="img-responsive img-circle"/> </a>                        
-                                <h3 class="heading" translate="TRAVELINSURANCE"></h3>
-                                <p translate="GOINGTOTRIP"> </p>
+                            <div when-visible="animateElementIn" class="col-md-4 col-md-offset-4 not-visible" data-animation="fadeInUp">
+                                <a ui-sref="insurance"> <img src="assets/img/travel-scams.jpg" class="img-responsive img-circle"/> </a>                        
+                                <a ui-sref="insurance"> <h3 class="heading" translate="TRAVELINSURANCE"></h3> </a>
+                                <p class="text-large text-thin" translate="GOINGTOTRIP"> </p>
                             </div>
                     </div>
                     <!-- /.12 -->
@@ -82,9 +82,8 @@
                     <div class="col-md-12">
 
                         <div class="mb20">
-                            <h2 translate="COSTUMERSSAID"></h2>
+                        <div when-visible="animateElementIn" data-animation="fadeInDown" class="not-visible"> <h2 class="title" translate="COSTUMERSSAID"></h2> </div>
 
-                            <p translate=""></p>
                         </div>
                         <div class="container-fluid">
                             <div class="row">
@@ -138,12 +137,10 @@
                 <div class="container">
                     <div class="col-md-8 col-md-offset-2">
 
+                       <div when-visible="animateElementIn" data-animation="fadeInDown" class="not-visible"> <h2 class="title" translate="CONTACTUS"> </h2> </div>
 
-                        <h2 translate="CONTACTUS"></h2>
-
-                        <p  translate="BEALWAYSINTOUCHWITHUS"></p>
-
-
+                       <div when-visible="animateElementIn" data-animation="fadeInDown" class="not-visible"> <p class="text-large text-thin" translate="BEALWAYSINTOUCHWITHUS"></p> </div>
+                        
                         <ul when-visible="animateElementIn" class="list-unstyled text-large text-thin not-visible" data-animation="fadeInUp">
                             <li><strong translate="EMAIL">E-mail:</strong> boltInsuranceGroup@gmail.com</li>
                             <li><strong translate="PHONE"></strong> +381625858580</li>
