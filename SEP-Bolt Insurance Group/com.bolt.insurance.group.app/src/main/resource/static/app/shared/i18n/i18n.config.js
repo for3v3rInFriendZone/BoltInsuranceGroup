@@ -4,7 +4,7 @@
 	angular
 		.module('bolt-insurance-group.i18n')
 		.config(config);
-	
+
 	config.$inject = ['$translateProvider'];
 	function config($translateProvider){
 		$translateProvider.fallbackLanguage('en');
@@ -20,29 +20,29 @@
 			TESTIMONIALS: "Testimonials",
 			CONTACT: "Contact",
 			REMOVE: "Remove",
-			BOLTINSURANCEGROUP: "Bolt insurance group",
-			WELCOMETOTHEBIG : "Welcome to the BOLT INSURANCE GROUP",
+			BOLTINSURANCEGROUP: "Bolt insurance company",
+			WELCOMETOTHEBIG : "Welcome to the BOLT INSURANCE COMPANY",
 			WEAREALWAYSWITHYOU: "We are always with you",
-			FORMEDIN: "Formed in December of 2003. and since then giving everything for you and yours wishes.",
-			WEAREDEDICATED: "We are dedicated group, which only concern is your safety. Available for you 24/7 in any time of day and night. We started as small team of inspired people. But time has proved our qualities and thanks to you, we are one of few insurance groups that has been approved by Software Quality Assurance.",
+			FORMEDIN: "Formed in December of 2003. and since then providing services for you and granting your wishes.",
+			WEAREDEDICATED: "We are a dedicated group, of which only concern is your safety. Available for you 24/7 at any time of day and night. We started as small team of inspired people. But in time we have proved our qualities and thanks to you, we are one of a few insurance companies that has been approved by Software Quality Assurance.",
 			WELCOMETOOUR: "Welcome to our online insurance shop.",
 			TRAVELINSURANCE: "Travel insurance",
-			GOINGTOTRIP: "Going to trip? This is a great chance to be safe wherever you are going.",
+			GOINGTOTRIP: "Going to trip? This is a great chance to stay safe wherever you are going.",
 			COSTUMERSSAID: "Customers said about us",
-			HAVEANYCOMPLAINTS: "Have any complaints? Or you just want to say a nice word for us. Dont be afraid to say anything you want. We are open for any kind of suggestions or critics.",
+			HAVEANYCOMPLAINTS: "Any complaints? Or you just want to say a nice word for us? Dont be afraid to say anything you want. We are open for any kinds of suggestions or critics.",
 			ONEMORNING: " One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.",
 			ADDYOURCOMMENT: "Add your comment",
 			CONTACTUS: "Contact us",
 			EMAIL: "E-mail: ",
 			PHONE: "Phone: ",
-			BEALWAYSINTOUCHWITHUS: "Be always in touch with us, at any time of day or night. If you have any questions or issues, feel free to ask or send at our e-mail adress.",
-			HOWLONGYOURTRIP: "How long your trip is going to be?",
+			BEALWAYSINTOUCHWITHUS: "Stay in touch with us, at any time of day or night. If you have any questions or issues, feel free to ask or send to our e-mail adress.",
+			HOWLONGYOURTRIP: "How long is your trip going to be?",
 			TO: "To",
 			INSURANCEUSERS: "Insurance users",
 			NAME: "Name",
 			SURNAME: "Surname",
 			ADDRESS: "Address",
-			DOYOUWANTINSURANCESPORTRIKS: "Do you want an insurance for sport risks?",
+			DOYOUWANTINSURANCESPORTRIKS: "Do you want an insurance against sport injuries?",
 			SPORTINSURANCERISKS: "Sport insurance risks",
 			CHOOSEONEOFTHESPORTS: "Choose one of the sports",
 			SPORTDANGERCOEFFICIENT: "Sport danger coefficient",
@@ -54,64 +54,60 @@
 			WHOLEWORLD: "Whole world",
 			HOMEINSURANCE: "Home insurance",
 			INSURANCEHOMEORFLAT: "Insurance for your home or flat",
-			ROADINSURANCE: "Road insurance",
-			INSURANCEFORROADSIDEASSISTANCE: "Insurance for roadside assistance",
+			ROADINSURANCE: "Road assistance insurance",
+			INSURANCEFORROADSIDEASSISTANCE: "Insurance for road assistance",
 			SUMOFINSURANCE: "Sum of insurances",
 			TAX: "Tax",
-			FINALPRICE: "Final price",
-			PLEASEENTERINFOUSER: "Please enter informations for an insurance user",
-			UPDATEUSERINFO: "Update informations for user {{umc.user.firstName}} &nbsp {{umc.user.surname}}",
+			FINALPRICE: "Total price",
+			PLEASEENTERINFOUSER: "Please enter information for an insurance user",
+			UPDATEUSERINFO: "Update information about the user {{umc.user.firstName}} &nbsp {{umc.user.surname}}",
 			JMBG: "JMBG",
 			PASSPORTNUMBER: "Passport number",
-			OWNEROFINSURANCE: "Owner of insurance",
+			OWNEROFINSURANCE: "Insurance owner",
 			OK : "Save",
 			CANCEL: "Cancel",
 			PHONE2: "Phone number",
 			EMAIL2: "E-mail",
-			OWNERNAME: "Owner name",
-			OWNERSURNAME: "Owner surname",
-			OWNERJMBG: "Owner jmbg",
-			ADDRESSOFHOME: "Address of house/flat",
-			HOMEAREA: "House/flat area",
-			CONSTRUCTIONYEAR: "Contruction year of home/flat",
-			ESTIMATEDVALUEOFHOME: "Estimated value of house/flat",
-			PLEASEENTERINFOOFHOME: "Please enter informations about flat or house",
-			PLEASEENTERINFOOFVEHICLE: "Please enter informations about vehicle",
+			OWNERNAME: "Owner's name",
+			OWNERSURNAME: "Owner's surname",
+			OWNERJMBG: "Owner's jmbg",
+			ADDRESSOFHOME: "Address of the house/flat",
+			HOMEAREA: "Surface area of the house/flat",
+			CONSTRUCTIONYEAR: "Year of contruction of the house/flat",
+			ESTIMATEDVALUEOFHOME: "Estimated value of the house/flat",
+			PLEASEENTERINFOOFHOME: "Please enter information about the flat or house",
+			PLEASEENTERINFOOFVEHICLE: "Please enter information about the vehicle",
 			TYPEOFVEHICLE: "Type of vehicle",
-			YEAROFMANUFACTURE: "YearOfManufacture",
-			LICENCEPLATESNUMBER: "Licence plates digits",
+			YEAROFMANUFACTURE: "Year of manufacture",
+			LICENCEPLATESNUMBER: "Licence plates number",
 			NUMBEROFCHASSIS: "Number of chassis",
 			OWNERNAMEFORM: "Owner's name is required",
 			OWNERSURNAMEFORM: "Owner's surname is required",
-			OWNERJMBGFORM: "JMBG must be 13 characters long and only digits",
+			OWNERJMBGFORM: "JMBG must be 13 characters long and must consist of only digits",
 			OWNERADDRESSFORM: "Owner's address is required",
-			OWNERAREAFORM: "Owner's home area is required and only digits",
-			OWNERAREAREQUIREDFORM: "Owner's home area is required",
+			OWNERAREAFORM: "Owner's home area is required and must consist of only digits",
+			OWNERAREAREQUIREDFORM: "Owner's surface area is required",
 			OWNERJMBGREQUIREDFORM: "Owner's JMBG is required",
 			OWNERCONSTRUCTIONYEARFORM: "Contruction year is required",
 			OWNERESTIMATEDVALUEOFHOMEFORM: "Owner's estimated value of home is required",
 			NAMEFORM: "Name is required",
 			SURNAMEFORM: "Surname is required",
 			ADDRESSFORM: "Address is required",
-			PASSPORTFORM: "Passport must be 7 or 9 characters long and only digits",
-			PASSPORTFORMREQUIRED: "Passport is required",
-			PHONEFORM: "Phone is required",
-			PHONEFORMPATTERN: "Phone must consist of only digits",
+			PASSPORTFORM: "Passport must be between 7 and 9 characters long and must consist of only digits",
+			PASSPORTFORMREQUIRED: "Passport number is required",
+			PHONEFORM: "Phone number is required",
+			PHONEFORMPATTERN: "Phone number must consist of only digits",
 			EMAILFORM: "E-mail is required",
-			VALIDEMAILFORM: "This is not valid e-mail",
+			VALIDEMAILFORM: "This is not a valid e-mail",
 			TYPEOFVEHICLEFORM: "Type of vehicle is required",
 			YEAROFMANUFACTUREFORM: "Year of manufacture must consist of 4 digits",
 			LICENCEPLATESNUMBERFORM: "Licence plates number is required",
-			NUMBEROFCHASSISFORM: "Number of chassis may contains up to 40 digits",
+			NUMBEROFCHASSISFORM: "Number of chassis may contain up to 40 digits",
 			YEAROFMANUFACTUREREQUIREDFORM : "Year of manufacture is required",
 			NUMBEROFCHASSISREQUIREDFORM: "Number of chassis is required",
 			OWNERCONSTRUCTIONYEARREQUIREDFORM: "Contruction year must consist of 4 digits",
 			OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM: "Estimated value of house may contain up to 40 digits"
-			
-			
-			
-			
-			
+
 		});
 		$translateProvider.translations('sr', {
 			INTRO: "Uvod",
@@ -207,15 +203,15 @@
 			NUMBEROFCHASSISREQUIREDFORM: "Morate uneti broj šasije",
 			OWNERCONSTRUCTIONYEARREQUIREDFORM: "Godina izgradnje kuće/stana sadrži 4 cifre",
 			OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM: "Procenjena vrednost kuće sadrži do 40 cifara"
-			
-			
-			
-		
+
+
+
+
 		});
-		
+
 		$translateProvider.useSanitizeValueStrategy('escape');
 		$translateProvider.preferredLanguage('en');
 	}
-	
-	
+
+
 })();
