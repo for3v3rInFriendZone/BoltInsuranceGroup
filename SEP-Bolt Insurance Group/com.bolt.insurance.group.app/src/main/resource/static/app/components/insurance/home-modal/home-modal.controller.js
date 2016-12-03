@@ -10,7 +10,7 @@
 		var hmc = this;
 		hmc.ok = ok;
 		hmc.cancel = cancel;
-		hmc.home = items.home;
+		hmc.home = items.home; 
 		hmc.status = items.status;
 		
 		function ok() {

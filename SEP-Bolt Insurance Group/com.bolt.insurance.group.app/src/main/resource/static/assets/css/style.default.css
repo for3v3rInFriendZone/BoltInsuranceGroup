@@ -146,6 +146,9 @@ UNIVERSAL SECTION STYLES
     background: #eeeeee;
   }
 }
+.text-white{
+	background: #ffffff;
+}
 .text-parallax {
   padding-top: 120px;
   padding-bottom: 120px;
