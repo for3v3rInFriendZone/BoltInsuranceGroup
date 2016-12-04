@@ -58,10 +58,20 @@
 			<artifactId>scala-library</artifactId>
 			<version>2.11.0</version>
 		</dependency>
-		<dependency>
+		<dependency> 
 			<groupId>org.drools</groupId>
-			<artifactId>drools-spring</artifactId>
+			<artifactId>drools-compiler</artifactId>
 			<version>5.6.0.Final</version>
+	  	</dependency>
+		<dependency>
+    		<groupId>org.jsoup</groupId>
+    		<artifactId>jsoup</artifactId>
+    		<version>1.8.3</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.json</groupId>
+    		<artifactId>json</artifactId>
+    		<version>20160810</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.webjars/angular-translate -->
@@ -79,4 +89,12 @@
 		</dependency>
 
 	</dependencies>
+	
+	<build>
+		<resources>  
+	      <resource>  
+    	      <directory>src/main/resources</directory> 
+    	  </resource>  
+  		</resources> 
+  	</build>
 </project>

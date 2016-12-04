@@ -32,6 +32,7 @@ public class ApiPriceControler {
 	public ResponseEntity<Price> getPrice(@PathVariable Long id) {
 
 		Price price = priceService.findOne(id);
+		
 		return new ResponseEntity<Price>(price, HttpStatus.OK);
 	}
 
@@ -39,6 +40,7 @@ public class ApiPriceControler {
 	public ResponseEntity<List<Price>> getPrices() {
 
 		List<Price> prices = (List<Price>) priceService.findAll();
+		
 		return new ResponseEntity<List<Price>>(prices, HttpStatus.OK);
 	}
 
