@@ -24,6 +24,7 @@
 			</div>
 			<br/><br/>
 			<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+			
            	<div class="row">
               			<div class="col-md-8 col-md-offset-2">  
               				<br/><br/> 
@@ -79,7 +80,6 @@
 								 </table>
 						</div>
 				 </div>
-				 
 				 <hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
           	  	 <br/>
           	  	 
@@ -210,7 +210,7 @@
 				                    		<td>
 				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span>
 				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" ng-model="inc.roadCheckBox"/>
-				                    			<i class="fa fa-info-circle" style="font-size: 18px;" data-toggle="tooltip" data-placement="top" title="{{'VEHICLEINSURACECOVERING'|translate}}"></i>
+				                    			<i class="fa fa-info-circle" ng-click="inc.openD()" style="font-size: 18px;"></i>
 				                    		</td>
 				                    	</tr>
 			                        </tbody>
@@ -444,7 +444,7 @@
               		<div class="row">
               			<div class="col-md-offset-9">
 	              			<a ui-sref="home"> <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button> </a>
-	                        <a ui-sref="#"> <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button> </a>
+	                        <a ui-sref="total-price"> <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button> </a>
 	                    </div>
               		</div>
               	<br/><br/>

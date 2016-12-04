@@ -13,6 +13,7 @@
     .state('insurance', {
     	url: '/insurance',
     	views: {
+    		
     		navbar: {
     			 templateUrl: 'app/components/insurance/header.html',
     			 controller: 'InsuranceController',
@@ -28,6 +29,26 @@
     			 controller: 'InsuranceController',
     	         controllerAs: 'inc'
     		}
+    	}
+    })
+    .state('total-price', {
+    	url:'/insurance/total_price',
+	    	views: {
+	    		navbar: {
+	   			 	templateUrl: 'app/components/insurance/header.html',
+	   			 	controller: 'InsuranceController',
+	   			 	controllerAs: 'inc'
+	    		},
+	    		content: {			 
+	    			templateUrl: 'app/components/insurance/total-price/total-price.html',   	
+	    			controller: 'InsuranceController',
+	    			controllerAs: 'inc'
+	    		},
+	    		footer: {
+	    			templateUrl: 'app/components/insurance/footer.html',
+	    			controller: 'InsuranceController',
+	    			controllerAs: 'inc'
+	    		}
     	}
     });
 	

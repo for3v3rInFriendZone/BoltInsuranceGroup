@@ -115,7 +115,20 @@
 			HOMEINSURACECOVERING: "Insurance for a damage on your house/flat: 1. Fire 2. Stealing 3. Flood",
 			VEHICLEINSURACECOVERING: "Covering contains: 1. Towing(100 km max ) 2. Repair of vehicle(100 euros max) 3. Hotel(3 days max) 4. Alternative vehicle",
 			INSURANCEFORM: "Insurance informations form",
-			STEP1: "Step 1"
+			TOTALPRICE: "Review of insurance items and total price of your insurance",
+			RISK: "Risk",
+			INSURANCECOVERS: "Insurance covers",
+			TOWING: "Towing",
+			TOWINGCOVERS: "Towing up to 100 kilometers",
+			REPAIR: "Repair of vehicle",
+			REPAIRCOVERS: "Vehicle repair up to 100 euros",
+			HOTEL: "Hotel",
+			HOTELCOVERS: "Up to 3 days",
+			ALTERNATIVEVEHICLE: "Alternative vehicle",
+			ALTERNATIVEVEHICLECOVERS: "Choose an alternative vehicle for you",
+			OFFERSVEHICLE: "Offers for road assistance insurance",
+			STEP1: "Step 1",
+			STEP2: "Step 2"
 		});
 		$translateProvider.translations('sr', {
 			INTRO: "Uvod",
@@ -219,7 +232,20 @@
 			HOMEINSURACECOVERING: "Zaštita kuće/stana od nepogoda: 1. Požar 2. Krađa 3. Poplava",
 			VEHICLEINSURACECOVERING: "Paket obuhvata: 1. Šlepovanje(do 100 kilometara ) 2. Popravka vozila(do 100 evra) 3. Smeštaj u hotelu(do 3 dana) 4. Alternativni prevoz ",
 			INSURANCEFORM: "Unos podataka o osiguranju",
-			STEP1: "Korak 1"
+			TOTALPRICE: "Pregled stavki osiguranja i ukupna cena osiguranja",
+			RISK: "Rizik",
+			INSURANCECOVERS: "Osiguranje pokriva",
+			TOWING: "Šlepovanje",
+			TOWINGCOVERS: "Šlepovanje do 100 kilometara",
+			REPAIR: "Popravka vozila",
+			REPAIRCOVERS: "Popravka vozila do 100 evra",
+			HOTEL: "Hotel",
+			HOTELCOVERS: "Prenoćište do 3 dana",
+			ALTERNATIVEVEHICLE: "Alternativno vozilo",
+			ALTERNATIVEVEHICLECOVERS: "Izbor alternativnog vozila koje Vam odgovara",
+			OFFERSVEHICLE: "Ponude koje obuhvata paket Pomoć na putu",
+			STEP1: "Korak 1",
+			STEP2: "Korak 2"
 
 
 		});

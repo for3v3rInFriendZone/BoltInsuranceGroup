@@ -5,9 +5,9 @@
 			'InsuranceController', InsuranceController);
 
 	InsuranceController.$inject = [ '$scope', 'userModal', 'homeModal',
-			'vehicleModal', 'User', 'Restangular', '$translate' ];
+			'vehicleModal', 'User', 'Restangular', '$translate', '$fancyModal'];
 	function InsuranceController($scope, userModal, homeModal, vehicleModal,
-			User, Restangular, $translate) {
+			User, Restangular, $translate, $fancyModal) {
 
 		var inc = this;
 		inc.sports = [];
@@ -241,6 +241,10 @@
 			
 			return inc.personCollection;
 				
+		}
+		
+		inc.openD = function(){
+			 $fancyModal.open({ templateUrl: 'app/components/insurance/homeInfoInsurance.html' });   
 		}
 	}
 
