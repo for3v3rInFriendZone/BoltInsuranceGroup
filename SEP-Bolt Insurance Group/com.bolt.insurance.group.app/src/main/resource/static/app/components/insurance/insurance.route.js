@@ -29,6 +29,46 @@
     	         controllerAs: 'inc'
     		}
     	}
+    })
+    .state('homeinsurance', {
+    	url: '/homeinsurance',
+    	views: {
+    		navbar: {
+    			 templateUrl: 'app/components/insurance/header.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
+    		},
+    		content: {			 
+    			 templateUrl: 'app/components/insurance/home-modal/home-modal.html',   	
+    			 controller: 'HomeInsuranceController',
+    	         controllerAs: 'hic'
+    		},
+    		footer: {
+    			 templateUrl: 'app/components/insurance/footer.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
+    		}
+    	}
+    })
+    .state('vehicleinsurance', {
+    	url: '/vehicleinsurance',
+    	views: {
+    		navbar: {
+    			 templateUrl: 'app/components/insurance/header.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
+    		},
+    		content: {			 
+    			 templateUrl: 'app/components/insurance/vehicle-modal/vehicle-modal.html',   	
+    			 controller: 'VehicleInsuranceController',
+    	         controllerAs: 'vic'
+    		},
+    		footer: {
+    			 templateUrl: 'app/components/insurance/footer.html',
+    			 controller: 'InsuranceController',
+    	         controllerAs: 'inc'
+    		}
+    	}
     });
 	
 	}

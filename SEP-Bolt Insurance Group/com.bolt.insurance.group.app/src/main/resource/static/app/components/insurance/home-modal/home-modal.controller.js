@@ -3,23 +3,13 @@
 
 	angular
 		.module('bolt-insurance-group.insurance.home-modal')
-		.controller('HomeModalController', HomeModalController);
+		.controller('HomeInsuranceController', HomeInsuranceController);
 
-	HomeModalController.$inject = ['$uibModalInstance', 'items', 'Home'];
-	function HomeModalController($uibModalInstance, items, Home) {
-		var hmc = this;
-		hmc.ok = ok;
-		hmc.cancel = cancel;
-		hmc.home = items.home; 
-		hmc.status = items.status;
+	HomeInsuranceController.$inject = ['$scope'];
+	function HomeInsuranceController($scope) {
 		
-		function ok() {
-			$uibModalInstance.close(hmc.home);
-		}
-
-		function cancel() {
-			console.log('USAO U CANCEL FUNKCIJU!');
-			$uibModalInstance.dismiss();
-		}
+		console.log('USAO U HIC!');
+	
 	}
+	
 })();
