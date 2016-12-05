@@ -24,6 +24,7 @@
     "angular-bootstrap": "^2.1.4",
     "restangular": "^1.5.2",
     "angularjs-datepicker": "^2.1.7",
-    "angular-fancy-modal": "^0.1.4"
+    "angular-fancy-modal": "^0.1.4",
+    "angular-local-storage": "^0.5.2"
   }
 }

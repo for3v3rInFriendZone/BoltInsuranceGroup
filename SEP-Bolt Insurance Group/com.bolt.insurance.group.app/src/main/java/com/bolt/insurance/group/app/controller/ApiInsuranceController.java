@@ -62,4 +62,11 @@ public class ApiInsuranceController {
 		editedInsurance.setVehicle(insurance.getVehicle());
 		return new ResponseEntity<Insurance>(editedInsurance, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/checkPrice", method = RequestMethod.POST)
+	public ResponseEntity<Double> checkPrice(@RequestBody String payload){
+		
+		return null;
+		
+	}
 }

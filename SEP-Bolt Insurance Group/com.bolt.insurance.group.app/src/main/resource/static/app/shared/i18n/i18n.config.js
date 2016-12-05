@@ -42,7 +42,7 @@
 			NAME: "Name",
 			SURNAME: "Surname",
 			ADDRESS: "Address",
-			DOYOUWANTINSURANCESPORTRIKS: "Do you want an insurance against sport injuries?",
+			DOYOUWANTINSURANCESPORTRIKS: "Insurance against sport injuries?",
 			SPORTINSURANCERISKS: "Sport insurance risks",
 			CHOOSEONEOFTHESPORTS: "Choose one of the sports",
 			SPORTDANGERCOEFFICIENT: "Sport danger coefficient",
@@ -109,9 +109,9 @@
 			OWNERCONSTRUCTIONYEARREQUIREDFORM: "Contruction year must consist of 4 digits",
 			OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM: "Estimated value of house may contain up to 40 digits",
 			NUMBEROFINSURANCEUSERS: "Number of insurance users",
-			KIDS: "Kids",
-			GROWNUPS: "Grownups",
-			OLDS: "Olds",
+			KIDS: "Kids (<18 years)",
+			GROWNUPS: "Grownups (18-60 years)",
+			OLDS: "Olds (>60 years)",
 			HOMEINSURACECOVERING: "Insurance for a damage on your house/flat: 1. Fire 2. Stealing 3. Flood",
 			VEHICLEINSURACECOVERING: "Covering contains: 1. Towing(100 km max ) 2. Repair of vehicle(100 euros max) 3. Hotel(3 days max) 4. Alternative vehicle",
 			INSURANCEFORM: "Insurance informations form",
@@ -128,7 +128,11 @@
 			ALTERNATIVEVEHICLECOVERS: "Choose an alternative vehicle for you",
 			OFFERSVEHICLE: "Offers for road assistance insurance",
 			STEP1: "Step 1",
-			STEP2: "Step 2"
+			STEP2: "Step 2",
+			FIREINSURANCE: "Fire insurance",
+			FLOODINSURANCE: "Flood insurance",
+			THEFTINSURANCE: "Theft insurance",
+			EARTHQUAKEINSURANCE: "Earthquake insurance"
 		});
 		$translateProvider.translations('sr', {
 			INTRO: "Uvod",
@@ -159,7 +163,7 @@
 			NAME: "Ime",
 			SURNAME: "Prezime",
 			ADDRESS: "Adresa",
-			DOYOUWANTINSURANCESPORTRIKS: "Da li želite osiguranje od sportskih povreda?",
+			DOYOUWANTINSURANCESPORTRIKS: "Osiguranje od sportskih povreda?",
 			SPORTINSURANCERISKS: "Osiguranje od sportskih povreda",
 			CHOOSEONEOFTHESPORTS: "Izaberite jedan od sportova",
 			SPORTDANGERCOEFFICIENT: "Koeficijent sportskog rizika",
@@ -226,9 +230,9 @@
 			OWNERCONSTRUCTIONYEARREQUIREDFORM: "Godina izgradnje kuće/stana sadrži 4 cifre",
 			OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM: "Procenjena vrednost kuće sadrži do 40 cifara",
 			NUMBEROFINSURANCEUSERS: "Broj osiguranika",
-			KIDS: "Deca",
-			GROWNUPS: "Odrasli",
-			OLDS: "Stariji",
+			KIDS: "Deca (<18 godina)",
+			GROWNUPS: "Odrasli (18-60 godina)",
+			OLDS: "Stariji (>60 godina)",
 			HOMEINSURACECOVERING: "Zaštita kuće/stana od nepogoda: 1. Požar 2. Krađa 3. Poplava",
 			VEHICLEINSURACECOVERING: "Paket obuhvata: 1. Šlepovanje(do 100 kilometara ) 2. Popravka vozila(do 100 evra) 3. Smeštaj u hotelu(do 3 dana) 4. Alternativni prevoz ",
 			INSURANCEFORM: "Unos podataka o osiguranju",
@@ -245,8 +249,11 @@
 			ALTERNATIVEVEHICLECOVERS: "Izbor alternativnog vozila koje Vam odgovara",
 			OFFERSVEHICLE: "Ponude koje obuhvata paket Pomoć na putu",
 			STEP1: "Korak 1",
-			STEP2: "Korak 2"
-
+			STEP2: "Korak 2",
+			FIREINSURANCE: "Osiguranje od požara",
+			FLOODINSURANCE: "Osiguranje od poplava",
+			THEFTINSURANCE: "Osiguranje od krađe",
+			EARTHQUAKEINSURANCE: "Osiguranje od zemljotresa"
 
 		});
 

@@ -4,12 +4,38 @@
 	angular.module('bolt-insurance-group.insurance').controller(
 			'InsuranceController', InsuranceController);
 
-	InsuranceController.$inject = [ '$scope', 'userModal', 'homeModal',
-			'vehicleModal', 'User', 'Restangular', '$translate', '$fancyModal'];
-	function InsuranceController($scope, userModal, homeModal, vehicleModal,
-			User, Restangular, $translate, $fancyModal) {
+	InsuranceController.$inject = [ '$scope', '$state','userModal', 'homeModal',
+			'vehicleModal', 'Insurance', 'Restangular', '$translate', '$fancyModal', 'localStorageService'];
+	function InsuranceController($scope, $state, userModal, homeModal, vehicleModal,
+			Insurance, Restangular, $translate, $fancyModal, localStorageService) {
 
 		var inc = this;
+		
+		inc.world = localStorageService.cookie.get('world');
+		inc.money = localStorageService.cookie.get('money');
+		inc.kids = localStorageService.cookie.get('kids');
+		inc.grownups = localStorageService.cookie.get('grownups');
+		inc.olds = localStorageService.cookie.get('olds');
+		inc.dt1 = new Date(parseInt(localStorageService.cookie.get('date1')));
+		inc.dt2 = new Date(parseInt(localStorageService.cookie.get('date2')));
+		inc.sportCheckBox = localStorageService.cookie.get('sportCheckBox');
+		inc.selectedSport = localStorageService.cookie.get('selectedSport');
+		inc.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
+		inc.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
+		inc.towing = localStorageService.cookie.get('towingCheckBox');
+		inc.repair = localStorageService.cookie.get('repairCheckBox');
+		inc.hotel = localStorageService.cookie.get('hotelCheckBox');
+		inc.alternative = localStorageService.cookie.get('alternativeCheckBox');
+		inc.fire = localStorageService.cookie.get('fireCheckBox');
+		inc.flood = localStorageService.cookie.get('floodCheckBox');
+		inc.theft = localStorageService.cookie.get('theftCheckBox');
+		inc.earthshaker = localStorageService.cookie.get('earthshakerCheckBox');
+		inc.homearea = localStorageService.cookie.get('homeArea');
+		inc.ageofhome = localStorageService.cookie.get('ageOfHome');
+		inc.estimatedvalueofhome = localStorageService.cookie.get('estimatedValueOfHome');
+		
+		
+
 		inc.sports = [];
 		inc.users = [];
 		inc.personCollection = {
@@ -57,9 +83,12 @@
 		 * When first date is changed, the min date of second date must be of
 		 * first date.
 		 */
-		$scope.$watch("dt1", function(newValue, oldValue) {
+		$scope.$watch("inc.dt1", function(newValue, oldValue) {			
+			if(inc.dt2.getTime() < inc.dt1.getTime()) {
+				inc.dt2 = inc.dt1;
+			}
 			$scope.options2 = {
-				minDate : $scope.dt1,
+				minDate : inc.dt1,
 				showWeeks : true
 			};
 		});
@@ -243,9 +272,63 @@
 				
 		}
 		
+		/**
+		 * Opens dialog for more information about vehicle insurance
+		 */
 		inc.openD = function(){
-			 $fancyModal.open({ templateUrl: 'app/components/insurance/homeInfoInsurance.html' });   
+			 $fancyModal.open({ templateUrl: 'app/components/insurance/insurance-info/vehicleInfoInsurance.html'});   
 		}
+		
+		inc.nextPage = function() {
+			if(localStorageService.cookie.isSupported){
+				localStorageService.cookie.set('world', inc.world, 1, true);
+				localStorageService.cookie.set('money', inc.money, 1, true);
+				localStorageService.cookie.set('kids', inc.kids, 1, true);
+				localStorageService.cookie.set('grownups', inc.grownups, 1, true);
+				localStorageService.cookie.set('olds', inc.olds, 1, true);
+				localStorageService.cookie.set('date1', inc.dt1.getTime(), 1, true);
+				localStorageService.cookie.set('date2', inc.dt2.getTime(), 1, true);
+				localStorageService.cookie.set('sportCheckBox', inc.sportCheckBox, 1, true);
+				localStorageService.cookie.set('selectedSport', inc.selectedSport, 1, true);
+				localStorageService.cookie.set('homeCheckBox', inc.homeCheckBox, 1, true);
+				localStorageService.cookie.set('roadCheckBox', inc.roadCheckBox, 1, true);	
+				localStorageService.cookie.set('towingCheckBox', inc.towing, 1, true);
+				localStorageService.cookie.set('repairCheckBox', inc.repair, 1, true);
+				localStorageService.cookie.set('hotelCheckBox', inc.hotel, 1, true);
+				localStorageService.cookie.set('alternativeCheckBox', inc.alternative, 1, true);
+				localStorageService.cookie.set('fireCheckBox', inc.fire, 1, true);
+				localStorageService.cookie.set('floodCheckBox', inc.flood, 1, true);
+				localStorageService.cookie.set('theftCheckBox', inc.theft, 1, true);
+				localStorageService.cookie.set('earthshakerCheckBox', inc.earthshaker, 1, true);
+				localStorageService.cookie.set('homeArea', inc.homearea, 1, true);
+				localStorageService.cookie.set('ageOfHome', inc.ageofhome, 1, true);
+				localStorageService.cookie.set('estimatedValueOfHome', inc.estimatedvalueofhome, 1, true);
+				
+			}
+			
+			
+			$state.go('total-price');
+		}
+		
+		inc.closeOthers = function() {
+			if(inc.homeCheckBox === false) {
+				inc.fire = false;
+				inc.flood = false;
+				inc.theft = false;
+				inc.earthshaker = false;
+				inc.homearea = '';
+				inc.ageofhome = '';
+				inc.estimatedvalueofhome = '';
+			}
+			if(inc.roadCheckBox === false) {
+				inc.towing = false;
+				inc.repair = false;
+				inc.hotel = false;
+				inc.alternative = false;
+			}
+		}
+		
+		
 	}
 
 })();

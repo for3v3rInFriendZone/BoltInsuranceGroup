@@ -41,7 +41,7 @@
 	    		},
 	    		content: {			 
 	    			templateUrl: 'app/components/insurance/total-price/total-price.html',   	
-	    			controller: 'InsuranceController',
+	    			controller: 'TotalPriceController',
 	    			controllerAs: 'inc'
 	    		},
 	    		footer: {
