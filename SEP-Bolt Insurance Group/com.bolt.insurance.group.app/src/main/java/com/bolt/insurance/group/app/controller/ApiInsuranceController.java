@@ -36,7 +36,7 @@ import com.bolt.insurance.group.app.util.DroolsFileReader;
 public class ApiInsuranceController {
 
 	@Autowired
-	InsuranceService insuranceService;
+	InsuranceService insuranceService; 
 	
 	@Autowired
 	SubgroupService subgroupService;
@@ -171,5 +171,11 @@ public class ApiInsuranceController {
 		editedInsurance.setType(insurance.getType());
 		editedInsurance.setVehicle(insurance.getVehicle());
 		return new ResponseEntity<Insurance>(editedInsurance, HttpStatus.OK);
+	}
+		
+	@RequestMapping(value="/checkPrice", method = RequestMethod.POST)
+	public ResponseEntity<Double> checkPrice(@RequestBody String payload){
+			
+		return null;	
 	}
 }

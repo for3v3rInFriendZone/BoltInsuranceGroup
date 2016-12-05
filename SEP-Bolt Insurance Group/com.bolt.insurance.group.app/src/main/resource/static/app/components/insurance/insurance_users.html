@@ -11,19 +11,14 @@
 		          	<div class="progress">
 			          	<div class="progress-bar form-control" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 25%; background-color: green;">
 							<b style="color: black;" translate="STEP1"> </b>
-						</div>
-						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-							Ovo je drugo
-						</div>
-						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-							Ovo je trece
-						</div>
+						</div>					
 					</div>
 					<p class="text-center" style="color: green;" translate="INSURANCEFORM"> </p>
 				</div>
 			</div>
 			<br/><br/>
 			<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+			
            	<div class="row">
               			<div class="col-md-8 col-md-offset-2">  
               				<br/><br/> 
@@ -36,13 +31,13 @@
 			                        <tbody class="text-center">
 				                    	<tr>
 				                    		<td>
-				                    			<label translate="EUNA"> </label> <div class="text-center"> <input type="radio"  value="1500" ng-model="inc.world"/> </div>               
+				                    			<label translate="EUNA"> </label> <div class="text-center"> <input type="radio"  value="EUNA" ng-model="inc.world"/> </div>               
 				                    		</td>
 				                    		<td>
-				                    			<label translate="EUNAA"> </label> <div class="text-center"> <input type="radio" value="2500" ng-model="inc.world"/> </div>	               
+				                    			<label translate="EUNAA"> </label> <div class="text-center"> <input type="radio" value="EUNAA" ng-model="inc.world"/> </div>	               
 				                    		</td>
 				                    		<td>
-				                    			<label translate="WHOLEWORLD"> </label> <div class="text-center">  <input type="radio"  value="4500" ng-model="inc.world"/> </div>		               
+				                    			<label translate="WHOLEWORLD"> </label> <div class="text-center">  <input type="radio"  value="WHOLEWORLD" ng-model="inc.world"/> </div>		               
 				                    		</td>
 								        </tr>
 								    </tbody>
@@ -63,23 +58,22 @@
 			                        <tbody class="text-center">
 				                    	<tr>
 				                    		<td>
-				                    			<label> 10.000 </label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio"  value="1500" ng-model="inc.money"/> </div>               
+				                    			<label> 10.000 </label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio"  value="10000" ng-model="inc.money"/> </div>               
 				                    		</td>
 				                    		<td>
-				                    			<label> 18.000</label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio" value="2500" ng-model="inc.money"/> </div>	               
+				                    			<label> 18.000</label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio" value="18000" ng-model="inc.money"/> </div>	               
 				                    		</td>
 				                    		<td>
-				                    			<label> 26.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio"  value="4500" ng-model="inc.money"/> </div>		               
+				                    			<label> 26.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio"  value="26000" ng-model="inc.money"/> </div>		               
 				                    		</td>
 				                    		<td>
-				                    			<label> 34.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio"  value="6000" ng-model="inc.money"/> </div>		               
+				                    			<label> 34.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio"  value="34000" ng-model="inc.money"/> </div>		               
 				                    		</td>
 								        </tr>
 								    </tbody>
 								 </table>
 						</div>
 				 </div>
-				 
 				 <hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
           	  	 <br/>
           	  	 
@@ -101,13 +95,13 @@
 		                    <tbody>
 		                    	<tr>
 									<td>
-										<input type="text" class="form-control" maxlength="2"/>
+										<input type="text" class="form-control" maxlength="2" ng-model="inc.kids"/>
 									</td>
 									<td>
-										<input type="text" class="form-control" maxlength="2"/>
+										<input type="text" class="form-control" maxlength="2" ng-model="inc.grownups"/>
 									</td>
 									<td>
-										<input type="text" class="form-control" maxlength="2"/>
+										<input type="text" class="form-control" maxlength="2" ng-model="inc.olds"/>
 									</td>
 						        </tr>
 		                    </tbody>
@@ -127,13 +121,13 @@
 	                    <tbody>                  	
 					        <tr>
 					        	<td class="input-group">
-								    <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt1" is-open="popup1.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+								    <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt1" is-open="popup1.opened" datepicker-options="options" ng-required="true" close-text="Close" />
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>
 
 									<span class="input-group-addon" translate="TO"></span>				
-									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="popup2.opened" datepicker-options="options2" ng-required="true" close-text="Close" />
+									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt2" is-open="popup2.opened" datepicker-options="options2" ng-required="true" close-text="Close" />
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>				        		
@@ -151,11 +145,11 @@
               		<div class="col-md-8 col-md-offset-2">
               			<div class="form-group">
 					        <div class="col-sm-8">
-					           <a class="text-large text-thin" translate=DOYOUWANTINSURANCESPORTRIKS></a>&nbsp&nbsp<input type="checkbox" ng-model="sportCheckBox"/> 
+					           <a class="text-large text-thin" translate=DOYOUWANTINSURANCESPORTRIKS></a>&nbsp&nbsp<input type="checkbox" ng-model="inc.sportCheckBox"/> 
 					        </div>
 					    </div> 
 					    <br/>          
-	                    <table class="table table-hover table-bordered" ng-if="sportCheckBox">
+	                    <table class="table table-hover table-bordered" ng-if="inc.sportCheckBox">
 	                    	<thead>
 	                        	<th class="info text-center" colspan="2" translate="SPORTINSURANCERISKS">
 	                        	</th>
@@ -195,10 +189,42 @@
 				                    		</td>		                    			
 				                    	</tr>
 				                    	<tr>
-				                    		<td>
+				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span>
-				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" ng-model="inc.homeCheckBox"/>
+				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" ng-model="inc.homeCheckBox" ng-click="inc.closeOthers()"/>
 				                    			<i class="fa fa-info-circle" style="font-size: 18px;" data-toggle="tooltip" data-placement="top" title="{{'HOMEINSURACECOVERING'|translate}}"></i>
+				                    		</td>
+				                    	</tr>
+				                    	<tr ng-if="inc.homeCheckBox">
+				                    		<td colspan="3">
+				                    			<form class="state-form form-horizontal" name="inc.form" novalidate>
+				                    				<input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required>
+									            	<p class="text-center" ng-show="inc.form.homeArea.$error.pattern" style="color: red;" translate="OWNERAREAFORM"> </p>
+									            	<p class="text-center" ng-show="inc.form.homeArea.$touched && inc.form.homeArea.$error.required" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p> 
+									            
+									            
+									            	<input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required>
+           											<p class="text-center" ng-show="inc.form.ageOfHome.$error.pattern" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
+           											<p class="text-center" ng-show="inc.form.ageOfHome.$touched && inc.form.ageOfHome.$error.required" style="color: red;" translate="OWNERCONSTRUCTIONYEARFORM"> </p>
+           										
+           											<input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required>
+           											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$error.pattern" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
+           											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$touched && inc.form.estimatedValueOfHome.$error.required" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEFORM"> </p>
+           										</form>
+				                    		</td>
+				                    	</tr>
+				                    	<tr class="text-center" ng-if="inc.homeCheckBox">
+				                    		<td>
+				                    			 <span translate="FIREINSURANCE"></span>    <br/>
+				                    			 <span translate="FLOODINSURANCE"></span>   <br/>
+				                    			 <span translate="THEFTINSURANCE"></span>    <br/>
+				                    			 <span translate="EARTHQUAKEINSURANCE"></span>   <br/>
+				                    		</td>
+				                    		<td>
+				                    			<input type="checkbox" ng-model="inc.fire"/> <br/>
+				                    			<input type="checkbox" ng-model="inc.flood"/> <br/>
+				                    			<input type="checkbox" ng-model="inc.theft"/> <br/>
+				                    			<input type="checkbox" ng-model="inc.earthshake"/> <br/>
 				                    		</td>
 				                    	</tr>
 				                    	<tr>	                    
@@ -207,10 +233,24 @@
 				                    		</td>		                    			
 				                    	</tr>
 				                    	<tr>
-				                    		<td>
+				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span>
-				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" ng-model="inc.roadCheckBox"/>
-				                    			<i class="fa fa-info-circle" style="font-size: 18px;" data-toggle="tooltip" data-placement="top" title="{{'VEHICLEINSURACECOVERING'|translate}}"></i>
+				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" ng-model="inc.roadCheckBox" ng-click="inc.closeOthers()"/>
+				                    			<i class="fa fa-info-circle" ng-click="inc.openD()" style="font-size: 18px;"></i>
+				                    		</td>
+				                    	</tr>
+				                    	<tr class="text-center" ng-if="inc.roadCheckBox">
+				                    		<td>
+				                    			 <span translate="TOWING"></span>    <br/>
+				                    			 <span translate="REPAIR"></span>   <br/>
+				                    			 <span translate="HOTEL"></span>    <br/>
+				                    			 <span translate="ALTERNATIVEVEHICLE"></span>   <br/>
+				                    		</td>
+				                    		<td>
+				                    			<input type="checkbox" ng-model="inc.towing"/> <br/>
+				                    			<input type="checkbox" ng-model="inc.repair"/> <br/>
+				                    			<input type="checkbox" ng-model="inc.hotel"/> <br/>
+				                    			<input type="checkbox" ng-model="inc.alternative"/> <br/>
 				                    		</td>
 				                    	</tr>
 			                        </tbody>
@@ -444,7 +484,7 @@
               		<div class="row">
               			<div class="col-md-offset-9">
 	              			<a ui-sref="home"> <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button> </a>
-	                        <a ui-sref="#"> <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button> </a>
+	                         <button type="button" class="btn btn-success" ng-click="inc.nextPage()" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button>
 	                    </div>
               		</div>
               	<br/><br/>
