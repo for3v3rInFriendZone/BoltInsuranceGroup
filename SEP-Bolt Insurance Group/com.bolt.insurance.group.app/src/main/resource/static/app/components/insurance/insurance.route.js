@@ -95,6 +95,28 @@
 									controllerAs : 'inc'
 								}
 							}
+						})
+				.state(
+						'insurance-users',
+						{
+							url : '/insurance/users',
+							views : {
+								navbar : {
+									templateUrl : 'app/components/insurance/header.html',
+									controller : 'InsuranceController',
+									controllerAs : 'inc'
+								},
+								content : {
+									templateUrl : 'app/components/insurance/insurance-users/insurance-users.html',
+									controller : 'InsuranceUsersController',
+									controllerAs : 'iuc'
+								},
+								footer : {
+									templateUrl : 'app/components/insurance/footer.html',
+									controller : 'InsuranceController',
+									controllerAs : 'inc'
+								}
+							}
 						});
 	}
 })();

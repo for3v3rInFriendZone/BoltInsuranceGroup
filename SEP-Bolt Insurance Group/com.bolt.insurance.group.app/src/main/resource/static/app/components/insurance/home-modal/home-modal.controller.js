@@ -7,8 +7,6 @@
 
 	HomeInsuranceController.$inject = ['$scope'];
 	function HomeInsuranceController($scope) {
-		
-		console.log('USAO U HIC!');
 	
 	}
 	

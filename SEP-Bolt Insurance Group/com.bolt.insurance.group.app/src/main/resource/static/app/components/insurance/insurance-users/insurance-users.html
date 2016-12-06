@@ -1,0 +1,117 @@
+<div style="background: #f7f7f7;" id="all">
+	<div class="clearfix">
+		<div class="item">
+			<div class="container text-white">
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<h2 class="text-center" translate="TRAVELINSURANCE"></h2>
+				<br />
+				<hr
+					style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="progress">
+							<div class="progress-bar form-control" role="progressbar"
+								aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+								style="width: 25%; background-color: green;"></div>
+							<div class="progress-bar form-control" role="progressbar"
+								aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+								style="width: 25%; background-color: blue;">
+							</div>
+							<div class="progress-bar form-control" role="progressbar"
+								aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+								style="width: 25%; background-color: #997300">
+								<b style="color: white;" translate="STEP3"> </b>
+							</div>
+						</div>
+						<p class="text-center" style="color: #997300;" translate="USERSINSURANCE">
+						</p>
+					</div>
+				</div>
+				<br />
+				<br />
+				<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+				
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<table class="table table-hover table-bordered text-center">
+							<thead>
+								<th class="info text-center" colspan="5"
+									translate="INSURANCEUSERS"></th>
+							</thead>
+							<thead>
+								<th class="success text-center" translate="NAME"></th>
+								<th class="success text-center" translate="SURNAME"></th>
+								<th class="success text-center" translate="JMBG"></th>
+								<th class="success text-center" translate="PASSPORTNUMBER"></th>
+								<th class="success text-center" translate="REMOVE"></th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="user in iuc.users | orderBy:'user.surname'">
+									<td ng-click="iuc.editUser($index)">{{user.firstName}}</td>
+									<td ng-click="iuc.editUser($index)">{{user.surname}}</td>
+									<td ng-click="iuc.editUser($index)">{{user.jmbg}}</td>
+									<td ng-click="iuc.editUser($index)">{{user.passport}}</td>
+									<td><i style="font-size: 22px;"
+										ng-click="iuc.removeUser($index)" class="fa fa-trash-o"> </i></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="text-center">
+							<button class="btn btn-success" type="button"
+								ng-click="iuc.newUser()">
+								<i style="font-size: 22px;" class="fa fa-plus"> </i>
+							</button>
+						</div>
+					</div>
+				</div>
+				
+				<br/>
+				<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<table class="table table-hover table-bordered text-center">
+									<thead>
+										<th class="info text-center" colspan="5"
+											translate="NUMUSERS"></th>
+									</thead>
+									<thead>
+										<th class="success text-center" translate="KIDS"></th>
+										<th class="success text-center" translate="GROWNUPS"></th>
+										<th class="success text-center" translate="OLDS"></th>
+									</thead>
+									<tbody>
+										<tr>
+											<td> <div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="iuc.kids" readonly> </div> </td>
+											<td> <div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="iuc.grownups" readonly> </div> </td>
+											<td> <div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="iuc.olds" readonly> </div> </td>
+										</tr>
+									</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<br/>
+				<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+				<div class="row">
+					<div class="col-md-offset-9">
+							<button type="button" ng-click="iuc.back()" class="btn btn-warning"
+								data-toggle="tooltip" data-placement="top" title="Back">
+								<i class="fa fa-arrow-left"></i>
+							</button>
+						<button type="button" class="btn btn-success"
+							data-toggle="tooltip" data-placement="top" title="Next"
+							ng-click="tpc.next()">
+							<i class="fa fa-arrow-right"></i>
+						</button>
+					</div>
+				</div>
+				<br />
+				<br />
+			</div>
+		</div>
+	</div>
+</div>

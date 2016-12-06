@@ -8,9 +8,9 @@
 	TotalPriceController.$inject = ['$scope', '$translate', 'localStorageService', '$http', '$state'];
 	function TotalPriceController($scope, $translate, localStorageService, $http, $state) {
 		var tpc = this;
-		
+
 		var payload = {
-				world: localStorageService.cookie.get('world'),
+				world: localStorageService.cookie.get('world'), 
 				money: localStorageService.cookie.get('money'),
 				kids: localStorageService.cookie.get('kids'),
 				grownups: localStorageService.cookie.get('grownups'),
@@ -18,7 +18,7 @@
 				dt1: new Date(parseInt(localStorageService.cookie.get('date1'))),
 				dt2: new Date(parseInt(localStorageService.cookie.get('date2'))),
 				sportCheckBox: localStorageService.cookie.get('sportCheckBox'),
-				selectedSport: localStorageService.cookie.get('selectedSport').subname,
+				selectedSport: localStorageService.cookie.get('selectedSport'),
 				homeCheckBox: localStorageService.cookie.get('homeCheckBox'),
 				roadCheckBox: localStorageService.cookie.get('roadCheckBox'),
 				towing: localStorageService.cookie.get('towingCheckBox'),
@@ -52,14 +52,8 @@
 		$scope.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
 		$scope.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
 		
-		tpc.next = function(){
-			if($scope.homeCheckBox) {
-				$state.go('homeinsurance');
-			}
-			else if($scope.roadCheckBox) {
-				$state.go('vehicleinsurance');
-			}
-			
+		tpc.next = function() {
+			$state.go('insurance-users');
 		}
 		
 	}

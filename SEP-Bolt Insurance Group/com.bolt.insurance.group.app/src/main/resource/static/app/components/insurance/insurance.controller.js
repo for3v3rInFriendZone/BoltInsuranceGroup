@@ -187,10 +187,10 @@
 		 * Getting data for a sport risk.
 		 */
 		Restangular.all('subgroup').getList({
-			'risk.id' : 3
+			'risk.id' : 4
 		}).then(function(data) {
 			for (var i = 0; i < data.length; i++) {
-				if (data[i].risk.id === 3) {
+				if (data[i].risk.id === 4) {
 					inc.sports.push(data[i]);
 				}
 			}
@@ -243,7 +243,7 @@
 			inc.roadInsurance = true;
 			inc.vehicle = {};
 		}
-		
+		  
 		inc.calculateYearsFromJMBG = function(user){	
 		    var bornDate = user.jmbg;
 				
@@ -275,11 +275,20 @@
 		/**
 		 * Opens dialog for more information about vehicle insurance
 		 */
-		inc.openD = function(){
+		inc.openV = function(){
 			 $fancyModal.open({ templateUrl: 'app/components/insurance/insurance-info/vehicleInfoInsurance.html'});   
 		}
 		
-		inc.nextPage = function() {
+		inc.openH = function() {
+			$fancyModal.open({ templateUrl: 'app/components/insurance/insurance-info/homeInsuranceInfo.html'});   
+		}
+		
+		inc.submitForm = function() {
+			inc.submitted = true;
+			if(inc.form.$invalid) {
+				return;
+			}
+			
 			if(localStorageService.cookie.isSupported){
 				localStorageService.cookie.set('world', inc.world, 1, true);
 				localStorageService.cookie.set('money', inc.money, 1, true);
@@ -310,6 +319,10 @@
 			$state.go('total-price');
 		}
 		
+		inc.nextPage = function() {
+			
+		}
+		
 		inc.closeOthers = function() {
 			if(inc.homeCheckBox === false) {
 				inc.fire = false;
@@ -325,6 +338,9 @@
 				inc.repair = false;
 				inc.hotel = false;
 				inc.alternative = false;
+			}
+			if(inc.sportCheckBox === false) {
+				inc.selectedSport = '';
 			}
 		}
 		

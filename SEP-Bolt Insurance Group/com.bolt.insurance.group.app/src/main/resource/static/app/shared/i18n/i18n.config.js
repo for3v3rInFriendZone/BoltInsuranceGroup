@@ -129,10 +129,28 @@
 			OFFERSVEHICLE: "Offers for road assistance insurance",
 			STEP1: "Step 1",
 			STEP2: "Step 2",
+			STEP3: "Step 3",
+			FIRE: "Fire",
+			FLOOD: "Flood",
+			THEFT: "Theft",
+			EARTHSHAKE: "Earthshake",
+			FIRECOVERS: "Insurance against fire in your house/flat",
+			FLOODCOVERS: "Insurance againt flood in your house/flat",
+			THEFTCOVERS: "Insurance against theft in your house/flat",
+			EARTHSHAKECOVERS: "Insurance against earthshake",
 			FIREINSURANCE: "Fire insurance",
 			FLOODINSURANCE: "Flood insurance",
 			THEFTINSURANCE: "Theft insurance",
-			EARTHQUAKEINSURANCE: "Earthquake insurance"
+			EARTHQUAKEINSURANCE: "Earthquake insurance",
+			RADIOWORLD: "You have to choose a part of world you are traveling to",
+			RADIOMONEY: "You have to choose how much money you want to be insured to",
+			OWNERUSER: "You have to insert at least one person older then 18, to be an insurance owner",
+			DATEVALIDATION: "You have to enter a start date and end date of your insurance",
+			SPORTCHOOSE: "You have to choose a sport",
+			USERSINSURANCE: "Input of insurance users",
+			NUMUSERS: "Number of users on insurance"
+			
+			
 		});
 		$translateProvider.translations('sr', {
 			INTRO: "Uvod",
@@ -250,10 +268,26 @@
 			OFFERSVEHICLE: "Ponude koje obuhvata paket Pomoć na putu",
 			STEP1: "Korak 1",
 			STEP2: "Korak 2",
+			STEP3: "Korak 3",
+			FIRE: "Požar",
+			FLOOD: "Poplava",
+			THEFT: "Krađa",
+			EARTHSHAKE: "Zemljotres",
+			FIRECOVERS: "Osiguranje od požara u Vašoj kući/stanu",
+			FLOODCOVERS: "Osiguranje od poplave u Vašoj kući/stanu",
+			THEFTCOVERS: "Osiguranje od krađe u Vašoj kući/stanu",
+			EARTHSHAKECOVERS: "Osiguranje od zemljotresa",
 			FIREINSURANCE: "Osiguranje od požara",
 			FLOODINSURANCE: "Osiguranje od poplava",
 			THEFTINSURANCE: "Osiguranje od krađe",
-			EARTHQUAKEINSURANCE: "Osiguranje od zemljotresa"
+			EARTHQUAKEINSURANCE: "Osiguranje od zemljotresa",
+			RADIOWORLD: "Morate izabrati deo sveta gde putujete.",
+			RADIOMONEY: "Morate izabrati količinu novca za osiguranje",
+			OWNERUSER: "Morate uneti barem jednu osobu stariju od 18 godina, za potrebe nosioca osiguranja",
+			DATEVALIDATION: "Morate definisati trajanje putovanje",
+			SPORTCHOOSE: "Morate izabrati sport",
+			USERSINSURANCE: "Unos korisnika osiguranja",
+			NUMUSERS: "Broj korisnika na osiguranju",
 
 		});
 
