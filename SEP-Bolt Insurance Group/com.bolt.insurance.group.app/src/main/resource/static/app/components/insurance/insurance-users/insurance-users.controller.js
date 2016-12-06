@@ -99,15 +99,15 @@
 			var years = Math.floor(checkDate / 31556952000);
 				
 			if(years < 18) {
-				inc.personCollection.below18 = inc.personCollection.below18+1;
+				iuc.personCollection.below18 = iuc.personCollection.below18+1;
 			}else if(years >= 18 && years < 60) {
-				inc.personCollection.inBetween18And60 = inc.personCollection.inBetween18And60+1;
+				iuc.personCollection.inBetween18And60 = iuc.personCollection.inBetween18And60+1;
 			}else{
-				inc.personCollection.after60 = inc.personCollection.after60+1;
+				iuc.personCollection.after60 = iuc.personCollection.after60+1;
 			}
 		    
 			
-			return inc.personCollection;
+			return iuc.personCollection;
 				
 		}
 	}
