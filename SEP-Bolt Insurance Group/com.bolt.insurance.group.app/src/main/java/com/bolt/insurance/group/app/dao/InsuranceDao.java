@@ -1,11 +1,14 @@
 package com.bolt.insurance.group.app.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InsuranceDao {
 
 	private double amount;
-	private List<RiskDao> risks;
+	private double discountPrice;
+	private double price;
+	private List<RiskDao> risks = new ArrayList<RiskDao>();
 	private PersonsDao persons;
 	private int days;
 	private double travelInsurancePrice;
@@ -18,6 +21,22 @@ public class InsuranceDao {
 	
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+	
+	public double getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(double discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	
 	public List<RiskDao> getRisks() {

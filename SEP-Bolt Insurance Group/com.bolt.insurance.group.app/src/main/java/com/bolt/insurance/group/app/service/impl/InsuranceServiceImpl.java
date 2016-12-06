@@ -3,9 +3,11 @@ package com.bolt.insurance.group.app.service.impl;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bolt.insurance.group.app.dao.InsuranceDao;
 import com.bolt.insurance.group.app.model.Insurance;
 import com.bolt.insurance.group.app.repository.InsuranceRepository;
 import com.bolt.insurance.group.app.service.InsuranceService;
@@ -47,9 +49,10 @@ public class InsuranceServiceImpl implements InsuranceService{
 	}
 
 	@Override
-	public int calculateDays(Date startDate, Date endDate) {
-		long milliseconds = endDate.getTime() - startDate.getTime();
+	public int calculateDays(long startDate, long endDate) {
+		long milliseconds = endDate - startDate;
 		return (int) TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
 	}
+
 
 }

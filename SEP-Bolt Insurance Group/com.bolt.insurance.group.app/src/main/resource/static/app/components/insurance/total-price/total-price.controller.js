@@ -15,10 +15,10 @@
 				kids: localStorageService.cookie.get('kids'),
 				grownups: localStorageService.cookie.get('grownups'),
 				olds: localStorageService.cookie.get('olds'),
-				dt1: new Date(parseInt(localStorageService.cookie.get('date1'))),
-				dt2: new Date(parseInt(localStorageService.cookie.get('date2'))),
+				dt1: localStorageService.cookie.get('date1'),
+				dt2: localStorageService.cookie.get('date2'),
 				sportCheckBox: localStorageService.cookie.get('sportCheckBox'),
-				selectedSport: localStorageService.cookie.get('selectedSport').subname,
+				selectedSport: localStorageService.cookie.get('selectedSport'),
 				homeCheckBox: localStorageService.cookie.get('homeCheckBox'),
 				roadCheckBox: localStorageService.cookie.get('roadCheckBox'),
 				towing: localStorageService.cookie.get('towingCheckBox'),
@@ -34,10 +34,9 @@
 				estimatedvalueofhome: localStorageService.cookie.get('estimatedValueOfHome')	
 		}
 		
-		$http.post('https://localhost:8443/insurance/checkPrice',
-				payload)
-		.success(function(data, status, header){
-			var aaa = data;
+		$http.post('https://localhost:8443/insurance/checkPrice', payload)
+		.then(function(response) {
+			  $scope.insuranceInfo = response.data;
 		});
 		
 		$scope.world = localStorageService.cookie.get('world');

@@ -18,14 +18,15 @@ INSERT INTO risk (risk_name, price, risk_type) VALUES ('starost_stana', 4, 2);
 INSERT INTO risk (risk_name, price, risk_type) VALUES ('procenjena_vrednost', 6, 2);
 INSERT INTO risk (risk_name, price, risk_type) VALUES ('vrsta_osiguranja', 5, 2);
 INSERT INTO risk (risk_name, price, risk_type) VALUES ('paket', 4, 3);
+INSERT INTO risk (risk_name, price, risk_type) VALUES ('vrednost', 4, 1);
 
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (1, 'do 18', 1);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (1.5, '18 do 60', 1);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, 'preko 60', 1);
 
-INSERT INTO subgroup (coefficient, subname, risk) VALUES (1, 'Evropa/SSSR', 2);
-INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, 'Evropa', 2);
-INSERT INTO subgroup (coefficient, subname, risk) VALUES (3, 'Svet', 2);
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (1, 'EUNA', 2);
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, 'EUNAA', 2);
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (3, 'WHOLEWORLD', 2);
 
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, 'Fudbal', 4);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (3, 'Biciklizam', 4);
@@ -57,6 +58,11 @@ INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, 'slepanje', 9);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (3, 'popravka', 9);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, 'smestaj', 9);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (1, 'prevoz', 9);
+
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (1, '10000', 10);
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (1.8, '18000', 10);
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (2.6, '26000', 10);
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (3.4, '34000', 10);
 
 INSERT INTO vehicle_type (name) VALUES ('SUV');
 INSERT INTO vehicle_type (name) VALUES ('kupe');

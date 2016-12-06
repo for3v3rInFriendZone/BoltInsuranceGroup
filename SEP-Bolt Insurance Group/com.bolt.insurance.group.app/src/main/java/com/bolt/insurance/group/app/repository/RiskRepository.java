@@ -8,4 +8,5 @@ import com.bolt.insurance.group.app.model.Risk;
 @Repository
 public interface RiskRepository extends CrudRepository<Risk, Long>{
 
+	public Risk findByName(String name);
 }

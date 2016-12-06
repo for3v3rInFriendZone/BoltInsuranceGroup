@@ -29,7 +29,7 @@
 		inc.fire = localStorageService.cookie.get('fireCheckBox');
 		inc.flood = localStorageService.cookie.get('floodCheckBox');
 		inc.theft = localStorageService.cookie.get('theftCheckBox');
-		inc.earthshaker = localStorageService.cookie.get('earthshakerCheckBox');
+		inc.earthshake = localStorageService.cookie.get('earthshakerCheckBox');
 		inc.homearea = localStorageService.cookie.get('homeArea');
 		inc.ageofhome = localStorageService.cookie.get('ageOfHome');
 		inc.estimatedvalueofhome = localStorageService.cookie.get('estimatedValueOfHome');
@@ -190,7 +190,7 @@
 			'risk.id' : 3
 		}).then(function(data) {
 			for (var i = 0; i < data.length; i++) {
-				if (data[i].risk.id === 3) {
+				if (data[i].risk.id === 4) {
 					inc.sports.push(data[i]);
 				}
 			}
@@ -299,7 +299,7 @@
 				localStorageService.cookie.set('fireCheckBox', inc.fire, 1, true);
 				localStorageService.cookie.set('floodCheckBox', inc.flood, 1, true);
 				localStorageService.cookie.set('theftCheckBox', inc.theft, 1, true);
-				localStorageService.cookie.set('earthshakerCheckBox', inc.earthshaker, 1, true);
+				localStorageService.cookie.set('earthshakerCheckBox', inc.earthshake, 1, true);
 				localStorageService.cookie.set('homeArea', inc.homearea, 1, true);
 				localStorageService.cookie.set('ageOfHome', inc.ageofhome, 1, true);
 				localStorageService.cookie.set('estimatedValueOfHome', inc.estimatedvalueofhome, 1, true);

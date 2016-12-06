@@ -71,7 +71,7 @@
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <label class="text-center form-control" style="background-color: lightblue;"> Ukupna cena putnog osiguranja: <b>2323</b></label>
+	                    <label class="text-center form-control" style="background-color: lightblue;"> Ukupna cena putnog osiguranja: <b>{{insuranceInfo.travelInsurancePrice}}</b></label>
 	                    <hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 	                    
 	                    <table class="table table-hover table-bordered" ng-if="homeCheckBox">
@@ -88,7 +88,7 @@
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <label ng-if="homeCheckBox" class="text-center form-control" style="background-color: lightblue;"> Cena osiguranja kuce/stana: <b>2323</b></label>
+	                    <label ng-if="homeCheckBox" class="text-center form-control" style="background-color: lightblue;"> Cena osiguranja kuce/stana: <b>{{insuranceInfo.homeInsurancePrice}}</b></label>
 	                    <hr ng-if="homeCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 	                    
 	                    <table class="table table-hover table-bordered" ng-if="roadCheckBox">
@@ -105,7 +105,7 @@
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <label ng-if="roadCheckBox" class="success text-center form-control" style="background-color: lightblue;"> Cena pomoc na putu: <b>2323</b></label>
+	                    <label ng-if="roadCheckBox" class="success text-center form-control" style="background-color: lightblue;"> Cena pomoc na putu: <b>{{insuranceInfo.carInsurancePrice}}</b></label>
 	                    <hr ng-if="roadCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 					</div>
 				</div>
@@ -126,7 +126,7 @@
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Popust: <b>32 </b>
+										Popust: <b>{{insuranceInfo.price - insuranceInfo.discountPrice}} </b>
 		                    		</td>
 						        </tr>
 						        <tr>
@@ -136,7 +136,7 @@
 						        </tr>
 						        <tr>
 		                    		<td class="warning text-center">
-										Ukupna cena za uplatu: <b>455552 </b>
+										Ukupna cena za uplatu: <b>{{insuranceInfo.amount}} </b>
 		                    		</td>
 						        </tr>
 		                    </tbody>

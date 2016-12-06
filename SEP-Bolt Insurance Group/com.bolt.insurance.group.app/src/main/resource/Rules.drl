@@ -19,6 +19,7 @@ salience 1
 		$risk : (RiskDao(name == "starost") from $insurance.risks) 
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket");
 		
@@ -30,12 +31,17 @@ salience 1
 				
 				System.out.println("Starost ++++" + $insurance.travelInsurancePrice);	
 			
-			} else if (r.name == "region"){
+			} else if (r.name == "region" || r.name == "vrednost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + r.subgroup.get(0).coefficient * r.price.value);
 				}
 				
-				System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+				if(r.name == "region"){
+					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+				} else if (r.name == "vrednost"){
+					System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
+				}
+				
 		
 			} else if (r.name == "trajanje"){
 				modify($insurance){
@@ -47,19 +53,36 @@ salience 1
 			}
 		}
 		
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice);
-		}
+		
 		
 		System.out.println("Cena ---" + $insurance.amount);
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice);
 			}
 			
-			System.out.println("Popust ----" + $insurance.amount);
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
+			}
+			
+			System.out.println("Popust ----" + $insurance.discountPrice);
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
 		
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 		
 		insert(new AlreadyProcessed());
@@ -75,6 +98,7 @@ salience 2
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
 			&& (RiskDao(name == "sport") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket + spot");
 
@@ -86,7 +110,7 @@ salience 2
 				
 				System.out.println("Starost ++++" + $insurance.travelInsurancePrice);	
 			
-			} else if (r.name == "region" || r.name == "sport"){
+			} else if (r.name == "region" || r.name == "sport" || r.name == "vrednost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + r.subgroup.get(0).coefficient * r.price.value);
 				}
@@ -95,6 +119,8 @@ salience 2
 					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
 				} else if (r.name == "sport"){
 					System.out.println("Sport ++++" + $insurance.travelInsurancePrice);
+				} else if (r.name == "vrednost"){
+					System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
 				}
 			} else if (r.name == "trajanje"){
 				modify($insurance){
@@ -105,20 +131,36 @@ salience 2
 			
 			}
 		}
-
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice);
-		}
-		
+	
 		System.out.println("Cena ---" + $insurance.amount);
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
 			}
 			
 			System.out.println("Popust ----" + $insurance.amount);
 	
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 
 		insert(new AlreadyProcessed());
@@ -134,6 +176,7 @@ salience 3
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
 			&& (RiskDao(name == "paket") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket + auto");
 		
@@ -152,12 +195,16 @@ salience 3
 				
 				System.out.println("Region ++++" + $insurance.travelInsurancePrice);
 		
-			} else if (r.name == "trajanje"){
+			} else if (r.name == "trajanje" || r.name == "vrednost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + r.price.value * $insurance.days);
 				}
 				
-				System.out.println("Trajanje ++++" + $insurance.travelInsurancePrice);
+				if(r.name == "region"){
+					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+				} else if (r.name == "vrednost"){
+					System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
+				}
 			
 			} else if (r.name == "paket"){
 				for(Subgroup s : r.subgroup){
@@ -180,24 +227,44 @@ salience 3
 					}
 				}
 				
+				modify($insurance){
+					setCarInsurancePrice($insurance.carInsurancePrice * $insurance.days);
+				}
+				
 				System.out.println("auto ---- " + $insurance.carInsurancePrice);
 			
 			}
-		}
-		
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice + $insurance.carInsurancePrice);
 		}
 		
 		System.out.println("Cena ---" + $insurance.amount);
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice + $insurance.carInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
 			}
 			
 			System.out.println("Popust ----" + $insurance.amount);
 	
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice + $insurance.carInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 		
 		insert(new AlreadyProcessed());
@@ -212,6 +279,7 @@ salience 4
 		$risk : (RiskDao(name == "starost") from $insurance.risks)
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 			&& (RiskDao(name == "sport") from $insurance.risks)
 			&& (RiskDao(name == "paket") from $insurance.risks)
 	then
@@ -224,7 +292,7 @@ salience 4
 				
 				System.out.println("Starost ++++" + $insurance.travelInsurancePrice);	
 			
-			} else if (r.name == "region" || r.name == "sport"){
+			} else if (r.name == "region" || r.name == "sport" || r.name == "vrednost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + r.subgroup.get(0).coefficient * r.price.value);
 				}
@@ -233,6 +301,8 @@ salience 4
 					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
 				} else if (r.name == "sport"){
 					System.out.println("Sport ++++" + $insurance.travelInsurancePrice);
+				} else if (r.name == "vrednost"){
+					System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
 				}
 			} else if (r.name == "trajanje"){
 				modify($insurance){
@@ -262,24 +332,44 @@ salience 4
 					}
 				}
 				
+				modify($insurance){
+					setCarInsurancePrice($insurance.carInsurancePrice * $insurance.days);
+				}
+				
 				System.out.println("auto ---- " + $insurance.carInsurancePrice);
 			
 			}
 		}
-		
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice + $insurance.carInsurancePrice);
-		}
-		
+
 		System.out.println("Cena ---" + $insurance.amount);
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice + $insurance.carInsurancePrice);
+			}	
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
 			}
 		
 			System.out.println("Popust ----" + $insurance.amount);
 		
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice + $insurance.carInsurancePrice);
+			}	
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 		
 		insert(new AlreadyProcessed());
@@ -294,6 +384,7 @@ salience 3
 		$risk : (RiskDao(name == "starost") from $insurance.risks)
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 			&& (RiskDao(name == "povrsina") from $insurance.risks)
 			&& (RiskDao(name == "starost_stana") from $insurance.risks)
 			&& (RiskDao(name == "procenjena_vrednost") from $insurance.risks)
@@ -309,13 +400,17 @@ salience 3
 				
 				System.out.println("Starost ++++" + $insurance.travelInsurancePrice);	
 			
-			} else if (r.name == "region" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost"){
-				if(r.name == "region"){
+			} else if (r.name == "region" || r.name == "vrednost" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost"){
+				if(r.name == "region" || r.name == "vrednost"){
 					modify($insurance){
 						setTravelInsurancePrice($insurance.travelInsurancePrice + r.subgroup.get(0).coefficient * r.price.value);
 					}
 					
-					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					if(r.name == "region"){
+						System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					} else if (r.name == "vrednost"){
+						System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
+					}
 				
 				} else if (r.name == "povrsina"){
 					
@@ -370,23 +465,43 @@ salience 3
 						setHomeInsurancePrice($insurance.homeInsurancePrice - $insurance.homeInsurancePrice * 0.1);
 					}
 				}
-
+				
+				modify($insurance){
+					setHomeInsurancePrice($insurance.homeInsurancePrice * $insurance.days);
+				}
 			}
 		}
 
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice + $insurance.homeInsurancePrice);
-		}
-		
 		System.out.println("Home price " + $insurance.homeInsurancePrice);
 		System.out.println("Travel price " + $insurance.travelInsurancePrice);
 		System.out.println("Cena ---" + $insurance.amount);
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice);
 			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
+			}
+			
 			System.out.println("Popust ----" + $insurance.amount);
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 
 		insert(new AlreadyProcessed());
@@ -401,6 +516,7 @@ salience 4
 		$risk : (RiskDao(name == "starost") from $insurance.risks)
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 			&& (RiskDao(name == "sport") from $insurance.risks)
 			&& (RiskDao(name == "povrsina") from $insurance.risks)
 			&& (RiskDao(name == "starost_stana") from $insurance.risks)
@@ -417,13 +533,17 @@ salience 4
 				
 				System.out.println("Starost ++++" + $insurance.travelInsurancePrice);	
 			
-			} else if (r.name == "region" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost" || r.name == "sport"){
-				if(r.name == "region"){
+			} else if (r.name == "region" || r.name == "vrednost" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost" || r.name == "sport"){
+				if(r.name == "region" || r.name == "vrednost"){
 					modify($insurance){
 						setTravelInsurancePrice($insurance.travelInsurancePrice + r.subgroup.get(0).coefficient * r.price.value);
 					}
 					
-					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					if(r.name == "region"){
+						System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					} else if (r.name == "vrednost"){
+						System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
+					}
 				
 				} else if (r.name == "sport"){
 					modify($insurance){
@@ -484,11 +604,11 @@ salience 4
 						setHomeInsurancePrice($insurance.homeInsurancePrice - $insurance.homeInsurancePrice * 0.1);
 					}
 				}
+				
+				modify($insurance){
+					setHomeInsurancePrice($insurance.homeInsurancePrice * $insurance.days);
+				}
 			}
-		}
-
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice + $insurance.homeInsurancePrice);
 		}
 		
 		System.out.println("Home price " + $insurance.homeInsurancePrice);
@@ -497,9 +617,30 @@ salience 4
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice);
 			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
+			}
+			
 			System.out.println("Popust ----" + $insurance.amount);
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 
 		insert(new AlreadyProcessed());
@@ -515,6 +656,7 @@ salience 5
 		$risk : (RiskDao(name == "starost") from $insurance.risks)
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 			&& (RiskDao(name == "povrsina") from $insurance.risks)
 			&& (RiskDao(name == "starost_stana") from $insurance.risks)
 			&& (RiskDao(name == "procenjena_vrednost") from $insurance.risks)
@@ -531,13 +673,17 @@ salience 5
 				
 				System.out.println("Starost ++++" + $insurance.travelInsurancePrice);	
 			
-			} else if (r.name == "region" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost"){
-				if(r.name == "region"){
+			} else if (r.name == "region" || r.name == "vrednost" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost"){
+				if(r.name == "region" || r.name == "vrednost"){
 					modify($insurance){
 						setTravelInsurancePrice($insurance.travelInsurancePrice + r.subgroup.get(0).coefficient * r.price.value);
 					}
 					
-					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					if(r.name == "region"){
+						System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					} else if (r.name == "vrednost"){
+						System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
+					}
 				
 				}  else if (r.name == "povrsina"){
 					
@@ -591,6 +737,10 @@ salience 5
 							setHomeInsurancePrice($insurance.homeInsurancePrice - $insurance.homeInsurancePrice * 0.1);
 						}
 					}
+					
+					modify($insurance){
+						setHomeInsurancePrice($insurance.homeInsurancePrice * $insurance.days);
+					}
 				} else if (r.name == "paket"){
 					for(Subgroup s : r.subgroup){
 						modify($insurance){
@@ -614,12 +764,12 @@ salience 5
 							setCarInsurancePrice($insurance.carInsurancePrice - $insurance.carInsurancePrice * 0.1);
 						}
 					}
+					
+					modify($insurance){
+						setCarInsurancePrice($insurance.carInsurancePrice * $insurance.days);
+					}
 				}
 			}
-		}
-
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice + $insurance.homeInsurancePrice + $insurance.carInsurancePrice);
 		}
 		
 		System.out.println("Home price " + $insurance.homeInsurancePrice);
@@ -629,11 +779,30 @@ salience 5
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice + $insurance.carInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
 			}
 			
 			System.out.println("Popust ----" + $insurance.amount);
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice + $insurance.carInsurancePrice);
+			}
 			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 
 		insert(new AlreadyProcessed());
@@ -649,6 +818,7 @@ salience 6
 		$risk : (RiskDao(name == "starost") from $insurance.risks)
 			&& (RiskDao(name == "region") from $insurance.risks)
 			&& (RiskDao(name == "trajanje") from $insurance.risks)
+			&& (RiskDao(name == "vrednost") from $insurance.risks)
 			&& (RiskDao(name == "sport") from $insurance.risks)
 			&& (RiskDao(name == "povrsina") from $insurance.risks)
 			&& (RiskDao(name == "starost_stana") from $insurance.risks)
@@ -666,13 +836,17 @@ salience 6
 			
 				System.out.println("Starost ++++" + $insurance.travelInsurancePrice);	
 			
-			} else if (r.name == "region" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost" || r.name == "sport"){
-				if(r.name == "region"){
+			} else if (r.name == "region" || r.name == "vrednost" || r.name == "povrsina" || r.name == "starost_stana" || r.name == "procenjena_vrednost" || r.name == "sport"){
+				if(r.name == "region" || r.name == "vrednost"){
 					modify($insurance){
 						setTravelInsurancePrice($insurance.travelInsurancePrice + r.subgroup.get(0).coefficient * r.price.value);
 					}
 				
-					System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					if(r.name == "region"){
+						System.out.println("Region ++++" + $insurance.travelInsurancePrice);
+					} else if (r.name == "vrednost"){
+						System.out.println("Vrednost ++++" + $insurance.travelInsurancePrice);
+					}
 				
 				} else if (r.name == "sport"){
 					modify($insurance){
@@ -732,6 +906,10 @@ salience 6
 							setHomeInsurancePrice($insurance.homeInsurancePrice - $insurance.homeInsurancePrice * 0.1);
 						}
 					}
+					
+					modify($insurance){
+						setHomeInsurancePrice($insurance.homeInsurancePrice * $insurance.days);
+					}
 				} else if (r.name == "paket"){
 					for(Subgroup s : r.subgroup){
 						modify($insurance){
@@ -754,12 +932,12 @@ salience 6
 							setCarInsurancePrice($insurance.carInsurancePrice - $insurance.carInsurancePrice * 0.1);
 						}
 					}
+					
+					modify($insurance){
+						setCarInsurancePrice($insurance.carInsurancePrice * $insurance.days);
+					}
 				}
 			}
-		}
-
-		modify($insurance){
-			setAmount($insurance.travelInsurancePrice + $insurance.homeInsurancePrice + $insurance.carInsurancePrice);
 		}
 		
 		System.out.println("Home price " + $insurance.homeInsurancePrice);
@@ -769,10 +947,30 @@ salience 6
 		
 		if($insurance.persons.numberOfUsers > 5){
 			modify($insurance){
-				setAmount($insurance.amount - $insurance.amount * 0.2);
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice + $insurance.carInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price - $insurance.price * 0.2);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.discountPrice);
 			}
 			
 			System.out.println("Popust ----" + $insurance.amount);
+		} else {
+			modify($insurance){
+				setPrice($insurance.travelInsurancePrice + $insurance.homeInsurancePrice + $insurance.carInsurancePrice);
+			}
+			
+			modify($insurance){
+				setDiscountPrice($insurance.price);
+			}
+			
+			modify($insurance){
+				setAmount($insurance.price);
+			}
 		}
 
 		insert(new AlreadyProcessed());
