@@ -4,8 +4,8 @@ import com.bolt.insurance.group.app.model.Insurance
 import com.bolt.insurance.group.app.model.Subgroup
 
 
-import com.bolt.insurance.group.app.dao.InsuranceDao
-import com.bolt.insurance.group.app.dao.RiskDao
+import com.bolt.insurance.group.app.dto.InsuranceDto
+import com.bolt.insurance.group.app.dto.RiskDto
 
 declare AlreadyProcessed
 end
@@ -15,15 +15,15 @@ dialect "mvel"
 salience 1
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks) 
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks) 
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket");
 		
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
@@ -93,16 +93,16 @@ dialect "mvel"
 salience 2
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks)
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "sport") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks)
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "sport") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket + spot");
 
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
@@ -171,16 +171,16 @@ dialect "mvel"
 salience 3
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks)
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "paket") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks)
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "paket") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket + auto");
 		
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
@@ -275,16 +275,16 @@ dialect "mvel"
 salience 4
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks)
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
-			&& (RiskDao(name == "sport") from $insurance.risks)
-			&& (RiskDao(name == "paket") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks)
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
+			&& (RiskDto(name == "sport") from $insurance.risks)
+			&& (RiskDto(name == "paket") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket + auto + sport");
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
@@ -380,19 +380,19 @@ dialect "mvel"
 salience 3
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks)
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
-			&& (RiskDao(name == "povrsina") from $insurance.risks)
-			&& (RiskDao(name == "starost_stana") from $insurance.risks)
-			&& (RiskDao(name == "procenjena_vrednost") from $insurance.risks)
-			&& (RiskDao(name == "vrsta_osiguranja") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks)
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
+			&& (RiskDto(name == "povrsina") from $insurance.risks)
+			&& (RiskDto(name == "starost_stana") from $insurance.risks)
+			&& (RiskDto(name == "procenjena_vrednost") from $insurance.risks)
+			&& (RiskDto(name == "vrsta_osiguranja") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket + stan");
 
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
@@ -512,20 +512,20 @@ dialect "mvel"
 salience 4
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks)
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
-			&& (RiskDao(name == "sport") from $insurance.risks)
-			&& (RiskDao(name == "povrsina") from $insurance.risks)
-			&& (RiskDao(name == "starost_stana") from $insurance.risks)
-			&& (RiskDao(name == "procenjena_vrednost") from $insurance.risks)
-			&& (RiskDao(name == "vrsta_osiguranja") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks)
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
+			&& (RiskDto(name == "sport") from $insurance.risks)
+			&& (RiskDto(name == "povrsina") from $insurance.risks)
+			&& (RiskDto(name == "starost_stana") from $insurance.risks)
+			&& (RiskDto(name == "procenjena_vrednost") from $insurance.risks)
+			&& (RiskDto(name == "vrsta_osiguranja") from $insurance.risks)
 	then
 		System.out.println("Osnovni paket + stan + sport");
 
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
@@ -652,20 +652,20 @@ dialect "mvel"
 salience 5
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks)
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
-			&& (RiskDao(name == "povrsina") from $insurance.risks)
-			&& (RiskDao(name == "starost_stana") from $insurance.risks)
-			&& (RiskDao(name == "procenjena_vrednost") from $insurance.risks)
-			&& (RiskDao(name == "vrsta_osiguranja") from $insurance.risks)
-			&& (RiskDao(name == "paket") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks)
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
+			&& (RiskDto(name == "povrsina") from $insurance.risks)
+			&& (RiskDto(name == "starost_stana") from $insurance.risks)
+			&& (RiskDto(name == "procenjena_vrednost") from $insurance.risks)
+			&& (RiskDto(name == "vrsta_osiguranja") from $insurance.risks)
+			&& (RiskDto(name == "paket") from $insurance.risks)
 	then
 		System.out.println("Ceo paket - sport");
 
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
@@ -814,21 +814,21 @@ dialect "mvel"
 salience 6
 	when
 		not AlreadyProcessed()
-		$insurance : InsuranceDao()
-		$risk : (RiskDao(name == "starost") from $insurance.risks)
-			&& (RiskDao(name == "region") from $insurance.risks)
-			&& (RiskDao(name == "trajanje") from $insurance.risks)
-			&& (RiskDao(name == "vrednost") from $insurance.risks)
-			&& (RiskDao(name == "sport") from $insurance.risks)
-			&& (RiskDao(name == "povrsina") from $insurance.risks)
-			&& (RiskDao(name == "starost_stana") from $insurance.risks)
-			&& (RiskDao(name == "procenjena_vrednost") from $insurance.risks)
-			&& (RiskDao(name == "vrsta_osiguranja") from $insurance.risks)
-			&& (RiskDao(name == "paket") from $insurance.risks)
+		$insurance : InsuranceDto()
+		$risk : (RiskDto(name == "starost") from $insurance.risks)
+			&& (RiskDto(name == "region") from $insurance.risks)
+			&& (RiskDto(name == "trajanje") from $insurance.risks)
+			&& (RiskDto(name == "vrednost") from $insurance.risks)
+			&& (RiskDto(name == "sport") from $insurance.risks)
+			&& (RiskDto(name == "povrsina") from $insurance.risks)
+			&& (RiskDto(name == "starost_stana") from $insurance.risks)
+			&& (RiskDto(name == "procenjena_vrednost") from $insurance.risks)
+			&& (RiskDto(name == "vrsta_osiguranja") from $insurance.risks)
+			&& (RiskDto(name == "paket") from $insurance.risks)
 	then
 		System.out.println("Ceo paket");
 
-		for(RiskDao r : $insurance.risks){
+		for(RiskDto r : $insurance.risks){
 			if(r.name == "starost"){
 				modify($insurance){
 					setTravelInsurancePrice($insurance.travelInsurancePrice + $insurance.persons.under18Subgroup.coefficient * r.price.value * $insurance.persons.userUnder18 + $insurance.persons.between18And60Subgroup.coefficient * r.price.value * $insurance.persons.userBetween18And60 + $insurance.persons.over60Subgroup.coefficient * r.price.value * $insurance.persons.userOver60);
