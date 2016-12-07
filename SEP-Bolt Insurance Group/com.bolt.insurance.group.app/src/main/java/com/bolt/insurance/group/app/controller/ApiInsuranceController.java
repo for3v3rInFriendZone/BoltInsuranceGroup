@@ -68,95 +68,6 @@ public class ApiInsuranceController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Insurance>> getInsuracnes() throws ParseException, URISyntaxException {
-
-		DroolsFileReader dfr = new DroolsFileReader();
-		InsuranceDao insuranceDao = new InsuranceDao();
-		insuranceDao.setAmount(0.0);
-		insuranceDao.setTravelInsurancePrice(0.0);
-		insuranceDao.setCarInsurancePrice(0.0);
-		insuranceDao.setHomeInsurancePrice(0.0);
-		
-		PersonsDao personDao = new PersonsDao();
-		personDao.setUserUnder18(2);
-		personDao.setUserBetween18And60(1);
-		personDao.setUserOver60(3);
-		personDao.setNumberOfUsers(6);
-		personDao.setUnder18Subgroup(subgroupService.findBySubname("do 18"));
-		personDao.setBetween18And60Subgroup(subgroupService.findBySubname("18 do 60"));
-		personDao.setOver60Subgroup(subgroupService.findBySubname("preko 60"));
-		
-		insuranceDao.setPersons(personDao);
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date endDate = sdf.parse("21/12/2016");
-		Date startDate = sdf.parse("15/12/2016");
-		
-		insuranceDao.setDays(insuranceService.calculateDays(startDate.getTime(), endDate.getTime()));
-		
-		Risk r1 = riskService.findOne((long) 1); //starost
-		Risk r2 = riskService.findOne((long) 2); //region
-		Risk r3 = riskService.findOne((long) 3); //trajanje
-		Risk r4 = riskService.findOne((long) 4); //sport
-		Risk r5 = riskService.findOne((long) 9); //paket
-		Risk r6 = riskService.findOne((long) 5); //povrsina
-		Risk r7 = riskService.findOne((long) 6); //starost_stana
-		Risk r8 = riskService.findOne((long) 7); //procenjena_vrednost
-		Risk r9 = riskService.findOne((long) 8); //vrsta_osiguranja
-		Risk r10 = riskService.findOne((long) 10);//vrednost
-		
-		RiskDao rd1 = cfmtd.converteRisk(r1);
-		RiskDao rd2 = cfmtd.converteRisk(r2);
-		RiskDao rd3 = cfmtd.converteRisk(r3);
-		RiskDao rd4 = cfmtd.converteRisk(r4);
-		RiskDao rd5 = cfmtd.converteRisk(r5);
-		RiskDao rd6 = cfmtd.converteRisk(r6);
-		RiskDao rd7 = cfmtd.converteRisk(r7);
-		RiskDao rd8 = cfmtd.converteRisk(r8);
-		RiskDao rd9 = cfmtd.converteRisk(r9);
-		RiskDao rd10 = cfmtd.converteRisk(r10);
-		
-		
-		Subgroup s2 = subgroupService.findOne((long) 4); //ceo svet
-		Subgroup s4 = subgroupService.findOne((long) 7);
-		
-		rd2.getSubgroup().add(s2);
-		rd4.getSubgroup().add(s4);
-		rd5.getSubgroup().add(subgroupService.findBySubname("slepanje"));
-		rd5.getSubgroup().add(subgroupService.findBySubname("prevoz"));
-		rd5.getSubgroup().add(subgroupService.findBySubname("popravka"));
-		rd5.getSubgroup().add(subgroupService.findBySubname("smestaj"));
-		rd6.getSubgroup().add(homeService.checkHouseSize(35)); //povrsina stana
-		rd7.getSubgroup().add(homeService.checkHouseAge(12)); //starost stana
-		rd8.getSubgroup().add(homeService.checkHouseEstimateValue(52000)); //vrednost stana
-		rd9.getSubgroup().add(subgroupService.findOne((long) 24));
-		rd9.getSubgroup().add(subgroupService.findOne((long) 25));
-		rd10.getSubgroup().add(subgroupService.findBySubname("10000"));
-		
-		List<RiskDao> risks = new ArrayList<RiskDao>();
-		
-		risks.add(rd1);			//starost
-		risks.add(rd2);			//region
-		risks.add(rd3);			//trajanje
-		risks.add(rd4);			//sport
-		//risks.add(rd5);			//paket
-		risks.add(rd6);			//povrsina
-		risks.add(rd7);			//starost stana
-		risks.add(rd8);			//procenjena vrednost
-		risks.add(rd9);			//vrsta osiguranja
-		risks.add(rd10);		//vrednost
-		
-		insuranceDao.setRisks(risks);
-		
-		StatefulKnowledgeSession ksession = dfr.getSession();  
-        
-        ksession.insert(insuranceDao); 
-        ksession.fireAllRules();  
-        ksession.dispose();	
-		
-        
-        System.out.println("Cena bez popusta: " + insuranceDao.getPrice());
-        System.out.println("Cena sa popustom: " + insuranceDao.getDiscountPrice());
-        System.out.println("Cena osiguranja: " + insuranceDao.getAmount());
         
 		List<Insurance> insurances = (List<Insurance>) insuranceService.findAll();
 		return new ResponseEntity<List<Insurance>>(insurances, HttpStatus.OK);
@@ -199,10 +110,33 @@ public class ApiInsuranceController {
 		insuranceDao.setDiscountPrice(0.0);
 		insuranceDao.setPrice(0.0);
 		
+		personDao.setUserUnder18(0);
+		personDao.setUserBetween18And60(0);
+		personDao.setUserOver60(0);
+		personDao.setNumberOfUsers(0); 
+		
 		try {
-			int kids = Integer.parseInt(json.getString("kids"));
-			int grownups = Integer.parseInt(json.getString("grownups"));
-			int olds = Integer.parseInt(json.getString("olds"));
+			int kids = 0;
+			int grownups = 0;
+			int olds = 0;
+			
+			try {
+				kids = Integer.parseInt(json.getString("kids"));
+			} catch (Exception e) {
+				
+			}
+	
+			try {
+				grownups = Integer.parseInt(json.getString("grownups"));
+			} catch (Exception e) {
+				
+			}
+
+			try {
+				olds = Integer.parseInt(json.getString("olds"));
+			} catch (Exception e) {
+				
+			}
 			
 			personDao.setUserUnder18(kids);
 			personDao.setUserBetween18And60(grownups);
