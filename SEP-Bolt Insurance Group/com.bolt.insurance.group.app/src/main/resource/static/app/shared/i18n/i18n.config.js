@@ -162,7 +162,9 @@
 			INSURANCEPREMIUM: "Insurance premium",
 			DISCOUNT: "Discount",
 			TAX: "Tax",
-			YOURPRICE: "You have to pay"
+			YOURPRICE: "You have to pay",
+			THANKS:"Thank you for choosing Bolt.",
+			PAYMENTSUCCESS:"Your transaction was successfully processed!"
 				
 				
 						
@@ -316,7 +318,9 @@
 			INSURANCEPREMIUM: "Premija osiguranja",
 			DISCOUNT: "Popust",
 			TAX: "Porez",
-			YOURPRICE: "Vaša cena za uplatu iznosi"
+			YOURPRICE: "Vaša cena za uplatu iznosi",
+			THANKS: "Hvala što ste odabrali Bolt.",
+			PAYMENTSUCCESS:"Vaša transakcija je uspešno izvršena."
 
 		});
 

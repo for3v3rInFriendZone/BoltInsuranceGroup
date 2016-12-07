@@ -117,6 +117,28 @@
 									controllerAs : 'inc'
 								}
 							}
+						})
+				.state(
+						'payment-response',
+						{
+							url : '/insurance/payment_response',
+							views : {
+								navbar : {
+									templateUrl : 'app/components/insurance/header.html',
+									controller : 'InsuranceController',
+									controllerAs : 'inc'
+								},
+								content : {
+									templateUrl : 'app/components/insurance/payment-response/payment-response.html',
+									controller : 'PaymentResponseController',
+									controllerAs : 'prc'
+								},
+								footer : {
+									templateUrl : 'app/components/insurance/payment-response/footer.html',
+									controller : 'InsuranceController',
+									controllerAs : 'inc'
+								}
+							}
 						});
 	}
 })();
