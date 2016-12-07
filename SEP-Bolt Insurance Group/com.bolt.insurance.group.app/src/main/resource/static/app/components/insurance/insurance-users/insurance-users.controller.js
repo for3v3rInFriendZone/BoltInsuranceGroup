@@ -25,7 +25,7 @@
 		iuc.newUser = function() {			
 			userModal.open().then(function(data) {
 				iuc.users.push(data);			
-				//iuc.calculateYearsFromJMBG(data);
+				iuc.calculateYearsFromJMBG(data);
 			});
 		};
 		
@@ -99,11 +99,17 @@
 			var years = Math.floor(checkDate / 31556952000);
 				
 			if(years < 18) {
-				iuc.personCollection.below18 = iuc.personCollection.below18+1;
+				if(iuc.kids > 0) {
+					iuc.kids = iuc.kids - 1;
+				}
 			}else if(years >= 18 && years < 60) {
-				iuc.personCollection.inBetween18And60 = iuc.personCollection.inBetween18And60+1;
+				if(iuc.grownups > 0) {
+					iuc.grownups = iuc.grownups - 1;
+				}
 			}else{
-				iuc.personCollection.after60 = iuc.personCollection.after60+1;
+				if(iuc.olds > 0) {
+					iuc.olds = iuc.olds - 1;
+				}
 			}
 		    
 			

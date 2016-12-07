@@ -148,9 +148,24 @@
 			DATEVALIDATION: "You have to enter a start date and end date of your insurance",
 			SPORTCHOOSE: "You have to choose a sport",
 			USERSINSURANCE: "Input of insurance users",
-			NUMUSERS: "Number of users on insurance"
-			
-			
+			NUMUSERS: "Number of users on insurance",
+			INSURANCEPOLICY: "Insurance policy",
+			REGION: "Region",
+			EFFECTIVEDATE: "Effective date",
+			SPORTCHOSEN: "Chosen sport",
+			TOTALPRICETRAVEL: "Total price for travel insurance",
+			PROTECTIONAGAINST: "Protection against",
+			TOTALPRICEHOME: "Total price for home insurance",
+			ROADASSISTANCEPACKAGE: "Includes the following protection packages",
+			TOTALPRICEROAD: "Total price for road assistance",
+			TOTALPRICEMONEY: "Total price of all insurances",
+			INSURANCEPREMIUM: "Insurance premium",
+			DISCOUNT: "Discount",
+			TAX: "Tax",
+			YOURPRICE: "You have to pay"
+				
+				
+						
 		});
 		$translateProvider.translations('sr', {
 			INTRO: "Uvod",
@@ -288,6 +303,20 @@
 			SPORTCHOOSE: "Morate izabrati sport",
 			USERSINSURANCE: "Unos korisnika osiguranja",
 			NUMUSERS: "Broj korisnika na osiguranju",
+			INSURANCEPOLICY: "Polisa osiguranja",
+			REGION: "Region",
+			EFFECTIVEDATE: "Datum vazenja osiguranja",
+			SPORTCHOSEN: "Sport koji ste izabrali",
+			TOTALPRICETRAVEL: "Ukupna cena putnog osiguranja",
+			PROTECTIONAGAINST: "Obuhvata zaštitu od",
+			TOTALPRICEHOME: "Ukupna cena osiguranja za kuću ili stan",
+			ROADASSISTANCEPACKAGE: "Obuhvata sledeće pakete zaštite",
+			TOTALPRICEROAD: "Ukupna cena pomoći na putu",
+			TOTALPRICEMONEY: "Ukupna cena svih osiguranja",
+			INSURANCEPREMIUM: "Premija osiguranja",
+			DISCOUNT: "Popust",
+			TAX: "Porez",
+			YOURPRICE: "Vaša cena za uplatu iznosi"
 
 		});
 

@@ -30,83 +30,85 @@
 						
 						<table class="table table-hover table-bordered">
 	                    	<thead>
-	                        	<th class="info text-center" colspan="2" translate="">
-	                        		Polisa osiguranja
+	                        	<th class="info text-center" colspan="2" translate="INSURANCEPOLICY">
 	                        	</th>                        
 	                        </thead>
 	                        <thead>
-	                        	<th class="success text-center" translate="">
-	                        		Putno osiguranje
+	                        	<th class="success text-center" translate="TRAVELINSURANCE">
 	                        	</th>
 	                        </thead>
 	                        <tbody>
 		                    	<tr>
 		                    		<td class="text-center">
-										Region: <b translate="{{world}}"></b>
+										<span translate="REGION"> </span>: <b translate="{{world}}"></b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Osigurana suma: <b> {{money}}</b> <i class="fa fa-eur"> </i>
+										<span translate="INSUREDSUM"> </span>: <b> {{money}}</b> <i class="fa fa-eur"> </i>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Broj korisnika osiguranja: <br/>
-										1. Deca : <b> {{kids}}</b> <br/>
-										&nbsp 2. Odrasli:  <b> {{grownups}}</b> <br/>
-										3. Stariji:  <b> {{olds}}</b> <br/>
+										<span translate="NUMBEROFINSURANCEUSERS"> </span>: <br/>
+										1. <span translate="KIDS"> </span>: <b> {{kids}}</b> <br/>
+										&nbsp 2. <span translate="GROWNUPS"> </span>:  <b> {{grownups}}</b> <br/>
+										3. <span translate="OLDS"> </span>:  <b> {{olds}}</b> <br/>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Datum vazenja osiguranja: <br/>
+										<span translate="EFFECTIVEDATE"> </span>: <br/>
 										<b> {{dt1 | date:'dd.MM.yyyy'}} </b> do <b> {{dt2 | date:'dd.MM.yyyy'}}</b>
 		                    		</td>
 						        </tr>
 						        <tr ng-if="sportCheckBox">
 		                    		<td class="text-center">
-										Sport koji ste izabrali: <b> {{selectedSport.subname}}</b>
+										<span translate="SPORTCHOSEN"> </span>: <b> {{selectedSport.subname}}</b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <label class="text-center form-control" style="background-color: lightblue;"> Ukupna cena putnog osiguranja: <b>2323</b></label>
+	                    <label class="text-center form-control" style="background-color: lightblue;"> <u translate="TOTALPRICETRAVEL"></u> <b>: 2323 </b></label>
 	                    <hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+	                    <br/>
+	                    <br/>
 	                    
 	                    <table class="table table-hover table-bordered" ng-if="homeCheckBox">
 	                        <thead>
-	                        	<th class="success text-center" translate="">
-	                        		Osiguranje kuce/stana
+	                        	<th class="success text-center" translate="INSURANCEHOMEORFLAT">
 	                        	</th>
 	                        </thead>
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										Obuhvata zastitu od: asdasds
+										<span translate="PROTECTIONAGAINST"></span>: <b>asdasds</b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <label ng-if="homeCheckBox" class="text-center form-control" style="background-color: lightblue;"> Cena osiguranja kuce/stana: <b>2323</b></label>
+	                    <label ng-if="homeCheckBox" class="text-center form-control" style="background-color: lightblue;"> <u translate="TOTALPRICEHOME"> </u>: <b>2323</b></label>
 	                    <hr ng-if="homeCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+	                    <br/>
+	                    <br/>
 	                    
 	                    <table class="table table-hover table-bordered" ng-if="roadCheckBox">
 	                        <thead>
-	                        	<th class="success text-center" translate="">
-	                        		Pomoc na putu
+	                        	<th class="success text-center" translate="ROADINSURANCE">
 	                        	</th>
 	                        </thead>
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										Obuhvata sledece pakete zastite: asdasds
+										<span translate="ROADASSISTANCEPACKAGE"> </span>: <b> asdasds </b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <label ng-if="roadCheckBox" class="success text-center form-control" style="background-color: lightblue;"> Cena pomoc na putu: <b>2323</b></label>
+	                    <label ng-if="roadCheckBox" class="success text-center form-control" style="background-color: lightblue;"> <u translate="TOTALPRICEROAD"> </u>: <b>2323</b></label>
 	                    <hr ng-if="roadCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+	                    <br/>
+	                    <br/>
 					</div>
 				</div>
 			</div>
@@ -114,29 +116,28 @@
 	             <div class="col-md-8 col-md-offset-2">
 		              <table class="table table-hover table-bordered">
 		              		<thead>
-	                        	<th class="info text-center" translate="">
-	                        		Ukupna cena
+	                        	<th class="info text-center" translate="TOTALPRICEMONEY">
 	                        	</th>
 	                        </thead>
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										Premija osiguranja: <b>321312 </b>
+										<span translate="INSURANCEPREMIUM"> </span>: <b>321312 </b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Popust: <b>32 </b>
+										<span translate="DISCOUNT"> </span>: <b>32 </b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Porez: <b>45 </b>
+										<span translate="TAX"> </span>: <b>45 </b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="warning text-center">
-										Ukupna cena za uplatu: <b>455552 </b>
+										<span translate="YOURPRICE"> </span>: <b>455552 </b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
