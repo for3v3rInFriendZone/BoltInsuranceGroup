@@ -121,22 +121,22 @@
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										Premija osiguranja: <b>321312 </b>
+										Premija osiguranja: <b>{{insuranceInfo.price | number:2}} </b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Popust: <b>{{insuranceInfo.price - insuranceInfo.discountPrice}} </b>
+										Popust: <b>{{(insuranceInfo.price - insuranceInfo.discountPrice) | number:2}} </b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										Porez: <b>45 </b>
+										Porez: <b>{{(insuranceInfo.amount * 0.2) | number:2}} </b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="warning text-center">
-										Ukupna cena za uplatu: <b>{{insuranceInfo.amount}} </b>
+										Ukupna cena za uplatu: <b>{{(insuranceInfo.amount + insuranceInfo.amount * 0.2) | number:2}} </b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
