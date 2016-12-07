@@ -313,14 +313,15 @@
 				localStorageService.cookie.set('ageOfHome', inc.ageofhome, 1, true);
 				localStorageService.cookie.set('estimatedValueOfHome', inc.estimatedvalueofhome, 1, true);
 				
+				localStorageService.cookie.set('kidsNumber', inc.kids, 1, true);
+				localStorageService.cookie.set('grownupsNumber', inc.grownups, 1, true);
+				localStorageService.cookie.set('oldsNumber', inc.olds, 1, true);
+				
+				
 			}
 			
 			
 			$state.go('total-price');
-		}
-		
-		inc.nextPage = function() {
-			
 		}
 		
 		inc.closeOthers = function() {
