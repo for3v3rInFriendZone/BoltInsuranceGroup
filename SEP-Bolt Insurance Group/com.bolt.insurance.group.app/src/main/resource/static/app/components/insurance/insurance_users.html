@@ -2,6 +2,7 @@
   <div class="clearfix">
       <div class="item">
           <div class="container text-white">
+          <form class="state-form form-horizontal" name="inc.form" ng-submit="inc.submitForm()" novalidate>
             <br/><br/><br/><br/><br/>
           	<h2 class="text-center" translate="TRAVELINSURANCE"></h2> 
           	<br/>
@@ -23,7 +24,7 @@
               			<div class="col-md-8 col-md-offset-2">  
               				<br/><br/> 
 
-              				 <table class="table table-hover table-bordered">
+              				<table class="table table-hover table-bordered">
 			                        <thead>
 			                        	<th class="info text-center" colspan="3" translate="PARTOFWORLD">	                        	
 			                        	</th>
@@ -31,17 +32,18 @@
 			                        <tbody class="text-center">
 				                    	<tr>
 				                    		<td>
-				                    			<label translate="EUNA"> </label> <div class="text-center"> <input type="radio"  value="EUNA" ng-model="inc.world"/> </div>               
+				                    			<label translate="EUNA"> </label> <div class="text-center"> <input type="radio"  name="radio1" value="EUNA" ng-model="inc.world" required /> </div>               
 				                    		</td>
 				                    		<td>
-				                    			<label translate="EUNAA"> </label> <div class="text-center"> <input type="radio" value="EUNAA" ng-model="inc.world"/> </div>	               
+				                    			<label translate="EUNAA"> </label> <div class="text-center"> <input type="radio" name="radio1" value="EUNAA" ng-model="inc.world"required /> </div>	               
 				                    		</td>
 				                    		<td>
-				                    			<label translate="WHOLEWORLD"> </label> <div class="text-center">  <input type="radio"  value="WHOLEWORLD" ng-model="inc.world"/> </div>		               
+				                    			<label translate="WHOLEWORLD"> </label> <div class="text-center">  <input type="radio" name="radio"  value="WHOLEWORLD" ng-model="inc.world" required/> </div>		               
 				                    		</td>
 								        </tr>
 								    </tbody>
-								 </table>
+							 </table> 
+							 <p class="text-center" ng-show="inc.form.radio1.$error.required && inc.submitted" style="color: red;" translate="RADIOWORLD"> </p>
 						</div>
 				 </div>
 				 
@@ -58,20 +60,21 @@
 			                        <tbody class="text-center">
 				                    	<tr>
 				                    		<td>
-				                    			<label> 10.000 </label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio"  value="10000" ng-model="inc.money"/> </div>               
+				                    			<label> 10.000 </label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio" name="radio2" value="10000" ng-model="inc.money" required/> </div>               
 				                    		</td>
 				                    		<td>
-				                    			<label> 18.000</label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio" value="18000" ng-model="inc.money"/> </div>	               
+				                    			<label> 18.000</label> <i class="fa fa-eur"></i> <div class="text-center"> <input type="radio" name="radio2" value="18000" ng-model="inc.money" required/> </div>	               
 				                    		</td>
 				                    		<td>
-				                    			<label> 26.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio"  value="26000" ng-model="inc.money"/> </div>		               
+				                    			<label> 26.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio" name="radio2" value="26000" ng-model="inc.money" required/> </div>		               
 				                    		</td>
 				                    		<td>
-				                    			<label> 34.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio"  value="34000" ng-model="inc.money"/> </div>		               
+				                    			<label> 34.000</label> <i class="fa fa-eur"></i> <div class="text-center">  <input type="radio" name="radio2" value="34000" ng-model="inc.money" required/> </div>		               
 				                    		</td>
 								        </tr>
 								    </tbody>
 								 </table>
+								 <p class="text-center" ng-show="inc.form.radio2.$error.required && inc.submitted" style="color: red;" translate="RADIOMONEY"> </p>
 						</div>
 				 </div>
 				 <hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
@@ -98,14 +101,15 @@
 										<input type="text" class="form-control" maxlength="2" ng-model="inc.kids"/>
 									</td>
 									<td>
-										<input type="text" class="form-control" maxlength="2" ng-model="inc.grownups"/>
+										<input type="text" name="grownInput" class="form-control" maxlength="2" ng-model="inc.grownups" required />
 									</td>
 									<td>
-										<input type="text" class="form-control" maxlength="2" ng-model="inc.olds"/>
+										<input type="text" class="form-control" maxlength="2" ng-model="inc.olds" />
 									</td>
 						        </tr>
 		                    </tbody>
 	                    </table>
+	                    <p class="text-center" ng-show="inc.form.grownInput.$error.required && inc.submitted" style="color: red;" translate="OWNERUSER"> </p>
               		</div>
               	</div>
 					
@@ -121,13 +125,13 @@
 	                    <tbody>                  	
 					        <tr>
 					        	<td class="input-group">
-								    <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt1" is-open="popup1.opened" datepicker-options="options" ng-required="true" close-text="Close" />
+								    <input type="text" name="dateInsurance1" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt1" is-open="popup1.opened" datepicker-options="options"close-text="Close" required/>
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>
 
 									<span class="input-group-addon" translate="TO"></span>				
-									<input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt2" is-open="popup2.opened" datepicker-options="options2" ng-required="true" close-text="Close" />
+									<input type="text" name="dateInsurance2" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt2" is-open="popup2.opened" datepicker-options="options2" close-text="Close" required/>
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>				        		
@@ -135,6 +139,7 @@
 					        </tr>				     		        
 	                    </tbody>
 	                  </table>
+	                  <p class="text-center" ng-show="(inc.form.dateInsurance1.$error.required || inc.form.dateInsurance2.$error.required) && inc.submitted" style="color: red;" translate="DATEVALIDATION"> </p>
 	              	</div>
               	</div>
               	
@@ -145,7 +150,7 @@
               		<div class="col-md-8 col-md-offset-2">
               			<div class="form-group">
 					        <div class="col-sm-8">
-					           <a class="text-large text-thin" translate=DOYOUWANTINSURANCESPORTRIKS></a>&nbsp&nbsp<input type="checkbox" ng-model="inc.sportCheckBox"/> 
+					           <a class="text-large text-thin" translate=DOYOUWANTINSURANCESPORTRIKS></a>&nbsp&nbsp<input type="checkbox" ng-model="inc.sportCheckBox" ng-click="inc.closeOthers()"/> 
 					        </div>
 					    </div> 
 					    <br/>          
@@ -162,13 +167,14 @@
 		                    	<tr>
 		                    		<td>
 		                    			<div class="col-md-6 col-md-offset-3">
-			                    			<select class="form-control" ng-options="sport.subname for sport in inc.sports track by sport.subname" ng-model="inc.selectedSport">
+			                    			<select class="form-control" name="chooseSport" ng-options="sport.subname for sport in inc.sports track by sport.subname" ng-model="inc.selectedSport" required>
 											</select>									
 		                    			</div>
 		                    		</td>
 						        </tr>
 		                    </tbody>
 	                    </table>
+	                    <p class="text-center" ng-show="inc.form.chooseSport.$error.required && inc.submitted" style="color: red;" translate="SPORTCHOOSE"> </p>
 	                </div>
 	            </div>  
               	
@@ -192,25 +198,24 @@
 				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span>
 				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" ng-model="inc.homeCheckBox" ng-click="inc.closeOthers()"/>
-				                    			<i class="fa fa-info-circle" style="font-size: 18px;" data-toggle="tooltip" data-placement="top" title="{{'HOMEINSURACECOVERING'|translate}}"></i>
+				                    			<i class="fa fa-info-circle" ng-click="inc.openH()" style="font-size: 18px;" data-toggle="tooltip" data-placement="top" title="{{'HOMEINSURACECOVERING'|translate}}"></i>
 				                    		</td>
 				                    	</tr>
 				                    	<tr ng-if="inc.homeCheckBox">
 				                    		<td colspan="3">
-				                    			<form class="state-form form-horizontal" name="inc.form" novalidate>
-				                    				<input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required>
+				                    			
+				                    				<div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required> </div> <br/><br/>
 									            	<p class="text-center" ng-show="inc.form.homeArea.$error.pattern" style="color: red;" translate="OWNERAREAFORM"> </p>
 									            	<p class="text-center" ng-show="inc.form.homeArea.$touched && inc.form.homeArea.$error.required" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p> 
 									            
 									            
-									            	<input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required>
+									            	<div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.ageOfHome.$error.pattern" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
            											<p class="text-center" ng-show="inc.form.ageOfHome.$touched && inc.form.ageOfHome.$error.required" style="color: red;" translate="OWNERCONSTRUCTIONYEARFORM"> </p>
            										
-           											<input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required>
+           											<div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$error.pattern" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
            											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$touched && inc.form.estimatedValueOfHome.$error.required" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEFORM"> </p>
-           										</form>
 				                    		</td>
 				                    	</tr>
 				                    	<tr class="text-center" ng-if="inc.homeCheckBox">
@@ -236,7 +241,7 @@
 				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span>
 				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" ng-model="inc.roadCheckBox" ng-click="inc.closeOthers()"/>
-				                    			<i class="fa fa-info-circle" ng-click="inc.openD()" style="font-size: 18px;"></i>
+				                    			<i class="fa fa-info-circle" ng-click="inc.openV()" style="font-size: 18px;"></i>
 				                    		</td>
 				                    	</tr>
 				                    	<tr class="text-center" ng-if="inc.roadCheckBox">
@@ -257,7 +262,9 @@
 			                    </table>
 			            </div>
 			    </div>
-              	
+			    
+              	<br/>
+              	<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
               	
               	
               	
@@ -484,10 +491,11 @@
               		<div class="row">
               			<div class="col-md-offset-9">
 	              			<a ui-sref="home"> <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button> </a>
-	                         <button type="button" class="btn btn-success" ng-click="inc.nextPage()" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button>
+	                         <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button>
 	                    </div>
               		</div>
               	<br/><br/>
+              	</form>
             </div>
        </div>
   </div>
