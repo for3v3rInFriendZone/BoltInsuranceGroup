@@ -119,9 +119,9 @@
 							}
 						})
 				.state(
-						'payment-response',
+						'payment-response-success',
 						{
-							url : '/insurance/payment_response',
+							url : '/insurance/payment_response_success',
 							views : {
 								navbar : {
 									templateUrl : 'app/components/insurance/header.html',
@@ -129,7 +129,29 @@
 									controllerAs : 'inc'
 								},
 								content : {
-									templateUrl : 'app/components/insurance/payment-response/payment-response.html',
+									templateUrl : 'app/components/insurance/payment-response/payment-response-success.html',
+									controller : 'PaymentResponseController',
+									controllerAs : 'prc'
+								},
+								footer : {
+									templateUrl : 'app/components/insurance/payment-response/footer.html',
+									controller : 'InsuranceController',
+									controllerAs : 'inc'
+								}
+							}
+						})
+				.state(
+						'payment-response-error',
+						{
+							url : '/insurance/payment_response_error',
+							views : {
+								navbar : {
+									templateUrl : 'app/components/insurance/header.html',
+									controller : 'InsuranceController',
+									controllerAs : 'inc'
+								},
+								content : {
+									templateUrl : 'app/components/insurance/payment-response/payment-response-error.html',
 									controller : 'PaymentResponseController',
 									controllerAs : 'prc'
 								},

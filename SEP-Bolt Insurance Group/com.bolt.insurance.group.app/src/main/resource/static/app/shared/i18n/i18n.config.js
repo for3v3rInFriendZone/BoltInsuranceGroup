@@ -164,7 +164,10 @@
 			TAX: "Tax",
 			YOURPRICE: "You have to pay",
 			THANKS:"Thank you for choosing Bolt.",
-			PAYMENTSUCCESS:"Your transaction was successfully processed!"
+			PAYMENTSUCCESS:"Your transaction was successfully processed.",
+			PAYMENTERRORTITLE:"Transaction failed",
+			PAYMENTERRORMESSAGE:"Please try again",
+			TRYAGAIN:"Try again"
 				
 				
 						
@@ -320,7 +323,10 @@
 			TAX: "Porez",
 			YOURPRICE: "Vaša cena za uplatu iznosi",
 			THANKS: "Hvala što ste odabrali Bolt.",
-			PAYMENTSUCCESS:"Vaša transakcija je uspešno izvršena."
+			PAYMENTSUCCESS:"Vaša transakcija je uspešno izvršena",
+			PAYMENTERRORTITLE:"Transakcija nije uspela",
+			PAYMENTERRORMESSAGE:"Molimo vas da pokušate ponovo",
+			TRYAGAIN:"Pokušajte ponovo"
 
 		});
 
