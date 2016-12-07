@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bolt.insurance.group.app.dao.InsuranceDao;
-import com.bolt.insurance.group.app.dao.PersonsDao;
-import com.bolt.insurance.group.app.dao.RiskDao;
+import com.bolt.insurance.group.app.dto.InsuranceDto;
+import com.bolt.insurance.group.app.dto.PersonsDto;
+import com.bolt.insurance.group.app.dto.RiskDto;
 import com.bolt.insurance.group.app.model.Insurance;
 import com.bolt.insurance.group.app.model.Risk;
 import com.bolt.insurance.group.app.model.Subgroup;
@@ -95,25 +95,25 @@ public class ApiInsuranceController {
 	}
 		
 	@RequestMapping(value="/checkPrice", method = RequestMethod.POST)
-	public ResponseEntity<InsuranceDao> checkPrice(@RequestBody String payload){
+	public ResponseEntity<InsuranceDto> checkPrice(@RequestBody String payload){
 			
 		String clearPayload = Jsoup.clean(payload, Whitelist.basic());
 		
 		JSONObject json = new JSONObject(clearPayload);
 
-		InsuranceDao insuranceDao = new InsuranceDao();
-		PersonsDao personDao = new PersonsDao();
+		InsuranceDto InsuranceDto = new InsuranceDto();
+		PersonsDto personDto = new PersonsDto();
 		
-		insuranceDao.setAmount(0.0);
-		insuranceDao.setCarInsurancePrice(0.0);
-		insuranceDao.setHomeInsurancePrice(0.0);
-		insuranceDao.setDiscountPrice(0.0);
-		insuranceDao.setPrice(0.0);
+		InsuranceDto.setAmount(0.0);
+		InsuranceDto.setCarInsurancePrice(0.0);
+		InsuranceDto.setHomeInsurancePrice(0.0);
+		InsuranceDto.setDiscountPrice(0.0);
+		InsuranceDto.setPrice(0.0);
 		
-		personDao.setUserUnder18(0);
-		personDao.setUserBetween18And60(0);
-		personDao.setUserOver60(0);
-		personDao.setNumberOfUsers(0); 
+		personDto.setUserUnder18(0);
+		personDto.setUserBetween18And60(0);
+		personDto.setUserOver60(0);
+		personDto.setNumberOfUsers(0); 
 		
 		try {
 			int kids = 0;
@@ -138,39 +138,39 @@ public class ApiInsuranceController {
 				
 			}
 			
-			personDao.setUserUnder18(kids);
-			personDao.setUserBetween18And60(grownups);
-			personDao.setUserOver60(olds);
-			personDao.setNumberOfUsers(kids + grownups + olds); 
+			personDto.setUserUnder18(kids);
+			personDto.setUserBetween18And60(grownups);
+			personDto.setUserOver60(olds);
+			personDto.setNumberOfUsers(kids + grownups + olds); 
 			
-			personDao.setUnder18Subgroup(subgroupService.findBySubname("do 18"));
-			personDao.setBetween18And60Subgroup(subgroupService.findBySubname("18 do 60"));
-			personDao.setOver60Subgroup(subgroupService.findBySubname("preko 60"));
+			personDto.setUnder18Subgroup(subgroupService.findBySubname("do 18"));
+			personDto.setBetween18And60Subgroup(subgroupService.findBySubname("18 do 60"));
+			personDto.setOver60Subgroup(subgroupService.findBySubname("preko 60"));
 			
-			RiskDao rd1 = cfmtd.converteRisk(riskService.findOne((long) 1));
+			RiskDto rd1 = cfmtd.converteRisk(riskService.findOne((long) 1));
 			
-			insuranceDao.setPersons(personDao);
-			insuranceDao.getRisks().add(rd1); //osobe
+			InsuranceDto.setPersons(personDto);
+			InsuranceDto.getRisks().add(rd1); //osobe
 			
 			String world = json.getString("world");
-			RiskDao rd2 = cfmtd.converteRisk(riskService.findOne((long) 2));
+			RiskDto rd2 = cfmtd.converteRisk(riskService.findOne((long) 2));
 			rd2.getSubgroup().add(subgroupService.findBySubname(world));
 			
-			insuranceDao.getRisks().add(rd2); //region
+			InsuranceDto.getRisks().add(rd2); //region
 			
 			long startDate = Long.parseLong(json.getString("dt1"));
 			long endDate = Long.parseLong(json.getString("dt2"));
-			insuranceDao.setDays(insuranceService.calculateDays(startDate, endDate));
+			InsuranceDto.setDays(insuranceService.calculateDays(startDate, endDate));
 			
-			RiskDao rd3 = cfmtd.converteRisk(riskService.findOne((long) 3)); // trajanje
+			RiskDto rd3 = cfmtd.converteRisk(riskService.findOne((long) 3)); // trajanje
 			
-			insuranceDao.getRisks().add(rd3);
+			InsuranceDto.getRisks().add(rd3);
 			
 			String money = json.getString("money");
-			RiskDao rd4 = cfmtd.converteRisk(riskService.findOne((long) 10));
+			RiskDto rd4 = cfmtd.converteRisk(riskService.findOne((long) 10));
 			rd4.getSubgroup().add(subgroupService.findBySubname(money)); //vrednost
 			
-			insuranceDao.getRisks().add(rd4);
+			InsuranceDto.getRisks().add(rd4);
 			
 			boolean sport = false;
 			
@@ -182,9 +182,9 @@ public class ApiInsuranceController {
 			}
 			
 			if(sport){
-				RiskDao rd5 = cfmtd.converteRisk(riskService.findOne((long) 4));
+				RiskDto rd5 = cfmtd.converteRisk(riskService.findOne((long) 4));
 				rd5.getSubgroup().add(subgroupService.findBySubname(json.getJSONObject("selectedSport").getString("subname")));
-				insuranceDao.getRisks().add(rd5);
+				InsuranceDto.getRisks().add(rd5);
 			}
 			
 			boolean road = false;
@@ -195,7 +195,7 @@ public class ApiInsuranceController {
 				road = false;
 			}
 			if(road){
-				RiskDao rd6 = cfmtd.converteRisk(riskService.findOne((long) 9));
+				RiskDto rd6 = cfmtd.converteRisk(riskService.findOne((long) 9));
 				
 				boolean hotel = false;
 				
@@ -245,7 +245,7 @@ public class ApiInsuranceController {
 					rd6.getSubgroup().add(subgroupService.findBySubname("prevoz"));
 				}
 				
-				insuranceDao.getRisks().add(rd6); //paket
+				InsuranceDto.getRisks().add(rd6); //paket
 			}
 
 			boolean home = false;
@@ -257,10 +257,10 @@ public class ApiInsuranceController {
 			}
 			
 			if(home){	
-				RiskDao rd7 = cfmtd.converteRisk(riskService.findOne((long) 5)); //povrsina
-				RiskDao rd8 = cfmtd.converteRisk(riskService.findOne((long) 6)); //starost_stana
-				RiskDao rd9 = cfmtd.converteRisk(riskService.findOne((long) 7)); //procenjena_vrednost
-				RiskDao rd10 = cfmtd.converteRisk(riskService.findOne((long) 8));//vrsta_osiguranja
+				RiskDto rd7 = cfmtd.converteRisk(riskService.findOne((long) 5)); //povrsina
+				RiskDto rd8 = cfmtd.converteRisk(riskService.findOne((long) 6)); //starost_stana
+				RiskDto rd9 = cfmtd.converteRisk(riskService.findOne((long) 7)); //procenjena_vrednost
+				RiskDto rd10 = cfmtd.converteRisk(riskService.findOne((long) 8));//vrsta_osiguranja
 				
 				rd7.getSubgroup().add(homeService.checkHouseSize(Integer.parseInt(json.getString("homearea"))));
 				rd9.getSubgroup().add(homeService.checkHouseEstimateValue(Integer.parseInt(json.getString("estimatedvalueofhome"))));
@@ -317,28 +317,28 @@ public class ApiInsuranceController {
 					rd10.getSubgroup().add(subgroupService.findBySubname("pozar"));
 				}
 				
-				insuranceDao.getRisks().add(rd7);
-				insuranceDao.getRisks().add(rd8);
-				insuranceDao.getRisks().add(rd9);
-				insuranceDao.getRisks().add(rd10);
+				InsuranceDto.getRisks().add(rd7);
+				InsuranceDto.getRisks().add(rd8);
+				InsuranceDto.getRisks().add(rd9);
+				InsuranceDto.getRisks().add(rd10);
 			}
 		
 			DroolsFileReader dfr = new DroolsFileReader();
 			StatefulKnowledgeSession ksession = dfr.getSession();  
 	        
-	        ksession.insert(insuranceDao); 
+	        ksession.insert(InsuranceDto); 
 	        ksession.fireAllRules();  
 	        ksession.dispose();	
 			
 	        
-	        System.out.println("Cena bez popusta: " + insuranceDao.getPrice());
-	        System.out.println("Cena sa popustom: " + insuranceDao.getDiscountPrice());
-	        System.out.println("Cena osiguranja: " + insuranceDao.getAmount());
+	        System.out.println("Cena bez popusta: " + InsuranceDto.getPrice());
+	        System.out.println("Cena sa popustom: " + InsuranceDto.getDiscountPrice());
+	        System.out.println("Cena osiguranja: " + InsuranceDto.getAmount());
 			
 		} catch (Exception e) {
-			return new ResponseEntity<InsuranceDao>(HttpStatus.FORBIDDEN);
+			return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
 		}
 		
-		return new ResponseEntity<InsuranceDao>(insuranceDao, HttpStatus.OK);	
+		return new ResponseEntity<InsuranceDto>(InsuranceDto, HttpStatus.OK);	
 	}
 }

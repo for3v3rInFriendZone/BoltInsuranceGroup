@@ -1,15 +1,15 @@
-package com.bolt.insurance.group.app.dao;
+package com.bolt.insurance.group.app.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InsuranceDao {
+public class InsuranceDto {
 
 	private double amount;
 	private double discountPrice;
 	private double price;
-	private List<RiskDao> risks = new ArrayList<RiskDao>();
-	private PersonsDao persons;
+	private List<RiskDto> risks = new ArrayList<RiskDto>();
+	private PersonsDto persons;
 	private int days;
 	private double travelInsurancePrice;
 	private double carInsurancePrice;
@@ -39,19 +39,19 @@ public class InsuranceDao {
 		this.price = price;
 	}
 	
-	public List<RiskDao> getRisks() {
+	public List<RiskDto> getRisks() {
 		return risks;
 	}
 	
-	public void setRisks(List<RiskDao> risks) {
+	public void setRisks(List<RiskDto> risks) {
 		this.risks = risks;
 	}
 	
-	public PersonsDao getPersons() {
+	public PersonsDto getPersons() {
 		return persons;
 	}
 	
-	public void setPersons(PersonsDao persons) {
+	public void setPersons(PersonsDto persons) {
 		this.persons = persons;
 	}
 	
@@ -87,7 +87,7 @@ public class InsuranceDao {
 		this.homeInsurancePrice = homeInsurancePrice;
 	}
 	
-	public InsuranceDao() {
+	public InsuranceDto() {
 		super();
 	}
 

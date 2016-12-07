@@ -1,8 +1,8 @@
-package com.bolt.insurance.group.app.dao;
+package com.bolt.insurance.group.app.dto;
 
 import com.bolt.insurance.group.app.model.Subgroup;
 
-public class PersonsDao {
+public class PersonsDto {
 
 	private int userUnder18;
 	private int userBetween18And60;
@@ -68,7 +68,7 @@ public class PersonsDao {
 		this.over60Subgroup = over60Subgroup;
 	}
 
-	public PersonsDao() {
+	public PersonsDto() {
 		super();
 	}
 }

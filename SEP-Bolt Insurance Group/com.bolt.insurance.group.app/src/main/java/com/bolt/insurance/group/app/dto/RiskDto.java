@@ -1,4 +1,4 @@
-package com.bolt.insurance.group.app.dao;
+package com.bolt.insurance.group.app.dto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.bolt.insurance.group.app.model.Price;
 import com.bolt.insurance.group.app.model.Subgroup;
 
-public class RiskDao {
+public class RiskDto {
 
 	private String name;
 	private Price price;
@@ -36,7 +36,7 @@ public class RiskDao {
 		this.subgroup = subgroup;
 	}
 	
-	public RiskDao() {
+	public RiskDto() {
 		super();
 	}
 	

@@ -1,13 +1,13 @@
 package com.bolt.insurance.group.app.util;
 
-import com.bolt.insurance.group.app.dao.RiskDao;
+import com.bolt.insurance.group.app.dto.RiskDto;
 import com.bolt.insurance.group.app.model.Risk;
 
 public class ConverteFromModelToDto {
 
-	public RiskDao converteRisk(Risk risk){
+	public RiskDto converteRisk(Risk risk){
 		
-		RiskDao riskDao = new RiskDao();
+		RiskDto riskDao = new RiskDto();
 		riskDao.setName(risk.getName());
 		riskDao.setPrice(risk.getPrice());
 		

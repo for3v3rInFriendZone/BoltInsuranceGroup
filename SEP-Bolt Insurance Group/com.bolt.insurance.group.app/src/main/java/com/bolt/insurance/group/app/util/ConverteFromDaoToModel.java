@@ -1,17 +1,17 @@
 package com.bolt.insurance.group.app.util;
 
-import com.bolt.insurance.group.app.dao.InsuranceDao;
-import com.bolt.insurance.group.app.dao.RiskDao;
+import com.bolt.insurance.group.app.dto.InsuranceDto;
+import com.bolt.insurance.group.app.dto.RiskDto;
 import com.bolt.insurance.group.app.model.Insurance;
 import com.bolt.insurance.group.app.model.Risk;
 
 public class ConverteFromDaoToModel {
 
-	public Insurance converteInsurance(InsuranceDao insuranceDao){
+	public Insurance converteInsurance(InsuranceDto insuranceDao){
 		return null;
 	}
 	
-	public Risk converteRisk(RiskDao riskDao){
+	public Risk converteRisk(RiskDto riskDao){
 		return null;
 	}
 }
