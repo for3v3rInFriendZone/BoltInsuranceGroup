@@ -1,13 +1,10 @@
 package com.bolt.insurance.group.app.service.impl;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bolt.insurance.group.app.dto.InsuranceDto;
 import com.bolt.insurance.group.app.model.Insurance;
 import com.bolt.insurance.group.app.repository.InsuranceRepository;
 import com.bolt.insurance.group.app.service.InsuranceService;

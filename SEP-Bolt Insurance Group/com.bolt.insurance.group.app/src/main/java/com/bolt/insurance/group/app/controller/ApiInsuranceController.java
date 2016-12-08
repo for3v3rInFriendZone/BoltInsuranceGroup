@@ -2,10 +2,7 @@ package com.bolt.insurance.group.app.controller;
 
 import java.net.URISyntaxException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.drools.runtime.StatefulKnowledgeSession;
@@ -25,14 +22,12 @@ import com.bolt.insurance.group.app.dto.InsuranceDto;
 import com.bolt.insurance.group.app.dto.PersonsDto;
 import com.bolt.insurance.group.app.dto.RiskDto;
 import com.bolt.insurance.group.app.model.Insurance;
-import com.bolt.insurance.group.app.model.Risk;
-import com.bolt.insurance.group.app.model.Subgroup;
+import com.bolt.insurance.group.app.service.DroolsService;
 import com.bolt.insurance.group.app.service.HomeService;
 import com.bolt.insurance.group.app.service.InsuranceService;
 import com.bolt.insurance.group.app.service.RiskService;
 import com.bolt.insurance.group.app.service.SubgroupService;
 import com.bolt.insurance.group.app.util.ConverteFromModelToDto;
-import com.bolt.insurance.group.app.util.DroolsFileReader;
 
 @RestController
 @RequestMapping(value = "/insurance")
@@ -50,7 +45,11 @@ public class ApiInsuranceController {
 	@Autowired
 	HomeService homeService;
 	
+	@Autowired
+	DroolsService droolsService;
+	
 	public ConverteFromModelToDto cfmtd = new ConverteFromModelToDto();
+	private StatefulKnowledgeSession ksession = null;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Insurance> saveInsurance(@RequestBody Insurance insurance) {
@@ -323,13 +322,14 @@ public class ApiInsuranceController {
 				InsuranceDto.getRisks().add(rd10);
 			}
 		
-			DroolsFileReader dfr = new DroolsFileReader();
-			StatefulKnowledgeSession ksession = dfr.getSession();  
-	        
-	        ksession.insert(InsuranceDto); 
+			
+			ksession = droolsService.getSession();
+
+			
+			System.out.println(ksession.getId() + "*************");
+			ksession.insert(InsuranceDto); 
 	        ksession.fireAllRules();  
 	        ksession.dispose();	
-			
 	        
 	        System.out.println("Cena bez popusta: " + InsuranceDto.getPrice());
 	        System.out.println("Cena sa popustom: " + InsuranceDto.getDiscountPrice());
@@ -339,6 +339,7 @@ public class ApiInsuranceController {
 			return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
 		}
 		
+
 		return new ResponseEntity<InsuranceDto>(InsuranceDto, HttpStatus.OK);	
 	}
 }
