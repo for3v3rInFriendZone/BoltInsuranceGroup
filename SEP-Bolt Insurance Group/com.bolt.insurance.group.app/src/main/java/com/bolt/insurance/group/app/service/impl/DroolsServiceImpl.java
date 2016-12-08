@@ -1,7 +1,9 @@
-package com.bolt.insurance.group.app.util;
+package com.bolt.insurance.group.app.service.impl;
 
 import java.io.File;
 import java.net.URISyntaxException;
+
+import javax.annotation.PostConstruct;
 
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
@@ -12,20 +14,22 @@ import org.drools.builder.KnowledgeBuilderFactory;
 import org.drools.builder.ResourceType;
 import org.drools.io.ResourceFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
+import org.springframework.stereotype.Service;
 
-public class DroolsFileReader {
-	
+import com.bolt.insurance.group.app.service.DroolsService;
+
+@Service
+public class DroolsServiceImpl implements DroolsService{
+
 	private ClassLoader classLoader; 
 	private File file; 
 	private KnowledgeBuilder kbuilder; 
 	private StatefulKnowledgeSession ksession;
+	private KnowledgeBase kbase;
 	
-	public DroolsFileReader() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public StatefulKnowledgeSession getSession() throws URISyntaxException{
+	@PostConstruct
+	@Override
+	public void makeSession() throws URISyntaxException {
 		classLoader = getClass().getClassLoader();
 		file = new File(classLoader.getResource("Rules.drl").toURI());
 		kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
@@ -37,11 +41,17 @@ public class DroolsFileReader {
 	         }  
 	         throw new IllegalArgumentException("Could not parse knowledge.");  
 	    }  
-	    KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();  
+	    kbase = KnowledgeBaseFactory.newKnowledgeBase();  
 	    kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
-	    ksession = kbase.newStatefulKnowledgeSession();
-	    
-	    return ksession;
+	}
+
+	@Override
+	public StatefulKnowledgeSession getSession() {
+		// TODO Auto-generated method stub
+		ksession = kbase.newStatefulKnowledgeSession();
+		return ksession;
 	}
 	
+	
+
 }
