@@ -289,6 +289,11 @@
 				return;
 			}
 			
+			if((inc.kids === '' || inc.kids == 0) && (inc.grownups === '' || inc.grownups == 0) && (inc.olds === '' || inc.olds == 0)) {
+				inc.submittedUsers = true;
+				return;
+			}
+			
 			if(localStorageService.cookie.isSupported){
 				localStorageService.cookie.set('world', inc.world, 1, true);
 				localStorageService.cookie.set('money', inc.money, 1, true);

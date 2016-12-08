@@ -101,7 +101,7 @@
 										<input type="text" class="form-control" maxlength="2" ng-model="inc.kids"/>
 									</td>
 									<td>
-										<input type="text" name="grownInput" class="form-control" maxlength="2" ng-model="inc.grownups" required />
+										<input type="text" name="grownInput" class="form-control" maxlength="2" ng-model="inc.grownups" />
 									</td>
 									<td>
 										<input type="text" class="form-control" maxlength="2" ng-model="inc.olds" />
@@ -109,7 +109,7 @@
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <p class="text-center" ng-show="inc.form.grownInput.$error.required && inc.submitted" style="color: red;" translate="OWNERUSER"> </p>
+	                    <p class="text-center" ng-show="inc.submittedUsers" style="color: red;" translate="OWNERUSER"> </p>
               		</div>
               	</div>
 					
