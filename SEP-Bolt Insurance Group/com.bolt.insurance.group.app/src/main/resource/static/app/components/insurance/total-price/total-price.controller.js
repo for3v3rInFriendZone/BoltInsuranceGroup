@@ -50,6 +50,14 @@
 		$scope.selectedSport = localStorageService.cookie.get('selectedSport');
 		$scope.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
 		$scope.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
+		$scope.towing = localStorageService.cookie.get('towingCheckBox');
+		$scope.repair = localStorageService.cookie.get('repairCheckBox');
+		$scope.hotel = localStorageService.cookie.get('hotelCheckBox');
+		$scope.alternative = localStorageService.cookie.get('alternativeCheckBox');
+		$scope.fire = localStorageService.cookie.get('fireCheckBox');
+		$scope.flood = localStorageService.cookie.get('floodCheckBox');
+		$scope.theft = localStorageService.cookie.get('theftCheckBox');
+		$scope.earthshaker = localStorageService.cookie.get('earthshakerCheckBox');
 		
 		tpc.next = function() {
 			$state.go('insurance-users');

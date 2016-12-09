@@ -9,7 +9,6 @@
 	function UserModalController($uibModalInstance, items, User, localStorageService) {
 		var umc = this;
 		
-		umc.ok = ok;
 		umc.cancel = cancel;
 		umc.submitForm = submitForm;
 		umc.checkUserJMBG = checkUserJMBG;
@@ -23,7 +22,8 @@
 				olds: false,
 				yesKids: false,
 				yesGrownups: false,
-				yesOlds: false
+				yesOlds: false,
+				jmbgValid: false
 		};
 		
 		umc.kids = localStorageService.cookie.get('kidsNumber');
@@ -40,14 +40,16 @@
 
 		umc.user = umc.listOfUsers[umc.editId];
 		
-		function ok() {
-			$uibModalInstance.close(umc.user);
-		}
-			
+		/**
+		 * Cancel a modal dialog
+		 */
 		function cancel() {
 			$uibModalInstance.dismiss();
 		}
 		
+		/**
+		 * Method for calculating year of birth by users JMBG
+		 */
 		function calculateYearsFromJMBG(user) {	
 		    var bornDate = user.jmbg;
 		    var status = '';
@@ -91,6 +93,9 @@
 			return status;
 		}
 		
+		/**
+		 * Method for checking which user is inserted and by that getting a informaton on view.
+		 */
 		function checkUserJMBG(status) {
 			if(status === '') {
 				return;
@@ -110,7 +115,32 @@
 			return;
 		}
 		
+		function jmbgValidation(user) {
+			var jmbg = user.jmbg;
+			
+			var day = parseInt(jmbg.substring(0, 2));
+			var month = parseInt(jmbg.substring(2, 4));
+			
+			if(day < 1 || day > 31) {
+				umc.submitted.validJmbg = true;
+				return true;
+			} else if(month < 1 || month > 12) {
+				umc.submitted.validJmbg = true;
+				return true;
+			}
+			
+			return false;
+		}
+		
+		/**
+		 * Method for submitting a form
+		 */
 		function submitForm() {
+			
+			if(jmbgValidation(umc.user)) {
+				return;
+			}
+			
 			var status = calculateYearsFromJMBG(umc.user);
 			checkUserJMBG(status);
 			

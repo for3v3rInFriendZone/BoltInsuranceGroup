@@ -28,7 +28,7 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div class="text-center">
 						
-						<table class="table table-hover noBorder">
+						<table class="table table-hover ">
 	                    	<thead>
 	                        	<th class="info text-center" colspan="2" translate="INSURANCEPOLICY">
 	                        	</th>                        
@@ -75,7 +75,7 @@
 	                    <br/>
 	                    <br/>
 	                    
-	                    <table class="table table-hover noBorder" ng-if="homeCheckBox">
+	                    <table class="table table-hover" ng-if="homeCheckBox">
 	                        <thead>
 	                        	<th class="success text-center" translate="INSURANCEHOMEORFLAT">
 	                        	</th>
@@ -83,7 +83,7 @@
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										<span translate="PROTECTIONAGAINST"></span>: <b>asdasds</b>
+										<span translate="PROTECTIONAGAINST"></span>: <b ng-if="fire" translate="FIRE"></b> <b ng-if="flood" translate="FLOOD"></b> <b ng-if="theft" translate="THEFT"></b> <b ng-if="earthshaker" translate="EARTHSHAKE"></b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
@@ -94,7 +94,7 @@
 	                    <br/>
 	                    <br/>
 	                    
-	                    <table class="table table-hover noBorder" ng-if="roadCheckBox">
+	                    <table class="table table-hover " ng-if="roadCheckBox">
 	                        <thead>
 	                        	<th class="success text-center" translate="ROADINSURANCE">
 	                        	</th>
@@ -102,7 +102,7 @@
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										<span translate="ROADASSISTANCEPACKAGE"> </span>: <b> asdasds </b>
+										<span translate="ROADASSISTANCEPACKAGE"> </span>: <b ng-if="towing" translate="TOWING"></b> <b ng-if="repair" translate="REPAIR"></b> <b ng-if="hotel" translate="HOTEL"></b> <b ng-if="alternative" translate="ALTERNATIVEVEHICLE"></b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
@@ -118,7 +118,7 @@
 			</div>
 			<div class="row">
 	             <div class="col-md-8 col-md-offset-2">
-		              <table class="table table-hover noBorder">
+		              <table class="table table-hover">
 		              		<thead>
 	                        	<th class="info text-center" translate="TOTALPRICEMONEY">
 	                        	</th>

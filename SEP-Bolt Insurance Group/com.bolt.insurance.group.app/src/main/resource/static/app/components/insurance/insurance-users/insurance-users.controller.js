@@ -28,7 +28,7 @@
 				iuc.grownups = localStorageService.cookie.get('grownupsNumber');
 				iuc.olds = localStorageService.cookie.get('oldsNumber');
 				
-				if((iuc.kids === '' || iuc.kids == 0) && (iuc.grownups == 0) && (iuc.olds === '' || iuc.olds == 0)) {
+				if((iuc.kids === '' || iuc.kids == 0 || iuc.kids === null) && (iuc.grownups === '' || iuc.grownups == 0 || iuc.grownups === null) && (iuc.olds === '' || iuc.olds == 0 || iuc.olds === null)) {
 					iuc.noMoreUsers = false;
 				}
 			});

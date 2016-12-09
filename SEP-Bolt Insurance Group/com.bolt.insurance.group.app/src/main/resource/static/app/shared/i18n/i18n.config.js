@@ -148,7 +148,7 @@
 			DATEVALIDATION: "You have to enter a start date and end date of your insurance",
 			SPORTCHOOSE: "You have to choose a sport",
 			USERSINSURANCE: "Input of insurance users",
-			NUMUSERS: "Number of users on insurance",
+			NUMUSERS: "Number of users on insurance that needs to be inserted",
 			INSURANCEPOLICY: "Insurance policy",
 			REGION: "Region",
 			EFFECTIVEDATE: "Effective date",
@@ -166,7 +166,8 @@
 			KIDSNOMORE: "You can not enter more users which have less then 18 years",
 			GROWNUPSNOMORE: "You can not enter more users which have between 18 and 60 years",
 			OLDSNOMORE: "You can not enter more users which are older then 60 years",
-			OWNERINFO: "NOTE: The first user you enter will be an insurance OWNER."
+			OWNERINFO: "NOTE: The first user you enter will be an insurance OWNER.",
+			VALIDJMBG: "Jmbg is not valid."
 				
 				
 						
@@ -306,7 +307,7 @@
 			DATEVALIDATION: "Morate definisati trajanje putovanje",
 			SPORTCHOOSE: "Morate izabrati sport",
 			USERSINSURANCE: "Unos korisnika osiguranja",
-			NUMUSERS: "Broj korisnika na osiguranju",
+			NUMUSERS: "Broj korisnika na osiguranju koje treba da uneste",
 			INSURANCEPOLICY: "Polisa osiguranja",
 			REGION: "Region",
 			EFFECTIVEDATE: "Datum vazenja osiguranja",
@@ -324,7 +325,8 @@
 			KIDSNOMORE: "Ne možete unositi više osobe koje imaju manje od 18 godina",
 			GROWNUPSNOMORE: "Ne možete unositi više osobe koje imaju više od 18 a manje od 60 godina",
 			OLDSNOMORE: "Ne možete unositi više osobe koje imaju više od 60 godina",
-			OWNERINFO: "PAŽNJA: Prvi korisnik koga unesete će se smatrati za nosioca osiguranja."
+			OWNERINFO: "PAŽNJA: Prvi korisnik koga unesete će se smatrati za nosioca osiguranja.",
+			VALIDJMBG: "JMBG nije validan."
 
 		});
 
