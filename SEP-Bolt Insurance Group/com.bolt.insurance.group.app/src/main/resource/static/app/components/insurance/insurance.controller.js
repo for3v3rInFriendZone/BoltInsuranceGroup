@@ -351,6 +351,36 @@
 		}
 		
 		
+		var getSteps = function(){
+			var newSteps = $scope.progress.steps;
+			if(inc.homeCheckBox){
+				newSteps++;
+			}
+			if(inc.roadCheckBox){
+				newSteps++;
+			}
+			return newSteps;
+		}
+		
+		var getVehicleStepNumber = function(){
+			return (inc.homeCheckBox)?5:4;
+		}
+		$scope.progress = {steps:4,current:1};
+		if($state.current.name=='total-price'){
+			$scope.progress = {steps:getSteps(),current:2};
+		}
+		if($state.current.name=='insurance-users'){
+			$scope.progress = {steps:getSteps(),current:3};
+		}
+		if($state.current.name=='homeinsurance'){
+			$scope.progress = {steps:getSteps(),current:4};
+		}
+		if($state.current.name=='vehicleinsurance'){
+			$scope.progress = {steps:getSteps(),current:getVehicleStepNumber()};
+		}
+		
+		
+		
 	}
 
 })();

@@ -78,16 +78,19 @@
 			$state.go('total-price');
 		}
 		  
-		/*
 		iuc.next = function(){
-			if($scope.homeCheckBox) {
+			var home = localStorageService.cookie.get('homeCheckBox');
+			var road = localStorageService.cookie.get('roadCheckBox');
+			
+			if(home){
 				$state.go('homeinsurance');
-			}
-			else if($scope.roadCheckBox) {
+			}else if(road){
 				$state.go('vehicleinsurance');
+			}else{
+				console.log("payment");
 			}
 			
-		}*/
+		}
 		
 		function calculateYearsFromJMBG(user) {	
 		    var bornDate = user.jmbg;
