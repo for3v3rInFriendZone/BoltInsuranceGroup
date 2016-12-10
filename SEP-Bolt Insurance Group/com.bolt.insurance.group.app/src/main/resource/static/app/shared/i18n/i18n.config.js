@@ -172,7 +172,8 @@
 			GROWNUPSNOMORE: "You can not enter more users which have between 18 and 60 years",
 			OLDSNOMORE: "You can not enter more users which are older then 60 years",
 			OWNERINFO: "NOTE: The first user you enter will be an insurance OWNER.",
-			VALIDJMBG: "Jmbg is not valid."
+			VALIDJMBG: "Jmbg is not valid.",
+			STEP: "Korak"
 
 				
 				
@@ -337,7 +338,8 @@
 			GROWNUPSNOMORE: "Ne možete unositi više osobe koje imaju više od 18 a manje od 60 godina",
 			OLDSNOMORE: "Ne možete unositi više osobe koje imaju više od 60 godina",
 			OWNERINFO: "PAŽNJA: Prvi korisnik koga unesete će se smatrati za nosioca osiguranja.",
-			VALIDJMBG: "JMBG nije validan."
+			VALIDJMBG: "JMBG nije validan.",
+			STEP: "Step"
 
 
 		});
