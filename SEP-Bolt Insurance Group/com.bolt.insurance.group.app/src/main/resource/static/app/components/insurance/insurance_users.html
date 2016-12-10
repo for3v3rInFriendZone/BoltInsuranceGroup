@@ -2,6 +2,7 @@
   <div class="clearfix">
       <div class="item">
           <div class="container text-white">
+           	
           <form class="state-form form-horizontal" name="inc.form" ng-submit="inc.submitForm()" novalidate>
             <br/><br/><br/><br/><br/>
           	<h2 class="text-center" translate="TRAVELINSURANCE"></h2> 
@@ -21,6 +22,7 @@
 			<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 			
            	<div class="row">
+          
               			<div class="col-md-8 col-md-offset-2">  
               				<br/><br/> 
               				<table class="table table-hover table-bordered">
@@ -196,7 +198,7 @@
 				                    	<tr>
 				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span>
-				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" ng-model="inc.homeCheckBox" ng-click="inc.closeOthers()"/>
+				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input name="home" type="checkbox" ng-model="inc.homeCheckBox" ng-click="inc.closeOthers($event)"/>
 				                    			<i class="fa fa-info-circle" ng-click="inc.openH()" style="font-size: 18px;" data-toggle="tooltip" data-placement="top" title="{{'HOMEINSURACECOVERING'|translate}}"></i>
 				                    		</td>
 				                    	</tr>
@@ -239,7 +241,7 @@
 				                    	<tr>
 				                    		<td colspan="3">
 				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span>
-				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" ng-model="inc.roadCheckBox" ng-click="inc.closeOthers()"/>
+				                    			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input name="road" type="checkbox" ng-model="inc.roadCheckBox" ng-click="inc.closeOthers($event)"/>
 				                    			<i class="fa fa-info-circle" ng-click="inc.openV()" style="font-size: 18px;"></i>
 				                    		</td>
 				                    	</tr>
@@ -491,10 +493,12 @@
               			<div class="col-md-offset-9">
 	              			<a ui-sref="home"> <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button> </a>
 	                         <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button>
+	                   			
 	                    </div>
               		</div>
               	<br/><br/>
               	</form>
+              	
             </div>
        </div>
   </div>

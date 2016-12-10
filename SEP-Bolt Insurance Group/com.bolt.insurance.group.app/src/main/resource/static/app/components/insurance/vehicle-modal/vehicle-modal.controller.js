@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance.vehicle-modal')
 		.controller('VehicleInsuranceController', VehicleInsuranceController);
 
-	VehicleInsuranceController.$inject = ['$scope','localStorageService','$state'];
-	function VehicleInsuranceController($scope,localStorageService,$state) {
+	VehicleInsuranceController.$inject = ['$scope','localStorageService','$state','InsuranceProgress'];
+	function VehicleInsuranceController($scope,localStorageService,$state,InsuranceProgress) {
 
 		var vic = this;
 		
@@ -27,6 +27,8 @@
 			
 		}
 		
+		var current = (vic.homeCheckBox)?5:4;
+		InsuranceProgress.setCurrent(current);
 		
 	}
 })();

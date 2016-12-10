@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance.total-price')
 		.controller('TotalPriceController', TotalPriceController);
 
-	TotalPriceController.$inject = ['$scope', '$translate', 'localStorageService', '$http', '$state'];
-	function TotalPriceController($scope, $translate, localStorageService, $http, $state) {
+	TotalPriceController.$inject = ['$scope', '$translate', 'localStorageService', '$http', '$state','InsuranceProgress'];
+	function TotalPriceController($scope, $translate, localStorageService, $http, $state,InsuranceProgress) {
 		var tpc = this;
 
 		var payload = {
@@ -62,6 +62,6 @@
 		tpc.next = function() {
 			$state.go('insurance-users');
 		}
-		
+		InsuranceProgress.setCurrent(2);
 	}
 })();

@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance.insurance-users')
 		.controller('InsuranceUsersController', InsuranceUsersController);
 
-	InsuranceUsersController.$inject = ['userModal', '$state', 'localStorageService'];
-	function InsuranceUsersController(userModal, $state, localStorageService) {
+	InsuranceUsersController.$inject = ['userModal', '$state', 'localStorageService','InsuranceProgress'];
+	function InsuranceUsersController(userModal, $state, localStorageService,InsuranceProgress) {
 		var iuc = this;
 		
 		iuc.users = [];
@@ -122,6 +122,8 @@
 					localStorageService.cookie.set('oldsNumber', iuc.olds, 1, true);
 			}
 		}
+		
+		InsuranceProgress.setCurrent(3);
 		
 	}
 	

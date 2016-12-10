@@ -14,19 +14,20 @@
 							views : {
 
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/header.html'
+								
+									
 								},
 								content : {
 									templateUrl : 'app/components/insurance/insurance_users.html',
 									controller : 'InsuranceController',
 									controllerAs : 'inc'
+									
 								},
 								footer : {
-									templateUrl : 'app/components/insurance/footer.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/footer.html'
+									
+								
 								}
 							}
 						})
@@ -36,9 +37,8 @@
 							url : '/homeinsurance',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/header.html'
+
 								},
 								content : {
 									templateUrl : 'app/components/insurance/home-modal/home-modal.html',
@@ -46,9 +46,8 @@
 									controllerAs : 'hic'
 								},
 								footer : {
-									templateUrl : 'app/components/insurance/footer.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/footer.html'
+								
 								}
 							}
 						})
@@ -58,9 +57,7 @@
 							url : '/vehicleinsurance',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/header.html'
 								},
 								content : {
 									templateUrl : 'app/components/insurance/vehicle-modal/vehicle-modal.html',
@@ -68,9 +65,8 @@
 									controllerAs : 'vic'
 								},
 								footer : {
-									templateUrl : 'app/components/insurance/footer.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/footer.html'
+									
 								}
 							}
 						})
@@ -80,9 +76,7 @@
 							url : '/insurance/total_price',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/header.html'
 								},
 								content : {
 									templateUrl : 'app/components/insurance/total-price/total-price.html',
@@ -90,9 +84,8 @@
 									controllerAs : 'tpc'
 								},
 								footer : {
-									templateUrl : 'app/components/insurance/footer.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/footer.html'
+									
 								}
 							}
 						})
@@ -102,9 +95,7 @@
 							url : '/insurance/users',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/header.html'
 								},
 								content : {
 									templateUrl : 'app/components/insurance/insurance-users/insurance-users.html',
@@ -112,9 +103,8 @@
 									controllerAs : 'iuc'
 								},
 								footer : {
-									templateUrl : 'app/components/insurance/footer.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/footer.html'
+									
 								}
 							}
 						})
@@ -124,9 +114,7 @@
 							url : '/insurance/payment_response_success',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/header.html'
 								},
 								content : {
 									templateUrl : 'app/components/insurance/payment-response/payment-response-success.html',
@@ -134,9 +122,7 @@
 									controllerAs : 'prc'
 								},
 								footer : {
-									templateUrl : 'app/components/insurance/payment-response/footer.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/payment-response/footer.html'
 								}
 							}
 						})
@@ -146,9 +132,7 @@
 							url : '/insurance/payment_response_error',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/header.html'
 								},
 								content : {
 									templateUrl : 'app/components/insurance/payment-response/payment-response-error.html',
@@ -156,9 +140,7 @@
 									controllerAs : 'prc'
 								},
 								footer : {
-									templateUrl : 'app/components/insurance/payment-response/footer.html',
-									controller : 'InsuranceController',
-									controllerAs : 'inc'
+									templateUrl : 'app/components/insurance/payment-response/footer.html'
 								}
 							}
 						});

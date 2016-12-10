@@ -5,9 +5,9 @@
 			'InsuranceController', InsuranceController);
 
 	InsuranceController.$inject = [ '$scope', '$state','userModal', 'homeModal',
-			'vehicleModal', 'Insurance', 'Restangular', '$translate', '$fancyModal', 'localStorageService'];
+			'vehicleModal', 'Insurance', 'Restangular', '$translate', '$fancyModal', 'localStorageService','InsuranceProgress'];
 	function InsuranceController($scope, $state, userModal, homeModal, vehicleModal,
-			Insurance, Restangular, $translate, $fancyModal, localStorageService) {
+			Insurance, Restangular, $translate, $fancyModal, localStorageService,InsuranceProgress) {
 
 		var inc = this;
 		
@@ -329,7 +329,8 @@
 			$state.go('total-price');
 		}
 		
-		inc.closeOthers = function() {
+		inc.closeOthers = function(e) {
+
 			if(inc.homeCheckBox === false) {
 				inc.fire = false;
 				inc.flood = false;
@@ -338,21 +339,39 @@
 				inc.homearea = '';
 				inc.ageofhome = '';
 				inc.estimatedvalueofhome = '';
+				
 			}
 			if(inc.roadCheckBox === false) {
 				inc.towing = false;
 				inc.repair = false;
 				inc.hotel = false;
 				inc.alternative = false;
+				
 			}
 			if(inc.sportCheckBox === false) {
 				inc.selectedSport = '';
 			}
+			
+			if(e.srcElement.name=='home'){
+				if(inc.homeCheckBox === false){
+					InsuranceProgress.removeStep();
+				}else{
+					InsuranceProgress.addStep();
+				}
+			}else{
+				if(inc.roadCheckBox === false){
+					InsuranceProgress.removeStep();
+				}else{
+					InsuranceProgress.addStep();
+				}
+			}
+			
+			
 		}
 		
 		
 		var getSteps = function(){
-			var newSteps = $scope.progress.steps;
+			var newSteps = 4;
 			if(inc.homeCheckBox){
 				newSteps++;
 			}
@@ -362,22 +381,9 @@
 			return newSteps;
 		}
 		
-		var getVehicleStepNumber = function(){
-			return (inc.homeCheckBox)?5:4;
-		}
-		$scope.progress = {steps:4,current:1};
-		if($state.current.name=='total-price'){
-			$scope.progress = {steps:getSteps(),current:2};
-		}
-		if($state.current.name=='insurance-users'){
-			$scope.progress = {steps:getSteps(),current:3};
-		}
-		if($state.current.name=='homeinsurance'){
-			$scope.progress = {steps:getSteps(),current:4};
-		}
-		if($state.current.name=='vehicleinsurance'){
-			$scope.progress = {steps:getSteps(),current:getVehicleStepNumber()};
-		}
+		InsuranceProgress.setSteps(getSteps());
+		InsuranceProgress.setCurrent(1);
+		
 		
 		
 		
