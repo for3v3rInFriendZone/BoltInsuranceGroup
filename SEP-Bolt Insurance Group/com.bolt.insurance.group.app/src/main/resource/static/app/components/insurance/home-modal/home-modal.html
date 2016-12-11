@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownerjmbg" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
             <p class="text-center" ng-show="hmc.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
             <p class="text-center" ng-show="hmc.form.ownerJmbg.$touched && hmc.form.ownerJmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
         </div>
@@ -30,27 +30,6 @@
         <div class="col-sm-8 col-sm-offset-2">
             <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <input class="form-control" type="text" ng-model="hmc.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required>
             <p class="text-center" ng-show="hmc.form.address.$touched && hmc.form.address.$error.required" style="color: red;" translate="OWNERADDRESSFORM"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="HOMEAREA"> </label> <input class="form-control" ng-model="hmc.home.homearea" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required>
-           <p class="text-center" ng-show="hmc.form.homeArea.$error.pattern" style="color: red;" translate="OWNERAREAFORM"> </p>
-           <p class="text-center" ng-show="hmc.form.homeArea.$touched && hmc.form.homeArea.$error.required" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="CONSTRUCTIONYEAR"> </label> <input class="form-control" ng-model="hmc.home.ageofhome" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required>
-           <p class="text-center" ng-show="hmc.form.ageOfHome.$error.pattern" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
-           <p class="text-center" ng-show="hmc.form.ageOfHome.$touched && hmc.form.ageOfHome.$error.required" style="color: red;" translate="OWNERCONSTRUCTIONYEARFORM"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-           <label class="form-control text-center" style="background-color: lightblue; " translate="ESTIMATEDVALUEOFHOME"> </label> <input class="form-control" ng-model="hmc.home.estimatedvalueofhome" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required>
-           <p class="text-center" ng-show="hmc.form.estimatedValueOfHome.$error.pattern" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
-           <p class="text-center" ng-show="hmc.form.estimatedValueOfHome.$touched && hmc.form.estimatedValueOfHome.$error.required" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEFORM"> </p>
         </div>
     </div>
     </form>

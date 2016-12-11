@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.ownerjmbg" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
         	<p class="text-center" ng-show="vmc.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
             <p class="text-center" ng-show="vmc.form.ownerJmbg.$touched && vmc.form.ownerJmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
         </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="YEAROFMANUFACTURE"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.yearofmanufacture" id="year" name="year" placeholder="{{'YEAROFMANUFACTURE'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required />
+            <label class="form-control text-center" style="background-color: lightblue; " translate="YEAROFMANUFACTURE"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.yearofmanufacture" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="year" name="year" placeholder="{{'YEAROFMANUFACTURE'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required />
        		<p class="text-center" ng-show="vmc.form.year.$error.pattern" style="color: red;" translate="YEAROFMANUFACTUREFORM"> </p>
         	<p class="text-center" ng-show="vmc.form.year.$touched && vmc.form.year.$error.required" style="color: red;" translate="YEAROFMANUFACTUREREQUIREDFORM"> </p>
         </div>
@@ -48,7 +48,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="NUMBEROFCHASSIS"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.numberofchassis" id="chassis" name="chassis" placeholder="{{'NUMBEROFCHASSIS'|translate}}" maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required />
+            <label class="form-control text-center" style="background-color: lightblue; " translate="NUMBEROFCHASSIS"> </label> <input class="form-control" type="text" ng-model="vmc.vehicle.numberofchassis" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="chassis" name="chassis" placeholder="{{'NUMBEROFCHASSIS'|translate}}" maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required />
        		<p class="text-center" ng-show="vmc.form.chassis.$error.pattern" style="color: red;" translate="NUMBEROFCHASSISFORM"> </p>
        		<p class="text-center" ng-show="vmc.form.chassis.$touched && vmc.form.chassis.$error.required" style="color: red;" translate="NUMBEROFCHASSISREQUIREDFORM"> </p>
         </div>

@@ -312,26 +312,34 @@ salience 4
 				System.out.println("Trajanje ++++" + $insurance.travelInsurancePrice);
 			
 			} else if (r.name == "paket"){
+				System.out.println("Paket");
 				for(Subgroup s : r.subgroup){
 					modify($insurance){
 						setCarInsurancePrice($insurance.carInsurancePrice + r.price.value * s.coefficient);
 					}
+					System.out.println("Car risk: " + s.subname + " price " + $insurance.carInsurancePrice);
 				}
 				
 				if(r.subgroup.size() == 4){
+					System.out.println("Bez popusta: " + $insurance.carInsurancePrice);
 					modify($insurance){
 						setCarInsurancePrice($insurance.carInsurancePrice - $insurance.carInsurancePrice * 0.3);
 					}
+					System.out.println("Sa popustom : " + $insurance.carInsurancePrice);
 				} else if (r.subgroup.size() == 3){
+					System.out.println("Bez popusta: " + $insurance.carInsurancePrice);
 					modify($insurance){
 						setCarInsurancePrice($insurance.carInsurancePrice - $insurance.carInsurancePrice * 0.2);
 					}
+					System.out.println("Sa popustom : " + $insurance.carInsurancePrice);
 				} else if (r.subgroup.size() == 2){
+					System.out.println("Bez popusta : " + $insurance.carInsurancePrice);
 					modify($insurance){
 						setCarInsurancePrice($insurance.carInsurancePrice - $insurance.carInsurancePrice * 0.1);
 					}
+					System.out.println("Sa popustom : " + $insurance.carInsurancePrice);
 				}
-				
+				System.out.println("Car price: " + $insurance.carInsurancePrice);
 				modify($insurance){
 					setCarInsurancePrice($insurance.carInsurancePrice * $insurance.days);
 				}

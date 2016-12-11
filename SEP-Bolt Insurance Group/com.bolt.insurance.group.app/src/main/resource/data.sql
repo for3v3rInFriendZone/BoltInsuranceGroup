@@ -3,22 +3,22 @@ INSERT INTO type (name) VALUES ('auto');
 INSERT INTO type (name) VALUES ('stambeno');
 
 INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 50.00);
-INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 1000.00);
+INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 100.00);
+INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 150.00);
+INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 200.00);
 INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 250.00);
-INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 1100.00);
-INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 530.00);
-INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 1700.00);
+INSERT INTO price (end_date, start_date, value) VALUES ('11-11-2017 00:00:00', '11-11-2016 00:00:00', 300.00);
 
 INSERT INTO risk (risk_name, price, risk_type) VALUES ('starost', 1, 1);
-INSERT INTO risk (risk_name, price, risk_type) VALUES ('region', 5, 1);
+INSERT INTO risk (risk_name, price, risk_type) VALUES ('region', 4, 1);
 INSERT INTO risk (risk_name, price, risk_type) VALUES ('trajanje', 2, 1);
 INSERT INTO risk (risk_name, price, risk_type) VALUES ('sport', 3, 1);
-INSERT INTO risk (risk_name, price, risk_type) VALUES ('povrsina', 2, 2);
-INSERT INTO risk (risk_name, price, risk_type) VALUES ('starost_stana', 4, 2);
+INSERT INTO risk (risk_name, price, risk_type) VALUES ('povrsina', 1, 2);
+INSERT INTO risk (risk_name, price, risk_type) VALUES ('starost_stana', 2, 2);
 INSERT INTO risk (risk_name, price, risk_type) VALUES ('procenjena_vrednost', 6, 2);
-INSERT INTO risk (risk_name, price, risk_type) VALUES ('vrsta_osiguranja', 5, 2);
-INSERT INTO risk (risk_name, price, risk_type) VALUES ('paket', 4, 3);
-INSERT INTO risk (risk_name, price, risk_type) VALUES ('vrednost', 4, 1);
+INSERT INTO risk (risk_name, price, risk_type) VALUES ('vrsta_osiguranja',1, 2);
+INSERT INTO risk (risk_name, price, risk_type) VALUES ('paket', 2, 3);
+INSERT INTO risk (risk_name, price, risk_type) VALUES ('vrednost', 6, 1);
 
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (1, 'do 18', 1);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (1.5, '18 do 60', 1);
@@ -50,7 +50,7 @@ INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, '25000 do 50000', 7
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (3, 'preko 50000', 7);
 
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (3, 'poplave', 8);
-INSERT INTO subgroup (coefficient, subname, risk) VALUES (4, 'zemljotres', 8);
+INSERT INTO subgroup (coefficient, subname, risk) VALUES (2, 'zemljotres', 8);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (1, 'pljacka', 8);
 INSERT INTO subgroup (coefficient, subname, risk) VALUES (4, 'pozar', 8);
 
