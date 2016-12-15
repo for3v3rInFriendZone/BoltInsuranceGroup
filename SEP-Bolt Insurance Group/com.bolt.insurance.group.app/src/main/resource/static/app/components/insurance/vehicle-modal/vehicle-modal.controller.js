@@ -9,10 +9,17 @@
 	function VehicleInsuranceController($scope,localStorageService, $state, InsuranceProgress) {
 
 		var vic = this;
+		vic.vehicle = {};
 		
 		vic.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
 		
 		vic.next = function(){
+			
+			if(vic.form.$invalid) {
+				vic.submitted = true;
+				return;
+			}
+			
 			$state.go('payment');
 			
 		}
@@ -24,13 +31,6 @@
 				$state.go('insurance-users');
 			}
 			
-		}
-		
-		vic.submitForm = function() {
-			
-			if(vic.form.$invalid) {
-				return;
-			}
 		}
 		
 		var current = (vic.homeCheckBox)?5:4;

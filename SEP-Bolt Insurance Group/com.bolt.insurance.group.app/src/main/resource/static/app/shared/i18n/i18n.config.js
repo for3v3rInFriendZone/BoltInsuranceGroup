@@ -175,7 +175,8 @@
 			VALIDJMBG: "Jmbg is not valid.",
 			STEP: "Step",
 			HOMEINSURANCEWARNING: "You need to choose at least one protection package.",
-			MOREUSERSNEEDED: "You need to enter all the users."
+			MOREUSERSNEEDED: "You need to enter all the users.",
+			PAYPALLPAGE: "Review of insurance policy and payment."
 
 				
 				
@@ -342,7 +343,8 @@
 			VALIDJMBG: "JMBG nije validan.",
 			STEP: "Korak",
 			HOMEINSURANCEWARNING: "Morate izabrati barem jedan paket zaštite.",
-			MOREUSERSNEEDED: "Morate uneti sve korisnike osiguranja."
+			MOREUSERSNEEDED: "Morate uneti sve korisnike osiguranja.",
+			PAYPALLPAGE: "Pregled polise osiguranja i plaćanje."
 
 
 		});

@@ -7,12 +7,11 @@
 }
 
 .state-form input.ng-invalid.ng-touched {
-	border:2px solid Red;
-	/*background-color: #FA787E;*/
+	border:1px solid #a94442;
 }
 
 .errorValidation {
-	border: 2px solid red;
+	border:1px solid #a94442;
 }
 
 body { 

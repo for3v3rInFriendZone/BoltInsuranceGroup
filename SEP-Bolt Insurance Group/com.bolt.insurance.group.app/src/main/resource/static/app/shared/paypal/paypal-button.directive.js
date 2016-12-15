@@ -82,7 +82,7 @@
           '<input type="hidden" name="business" value="' + business + '">' +
           '<input type="hidden" name="currency_code" value="' + currencyCode + '">' +
           '<input type="hidden" name="item_name" value="' + itemName + '">' +
-          '<input type="hidden" name="amount" value="' + 800546 + '">' +
+          '<input type="hidden" name="amount" value="' + (amount + amount*0.2)/120 + '">' +
           '<input type="image" src="' + imgSrc + '" border="0" name="submit" alt="' + imgAlt + '">' +
           '</form>';
         //element.replaceWith(template);

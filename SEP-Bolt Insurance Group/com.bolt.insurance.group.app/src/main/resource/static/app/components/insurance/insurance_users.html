@@ -205,15 +205,15 @@
 				                    	<tr ng-if="inc.homeCheckBox">
 				                    		<td colspan="3">
 				                    			
-				                    				<div class="col-md-5 col-md-offset-4"><input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required> </div> <br/><br/>
+				                    				<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.homeArea.$error.required && inc.submitted}"><input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required> </div> <br/><br/>
 									            	<p class="text-center" ng-show="inc.form.homeArea.$error.pattern" style="color: red;" translate="OWNERAREAFORM"> </p>
 									            	<p class="text-center" ng-show="(inc.form.homeArea.$touched && inc.form.homeArea.$error.required) || (inc.form.homeArea.$error.required && inc.submitted)" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p>
 									            	 				
-									            	<div class="col-md-5 col-md-offset-4"><input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required></div> <br/><br/>
+									            	<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.ageOfHome.$error.required && inc.submitted}"><input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.ageOfHome.$error.pattern" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
            											<p class="text-center" ng-show="(inc.form.ageOfHome.$touched && inc.form.ageOfHome.$error.required) || (inc.form.ageOfHome.$error.required && inc.submitted)" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
            										
-           											<div class="col-md-5 col-md-offset-4"><input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required></div> <br/><br/>
+           											<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.estimatedValueOfHome.$error.required && inc.submitted}"><input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$error.pattern" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
            											<p class="text-center" ng-show="(inc.form.estimatedValueOfHome.$touched && inc.form.estimatedValueOfHome.$error.required) || (inc.form.estimatedValueOfHome.$error.required && inc.submitted)" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
 				                    		</td>
@@ -267,239 +267,15 @@
 			    
               	<br/>
               	<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
-              	
-              	
-              	
-              	
-              	
-              	
-              	
-              	
-              	<!--  
-              	<div class="row">
-              		<div class="col-md-8 col-md-offset-2">           
-	                    <table class="table table-hover table-bordered text-center">
-	                        <thead>
-	                        	<th class="info text-center" colspan="4" translate="INSURANCEUSERS">
-	                        	</th>
-	                        </thead>
-		                    <thead> 
-		                    	<th class="success text-center" translate="NAME">		                    		
-		                    	</th>   
-		                    	<th class="success text-center" translate="SURNAME">		                   	
-		                    	</th>   
-		                    	<th class="success text-center" translate="ADDRESS">		                   
-		                    	</th> 
-		                    	<th class="success text-center" translate="REMOVE">		                   
-		                    	</th>          
-		                    </thead>
-		                    <tbody>
-		                    	<tr ng-repeat="user in inc.users | orderBy:'id'">
-						            <td ng-click="inc.editUser($index)">{{user.firstName}}</td>
-						            <td ng-click="inc.editUser($index)">{{user.surname}}</td>
-						            <td ng-click="inc.editUser($index)">{{user.address}}</td>
-						            <td> <i style="font-size: 22px;"ng-click="inc.removeUser($index)" class="fa fa-trash-o"> </i></td>
-						        </tr>
-		                    </tbody>
-	                    </table>
-	                    <table class="table table-hover table-bordered text-center">
-	                        <thead>
-	                        	<th class="info text-center" colspan="4">
-	                        	Na polisi se nalazi [{{inc.personCollection.below18}} -> 18- ] korisnika, izmedju 18 i 60 [{{inc.personCollection.inBetween18And60}}] i [{{inc.personCollection.after60}}] 60+
-	                        	</th>
-	                        </thead>
-	                    </table>
-	                    <div class="text-center">
-	                    
-	                     	<button class="btn btn-success" type="button" ng-click="inc.newUser()"> <i style="font-size: 22px;" class="fa fa-plus"> </i></button>
-	                    </div>
-              		</div>
-              	</div>
-              	
-                <hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
-              	<br/>
-	            
-	            <div class="row">
-              			<div class="col-md-8 col-md-offset-2">
-              					<table class="table table-hover table-bordered">
-			                    	<thead>
-			                        	<th class="info text-center" colspan="4" translate="COVERING">
-			                        	</th>
-			                        </thead>
-			                        <thead>
-			                        	<th class="success text-center" colspan="3" translate="TRAVELHEALTHINSURANCE">
-			                        		
-			                        	</th>
-			                        	<th class="success text-center" translate="PRICE">
-			                        		
-			                        	</th>
-			                        </thead>
-			                        <tbody class="text-center">
-				                    	<tr>
-				                    		<td>
-				                    			<label translate="EUNA"> </label> <div class="text-center"> <input type="radio" name="radio1" value="1500" ng-model="inc.sports.riskCoeff"/> </div>               
-				                    		</td>
-				                    		<td>
-				                    			<label translate="EUNAA"> </label> <div class="text-center"> <input type="radio" name="radio1" value="2500" ng-model="inc.sports.riskCoeff"/> </div>	               
-				                    		</td>
-				                    		<td>
-				                    			<label translate="WHOLEWORLD"> </label> <div class="text-center"> <br/> <input type="radio" name="radio1" value="4500" ng-model="inc.sports.riskCoeff"/> </div>		               
-				                    		</td>
-				                    		<td>	                     
-				                    			<div class="col-md-7 col-md-offset-2">
-				                    				  <input class="form-control" type="text" ng-model="inc.sports.riskCoeff" disabled>
-				                    			</div>			                    			
-				                    		</td>
-								        </tr>
-								        <tr>	                    
-				                    		<td class="success text-center" colspan="3">
-				                    			<b translate="HOMEINSURANCE"> </b>	
-				                    		</td>		 
-				                    		<td class="success text-center">
-				                    			<b translate="PRICE"> </b>	
-				                    		</td>	                   			
-				                    	</tr>
-				                    	<tr>
-				                    		<td colspan="3">
-				                    			&nbsp&nbsp&nbsp&nbsp<i class="fa fa-home" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEHOMEORFLAT"></span>
-				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your house or flat" ng-if="inc.homeInsurance" ng-click="inc.newHome()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
-				                    			<div ng-if="inc.homeindicator == 1">
-				                    			
-					                    			<table class="table table-hover table-bordered text-center">
-									                    <thead> 
-									                    	<th class="success text-center" translate="OWNERNAME">		                    		
-									                    	</th>   
-									                    	<th class="success text-center" translate="OWNERSURNAME">		                   	
-									                    	</th>   
-									                    	<th class="success text-center" translate="OWNERJMBG">		                   
-									                    	</th> 
-									                    	<th class="success text-center" translate="ADDRESS">		                   
-									                    	</th> 
-									                    	<th class="success text-center" translate="HOMEAREA">		                   
-									                    	</th> 
-									                    	<th class="success text-center" translate="AGEOFHOME">		                   
-									                    	</th>  
-									                    	<th class="success text-center" translate="ESTIMATEDVALUEOFHOME">		                   
-									                    	</th> 
-									                    	<th class="success text-center" translate="REMOVE">		                   
-									                    	</th> 
-									                         
-									                    </thead>
-									                    <tbody>
-													            <td ng-click="inc.editHome()">{{inc.home.ownername}}</td>
-													            <td ng-click="inc.editHome()">{{inc.home.ownersurname}}</td>
-													            <td ng-click="inc.editHome()">{{inc.home.ownerjmbg}}</td>
-													            <td ng-click="inc.editHome()">{{inc.home.address}}</td>
-													            <td ng-click="inc.editHome()">{{inc.home.homearea}}</td>
-													            <td ng-click="inc.editHome()">{{inc.home.ageofhome}}</td>
-													            <td ng-click="inc.editHome()">{{inc.home.estimatedvalueofhome}}</td>
-													            <td><i style="font-size: 22px;" ng-click="inc.removeHome()" class="fa fa-trash-o"> </i></td>
-									                    </tbody>
-								                    </table>
-				                    			</div>
-				                    			
-				                    		</td>
-				                    		<td>	                    
-				                    			<div class="col-md-7 col-md-offset-2">
-				                    				  <input class="form-control" type="text" disabled>
-				                    			</div>			                    			
-				                    		</td>
-				                    	</tr>
-				                    	<tr>	                    
-				                    		<td class="success text-center" colspan="3">
-				                    			<b translate="ROADINSURANCE"> </b>	
-				                    		</td>		 
-				                    		<td class="success text-center">
-				                    			<b translate="PRICE"> </b>	
-				                    		</td>	                   			
-				                    	</tr>
-				                    	<tr>
-				                    		<td colspan="3">
-				                    			&nbsp&nbsp&nbsp&nbsp <i class="fa fa-car" style="font-size: 40px;"></i> <span style="font-size: 20px;" translate="INSURANCEFORROADSIDEASSISTANCE"> </span>
-				                    			&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Add informations for your vehicle" ng-if="inc.roadInsurance" ng-click="inc.newVehicle()"> <i style="font-size: 20px;" class="fa fa-plus"> </i></button>
-				                    		
-						                    		<div ng-if="inc.vehicleindicator == 1">
-						                    			
-							                    			<table class="table table-hover table-bordered text-center">
-											                    <thead> 
-											                    	<th class="success text-center" translate="OWNERNAME">		                    		
-											                    	</th>   
-											                    	<th class="success text-center" translate="OWNERSURNAME">		                   	
-											                    	</th>   
-											                    	<th class="success text-center" translate="OWNERJMBG">		                   
-											                    	</th> 
-											                    	<th class="success text-center" translate="TYPEOFVEHICLE">		                   
-											                    	</th> 
-											                    	<th class="success text-center" translate="YEAROFMANUFACTURE">		                   
-											                    	</th> 
-											                    	<th class="success text-center" translate="LICENCEPLATESNUMBER">		                   
-											                    	</th>  
-											                    	<th class="success text-center" translate="NUMBEROFCHASSIS">		                   
-											                    	</th> 
-											                    	<th class="success text-center" translate="REMOVE">		                   
-											                    	</th> 
-											                         
-											                    </thead>
-											                    <tbody>
-															            <td ng-click="inc.editVehicle()">{{inc.vehicle.ownername}}</td>
-															            <td ng-click="inc.editVehicle()">{{inc.vehicle.ownersurname}}</td>
-															            <td ng-click="inc.editVehicle()">{{inc.vehicle.ownerjmbg}}</td>
-															            <td ng-click="inc.editVehicle()">{{inc.vehicle.typeofvehicle}}</td>
-															            <td ng-click="inc.editVehicle()">{{inc.vehicle.yearofmanufacture}}</td>
-															            <td ng-click="inc.editVehicle()">{{inc.vehicle.licenceplatesnumber}}</td>
-															            <td ng-click="inc.editVehicle()">{{inc.vehicle.numberofchassis}}</td>
-															            <td><i style="font-size: 22px;" ng-click="inc.removeVehicle()" class="fa fa-trash-o"> </i></td>
-											                    </tbody>
-										                    </table>
-						                    			</div>
-				                    		
-				                    		</td>
-				                    		<td>	                    
-				                    			<div class="col-md-7 col-md-offset-2">
-				                    				  <input class="form-control" type="text" disabled>
-				                    			</div>			                    			
-				                    		</td>
-				                    	</tr>
-				                    	<tr >	                    
-				                    		<td class="success text-center" colspan="2">
-				                    			<b translate="SUMOFINSURANCE"> </b>	
-				                    		</td>		 
-				                    		<td class="success text-center">
-				                    			<b translate="TAX"> </b>	
-				                    		</td>
-				                    		<td class="success text-center">
-				                    			<b translate="FINALPRICE"> </b>	
-				                    		</td>	                   			
-				                    	</tr>
-				                    	<tr>
-				                    		<td colspan="2">
-				                    			 <input class="form-control" type="text" disabled/>
-				                    		</td>
-				                    		<td>	                    
-				                    			 <input class="form-control" type="text" disabled/>			                    			
-				                    		</td>
-				                    		<td>	                    
-				                    			 <input class="form-control" type="text" disabled/>			                    			
-				                    		</td>
-				                    	</tr>
-				                    </tbody>
-	                    	</table>
-              			</div>
-              		</div>
-              		
-              		<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
-              		<br/>
-              		-->
+              	            
               		<div class="row">
-              			<div class="col-md-offset-9">
+              			<div class="text-center">
 	              			<a ui-sref="home"> <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button> </a>
 	                         <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next"><i class="fa fa-arrow-right"></i></button>
-	                   			
 	                    </div>
               		</div>
               	<br/><br/>
               	</form>
-              	
             </div>
        </div>
   </div>

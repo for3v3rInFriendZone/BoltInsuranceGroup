@@ -128,7 +128,7 @@
 			
 			iuc.sumbitted = true;
 			
-			if(iuc.kids != 0 || iuc.grownups != 0 || iuc.olds != 0) {
+			if((iuc.kids != 0 && iuc.kids != null) || (iuc.grownups != 0 && iuc.grownups != null) || (iuc.olds != 0 && iuc.olds != null)) {
 				iuc.usersFlag = true;
 				return;
 			} else {

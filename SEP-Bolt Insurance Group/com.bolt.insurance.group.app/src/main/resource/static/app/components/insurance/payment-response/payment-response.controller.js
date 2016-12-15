@@ -6,8 +6,8 @@
 		.module('bolt-insurance-group.insurance.payment-response')
 		.controller('PaymentResponseController', PaymentResponseController);
 
-	PaymentResponseController.$inject = ['$scope', '$translate'];
-	function PaymentResponseController($scope, $translate) {
+	PaymentResponseController.$inject = ['$scope', '$translate', 'localStorageService'];
+	function PaymentResponseController($scope, $translate, localStorageService) {
 
 		$scope.animateElementIn = function($el) {
 
@@ -17,10 +17,10 @@
 			if (typeof animation !== typeof undefined && animation !== false) {
 		    	$el.removeClass('not-visible');
 		     	$el.addClass('animated '+animation);
-			}
-			
-			
+			}	
   		};
+  		
+  		localStorageService.cookie.clearAll();
 		
 	}
 

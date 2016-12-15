@@ -1,33 +1,33 @@
 <div class=container>
-	<form class="state-form form-horizontal" name="hic.form" ng-submit="hic.submitForm()" novalidate>
+	<form class="state-form form-horizontal" name="hic.form" novalidate>
 		<div class="modal-header">
 		    <h3 class="modal-title text-center" translate="PLEASEENTERINFOOFHOME"></h3>
 		</div>
 		<div class="modal-body">
-		    <form class="state-form form-horizontal" name="hmc.form" novalidate>
+		    <form class="state-form form-horizontal" name="hic.form" novalidate>
 		    <div class="form-group">
 		    	<div class="col-sm-8 col-sm-offset-2">
-		    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label>  <input class="form-control" type="text" ng-model="hmc.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> 
-		    		<p class="text-center" ng-show="hmc.form.ownerName.$touched && hmc.form.ownerName.$error.required" style="color: red;" translate="OWNERNAMEFORM"></p>
+		    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label> <div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> </div>
+		    		<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
 		        </div>
 		    </div>
 		    <div class="form-group">
 		        <div class="col-sm-8 col-sm-offset-2">
-		            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/>
-		            <p class="text-center" ng-show="hmc.form.ownerSurname.$touched && hmc.form.ownerSurname.$error.required" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
+		            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <div ng-class="{'has-error': hic.form.ownerSurname.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/> </div>
+		            <p class="text-center" ng-show="(hic.form.ownerSurname.$touched && hic.form.ownerSurname.$error.required) || (hic.form.ownerSurname.$error.required && hic.submitted)" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
 		        </div>
 		    </div>
 		    <div class="form-group">
 		        <div class="col-sm-8 col-sm-offset-2">
-		            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
-		            <p class="text-center" ng-show="hmc.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
-		            <p class="text-center" ng-show="hmc.form.ownerJmbg.$touched && hmc.form.ownerJmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
+		            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <div ng-class="{'has-error': hic.form.ownerJmbg.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required> </div>
+		            <p class="text-center" ng-show="hic.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
+		            <p class="text-center" ng-show="(hic.form.ownerJmbg.$touched && hic.form.ownerJmbg.$error.required) || (hic.form.ownerJmbg.$error.required && hic.submitted)" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
 		        </div>
 		    </div>
 		    <div class="form-group">
 		        <div class="col-sm-8 col-sm-offset-2">
-		            <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <input class="form-control" type="text" ng-model="hmc.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required>
-		            <p class="text-center" ng-show="hmc.form.address.$touched && hmc.form.address.$error.required" style="color: red;" translate="OWNERADDRESSFORM"> </p>
+		            <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <div ng-class="{'has-error': hic.form.address.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required> </div>
+		            <p class="text-center" ng-show="(hic.form.address.$touched && hic.form.address.$error.required) || (hic.form.address.$error.required && hic.submitted)" style="color: red;" translate="OWNERADDRESSFORM"> </p>
 		        </div>
 		    </div>
 		    </form>

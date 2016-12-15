@@ -15,6 +15,10 @@
 		
 		function next(){
 			
+			if(hic.form.$invalid) {
+				hic.submitted = true;
+				return;
+			}
 			if(hic.roadCheckBox){
 				$state.go('vehicleinsurance');
 			}else{
