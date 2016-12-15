@@ -106,9 +106,13 @@
 				} else if(status === 'noGrownups') {
 					umc.submitted.grownups = true;
 					
-				} else {
+				} else if(status === 'noOlds'){
 					umc.submitted.olds = true;
 					
+				} else {
+					umc.submitted.kids = false;
+					umc.submitted.grownups = false;
+					umc.submitted.olds = false;
 				}
 			}
 			
@@ -123,13 +127,14 @@
 			
 			if(day < 1 || day > 31) {
 				umc.submitted.validJmbg = true;
-				return true;
 			} else if(month < 1 || month > 12) {
 				umc.submitted.validJmbg = true;
-				return true;
+			}
+			else {
+				umc.submitted.validJmbg = false;
 			}
 			
-			return false;
+			return umc.submitted.validJmbg;
 		}
 		
 		/**

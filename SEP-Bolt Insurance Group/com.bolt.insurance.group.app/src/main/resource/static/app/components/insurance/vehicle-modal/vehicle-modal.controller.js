@@ -5,16 +5,15 @@
 		.module('bolt-insurance-group.insurance.vehicle-modal')
 		.controller('VehicleInsuranceController', VehicleInsuranceController);
 
-	VehicleInsuranceController.$inject = ['$scope','localStorageService','$state','InsuranceProgress'];
-	function VehicleInsuranceController($scope,localStorageService,$state,InsuranceProgress) {
+	VehicleInsuranceController.$inject = ['$scope','localStorageService', '$state', 'InsuranceProgress'];
+	function VehicleInsuranceController($scope,localStorageService, $state, InsuranceProgress) {
 
 		var vic = this;
 		
 		vic.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
 		
 		vic.next = function(){
-			
-			console.log("payment");
+			$state.go('payment');
 			
 		}
 		
@@ -25,6 +24,13 @@
 				$state.go('insurance-users');
 			}
 			
+		}
+		
+		vic.submitForm = function() {
+			
+			if(vic.form.$invalid) {
+				return;
+			}
 		}
 		
 		var current = (vic.homeCheckBox)?5:4;

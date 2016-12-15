@@ -2,14 +2,15 @@
 	'use strict';
 	
 	angular
-	.module('bolt-insurance-group')
+	.module('bolt-insurance-group.insurance')
 	.directive('bigPaypalButton', bigPaypalButton);
 
-	function bigPaypalButton() {
+	bigPaypalButton.$inject = ['localStorageService'];
+	function bigPaypalButton(localStorageService) {
 		return {
 			restrict: 'E',
 			scope: {
-				amount:'='
+				
 			},
 			link: function(scope, element, attrs){    
 				element.text(scope.amount);    
@@ -60,8 +61,8 @@
           var languageCode = attrs.languageCode || 'en_US';
           var currencyCode = attrs.currencyCode || 'USD';
           var itemName = attrs.itemName;
-          var amount = parseFloat(attrs.amount);
-          var buttonSize = attrs.buttonSize || 'LG';
+          var amount = parseFloat(localStorageService.cookie.get('amount'));
+          var buttonSize = 'LG';
           var imgAlt = attrs.imgAlt || 'Make payments with PayPal - it\'s fast, free and secure!';
           if (!business) { return err('business not specified!'); }
           if (!itemName) { return err('item name not specified!'); }
@@ -71,15 +72,17 @@
           if (currencyCodes.indexOf(currencyCode) < 0) { return err('unforeseen currency code!'); }
           if (buttonSizes.indexOf(buttonSize) < 0) { return err('unforeseen button size!'); }
           var imgSrc = 'http://www.paypalobjects.com/' + languageCode + '/i/btn/btn_buynow_' + buttonSize + '.gif';
-          var returnUrl = 'https://localhost:8443/';
+          var returnUrl = 'https://localhost:8443/#/insurance/payment_response_success';
+          var cancel_url = 'https://localhost:8443/#/insurance/payment_response_error';
           var template =
           '<form name="_xclick" action="' + action + '" method="post">' +
           '<input type="hidden" name="cmd" value="_xclick">' +
           '<input type="hidden" name="return" value="' + returnUrl + '">' +
+          '<input type="hidden" name="cancel_return" value="' + cancel_url + '">' + 
           '<input type="hidden" name="business" value="' + business + '">' +
           '<input type="hidden" name="currency_code" value="' + currencyCode + '">' +
           '<input type="hidden" name="item_name" value="' + itemName + '">' +
-          '<input type="hidden" name="amount" value="' + amount + '">' +
+          '<input type="hidden" name="amount" value="' + 800546 + '">' +
           '<input type="image" src="' + imgSrc + '" border="0" name="submit" alt="' + imgAlt + '">' +
           '</form>';
         //element.replaceWith(template);

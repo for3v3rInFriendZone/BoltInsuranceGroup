@@ -9,20 +9,32 @@
 	function InsuranceUsersController(userModal, $state, localStorageService,InsuranceProgress) {
 		var iuc = this;
 		
-		iuc.users = [];
+		
 		iuc.preEditedUser = {};
 		iuc.noMoreUsers = true;
+		iuc.submitForm = submitForm;
 		
+		iuc.users = localStorageService.cookie.get('listOfUsers');
 		iuc.kids = localStorageService.cookie.get('kidsNumber');
 		iuc.grownups = localStorageService.cookie.get('grownupsNumber');
 		iuc.olds = localStorageService.cookie.get('oldsNumber');
+		
+		if((iuc.kids === '' || iuc.kids == 0 || iuc.kids === null) && (iuc.grownups === '' || iuc.grownups == 0 || iuc.grownups === null) && (iuc.olds === '' || iuc.olds == 0 || iuc.olds === null)) {
+			iuc.noMoreUsers = false;
+		}
 		
 		/**
 		 * Opening a modal dialog for a user
 		 */
 		iuc.newUser = function() {			
 			userModal.open().then(function(data) {
+				if(iuc.users == null) {
+					iuc.users = [];
+				}
 				iuc.users.push(data);
+				iuc.usersFlag = false;
+				
+				localStorageService.cookie.set('listOfUsers', iuc.users, 1, true);
 				
 				iuc.kids = localStorageService.cookie.get('kidsNumber');
 				iuc.grownups = localStorageService.cookie.get('grownupsNumber');
@@ -70,27 +82,14 @@
 		iuc.removeUser = function(index) {
 			calculateYearsFromJMBG(iuc.users[index]);
 			iuc.users.splice(index, 1);
+			localStorageService.cookie.set('listOfUsers', iuc.users, 1, true);
 			iuc.noMoreUsers = true;
 		}
 		
 		
 		iuc.back = function() {
 			$state.go('total-price');
-		}
-		  
-		iuc.next = function(){
-			var home = localStorageService.cookie.get('homeCheckBox');
-			var road = localStorageService.cookie.get('roadCheckBox');
-			
-			if(home){
-				$state.go('homeinsurance');
-			}else if(road){
-				$state.go('vehicleinsurance');
-			}else{
-				console.log("payment");
-			}
-			
-		}
+		}  
 		
 		function calculateYearsFromJMBG(user) {	
 		    var bornDate = user.jmbg;
@@ -124,6 +123,30 @@
 		}
 		
 		InsuranceProgress.setCurrent(3);
+		
+		function submitForm() {
+			
+			iuc.sumbitted = true;
+			
+			if(iuc.kids != 0 || iuc.grownups != 0 || iuc.olds != 0) {
+				iuc.usersFlag = true;
+				return;
+			} else {
+				iuc.usersFlag = false;
+			}
+			
+			var home = localStorageService.cookie.get('homeCheckBox');
+			var road = localStorageService.cookie.get('roadCheckBox');
+			
+			if(home){
+				$state.go('homeinsurance');
+			}else if(road){
+				$state.go('vehicleinsurance');
+			}else{
+				$state.go('payment');
+			}
+			
+		}
 		
 	}
 	

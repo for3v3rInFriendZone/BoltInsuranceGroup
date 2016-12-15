@@ -1,45 +1,48 @@
 <div class=container>
-
-<h1>A</h1>
-
-<div class="modal-header">
-    <h3 class="modal-title text-center" translate="PLEASEENTERINFOOFHOME"></h3>
-</div>
-<div class="modal-body">
-    <form class="state-form form-horizontal" name="hmc.form" novalidate>
-    <div class="form-group">
-    	<div class="col-sm-8 col-sm-offset-2">
-    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label>  <input class="form-control" type="text" ng-model="hmc.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> 
-    		<p class="text-center" ng-show="hmc.form.ownerName.$touched && hmc.form.ownerName.$error.required" style="color: red;" translate="OWNERNAMEFORM"></p>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/>
-            <p class="text-center" ng-show="hmc.form.ownerSurname.$touched && hmc.form.ownerSurname.$error.required" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
-            <p class="text-center" ng-show="hmc.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
-            <p class="text-center" ng-show="hmc.form.ownerJmbg.$touched && hmc.form.ownerJmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-            <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <input class="form-control" type="text" ng-model="hmc.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required>
-            <p class="text-center" ng-show="hmc.form.address.$touched && hmc.form.address.$error.required" style="color: red;" translate="OWNERADDRESSFORM"> </p>
-        </div>
-    </div>
-    </form>
-</div>
-<div class="modal-footer">
-	<div class="text-center">
-	    <button class="btn btn-success" type="button" ng-disabled="hmc.form.$invalid" ng-click="hic.next()" translate="OK"></button>
-	    <button class="btn btn-warning" type="button" ng-click="hic.back()" translate="CANCEL"></button>
-	</div>
-</div>
-
-
+	<form class="state-form form-horizontal" name="hic.form" ng-submit="hic.submitForm()" novalidate>
+		<div class="modal-header">
+		    <h3 class="modal-title text-center" translate="PLEASEENTERINFOOFHOME"></h3>
+		</div>
+		<div class="modal-body">
+		    <form class="state-form form-horizontal" name="hmc.form" novalidate>
+		    <div class="form-group">
+		    	<div class="col-sm-8 col-sm-offset-2">
+		    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label>  <input class="form-control" type="text" ng-model="hmc.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> 
+		    		<p class="text-center" ng-show="hmc.form.ownerName.$touched && hmc.form.ownerName.$error.required" style="color: red;" translate="OWNERNAMEFORM"></p>
+		        </div>
+		    </div>
+		    <div class="form-group">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/>
+		            <p class="text-center" ng-show="hmc.form.ownerSurname.$touched && hmc.form.ownerSurname.$error.required" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
+		        </div>
+		    </div>
+		    <div class="form-group">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <input class="form-control" type="text" ng-model="hmc.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+		            <p class="text-center" ng-show="hmc.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
+		            <p class="text-center" ng-show="hmc.form.ownerJmbg.$touched && hmc.form.ownerJmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
+		        </div>
+		    </div>
+		    <div class="form-group">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <input class="form-control" type="text" ng-model="hmc.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required>
+		            <p class="text-center" ng-show="hmc.form.address.$touched && hmc.form.address.$error.required" style="color: red;" translate="OWNERADDRESSFORM"> </p>
+		        </div>
+		    </div>
+		    </form>
+		</div>
+		<div class="modal-footer">
+			<div class="col-sm-8 col-sm-offset-2">
+				<button type="button" ng-click="hic.back()" class="btn btn-warning"
+						data-toggle="tooltip" data-placement="top" title="Back">
+						<i class="fa fa-arrow-left"></i>
+				</button>
+				<button type="button" class="btn btn-success"
+						data-toggle="tooltip" data-placement="top" title="Next" ng-click="hic.next()">
+						<i class="fa fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+	</form>
 </div>

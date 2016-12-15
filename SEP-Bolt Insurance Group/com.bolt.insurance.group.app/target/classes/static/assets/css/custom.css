@@ -11,6 +11,10 @@
 	/*background-color: #FA787E;*/
 }
 
+.errorValidation {
+	border: 2px solid red;
+}
+
 body { 
     padding-top: 65px; 
 }

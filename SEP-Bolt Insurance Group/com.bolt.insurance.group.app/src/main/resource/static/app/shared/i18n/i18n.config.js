@@ -173,11 +173,12 @@
 			OLDSNOMORE: "You can not enter more users which are older then 60 years",
 			OWNERINFO: "NOTE: The first user you enter will be an insurance OWNER.",
 			VALIDJMBG: "Jmbg is not valid.",
-			STEP: "Step"
+			STEP: "Step",
+			HOMEINSURANCEWARNING: "You need to choose at least one protection package.",
+			MOREUSERSNEEDED: "You need to enter all the users."
 
 				
 				
-						
 		});
 		$translateProvider.translations('sr', {
 			INTRO: "Uvod",
@@ -339,7 +340,9 @@
 			OLDSNOMORE: "Ne možete unositi više osobe koje imaju više od 60 godina",
 			OWNERINFO: "PAŽNJA: Prvi korisnik koga unesete će se smatrati za nosioca osiguranja.",
 			VALIDJMBG: "JMBG nije validan.",
-			STEP: "Korak"
+			STEP: "Korak",
+			HOMEINSURANCEWARNING: "Morate izabrati barem jedan paket zaštite.",
+			MOREUSERSNEEDED: "Morate uneti sve korisnike osiguranja."
 
 
 		});

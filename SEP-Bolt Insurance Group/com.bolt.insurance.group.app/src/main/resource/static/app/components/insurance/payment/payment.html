@@ -69,7 +69,6 @@
 						        </tr>
 		                    </tbody>
 	                    </table>
-	                    <label class="text-center form-control" style="background-color: #ffff66;"> <u translate="TOTALPRICETRAVEL"></u> <b>: {{insuranceInfo.travelInsurancePrice}} </b></label>
 
 	                    <hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 	                    <br/>
@@ -87,8 +86,7 @@
 		                    		</td>
 						        </tr>
 		                    </tbody>
-	                    </table>
-	                    <label ng-if="homeCheckBox" class="text-center form-control" style="background-color: #ffff66;"> <u translate="TOTALPRICEHOME"> </u>: <b>{{insuranceInfo.homeInsurancePrice}}</b></label>
+	                    </table>           
 
 	                    <hr ng-if="homeCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 	                    <br/>
@@ -108,8 +106,6 @@
 		                    </tbody>
 	                    </table>
 	                    
-	                    <label ng-if="roadCheckBox" class="success text-center form-control" style="background-color: #ffff66;"> <u translate="TOTALPRICEROAD"> </u>: <b>{{insuranceInfo.carInsurancePrice}}</b></label>
-
 	                    <hr ng-if="roadCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 	                    <br/>
 	                    <br/>
@@ -123,38 +119,23 @@
 	                        	<th class="info text-center" translate="TOTALPRICEMONEY">
 	                        	</th>
 	                        </thead>
-	                        <tbody>	                    
-						        <tr>
-		                    		<td class="text-center">
-										<span translate="INSURANCEPREMIUM"> </span>: <b>{{insuranceInfo.price | number:2}} </b>
-		                    		</td>
-						        </tr>
-						        <tr>
-		                    		<td class="text-center">
-										<span translate="DISCOUNT"> </span>: <b>{{(insuranceInfo.price - insuranceInfo.discountPrice) | number:2}} </b>
-		                    		</td>
-						        </tr>
-						        <tr>
-		                    		<td class="text-center">
-										<span translate="TAX"> </span>: <b>{{(insuranceInfo.amount * 0.2) | number:2}} </b>
-		                    		</td>
-						        </tr>
+	                        <tbody>	                    					     
 						        <tr>
 		                    		<td class="warning text-center">
-										<span translate="YOURPRICE"> </span>: <b>{{(insuranceInfo.amount + insuranceInfo.amount * 0.2) | number:2}} RSD </b>
+										<span translate="YOURPRICE"> </span>: <b>{{totalPrice | number:2}} <i class="fa fa-eur"> </i> </b> 
 		                    		</td>
 						        </tr>
 		                    </tbody>
 	                    </table>
 		          </div>
-	        </div>
-	        
+	        </div>	    
 			<br/>
 			<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 			<div class="row">
 	             <div class="col-md-offset-9">
-		             <a ui-sref="insurance"> <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button> </a>
-		             <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Next" ng-click="tpc.next()"><i class="fa fa-arrow-right"></i></button>
+		             <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Back" ng-click="pic.back()"><i class="fa fa-arrow-left"></i></button>
+		             <big-paypal-button business="acquier@gmail.com" language-code="en_US" currency-code="EUR"
+    						item-name="insurance"></big-paypal-button>
 		          </div>
 	        </div>
 	            <br/><br/>

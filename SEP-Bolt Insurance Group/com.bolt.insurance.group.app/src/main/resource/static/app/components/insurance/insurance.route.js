@@ -15,8 +15,6 @@
 
 								navbar : {
 									templateUrl : 'app/components/insurance/header.html'
-								
-									
 								},
 								content : {
 									templateUrl : 'app/components/insurance/insurance_users.html',
@@ -34,7 +32,7 @@
 				.state(
 						'homeinsurance',
 						{
-							url : '/homeinsurance',
+							url : '/insurance/home',
 							views : {
 								navbar : {
 									templateUrl : 'app/components/insurance/header.html'
@@ -54,7 +52,7 @@
 				.state(
 						'vehicleinsurance',
 						{
-							url : '/vehicleinsurance',
+							url : '/insurance/vehicle',
 							views : {
 								navbar : {
 									templateUrl : 'app/components/insurance/header.html'
@@ -114,7 +112,7 @@
 							url : '/insurance/payment_response_success',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html'
+									templateUrl : 'app/components/insurance/payment-response/navbar.html'
 								},
 								content : {
 									templateUrl : 'app/components/insurance/payment-response/payment-response-success.html',
@@ -132,7 +130,7 @@
 							url : '/insurance/payment_response_error',
 							views : {
 								navbar : {
-									templateUrl : 'app/components/insurance/header.html'
+									templateUrl : 'app/components/insurance/payment-response/navbar.html'
 								},
 								content : {
 									templateUrl : 'app/components/insurance/payment-response/payment-response-error.html',
@@ -141,6 +139,24 @@
 								},
 								footer : {
 									templateUrl : 'app/components/insurance/payment-response/footer.html'
+								}
+							}
+						})
+				.state(
+						'payment',
+						{
+							url : '/insurance/payment',
+							views : {
+								navbar : {
+									templateUrl : 'app/components/insurance/header.html'
+								},
+								content : {
+									templateUrl : 'app/components/insurance/payment/payment.html',
+									controller : 'PaymentInsuranceController',
+									controllerAs : 'pic'
+								},
+								footer : {
+									templateUrl : 'app/components/insurance/footer.html'
 								}
 							}
 						});

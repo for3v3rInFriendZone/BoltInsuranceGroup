@@ -96,7 +96,7 @@
 	                        	<th class="success text-center" translate="OLDS">
 	                        	</th>
 	                        </thead>
-		                    <tbody>
+		                    <tbody class="form-group" ng-class="{'has-error': inc.submittedUsers}">
 		                    	<tr>
 									<td>
 										<input type="text" class="form-control" maxlength="2" ng-model="inc.kids"/>
@@ -123,7 +123,7 @@
 	                  		<th class="info text-center" colspan="2" translate="HOWLONGYOURTRIP">	                    		
 	                    	</th>
 	                  	</thead>
-	                    <tbody>                  	
+	                    <tbody class="form-group" ng-class="{'has-error': (inc.form.dateInsurance1.$error.required || inc.form.dateInsurance2.$error.required) && inc.submitted}">                  	
 					        <tr>
 					        	<td class="input-group">
 								    <input type="text" name="dateInsurance1" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt1" is-open="popup1.opened" datepicker-options="options"close-text="Close" required/>
@@ -131,7 +131,7 @@
 									     <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
 									</span>
 
-									<span class="input-group-addon" translate="TO"></span>				
+									<!--  <span class="input-group-addon" translate="TO"></span>	-->			
 									<input type="text" name="dateInsurance2" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="inc.dt2" is-open="popup2.opened" datepicker-options="options2" close-text="Close" required/>
 									<span class="input-group-btn">
 									     <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -205,18 +205,17 @@
 				                    	<tr ng-if="inc.homeCheckBox">
 				                    		<td colspan="3">
 				                    			
-				                    				<div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required> </div> <br/><br/>
+				                    				<div class="col-md-5 col-md-offset-4"><input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required> </div> <br/><br/>
 									            	<p class="text-center" ng-show="inc.form.homeArea.$error.pattern" style="color: red;" translate="OWNERAREAFORM"> </p>
-									            	<p class="text-center" ng-show="inc.form.homeArea.$touched && inc.form.homeArea.$error.required" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p> 
-									            
-									            
-									            	<div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required></div> <br/><br/>
+									            	<p class="text-center" ng-show="(inc.form.homeArea.$touched && inc.form.homeArea.$error.required) || (inc.form.homeArea.$error.required && inc.submitted)" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p>
+									            	 				
+									            	<div class="col-md-5 col-md-offset-4"><input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.ageOfHome.$error.pattern" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
-           											<p class="text-center" ng-show="inc.form.ageOfHome.$touched && inc.form.ageOfHome.$error.required" style="color: red;" translate="OWNERCONSTRUCTIONYEARFORM"> </p>
+           											<p class="text-center" ng-show="(inc.form.ageOfHome.$touched && inc.form.ageOfHome.$error.required) || (inc.form.ageOfHome.$error.required && inc.submitted)" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
            										
-           											<div class="col-md-4 col-md-offset-4"><input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required></div> <br/><br/>
+           											<div class="col-md-5 col-md-offset-4"><input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$error.pattern" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
-           											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$touched && inc.form.estimatedValueOfHome.$error.required" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEFORM"> </p>
+           											<p class="text-center" ng-show="(inc.form.estimatedValueOfHome.$touched && inc.form.estimatedValueOfHome.$error.required) || (inc.form.estimatedValueOfHome.$error.required && inc.submitted)" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
 				                    		</td>
 				                    	</tr>
 				                    	<tr class="text-center" ng-if="inc.homeCheckBox">
@@ -225,6 +224,7 @@
 				                    			 <span translate="FLOODINSURANCE"></span>   <br/>
 				                    			 <span translate="THEFTINSURANCE"></span>    <br/>
 				                    			 <span translate="EARTHQUAKEINSURANCE"></span>   <br/>
+				                    			 <p class="text-center" ng-show="inc.homeInsuranceWarning" style="color: red;" translate="HOMEINSURANCEWARNING"> </p>
 				                    		</td>
 				                    		<td>
 				                    			<input type="checkbox" ng-model="inc.fire"/> <br/>
@@ -251,6 +251,7 @@
 				                    			 <span translate="REPAIR"></span>   <br/>
 				                    			 <span translate="HOTEL"></span>    <br/>
 				                    			 <span translate="ALTERNATIVEVEHICLE"></span>   <br/>
+				                    			 <p class="text-center" ng-show="inc.roadInsuranceWarning" style="color: red;" translate="HOMEINSURANCEWARNING"> </p>
 				                    		</td>
 				                    		<td>
 				                    			<input type="checkbox" ng-model="inc.towing"/> <br/>

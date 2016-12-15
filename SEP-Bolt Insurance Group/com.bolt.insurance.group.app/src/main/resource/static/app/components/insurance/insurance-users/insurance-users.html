@@ -2,6 +2,7 @@
 	<div class="clearfix">
 		<div class="item">
 			<div class="container text-white">
+				<form class="state-form form-horizontal" name="iuc.form" ng-submit="iuc.submitForm()" novalidate> 
 				<br />
 				<br />
 				<br />
@@ -69,7 +70,10 @@
 								ng-click="iuc.newUser()" ng-if="iuc.noMoreUsers">
 								<i style="font-size: 22px;" class="fa fa-plus"> </i>
 							</button>
+							<br/> <br/>
+							<p ng-show="iuc.sumbitted && iuc.usersFlag" style="color: red;" translate="MOREUSERSNEEDED"> </p>
 						</div>
+						
 					</div>
 				</div>
 				<br/>
@@ -107,15 +111,15 @@
 								data-toggle="tooltip" data-placement="top" title="Back">
 								<i class="fa fa-arrow-left"></i>
 							</button>
-						<button type="button" class="btn btn-success"
-							data-toggle="tooltip" data-placement="top" title="Next"
-							ng-click="iuc.next()">
+						<button type="submit" class="btn btn-success"
+							data-toggle="tooltip" data-placement="top" title="Next">
 							<i class="fa fa-arrow-right"></i>
 						</button>
 					</div>
 				</div>
 				<br />
 				<br />
+				</form>
 			</div>
 		</div>
 	</div>

@@ -285,12 +285,31 @@
 		
 		inc.submitForm = function() {
 			inc.submitted = true;
-			if(inc.form.$invalid) {
-				return;
+			
+			if((inc.kids === '' || inc.kids == 0 || inc.kids == null) && (inc.grownups === '' || inc.grownups == 0 || inc.grownups == null) && (inc.olds === '' || inc.olds == 0 || inc.olds == null)) {
+				inc.submittedUsers = true;
 			}
 			
-			if((inc.kids === '' || inc.kids == 0) && (inc.grownups === '' || inc.grownups == 0) && (inc.olds === '' || inc.olds == 0)) {
-				inc.submittedUsers = true;
+			if(inc.homeCheckBox) {
+				if(!inc.fire && !inc.flood && !inc.theft && !inc.earthshake) {
+					inc.homeInsuranceWarning = true;
+				}else {
+					inc.homeInsuranceWarning = false;
+				}
+				
+			}
+			
+			//pazi ovde zbog izlazenja iz funkcije.
+			if(inc.roadCheckBox) {
+				if(!inc.towing && !inc.repair && !inc.hotel && !inc.alternative) {
+					inc.roadInsuranceWarning = true;
+					return;
+				} else {
+					inc.roadInsuranceWarning = false;
+				}
+			}
+			
+			if(inc.form.$invalid) {
 				return;
 			}
 			
@@ -321,8 +340,12 @@
 				localStorageService.cookie.set('kidsNumber', inc.kids, 1, true);
 				localStorageService.cookie.set('grownupsNumber', inc.grownups, 1, true);
 				localStorageService.cookie.set('oldsNumber', inc.olds, 1, true);
-				
-				
+				localStorageService.cookie.set('listOfUsers', [], 1, true);
+					
+			}
+			else {
+				alert('Cookies are not supported in this browser. Please use another.');
+				return;
 			}
 			
 			

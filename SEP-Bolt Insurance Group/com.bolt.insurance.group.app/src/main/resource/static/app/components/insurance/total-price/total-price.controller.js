@@ -37,6 +37,7 @@
 		$http.post('https://localhost:8443/insurance/checkPrice', payload)
 		.then(function(response) {
 			  $scope.insuranceInfo = response.data;
+			  localStorageService.cookie.set('amount', $scope.insuranceInfo.amount, 1, true);
 		});
 		
 		$scope.world = localStorageService.cookie.get('world');
