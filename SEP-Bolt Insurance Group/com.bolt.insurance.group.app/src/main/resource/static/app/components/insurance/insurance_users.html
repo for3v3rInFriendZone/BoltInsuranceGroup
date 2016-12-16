@@ -18,9 +18,8 @@
 					<p class="text-center" style="color: green;" translate="INSURANCEFORM"> </p>
 				</div>
 			</div>
-			<br/><br/>
-			<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
-			
+			<br/>
+
            	<div class="row">
           
               			<div class="col-md-8 col-md-offset-2">  
@@ -205,15 +204,15 @@
 				                    	<tr ng-if="inc.homeCheckBox">
 				                    		<td colspan="3">
 				                    			
-				                    				<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.homeArea.$error.required && inc.submitted}"><input class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required> </div> <br/><br/>
+				                    				<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.homeArea.$error.required && inc.submitted}"><input type="text" class="form-control" ng-model="inc.homearea" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="homeArea" name="homeArea" placeholder="{{'HOMEAREA'|translate}}" ng-pattern="/^[0-9]+$/" required> </div> <br/><br/>
 									            	<p class="text-center" ng-show="inc.form.homeArea.$error.pattern" style="color: red;" translate="OWNERAREAFORM"> </p>
 									            	<p class="text-center" ng-show="(inc.form.homeArea.$touched && inc.form.homeArea.$error.required) || (inc.form.homeArea.$error.required && inc.submitted)" style="color: red;" translate="OWNERAREAREQUIREDFORM"> </p>
 									            	 				
-									            	<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.ageOfHome.$error.required && inc.submitted}"><input class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required></div> <br/><br/>
+									            	<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.ageOfHome.$error.required && inc.submitted}"><input type="text" class="form-control" ng-model="inc.ageofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ageOfHome" name="ageOfHome" placeholder="{{'CONSTRUCTIONYEAR'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.ageOfHome.$error.pattern" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
            											<p class="text-center" ng-show="(inc.form.ageOfHome.$touched && inc.form.ageOfHome.$error.required) || (inc.form.ageOfHome.$error.required && inc.submitted)" style="color: red;" translate="OWNERCONSTRUCTIONYEARREQUIREDFORM"> </p>
            										
-           											<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.estimatedValueOfHome.$error.required && inc.submitted}"><input class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required></div> <br/><br/>
+           											<div class="col-md-5 col-md-offset-4" ng-class="{'has-error': inc.form.estimatedValueOfHome.$error.required && inc.submitted}"><input type="text" class="form-control" ng-model="inc.estimatedvalueofhome" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="estimatedvalueofhome" name="estimatedValueOfHome" placeholder="{{'ESTIMATEDVALUEOFHOME'|translate}}"  maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required></div> <br/><br/>
            											<p class="text-center" ng-show="inc.form.estimatedValueOfHome.$error.pattern" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
            											<p class="text-center" ng-show="(inc.form.estimatedValueOfHome.$touched && inc.form.estimatedValueOfHome.$error.required) || (inc.form.estimatedValueOfHome.$error.required && inc.submitted)" style="color: red;" translate="OWNERESTIMATEDVALUEOFHOMEREQUIREDFORM"> </p>
 				                    		</td>

@@ -1,66 +1,127 @@
-<div class=container>
-<form class="state-form form-horizontal" name="vic.form" ng-submit="vic.submitForm()" novalidate>
-	<div class="modal-header">
-	    <h3 class="modal-title text-center" translate="PLEASEENTERINFOOFVEHICLE"></h3>
-	</div>
-	<div class="modal-body">
-	    <div class="form-group">
-	    	<div class="col-sm-8 col-sm-offset-2">
-	    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label> <div ng-class="{'has-error': vic.form.ownerName.$error.required && vic.submitted}"><input class="form-control" type="text" ng-model="vic.vehicle.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> </div>
-	    		<p class="text-center" ng-show="(vic.form.ownerName.$touched && vic.form.ownerName.$error.required) || (vic.form.ownerName.$error.required && vic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
-	        </div>
-	    </div>
-	    <div class="form-group">
-	        <div class="col-sm-8 col-sm-offset-2">
-	            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <div ng-class="{'has-error': vic.form.ownerSurname.$error.required && vic.submitted}"> <input class="form-control" type="text" ng-model="vic.vehicle.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/></div>
-	        	<p class="text-center" ng-show="(vic.form.ownerSurname.$touched && vic.form.ownerSurname.$error.required) || (vic.form.ownerSurname.$error.required && vic.submitted)" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
-	        </div>
-	    </div>
-	    <div class="form-group">
-	        <div class="col-sm-8 col-sm-offset-2">
-	            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <div ng-class="{'has-error': vic.form.ownerJmbg.$error.required && vic.submitted}"> <input class="form-control" type="text" ng-model="vic.vehicle.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required></div>
-	        	<p class="text-center" ng-show="vic.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
-	            <p class="text-center" ng-show="(vic.form.ownerJmbg.$touched && vic.form.ownerJmbg.$error.required) || (vic.form.ownerJmbg.$error.required && vic.submitted)" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
-	        </div>
-	    </div>
-	    <div class="form-group">
-	    	<div class="col-sm-8 col-sm-offset-2">
-	    		<label class="form-control text-center" style="background-color: lightblue; " translate="TYPEOFVEHICLE"> </label> <div ng-class="{'has-error': vic.form.type.$error.required && vic.submitted}"> <input class="form-control" type="text" ng-model="vic.vehicle.typeofvehicle" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}" required/> </div>
-	        	<p class="text-center" ng-show="(vic.form.type.$touched && vic.form.type.$error.required) || (vic.form.type.$error.required && vic.submitted)" style="color: red;" translate="TYPEOFVEHICLEFORM"></p>
-	        </div>
-	    </div>
-	    <div class="form-group">
-	        <div class="col-sm-8 col-sm-offset-2">
-	            <label class="form-control text-center" style="background-color: lightblue; " translate="YEAROFMANUFACTURE"> </label> <div ng-class="{'has-error': vic.form.year.$error.required && vic.submitted}"> <input class="form-control" type="text" ng-model="vic.vehicle.yearofmanufacture" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0}}" id="year" name="year" placeholder="{{'YEAROFMANUFACTURE'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required /> </div>
-	       		<p class="text-center" ng-show="vic.form.year.$error.pattern" style="color: red;" translate="YEAROFMANUFACTUREFORM"> </p>
-	        	<p class="text-center" ng-show="(vic.form.year.$touched && vic.form.year.$error.required) || (vic.form.year.$error.required && vic.submitted)" style="color: red;" translate="YEAROFMANUFACTUREREQUIREDFORM"> </p>
-	        </div>
-	    </div>
-	    <div class="form-group">
-	        <div class="col-sm-8 col-sm-offset-2">
-	            <label class="form-control text-center" style="background-color: lightblue; " translate="LICENCEPLATESNUMBER"> </label> <div ng-class="{'has-error': vic.form.plates.$error.required && vic.submitted}"> <input class="form-control" type="text" ng-model="vic.vehicle.licenceplatesnumber" id="plates" name="plates" placeholder="{{'LICENCEPLATESNUMBER'|translate}}" required /> </div>
-	       		<p class="text-center" ng-show="(vic.form.plates.$touched && vic.form.plates.$error.required) || (vic.form.plates.$error.required && vic.submitted)" style="color: red;" translate="LICENCEPLATESNUMBERFORM"></p>
-	        </div>
-	    </div>
-	    <div class="form-group">
-	        <div class="col-sm-8 col-sm-offset-2">
-	            <label class="form-control text-center" style="background-color: lightblue; " translate="NUMBEROFCHASSIS"> </label> <div ng-class="{'has-error': vic.form.chassis.$error.required && vic.submitted}"> <input class="form-control" type="text" ng-model="vic.vehicle.numberofchassis" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0}}" id="chassis" name="chassis" placeholder="{{'NUMBEROFCHASSIS'|translate}}" maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required /> </div>
-	       		<p class="text-center" ng-show="vic.form.chassis.$error.pattern" style="color: red;" translate="NUMBEROFCHASSISFORM"> </p>
-	       		<p class="text-center" ng-show="(vic.form.chassis.$touched && vic.form.chassis.$error.required) || (vic.form.chassis.$error.required && vic.submitted)" style="color: red;" translate="NUMBEROFCHASSISREQUIREDFORM"> </p>
-	        </div>
-	    </div>
-	</div>
-	<div class="modal-footer">
-		<div class="col-sm-8 col-sm-offset-2">
-			<button type="button" ng-click="vic.back()" class="btn btn-warning"
-					data-toggle="tooltip" data-placement="top" title="Back">
-					<i class="fa fa-arrow-left"></i>
-			</button>
-			<button type="button" class="btn btn-success"
-					ng-click="vic.next()" data-toggle="tooltip" data-placement="top" title="Next">
-					<i class="fa fa-arrow-right"></i>
-			</button>
+<div style="background: #f7f7f7;" id="all">
+	<div class="clearfix">
+		<div class="item">
+			<div class="container text-white">
+			<form class="state-form form-horizontal" name="vic.form" ng-submit="vic.submitForm()" novalidate>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<h2 class="text-center" translate="TRAVELINSURANCE"></h2>
+				<br />
+				<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+				<p class="text-center" style="color: #997300;" translate="VEHICLEINFO"> </p>
+				<br/><br/>
+				    <div class="form-group">
+				    	<div class="col-sm-8 col-sm-offset-2">			
+				    		<label for="ownerName" class="col-sm-2 control-label" translate="OWNERNAME"></label>
+						    <div class="col-sm-8">
+						      <div ng-class="{'has-error': vic.form.ownerName.$error.required && vic.submitted}"><input class="form-control" type="text" ng-model="vic.vehicle.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> </div>
+						    </div>
+						    <br/><br/>
+				    		<p class="text-center" ng-show="(vic.form.ownerName.$touched && vic.form.ownerName.$error.required) || (vic.form.ownerName.$error.required && vic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <div class="col-sm-8 col-sm-offset-2">
+				        	<label for="ownerSurname" class="col-sm-2 control-label" translate="OWNERSURNAME"></label>
+				        	<div class="col-sm-8">
+				            	<div ng-class="{'has-error': vic.form.ownerSurname.$error.required && vic.submitted}">
+				            	 	<input class="form-control" type="text" ng-model="vic.vehicle.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/>
+				            	</div>
+				            </div>
+				            <br/><br/>
+				        	<p class="text-center" ng-show="(vic.form.ownerSurname.$touched && vic.form.ownerSurname.$error.required) || (vic.form.ownerSurname.$error.required && vic.submitted)" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <div class="col-sm-8 col-sm-offset-2">
+				            <label for="ownerJmbg" class="col-sm-2 control-label" translate="OWNERJMBG"></label>
+				            <div class="col-sm-8">
+					            <div ng-class="{'has-error': vic.form.ownerJmbg.$error.required && vic.submitted}"> 
+					            	<input class="form-control" type="text" ng-model="vic.vehicle.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+					            </div>
+				            </div>
+				            <br/><br/>
+				        	<p class="text-center" ng-show="vic.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
+				            <p class="text-center" ng-show="(vic.form.ownerJmbg.$touched && vic.form.ownerJmbg.$error.required) || (vic.form.ownerJmbg.$error.required && vic.submitted)" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				    	<div class="col-sm-8 col-sm-offset-2">
+				    		<label for="ownerJmbg" class="col-sm-2 control-label" translate="TYPEOFVEHICLE"></label>
+				    		<div class="col-sm-8">
+				    			<div ng-class="{'has-error': vic.form.type.$error.required && vic.submitted}"> 
+				    				<input class="form-control" type="text" ng-model="vic.vehicle.typeofvehicle" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}" required/> 
+				    			</div>
+				    		</div>
+				    		<br/><br/>
+				        	<p class="text-center" ng-show="(vic.form.type.$touched && vic.form.type.$error.required) || (vic.form.type.$error.required && vic.submitted)" style="color: red;" translate="TYPEOFVEHICLEFORM"></p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <div class="col-sm-8 col-sm-offset-2">
+				        <label for="year" class="col-sm-2 control-label" translate="YEAROFMANUFACTURE"></label>
+				        <div class="col-sm-8">
+				        	<div ng-class="{'has-error': vic.form.year.$error.required && vic.submitted}"> 
+				        		<input class="form-control" type="text" ng-model="vic.vehicle.yearofmanufacture" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0}}" id="year" name="year" placeholder="{{'YEAROFMANUFACTURE'|translate}}" maxlength="4" ng-pattern="/^[0-9]{4}$/" required />
+				        	</div>
+				        </div>
+				        <br/><br/>  
+				        <div class="col-sm-8 col-sm-offset-2">  
+					       	<p ng-show="vic.form.year.$error.pattern" style="color: red;" translate="YEAROFMANUFACTUREFORM"> </p>
+					        <p ng-show="(vic.form.year.$touched && vic.form.year.$error.required) || (vic.form.year.$error.required && vic.submitted)" style="color: red;" translate="YEAROFMANUFACTUREREQUIREDFORM"> </p>
+				        </div>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <div class="col-sm-8 col-sm-offset-2">
+				        	<label for="plates" class="col-sm-2 control-label" translate="LICENCEPLATESNUMBER"></label>
+				        	<div class="col-sm-8">
+				        		<div ng-class="{'has-error': vic.form.plates.$error.required && vic.submitted}"> 
+				        			<input class="form-control" type="text" ng-model="vic.vehicle.licenceplatesnumber" id="plates" name="plates" placeholder="{{'LICENCEPLATESNUMBER'|translate}}" required />
+				        		</div>
+				        	</div>
+				            <br/><br/> 
+				            <div class="col-sm-8 col-sm-offset-2">   
+				       			<p ng-show="(vic.form.plates.$touched && vic.form.plates.$error.required) || (vic.form.plates.$error.required && vic.submitted)" style="color: red;" translate="LICENCEPLATESNUMBERFORM"></p>
+				       		</div>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <div class="col-sm-8 col-sm-offset-2">
+				        	<label for="chassis" class="col-sm-2 control-label" translate="NUMBEROFCHASSIS"></label>
+				        	<div class="col-sm-8">
+				        		<div ng-class="{'has-error': vic.form.chassis.$error.required && vic.submitted}"> 
+				        			<input class="form-control" type="text" ng-model="vic.vehicle.numberofchassis" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0}}" id="chassis" name="chassis" placeholder="{{'NUMBEROFCHASSIS'|translate}}" maxlength="40" ng-pattern="/^[0-9]{1,40}$/" required />
+				        		</div>
+				        	</div>
+				         	<br/><br/>
+				         	<div class="col-sm-8 col-sm-offset-2">
+					       		<p ng-show="vic.form.chassis.$error.pattern" style="color: red;" translate="NUMBEROFCHASSISFORM"> </p>
+					       		<p ng-show="(vic.form.chassis.$touched && vic.form.chassis.$error.required) || (vic.form.chassis.$error.required && vic.submitted)" style="color: red;" translate="NUMBEROFCHASSISREQUIREDFORM"> </p>
+					       	</div>
+				        </div>
+				   </div>
+				    
+				<br/> <br/> 
+				<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+				<div class="text-center">
+					<div class="col-sm-8 col-sm-offset-2">
+						<button type="button" ng-click="vic.back()" class="btn btn-warning"
+								data-toggle="tooltip" data-placement="top" title="Back">
+								<i class="fa fa-arrow-left"></i>
+						</button>
+						<button type="button" class="btn btn-success"
+								ng-click="vic.next()" data-toggle="tooltip" data-placement="top" title="Next">
+								<i class="fa fa-arrow-right"></i>
+						</button>
+					</div>
+				</div>
+				</form>			
+				<br/><br/><br/>	
+			</div>
 		</div>
 	</div>
-	</form>
 </div>

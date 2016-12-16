@@ -34,14 +34,14 @@
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	          <label class="form-control text-center" style="background-color: lightblue;" translate="PASSPORTNUMBER"> </label> <input class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.passport" name="passport" placeholder="{{'PASSPORTNUMBER' | translate}}" maxlength="9" ng-pattern="/^[0-9]{7,9}$/" required>
+	          <label class="form-control text-center" style="background-color: lightblue;" translate="PASSPORTNUMBER"> </label> <input type="text" class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.passport" name="passport" placeholder="{{'PASSPORTNUMBER' | translate}}" maxlength="9" ng-pattern="/^[0-9]{7,9}$/" required>
 	          <p class="text-center" ng-show="umc.form.passport.$error.pattern" style="color: red;" translate="PASSPORTFORM"> </p>
 	           <p class="text-center" ng-show="umc.form.passport.$touched && umc.form.passport.$error.required" style="color: red;" translate="PASSPORTFORMREQUIRED"> </p>
 	        </div>
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	          <label class="form-control text-center" style="background-color: lightblue;" translate="PHONE2"> </label> <input class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.phone" name="phone" placeholder="{{'PHONE2' | translate}}" required ng-pattern="/^[0-9]+$/">
+	          <label class="form-control text-center" style="background-color: lightblue;" translate="PHONE2"> </label> <input type="text" class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.phone" name="phone" placeholder="{{'PHONE2' | translate}}" required ng-pattern="/^[0-9]+$/">
 	          <p class="text-center" ng-show="umc.form.phone.$touched && umc.form.phone.$error.required" style="color: red;" translate="PHONEFORM"></p>
 	          <p class="text-center" ng-show="umc.form.phone.$error.pattern" style="color: red;" translate="PHONEFORMPATTERN"></p>
 	        </div>

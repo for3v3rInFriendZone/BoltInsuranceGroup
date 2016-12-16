@@ -5,11 +5,12 @@
 			'InsuranceController', InsuranceController);
 
 	InsuranceController.$inject = [ '$scope', '$state','userModal', 'homeModal',
-			'vehicleModal', 'Insurance', 'Restangular', '$translate', '$fancyModal', 'localStorageService','InsuranceProgress'];
+			'vehicleModal', 'Insurance', 'Restangular', '$translate', '$fancyModal', 'localStorageService','InsuranceProgress', '$window'];
 	function InsuranceController($scope, $state, userModal, homeModal, vehicleModal,
-			Insurance, Restangular, $translate, $fancyModal, localStorageService,InsuranceProgress) {
+			Insurance, Restangular, $translate, $fancyModal, localStorageService,InsuranceProgress, $window) {
 
 		var inc = this;
+		$window.scrollTo(0, 0);
 		
 		inc.world = localStorageService.cookie.get('world');
 		inc.money = localStorageService.cookie.get('money');

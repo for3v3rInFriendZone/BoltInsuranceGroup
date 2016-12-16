@@ -69,9 +69,9 @@
 			CANCEL: "Cancel",
 			PHONE2: "Phone number",
 			EMAIL2: "E-mail",
-			OWNERNAME: "Owner's name",
-			OWNERSURNAME: "Owner's surname",
-			OWNERJMBG: "Owner's jmbg",
+			OWNERNAME: "Name",
+			OWNERSURNAME: "Surname",
+			OWNERJMBG: "JMBG",
 			ADDRESSOFHOME: "Address of the house/flat",
 			HOMEAREA: "Surface area of the house/flat",
 			CONSTRUCTIONYEAR: "Year of contruction of the house/flat",
@@ -176,7 +176,9 @@
 			STEP: "Step",
 			HOMEINSURANCEWARNING: "You need to choose at least one protection package.",
 			MOREUSERSNEEDED: "You need to enter all the users.",
-			PAYPALLPAGE: "Review of insurance policy and payment."
+			PAYPALLPAGE: "Review of insurance policy and payment.",
+			VEHICLEINFO: "Input of vehicle informations",
+			HOUSEFLATINFO: "Input of house or flat informations"
 
 				
 				
@@ -344,7 +346,9 @@
 			STEP: "Korak",
 			HOMEINSURANCEWARNING: "Morate izabrati barem jedan paket zaštite.",
 			MOREUSERSNEEDED: "Morate uneti sve korisnike osiguranja.",
-			PAYPALLPAGE: "Pregled polise osiguranja i plaćanje."
+			PAYPALLPAGE: "Pregled polise osiguranja i plaćanje.",
+			VEHICLEINFO: "Unos podataka o vozilu.",
+			HOUSEFLATINFO: "Unos podataka o kući/stanu."
 
 
 		});
