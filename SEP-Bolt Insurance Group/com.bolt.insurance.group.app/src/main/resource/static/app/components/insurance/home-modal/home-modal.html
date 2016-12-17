@@ -11,33 +11,52 @@
 				<br />
 				<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 				<p class="text-center" style="color: #997300;" translate="HOUSEFLATINFO">
-				
 					<form class="state-form form-horizontal" name="hic.form" novalidate>
 						<div class="modal-body">
 						    <form class="state-form form-horizontal" name="hic.form" novalidate>
 						    <div class="form-group">
 						    	<div class="col-sm-8 col-sm-offset-2">
-						    		<label class="form-control text-center" style="background-color: lightblue; " translate="OWNERNAME"> </label> <div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/> </div>
-						    		<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
+						    		<label for="ownerName" class="col-sm-2 control-label" translate="OWNERNAME"></label>
+						    		<div class="col-sm-8">
+						    			<div ng-class="{'has-error': hic.form.ownerName.$error.required && hic.submitted}">
+						    			 	<input class="form-control" type="text" ng-model="hic.home.ownername" id="ownerName" name="ownerName" placeholder="{{'OWNERNAME'|translate}}" required/>
+						    			</div>
+						    			<p class="text-center" ng-show="(hic.form.ownerName.$touched && hic.form.ownerName.$error.required) || (hic.form.ownerName.$error.required && hic.submitted)" style="color: red;" translate="OWNERNAMEFORM"></p>
+						    		</div>	
 						        </div>
 						    </div>
 						    <div class="form-group">
 						        <div class="col-sm-8 col-sm-offset-2">
-						            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERSURNAME"> </label> <div ng-class="{'has-error': hic.form.ownerSurname.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/> </div>
-						            <p class="text-center" ng-show="(hic.form.ownerSurname.$touched && hic.form.ownerSurname.$error.required) || (hic.form.ownerSurname.$error.required && hic.submitted)" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
+						        	<label for="ownerSurname" class="col-sm-2 control-label" translate="OWNERSURNAME"></label>
+						        	<div class="col-sm-8">
+						        		<div ng-class="{'has-error': hic.form.ownerSurname.$error.required && hic.submitted}">
+						        			 <input class="form-control" type="text" ng-model="hic.home.ownersurname" id="ownerSurname" name="ownerSurname" placeholder="{{'OWNERSURNAME'|translate}}" required/> 
+						        		</div>
+						        		<p class="text-center" ng-show="(hic.form.ownerSurname.$touched && hic.form.ownerSurname.$error.required) || (hic.form.ownerSurname.$error.required && hic.submitted)" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
+						        	</div>   
 						        </div>
 						    </div>
 						    <div class="form-group">
 						        <div class="col-sm-8 col-sm-offset-2">
-						            <label class="form-control text-center" style="background-color: lightblue; " translate="OWNERJMBG"> </label> <div ng-class="{'has-error': hic.form.ownerJmbg.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required> </div>
-						            <p class="text-center" ng-show="hic.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
-						            <p class="text-center" ng-show="(hic.form.ownerJmbg.$touched && hic.form.ownerJmbg.$error.required) || (hic.form.ownerJmbg.$error.required && hic.submitted)" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
+						        	<label for="ownerJmbg" class="col-sm-2 control-label" translate="OWNERJMBG"></label>
+						        	<div class="col-sm-8">
+						        		<div ng-class="{'has-error': hic.form.ownerJmbg.$error.required && hic.submitted}">
+						        		 	<input class="form-control" type="text" ng-model="hic.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+						        		</div>
+						        		<p class="text-center" ng-show="hic.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
+						            	<p class="text-center" ng-show="(hic.form.ownerJmbg.$touched && hic.form.ownerJmbg.$error.required) || (hic.form.ownerJmbg.$error.required && hic.submitted)" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
+						        	</div>
 						        </div>
 						    </div>
 						    <div class="form-group">
 						        <div class="col-sm-8 col-sm-offset-2">
-						            <label class="form-control text-center" style="background-color: lightblue; " translate="ADDRESSOFHOME"> </label> <div ng-class="{'has-error': hic.form.address.$error.required && hic.submitted}"> <input class="form-control" type="text" ng-model="hic.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required> </div>
-						            <p class="text-center" ng-show="(hic.form.address.$touched && hic.form.address.$error.required) || (hic.form.address.$error.required && hic.submitted)" style="color: red;" translate="OWNERADDRESSFORM"> </p>
+						        	<label for="ownerJmbg" class="col-sm-2 control-label" translate="ADDRESSOFHOME"></label>
+						        	<div class="col-sm-8">
+						        		<div ng-class="{'has-error': hic.form.address.$error.required && hic.submitted}"> 
+						        			<input class="form-control" type="text" ng-model="hic.home.address" id="address" name="address" placeholder="{{'ADDRESSOFHOME'|translate}}" required>
+						        		</div>
+						        		<p class="text-center" ng-show="(hic.form.address.$touched && hic.form.address.$error.required) || (hic.form.address.$error.required && hic.submitted)" style="color: red;" translate="OWNERADDRESSFORM"> </p>
+						        	</div>   
 						        </div>
 						    </div>
 						    </form>

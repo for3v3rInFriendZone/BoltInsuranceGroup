@@ -33,7 +33,7 @@
 			ONEMORNING: " One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.",
 			ADDYOURCOMMENT: "Add your comment",
 			CONTACTUS: "Contact us",
-			EMAIL: "E-mail: ",
+			EMAIL: "Email: ",
 			PHONE: "Phone: ",
 			BEALWAYSINTOUCHWITHUS: "Stay in touch with us, at any time of day or night. If you have any questions or issues, feel free to ask or send to our e-mail adress.",
 			HOWLONGYOURTRIP: "How long is your trip going to be?",
@@ -178,7 +178,8 @@
 			MOREUSERSNEEDED: "You need to enter all the users.",
 			PAYPALLPAGE: "Review of insurance policy and payment.",
 			VEHICLEINFO: "Input of vehicle informations",
-			HOUSEFLATINFO: "Input of house or flat informations"
+			HOUSEFLATINFO: "Input of house or flat informations",
+			USERINFOMODAL: "User informations"
 
 				
 				
@@ -203,7 +204,7 @@
 			ONEMORNING: " One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.",
 			ADDYOURCOMMENT: "Napišite Vaš komentar",
 			CONTACTUS: "Kontaktirajte nas",
-			EMAIL: "E-mail: ",
+			EMAIL: "Email: ",
 			PHONE: "Telefon: ",
 			BEALWAYSINTOUCHWITHUS: "Budite u kontaktu sa nama, u bilo koje doba dana i noći. Ako imate neko pitanje ili problem, osećajte se slobodnim da nas pitate ili pošaljete e-mail na našu adresu.",
 			HOWLONGYOURTRIP: "Koliko će trajati Vaše putovanje?",
@@ -348,7 +349,8 @@
 			MOREUSERSNEEDED: "Morate uneti sve korisnike osiguranja.",
 			PAYPALLPAGE: "Pregled polise osiguranja i plaćanje.",
 			VEHICLEINFO: "Unos podataka o vozilu.",
-			HOUSEFLATINFO: "Unos podataka o kući/stanu."
+			HOUSEFLATINFO: "Unos podataka o kući/stanu.",
+			USERINFOMODAL: "Informacije o korisniku."
 
 
 		});

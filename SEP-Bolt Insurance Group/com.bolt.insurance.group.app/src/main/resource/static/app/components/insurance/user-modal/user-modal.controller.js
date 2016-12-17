@@ -16,6 +16,7 @@
 		umc.editId = items.id;
 		umc.listOfUsers = items.list;
 		umc.status = items.status;
+		umc.removeErrors = removeErrors;
 		umc.submitted = {
 				kids: false,
 				grownups: false,
@@ -127,14 +128,23 @@
 			
 			if(day < 1 || day > 31) {
 				umc.submitted.validJmbg = true;
+				
 			} else if(month < 1 || month > 12) {
 				umc.submitted.validJmbg = true;
+				
 			}
 			else {
 				umc.submitted.validJmbg = false;
 			}
 			
 			return umc.submitted.validJmbg;
+		}
+		
+		function removeErrors() {
+			umc.submitted.kids = false;
+			umc.submitted.grownups = false;
+			umc.submitted.olds = false;
+			umc.submitted.validJmbg = false;
 		}
 		
 		/**
@@ -153,7 +163,7 @@
 				$uibModalInstance.close(umc.user);
 			}
 			
-		}	
-		
+		}
+	
 	}
 })();

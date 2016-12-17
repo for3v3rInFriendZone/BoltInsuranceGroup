@@ -1,63 +1,84 @@
 <form class="state-form form-horizontal" name="umc.form" ng-submit="umc.submitForm()" novalidate>
 	<div class="modal-header">
-	    <h2 class="text-center"> Did you ever go clear? </h2>
+	    <h2 class="text-center" translate="USERINFOMODAL"> </h2>
 	</div>
 	<div class="modal-body">
 	    <div class="form-group">
 	    	<div class="col-sm-8 col-sm-offset-2">
-	    		<label class="form-control text-center" style="background-color: lightblue; " translate="NAME"> </label><input class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" type="text" ng-model="umc.user.firstName" name="name" placeholder="{{'NAME' | translate}}"/ required>
-	    		<p class="text-center" ng-show="umc.form.name.$touched && umc.form.name.$error.required" style="color: red;" translate="NAMEFORM"></p>
+	    		<label for="name" class="col-sm-2 control-label" translate="NAME"></label>
+	    		<div class="col-sm-10">
+	    			<input class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" type="text" ng-model="umc.user.firstName" id="name" name="name" placeholder="{{'NAME' | translate}}"/ required>
+	    			<p class="text-center" ng-show="umc.form.name.$touched && umc.form.name.$error.required" style="color: red;" translate="NAMEFORM"></p>
+	    		</div> 
 	        </div>
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	            <label class="form-control text-center" style="background-color: lightblue;" translate="SURNAME"></label> <input class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" type="text" ng-model="umc.user.surname" name="surname" placeholder="{{'SURNAME' | translate}}"/ required>
-	            <p class="text-center" ng-show="umc.form.surname.$touched && umc.form.surname.$error.required" style="color: red;" translate="SURNAMEFORM"></p>
+	        	<label for="surname" class="col-sm-2 control-label" translate="SURNAME"></label>
+	        	<div class="col-sm-10">
+	        		<input class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" type="text" ng-model="umc.user.surname" id="surname" name="surname" placeholder="{{'SURNAME' | translate}}"/ required>
+	        		<p class="text-center" ng-show="umc.form.surname.$touched && umc.form.surname.$error.required" style="color: red;" translate="SURNAMEFORM"></p>
+	        	</div>	        
 	        </div>
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	           <label class="form-control text-center" style="background-color: lightblue;" translate="JMBG"> </label> <input class="form-control" type="text" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.jmbg" name="jmbg" placeholder="{{'JMBG' | translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
-	           <p class="text-center" ng-show="umc.form.jmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p>
-	           <p class="text-center" ng-show="umc.form.jmbg.$touched && umc.form.jmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
-	           <p class="text-center" ng-show="umc.submitted.kids" style="color: red;" translate="KIDSNOMORE"> </p>
-	           <p class="text-center" ng-show="umc.submitted.grownups" style="color: red;" translate="GROWNUPSNOMORE"> </p>
-	           <p class="text-center" ng-show="umc.submitted.olds" style="color: red;" translate="OLDSNOMORE"> </p>
-	           <p class="text-center" ng-show="umc.submitted.validJmbg" style="color: red;" translate="VALIDJMBG"> </p>
+	           <label for="jmbg" class="col-sm-2 control-label" translate="JMBG"></label>
+	           <div class="col-sm-10">
+	           		<input class="form-control" type="text" ng-focus="umc.removeErrors()" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.jmbg" id="jmbg" name="jmbg" placeholder="{{'JMBG' | translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+	           		<p class="text-center" ng-show="umc.form.jmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p>
+		            <p class="text-center" ng-show="umc.form.jmbg.$touched && umc.form.jmbg.$error.required" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
+		            <p class="text-center" ng-show="umc.submitted.kids" style="color: red;" translate="KIDSNOMORE"> </p>
+		            <p class="text-center" ng-show="umc.submitted.grownups" style="color: red;" translate="GROWNUPSNOMORE"> </p>
+		            <p class="text-center" ng-show="umc.submitted.olds" style="color: red;" translate="OLDSNOMORE"> </p>
+		            <p class="text-center" ng-show="umc.submitted.validJmbg" style="color: red;" translate="VALIDJMBG"> </p>
+	           </div>	  
 	        </div>
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	           <label class="form-control text-center" style="background-color: lightblue;" translate="ADDRESS"> </label> <input class="form-control" type="text" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.address" name="address" placeholder="{{'ADDRESS' | translate}}" required>
-	           <p class="text-center" ng-show="umc.form.address.$touched && umc.form.address.$error.required" style="color: red;" translate="ADDRESSFORM"></p>
+	           <label for="address" class="col-sm-2 control-label" translate="ADDRESS"></label>
+	           <div class="col-sm-10">
+	           		<input class="form-control" type="text" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.address" id="address" name="address" placeholder="{{'ADDRESS' | translate}}" required>
+	           		<p class="text-center" ng-show="umc.form.address.$touched && umc.form.address.$error.required" style="color: red;" translate="ADDRESSFORM"></p>
+	           </div>	        
 	        </div>
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	          <label class="form-control text-center" style="background-color: lightblue;" translate="PASSPORTNUMBER"> </label> <input type="text" class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.passport" name="passport" placeholder="{{'PASSPORTNUMBER' | translate}}" maxlength="9" ng-pattern="/^[0-9]{7,9}$/" required>
-	          <p class="text-center" ng-show="umc.form.passport.$error.pattern" style="color: red;" translate="PASSPORTFORM"> </p>
-	           <p class="text-center" ng-show="umc.form.passport.$touched && umc.form.passport.$error.required" style="color: red;" translate="PASSPORTFORMREQUIRED"> </p>
+	          <label for="passport" class="col-sm-2 control-label" translate="PASSPORTNUMBER"></label>
+	          <div class="col-sm-10">
+	          		<input type="text" class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.passport" id="passport" name="passport" placeholder="{{'PASSPORTNUMBER' | translate}}" maxlength="9" ng-pattern="/^[0-9]{7,9}$/" required>
+	          		<p class="text-center" ng-show="umc.form.passport.$error.pattern" style="color: red;" translate="PASSPORTFORM"> </p>
+	          		<p class="text-center" ng-show="umc.form.passport.$touched && umc.form.passport.$error.required" style="color: red;" translate="PASSPORTFORMREQUIRED"> </p>
+	          </div>	          
 	        </div>
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	          <label class="form-control text-center" style="background-color: lightblue;" translate="PHONE2"> </label> <input type="text" class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.phone" name="phone" placeholder="{{'PHONE2' | translate}}" required ng-pattern="/^[0-9]+$/">
-	          <p class="text-center" ng-show="umc.form.phone.$touched && umc.form.phone.$error.required" style="color: red;" translate="PHONEFORM"></p>
-	          <p class="text-center" ng-show="umc.form.phone.$error.pattern" style="color: red;" translate="PHONEFORMPATTERN"></p>
+	          <label for="phone" class="col-sm-2 control-label" translate="PHONE2"></label>
+	          <div class="col-sm-10">
+	          		<input type="text" class="form-control" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" ng-model="umc.user.phone" id="phone" name="phone" placeholder="{{'PHONE2' | translate}}" required ng-pattern="/^[0-9]+$/">
+	          		<p class="text-center" ng-show="umc.form.phone.$touched && umc.form.phone.$error.required" style="color: red;" translate="PHONEFORM"></p>
+	          		<p class="text-center" ng-show="umc.form.phone.$error.pattern" style="color: red;" translate="PHONEFORMPATTERN"></p>
+	          </div>	          
 	        </div>
 	    </div>
 	    <div class="form-group">
 	        <div class="col-sm-8 col-sm-offset-2">
-	          <label class="form-control text-center" style="background-color: lightblue;" translate="EMAIL"> </label> <input type="email" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" class="form-control" ng-model="umc.user.email" name="email" placeholder="{{'EMAIL' | translate}}" required>
-	          <p class="text-center" ng-show="umc.form.email.$touched && umc.form.email.$error.required" style="color: red;" translate="EMAILFORM"></p>
-	          <p class="text-center" ng-show="umc.form.email.$error.email" style="color: red;" translate="VALIDEMAILFORM"></p>
+	          <label for="email" class="col-sm-2 control-label" translate="EMAIL"></label>
+	          <div class="col-sm-10">
+	          		<input type="email" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" class="form-control" ng-model="umc.user.email" id="email" name="email" placeholder="{{'EMAIL' | translate}}" required>
+	          		<p class="text-center" ng-show="umc.form.email.$touched && umc.form.email.$error.required" style="color: red;" translate="EMAILFORM"></p>
+	          		<p class="text-center" ng-show="umc.form.email.$error.email" style="color: red;" translate="VALIDEMAILFORM"></p>
+	          </div>          
 	        </div>
 	    </div>
 	</div>
 	<div class="modal-footer">
 		<div class="text-center">
 		    <button class="btn btn-success" type="submit" ng-disabled="umc.form.$invalid" translate="OK"></button>
-		    <button class="btn btn-warning" type="button" ng-click="umc.cancel()" translate="CANCEL"></button>
+		    <button class="btn btn-warning" type="button" id="cancelButton" ng-click="umc.cancel()" translate="CANCEL"></button>
 		</div>
 	</div>
 </form>
