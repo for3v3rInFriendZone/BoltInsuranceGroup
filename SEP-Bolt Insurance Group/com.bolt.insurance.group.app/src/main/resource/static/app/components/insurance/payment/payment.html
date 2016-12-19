@@ -84,7 +84,33 @@
 		                    		<td class="text-center">
 										<span translate="PROTECTIONAGAINST"></span>: <b ng-if="fire" translate="FIRE"></b> <b ng-if="flood" translate="FLOOD"></b> <b ng-if="theft" translate="THEFT"></b> <b ng-if="earthshaker" translate="EARTHSHAKE"></b>
 		                    		</td>
-						        </tr>
+		                    	</tr>
+		                    </tbody>
+		                    <thead>
+	                        	<th class="success text-center" style="background-color: #ffff66;" translate="INFOOWNERHOME">
+	                        	</th>
+	                        </thead>
+	                        <tbody>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate="OWNERNAME"></span>: <b> {{homeOwnerName}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate="OWNERSURNAME"></span>: <b> {{homeOwnerSurname}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate="OWNERJMBG"></span>: <b> {{homeOwnerJmbg}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate="ADDRESSOFHOME"></span>: <b> {{homeAdress}}</b>
+		                    		</td>
+		                    	</tr>
 		                    </tbody>
 	                    </table>           
 
@@ -103,6 +129,47 @@
 										<span translate="ROADASSISTANCEPACKAGE"> </span>: <b ng-if="towing" translate="TOWING"></b> <b ng-if="repair" translate="REPAIR"></b> <b ng-if="hotel" translate="HOTEL"></b> <b ng-if="alternative" translate="ALTERNATIVEVEHICLE"></b>
 		                    		</td>
 						        </tr>
+		                    </tbody>
+		                    <thead>
+	                        	<th class="success text-center" style="background-color: #ffff66;" translate="INFOOWNERVEHICLE">
+	                        	</th>
+	                        </thead>
+	                         <tbody>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate="OWNERNAME"></span>: <b> {{vehicleOwnerName}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate="OWNERSURNAME"></span>: <b> {{vehicleOwnerSurname}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate="OWNERJMBG"></span>: <b> {{vehicleOwnerJmbg}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate=TYPEOFVEHICLE></span>: <b> {{vehicleType}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate=YEAROFMANUFACTURE></span>: <b> {{vehicleYear}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate=LICENCEPLATESNUMBER></span>: <b> {{vehiclePlates}}</b>
+		                    		</td>
+		                    	</tr>
+		                    	<tr>
+		                    		<td class="text-center">
+										<span translate=NUMBEROFCHASSIS></span>: <b> {{vehicleChassis}}</b>
+		                    		</td>
+		                    	</tr>
 		                    </tbody>
 	                    </table>
 	                    

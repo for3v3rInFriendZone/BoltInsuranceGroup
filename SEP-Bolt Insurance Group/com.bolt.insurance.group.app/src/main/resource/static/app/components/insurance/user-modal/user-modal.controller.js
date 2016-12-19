@@ -122,29 +122,48 @@
 		
 		function jmbgValidation(user) {
 			var jmbg = user.jmbg;
+			umc.submitted.invalidJmbg = false;
 			
+			var partsOfJmbg = jmbg.split('');
+			for(var i=0; i<partsOfJmbg.length; i++) {
+				partsOfJmbg[i] = parseInt(partsOfJmbg[i]);
+			}
+			
+			var s = 7*partsOfJmbg[0] + 6*partsOfJmbg[1] + 5*partsOfJmbg[2] + 4*partsOfJmbg[3] + 3*partsOfJmbg[4] + 2*partsOfJmbg[5] + 7*partsOfJmbg[6] + 6*partsOfJmbg[7] + 5*partsOfJmbg[8] + 4*partsOfJmbg[9] + 3*partsOfJmbg[10] + 2*partsOfJmbg[11];
+			var k = s%11;
+			if(k === 0) {
+				if(partsOfJmbg[12] !== 0) {
+					umc.submitted.invalidJmbg = true;
+				}
+			} else if(k === 1) {
+				umc.submitted.invalidJmbg = true;
+			} else if(k > 1) {
+				var m = 11 - k;
+				if (m !== partsOfJmbg[12]) {
+					umc.submitted.invalidJmbg = true;
+				}
+			}
+			
+			/**
+			 * This part checks if days and months are valid
+			 */
 			var day = parseInt(jmbg.substring(0, 2));
 			var month = parseInt(jmbg.substring(2, 4));
 			
 			if(day < 1 || day > 31) {
-				umc.submitted.validJmbg = true;
-				
+				umc.submitted.invalidJmbg = true;
 			} else if(month < 1 || month > 12) {
-				umc.submitted.validJmbg = true;
-				
-			}
-			else {
-				umc.submitted.validJmbg = false;
+				umc.submitted.invalidJmbg = true;
 			}
 			
-			return umc.submitted.validJmbg;
+			return umc.submitted.invalidJmbg;
 		}
 		
 		function removeErrors() {
 			umc.submitted.kids = false;
 			umc.submitted.grownups = false;
 			umc.submitted.olds = false;
-			umc.submitted.validJmbg = false;
+			umc.submitted.invalidJmbg = false;
 		}
 		
 		/**

@@ -11,6 +11,7 @@
 				<br />
 				<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 				<p class="text-center" style="color: #997300;" translate="HOUSEFLATINFO">
+				<div class="text-center"> <i class="fa fa-home" style="font-size: 40px;"></i> </div>
 					<form class="state-form form-horizontal" name="hic.form" novalidate>
 						<div class="modal-body">
 						    <form class="state-form form-horizontal" name="hic.form" novalidate> 
@@ -41,10 +42,11 @@
 						        	<label for="ownerJmbg" class="col-sm-2 control-label" translate="OWNERJMBG"></label>
 						        	<div class="col-sm-8">
 						        		<div ng-class="{'has-error': hic.form.ownerJmbg.$error.required && hic.submitted}">
-						        		 	<input class="form-control" type="text" ng-model="hic.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
+						        		 	<input class="form-control" type="text" ng-focus="hic.removeErrors()" ng-model="hic.home.ownerjmbg" ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0}}" id="ownerJmbg" name="ownerJmbg" placeholder="{{'OWNERJMBG'|translate}}" maxlength="13" ng-pattern="/^[0-9]{13}$/" required>
 						        		</div>
 						        		<p class="text-center" ng-show="hic.form.ownerJmbg.$error.pattern" style="color: red;" translate="OWNERJMBGFORM"> </p> 
 						            	<p class="text-center" ng-show="(hic.form.ownerJmbg.$touched && hic.form.ownerJmbg.$error.required) || (hic.form.ownerJmbg.$error.required && hic.submitted)" style="color: red;" translate="OWNERJMBGREQUIREDFORM"> </p>
+						            	<p class="text-center" ng-show="hic.invalidJmbg" style="color: red;" translate="VALIDJMBG"> </p>
 						        	</div>
 						        </div>
 						    </div>

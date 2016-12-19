@@ -31,6 +31,21 @@
 		$scope.earthshaker = localStorageService.cookie.get('earthshakerCheckBox');
 		$scope.amount = parseFloat(localStorageService.cookie.get('amount'));
 		$scope.totalPrice = ($scope.amount + $scope.amount*0.2) / 120;
+		$scope.homeArea = localStorageService.cookie.get('homeArea');
+		$scope.ageOfHome = localStorageService.cookie.get('ageOfHome');
+		$scope.estimatedValueOfHome = localStorageService.cookie.get('estimatedValueOfHome');
+		$scope.homeOwnerName = localStorageService.cookie.get('homeOwnerName');
+		$scope.homeOwnerSurname = localStorageService.cookie.get('homeOwnerSurname');
+		$scope.homeOwnerJmbg = localStorageService.cookie.get('homeOwnerJmbg');
+		$scope.homeAdress = localStorageService.cookie.get('homeAdress');
+		$scope.vehicleOwnerName = localStorageService.cookie.get('vehicleOwnerName');
+		$scope.vehicleOwnerSurname = localStorageService.cookie.get('vehicleOwnerSurname');
+		$scope.vehicleOwnerJmbg = localStorageService.cookie.get('vehicleOwnerJmbg');
+		$scope.vehicleType = localStorageService.cookie.get('vehicleType');
+		$scope.vehicleYear = localStorageService.cookie.get('vehicleYear');
+		$scope.vehiclePlates = localStorageService.cookie.get('vehiclePlates');
+		$scope.vehicleChassis = localStorageService.cookie.get('vehicleChassis');
+	
 		
 		//var current = (vic.homeCheckBox)?5:4;
 		InsuranceProgress.setCurrent(6);

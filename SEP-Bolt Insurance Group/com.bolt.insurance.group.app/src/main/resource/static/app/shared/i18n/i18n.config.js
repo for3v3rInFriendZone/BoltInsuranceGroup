@@ -72,7 +72,7 @@
 			OWNERNAME: "Name",
 			OWNERSURNAME: "Surname",
 			OWNERJMBG: "JMBG",
-			ADDRESSOFHOME: "Address of the house/flat",
+			ADDRESSOFHOME: "Address",
 			HOMEAREA: "Surface area of the house/flat",
 			CONSTRUCTIONYEAR: "Year of contruction of the house/flat",
 			ESTIMATEDVALUEOFHOME: "Estimated value of the house/flat",
@@ -179,7 +179,9 @@
 			PAYPALLPAGE: "Review of insurance policy and payment.",
 			VEHICLEINFO: "Input of vehicle informations",
 			HOUSEFLATINFO: "Input of house or flat informations",
-			USERINFOMODAL: "User informations"
+			USERINFOMODAL: "User informations",
+			INFOOWNERHOME: "Informations for owner of home/flat",
+			INFOOWNERVEHICLE: "Informations for owner of vehicle"
 
 				
 				
@@ -243,7 +245,7 @@
 			OWNERNAME: "Ime vlasnika",
 			OWNERSURNAME: "Prezime vlasnika",
 			OWNERJMBG: "JMBG vlasnika",
-			ADDRESSOFHOME: "Adresa kuće/stana",
+			ADDRESSOFHOME: "Adresa",
 			HOMEAREA: "Površina kuće/stana",
 			AGEOFHOME: "Starost kuće/stana",
 			ESTIMATEDVALUEOFHOME: "Procenjena vrednost kuće/stana",
@@ -350,7 +352,9 @@
 			PAYPALLPAGE: "Pregled polise osiguranja i plaćanje.",
 			VEHICLEINFO: "Unos podataka o vozilu.",
 			HOUSEFLATINFO: "Unos podataka o kući/stanu.",
-			USERINFOMODAL: "Informacije o korisniku."
+			USERINFOMODAL: "Informacije o korisniku.",
+			INFOOWNERHOME: "Informacije o vlasniku kuće/stana",
+			INFOOWNERVEHICLE: "Informacije o vlasniku vozila"
 
 
 		});
