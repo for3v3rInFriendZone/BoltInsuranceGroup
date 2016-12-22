@@ -22,6 +22,7 @@ import com.bolt.insurance.group.app.dto.InsuranceDto;
 import com.bolt.insurance.group.app.dto.PersonsDto;
 import com.bolt.insurance.group.app.dto.RiskDto;
 import com.bolt.insurance.group.app.model.Insurance;
+import com.bolt.insurance.group.app.model.Subgroup;
 import com.bolt.insurance.group.app.service.DroolsService;
 import com.bolt.insurance.group.app.service.HomeService;
 import com.bolt.insurance.group.app.service.InsuranceService;
@@ -119,22 +120,30 @@ public class ApiInsuranceController {
 			int grownups = 0;
 			int olds = 0;
 			
+			//check if kids is number
 			try {
 				kids = Integer.parseInt(json.getString("kids"));
 			} catch (Exception e) {
 				
 			}
 	
+			//check if grownups is number
 			try {
 				grownups = Integer.parseInt(json.getString("grownups"));
 			} catch (Exception e) {
 				
 			}
 
+			//check if olds is number
 			try {
 				olds = Integer.parseInt(json.getString("olds"));
 			} catch (Exception e) {
 				
+			}
+			
+			//if kids, grownups and olds is 0 we don't have people on our insurance
+			if(kids == 0 && grownups == 0 && olds == 0){
+				return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
 			}
 			
 			personDto.setUserUnder18(kids);
@@ -152,22 +161,41 @@ public class ApiInsuranceController {
 			InsuranceDto.getRisks().add(rd1); //osobe
 			
 			String world = json.getString("world");
+			Subgroup worldSubgroup = subgroupService.findBySubname(world);
+			
+			//check if user select destination
+			if(worldSubgroup == null){
+				return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
+			}
+			
 			RiskDto rd2 = cfmtd.converteRisk(riskService.findOne((long) 2));
-			rd2.getSubgroup().add(subgroupService.findBySubname(world));
+			rd2.getSubgroup().add(worldSubgroup);
 			
 			InsuranceDto.getRisks().add(rd2); //region
 			
 			long startDate = Long.parseLong(json.getString("dt1"));
 			long endDate = Long.parseLong(json.getString("dt2"));
-			InsuranceDto.setDays(insuranceService.calculateDays(startDate, endDate));
 			
+			//check date
+			if(endDate < startDate){
+				return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
+			}
+			
+			InsuranceDto.setDays(insuranceService.calculateDays(startDate, endDate));
 			RiskDto rd3 = cfmtd.converteRisk(riskService.findOne((long) 3)); // trajanje
 			
 			InsuranceDto.getRisks().add(rd3);
 			
 			String money = json.getString("money");
+			Subgroup moneySubgroup = subgroupService.findBySubname(money);
+			
+			//check if user select money
+			if(moneySubgroup == null){
+				return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
+			}
+			
 			RiskDto rd4 = cfmtd.converteRisk(riskService.findOne((long) 10));
-			rd4.getSubgroup().add(subgroupService.findBySubname(money)); //vrednost
+			rd4.getSubgroup().add(moneySubgroup); //vrednost
 			
 			InsuranceDto.getRisks().add(rd4);
 			
@@ -181,8 +209,15 @@ public class ApiInsuranceController {
 			}
 			
 			if(sport){
+				Subgroup sportSubgroup = subgroupService.findBySubname(json.getJSONObject("selectedSport").getString("subname"));
+				
+				//check if user select sport
+				if(sportSubgroup == null){
+					return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
+				}
+				
 				RiskDto rd5 = cfmtd.converteRisk(riskService.findOne((long) 4));
-				rd5.getSubgroup().add(subgroupService.findBySubname(json.getJSONObject("selectedSport").getString("subname")));
+				rd5.getSubgroup().add(sportSubgroup);
 				InsuranceDto.getRisks().add(rd5);
 			}
 			
@@ -193,6 +228,7 @@ public class ApiInsuranceController {
 			} catch (Exception e) {
 				road = false;
 			}
+			
 			if(road){
 				RiskDto rd6 = cfmtd.converteRisk(riskService.findOne((long) 9));
 				
@@ -244,6 +280,10 @@ public class ApiInsuranceController {
 					rd6.getSubgroup().add(subgroupService.findBySubname("prevoz"));
 				}
 				
+				if(!hotel && !repair && !towing && !alternative){
+					return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
+				}
+				
 				InsuranceDto.getRisks().add(rd6); //paket
 			}
 
@@ -261,13 +301,24 @@ public class ApiInsuranceController {
 				RiskDto rd9 = cfmtd.converteRisk(riskService.findOne((long) 7)); //procenjena_vrednost
 				RiskDto rd10 = cfmtd.converteRisk(riskService.findOne((long) 8));//vrsta_osiguranja
 				
-				rd7.getSubgroup().add(homeService.checkHouseSize(Integer.parseInt(json.getString("homearea"))));
-				rd9.getSubgroup().add(homeService.checkHouseEstimateValue(Integer.parseInt(json.getString("estimatedvalueofhome"))));
-				
-				int year = Calendar.getInstance().get(Calendar.YEAR);
-				
-				rd8.getSubgroup().add(homeService.checkHouseAge(year - Integer.parseInt(json.getString("ageofhome"))));
-				
+				try {
+					Subgroup areaSubgruop = homeService.checkHouseSize(Integer.parseInt(json.getString("homearea")));
+					rd7.getSubgroup().add(areaSubgruop);
+					
+					int year = Calendar.getInstance().get(Calendar.YEAR);
+					int homeYear = Integer.parseInt(json.getString("ageofhome"));
+					
+					if(homeYear > year){
+						return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
+					}
+					
+					rd8.getSubgroup().add(homeService.checkHouseAge(year - homeYear));
+					
+					rd9.getSubgroup().add(homeService.checkHouseEstimateValue(Integer.parseInt(json.getString("estimatedvalueofhome"))));
+				} catch (Exception e) {
+					return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
+				}
+				 
 				boolean theft = false;
 				
 				try {
@@ -314,6 +365,10 @@ public class ApiInsuranceController {
 				
 				if (fire){
 					rd10.getSubgroup().add(subgroupService.findBySubname("pozar"));
+				}
+				
+				if(!theft && !flood && !earthshaker && !fire){
+					return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);
 				}
 				
 				InsuranceDto.getRisks().add(rd7);
