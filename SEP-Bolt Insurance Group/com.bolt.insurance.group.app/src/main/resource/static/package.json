@@ -1,0 +1,8 @@
+{
+  "name": "big-package",
+  "version": "1.0.0",
+  "author": "Jan Šulja",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
