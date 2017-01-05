@@ -43,7 +43,7 @@
 		    	below18: 0,
 		    	inBetween18And60: 0,
 		    	after60: 0
-		}
+		};
 		
 		inc.preEditedUser = {};
 		inc.preEditedHome = {};
@@ -106,7 +106,7 @@
 				$el.removeClass('not-visible');
 				$el.addClass('animated ' + animation);
 			}
-		}
+		};
 
 		/**
 		 * Opening a modal dialog for a user
@@ -138,7 +138,7 @@
 				inc.roadInsurance = false;
 				inc.vehicle = data;
 			});
-		}
+		};
 
 		/**
 		 * When user informations are changed in database, it needs to be
@@ -168,7 +168,7 @@
 					}
 				}
 			});
-		}
+		};
 
 		/**
 		 * Change locale language
@@ -182,7 +182,7 @@
 		 */
 		inc.removeUser = function(index) {
 			inc.users.splice(index, 1);
-		}
+		};
 
 		/**
 		 * Getting data for a sport risk.
@@ -210,7 +210,7 @@
 			}, function(){
 				inc.home = inc.preEditedHome;
 			});
-		}
+		};
 
 		/**
 		 * Removing a selected home.
@@ -219,7 +219,7 @@
 			inc.homeindicator = 0;
 			inc.homeInsurance = true;
 			inc.home = {};
-		}
+		};
 
 		/**
 		 * Editing a selected vehicle
@@ -234,7 +234,7 @@
 			}, function(){
 				inc.vehicle = inc.preEditedVehicle;
 			});
-		}
+		};
 
 		/**
 		 * Removing a selected vehicle
@@ -243,7 +243,7 @@
 			inc.vehicleindicator = 0;
 			inc.roadInsurance = true;
 			inc.vehicle = {};
-		}
+		};
 		  
 		inc.calculateYearsFromJMBG = function(user){	
 		    var bornDate = user.jmbg;
@@ -271,18 +271,18 @@
 			
 			return inc.personCollection;
 				
-		}
+		};
 		
 		/**
 		 * Opens dialog for more information about vehicle insurance
 		 */
 		inc.openV = function(){
 			 $fancyModal.open({ templateUrl: 'app/components/insurance/insurance-info/vehicleInfoInsurance.html'});   
-		}
+		};
 		
 		inc.openH = function() {
 			$fancyModal.open({ templateUrl: 'app/components/insurance/insurance-info/homeInsuranceInfo.html'});   
-		}
+		};
 		
 		inc.submitForm = function() {
 			inc.submitted = true;
