@@ -1,19 +1,21 @@
 // Karma configuration
-// Generated on Fri Aug 09 2013 14:14:35 GMT-0500 (CDT)
 
-module.exports = function(config) {
+var angularVersion = '1.5.9';
+var lodashVersion = '4.17.2';
+
+module.exports = function (config) {
   config.set({
 
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
-    frameworks: ["jasmine"],
+    frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.js',
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular-mocks.js',
-      'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.3.0/lodash.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/' + angularVersion + '/angular.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/' + angularVersion + '/angular-mocks.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/' + lodashVersion + '/lodash.js',
       'src/restangular.js',
       'test/*.js'
     ],
@@ -27,7 +29,7 @@ module.exports = function(config) {
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit'
-    reporters: ['mocha'],
+    reporters: ['mocha', 'coverage'],
 
 
     // web server port
@@ -68,7 +70,20 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false,
+
+    preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'src/**/*.js': ['coverage']
+    },
+
+    // optionally, configure the reporter
+    coverageReporter: {
+      type: 'lcov',
+      dir : 'coverage/'
+    }
 
   });
 };

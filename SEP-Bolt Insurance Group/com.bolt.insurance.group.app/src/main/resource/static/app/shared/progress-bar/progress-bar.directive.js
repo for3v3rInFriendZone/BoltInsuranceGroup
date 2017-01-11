@@ -20,7 +20,7 @@
 					
 						var width = 100/state.steps;
 						
-						var template = '<div class="progress" id="progressBar">'		
+						var template = '<div class="progress" id="progressBar">';		
 						for(var i=0;i<state.current;i++){
 							template+='<div class="progress-bar progress-bar-success form-control" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: '+width+'%; background-color: green;">';
 							
@@ -38,7 +38,7 @@
 	            	 
 				},true);
 			}
-		}
+		};
 		
 	}
 })();

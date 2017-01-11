@@ -88,5 +88,5 @@
         //element.replaceWith(template);
         element.append(template);
     }
-}}
+};}
 })();

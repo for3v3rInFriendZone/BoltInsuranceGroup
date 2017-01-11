@@ -287,9 +287,9 @@
 		inc.submitForm = function() {
 			inc.submitted = true;
 			
-			if((inc.kids === '' || inc.kids == 0 || inc.kids == null) && (inc.grownups === '' || inc.grownups == 0 || inc.grownups == null) && (inc.olds === '' || inc.olds == 0 || inc.olds == null)) {
+			if((inc.kids === '' || inc.kids === 0 || inc.kids === null) && (inc.grownups === '' || inc.grownups === 0 || inc.grownups === null) && (inc.olds === '' || inc.olds === 0 || inc.olds === null)) {
 				inc.submittedUsers = true;
-			}
+			} 
 			
 			if(inc.homeCheckBox) {
 				if(!inc.fire && !inc.flood && !inc.theft && !inc.earthshake) {
@@ -351,7 +351,7 @@
 			
 			
 			$state.go('total-price');
-		}
+		};
 		
 		inc.closeOthers = function(e) {
 
@@ -391,7 +391,7 @@
 			}
 			
 			
-		}
+		};
 		
 		
 		var getSteps = function(){
@@ -403,7 +403,7 @@
 				newSteps++;
 			}
 			return newSteps;
-		}
+		};
 		
 		InsuranceProgress.setSteps(getSteps());
 		InsuranceProgress.setCurrent(1);

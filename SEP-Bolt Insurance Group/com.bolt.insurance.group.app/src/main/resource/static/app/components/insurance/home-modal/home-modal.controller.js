@@ -41,11 +41,11 @@
 			
 			$state.go('insurance-users');
 			
-		}
+		};
 		
 		function jmbgValidation(user) {
 			hic.invalidJmbg = false;
-			if(user == null || user == undefined || user.ownerjmbg == undefined) {
+			if(user === null || user === undefined || user.ownerjmbg === undefined) {
 				return;
 			}
 			

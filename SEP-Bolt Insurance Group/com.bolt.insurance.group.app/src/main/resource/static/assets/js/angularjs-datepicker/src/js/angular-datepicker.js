@@ -18,7 +18,12 @@
         return true;
       }
     }())
-    , generateMonthAndYearHeader = function generateMonthAndYearHeader(prevButton, nextButton) {
+    , generateMonthAndYearHeader = function generateMonthAndYearHeader(prevButton, nextButton, preventMobile) {
+
+      if (preventMobile) {
+
+        isMobile = false;
+      }
 
       if (isMobile) {
 
@@ -105,7 +110,7 @@
           '<a href="javascript:void(0)" ng-repeat="px in prevMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled">',
             '{{px}}',
           '</a>',
-          '<a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{\'_720kb-datepicker-active\': day === item, \'_720kb-datepicker-disabled\': !isSelectableMinDate(year + \'/\' + monthNumber + \'/\' + item ) || !isSelectableMaxDate(year + \'/\' + monthNumber + \'/\' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day">',
+          '<a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{\'_720kb-datepicker-active\': selectedDay === item && selectedMonth === monthNumber && selectedYear === year, \'_720kb-datepicker-disabled\': !isSelectableMinDate(year + \'/\' + monthNumber + \'/\' + item ) || !isSelectableMaxDate(year + \'/\' + monthNumber + \'/\' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day">',
             '{{item}}',
           '</a>',
           '<a href="javascript:void(0)" ng-repeat="nx in nextMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled">',
@@ -114,13 +119,13 @@
         '</div>'
       ];
     }
-    , generateHtmlTemplate = function generateHtmlTemplate(prevButton, nextButton) {
+    , generateHtmlTemplate = function generateHtmlTemplate(prevButton, nextButton, preventMobile) {
 
       var toReturn = [
         '<div class="_720kb-datepicker-calendar {{datepickerClass}} {{datepickerID}}" ng-class="{\'_720kb-datepicker-forced-to-open\': checkVisibility()}" ng-blur="hideCalendar()">',
         '</div>'
       ]
-      , monthAndYearHeader = generateMonthAndYearHeader(prevButton, nextButton)
+      , monthAndYearHeader = generateMonthAndYearHeader(prevButton, nextButton, preventMobile)
       , yearsPaginationHeader = generateYearsPaginationHeader(prevButton, nextButton)
       , daysColumns = generateDaysColumns()
       , days = generateDays()
@@ -155,10 +160,11 @@
           , date = new Date()
           , isMouseOn = false
           , isMouseOnInput = false
+          , preventMobile = typeof attr.datepickerMobile !== 'undefined' && attr.datepickerMobile !== 'false'
           , datetime = $locale.DATETIME_FORMATS
           , pageDatepickers
           , hours24h = 86400000
-          , htmlTemplate = generateHtmlTemplate(prevButton, nextButton)
+          , htmlTemplate = generateHtmlTemplate(prevButton, nextButton, preventMobile)
           , n
           , onClickOnWindow = function onClickOnWindow() {
 
@@ -168,12 +174,89 @@
               $scope.hideCalendar();
             }
           }
+          , setDaysInMonth = function setDaysInMonth(month, year) {
+
+            var i
+              , limitDate = new Date(year, month, 0).getDate()
+              , firstDayMonthNumber = new Date(year + '/' + month + '/' + 1).getDay()
+              , lastDayMonthNumber = new Date(year + '/' + month + '/' + limitDate).getDay()
+              , prevMonthDays = []
+              , nextMonthDays = []
+              , howManyNextDays
+              , howManyPreviousDays
+              , monthAlias
+              , dateWeekEndDay;
+
+            $scope.days = [];
+            $scope.dateWeekStartDay = $scope.validateWeekDay($scope.dateWeekStartDay);
+            dateWeekEndDay = ($scope.dateWeekStartDay + 6) % 7;
+
+            for (i = 1; i <= limitDate; i += 1) {
+
+              $scope.days.push(i);
+            }
+
+            //get previous month days if first day in month is not first day in week
+            if (firstDayMonthNumber === $scope.dateWeekStartDay) {
+
+              //no need for it
+              $scope.prevMonthDays = [];
+            } else {
+
+              howManyPreviousDays = firstDayMonthNumber - $scope.dateWeekStartDay;
+
+              if (firstDayMonthNumber < $scope.dateWeekStartDay) {
+
+                howManyPreviousDays += 7;
+              }
+
+              //get previous month
+              if (Number(month) === 1) {
+
+                monthAlias = 12;
+              } else {
+
+                monthAlias = month - 1;
+              }
+              //return previous month days
+              for (i = 1; i <= new Date(year, monthAlias, 0).getDate(); i += 1) {
+
+                prevMonthDays.push(i);
+              }
+              //attach previous month days
+              $scope.prevMonthDays = prevMonthDays.slice(-howManyPreviousDays);
+            }
+
+            //get next month days if last day in month is not last day in week
+            if (lastDayMonthNumber === dateWeekEndDay) {
+              //no need for it
+              $scope.nextMonthDays = [];
+            } else {
+              howManyNextDays = 6 - lastDayMonthNumber + $scope.dateWeekStartDay;
+
+              if (lastDayMonthNumber < $scope.dateWeekStartDay) {
+
+                howManyNextDays -= 7;
+              }
+              //get previous month
+
+              //return next month days
+              for (i = 1; i <= howManyNextDays; i += 1) {
+
+                nextMonthDays.push(i);
+              }
+              //attach previous month days
+              $scope.nextMonthDays = nextMonthDays;
+            }
+          }
           , resetToMinDate = function resetToMinDate() {
 
             $scope.month = $filter('date')(new Date($scope.dateMinLimit), 'MMMM');
             $scope.monthNumber = Number($filter('date')(new Date($scope.dateMinLimit), 'MM'));
             $scope.day = Number($filter('date')(new Date($scope.dateMinLimit), 'dd'));
             $scope.year = Number($filter('date')(new Date($scope.dateMinLimit), 'yyyy'));
+
+            setDaysInMonth($scope.monthNumber, $scope.year);
           }
           , resetToMaxDate = function resetToMaxDate() {
 
@@ -181,6 +264,8 @@
             $scope.monthNumber = Number($filter('date')(new Date($scope.dateMaxLimit), 'MM'));
             $scope.day = Number($filter('date')(new Date($scope.dateMaxLimit), 'dd'));
             $scope.year = Number($filter('date')(new Date($scope.dateMaxLimit), 'yyyy'));
+
+            setDaysInMonth($scope.monthNumber, $scope.year);
           }
           , prevYear = function prevYear() {
 
@@ -283,81 +368,6 @@
             }
             return $scope.$eval($scope.datepickerShow);
           }
-          , setDaysInMonth = function setDaysInMonth(month, year) {
-
-            var i
-              , limitDate = new Date(year, month, 0).getDate()
-              , firstDayMonthNumber = new Date(year + '/' + month + '/' + 1).getDay()
-              , lastDayMonthNumber = new Date(year + '/' + month + '/' + limitDate).getDay()
-              , prevMonthDays = []
-              , nextMonthDays = []
-              , howManyNextDays
-              , howManyPreviousDays
-              , monthAlias
-              , dateWeekEndDay;
-
-            $scope.days = [];
-            $scope.dateWeekStartDay = $scope.validateWeekDay($scope.dateWeekStartDay);
-            dateWeekEndDay = ($scope.dateWeekStartDay + 6) % 7;
-
-            for (i = 1; i <= limitDate; i += 1) {
-
-              $scope.days.push(i);
-            }
-
-            //get previous month days if first day in month is not first day in week
-            if (firstDayMonthNumber === $scope.dateWeekStartDay) {
-
-              //no need for it
-              $scope.prevMonthDays = [];
-            } else {
-
-              howManyPreviousDays = firstDayMonthNumber - $scope.dateWeekStartDay;
-
-              if (firstDayMonthNumber < $scope.dateWeekStartDay) {
-
-                howManyPreviousDays += 7;
-              }
-
-              //get previous month
-              if (Number(month) === 1) {
-
-                monthAlias = 12;
-              } else {
-
-                monthAlias = month - 1;
-              }
-              //return previous month days
-              for (i = 1; i <= new Date(year, monthAlias, 0).getDate(); i += 1) {
-
-                prevMonthDays.push(i);
-              }
-              //attach previous month days
-              $scope.prevMonthDays = prevMonthDays.slice(-howManyPreviousDays);
-            }
-
-            //get next month days if last day in month is not last day in week
-            if (lastDayMonthNumber === dateWeekEndDay) {
-              //no need for it
-              $scope.nextMonthDays = [];
-            } else {
-              howManyNextDays = 6 - lastDayMonthNumber + $scope.dateWeekStartDay;
-
-              if (lastDayMonthNumber < $scope.dateWeekStartDay) {
-
-                howManyNextDays -= 7;
-              }
-              //get previous month
-
-              //return next month days
-              for (i = 1; i <= howManyNextDays; i += 1) {
-
-                nextMonthDays.push(i);
-              }
-              //attach previous month days
-              $scope.nextMonthDays = nextMonthDays;
-            }
-          }
           , unregisterDataSetWatcher = $scope.$watch('dateSet', function dateSetWatcher(newValue) {
 
             if (newValue) {
@@ -375,6 +385,21 @@
 
                 setInputValue();
               }
+            }
+          })
+          , unregisterDateMinLimitWatcher = $scope.$watch('dateMinLimit', function dateMinLimitWatcher(newValue) {
+            if (newValue) {
+              resetToMinDate();
+            }
+          })
+          , unregisterDateMaxLimitWatcher = $scope.$watch('dateMaxLimit', function dateMaxLimitWatcher(newValue) {
+            if (newValue) {
+              resetToMaxDate();
+            }
+          })
+          , unregisterDateFormatWatcher = $scope.$watch('dateFormat', function dateFormatWatcher(newValue) {
+            if (newValue) {
+              setInputValue();
             }
           });
 
@@ -518,7 +543,7 @@
         };
 
         $scope.hideCalendar = function hideCalendar() {
-          if (theCalendar.classList){
+          if (theCalendar.classList) {
             theCalendar.classList.remove('_720kb-datepicker-open');
           } else {
 
@@ -533,6 +558,10 @@
               $scope.isSelectableMinDate($scope.year + '/' + $scope.monthNumber + '/' + day)) {
 
             $scope.day = Number(day);
+            $scope.selectedDay = $scope.day;
+            $scope.selectedMonth = $scope.monthNumber;
+            $scope.selectedYear = $scope.year;
+
             setInputValue();
 
             if (attr.hasOwnProperty('dateRefocus')) {
@@ -582,7 +611,11 @@
 
                 try {
 
-                  date = new Date(thisInput[0].value.toString());
+                  if (dateFormat) {
+                    date = new Date($filter('date')(thisInput[0].value.toString(), dateFormat));
+                  } else {
+                    date = new Date(thisInput[0].value.toString());
+                  }
 
                   if (date.getFullYear() &&
                    !isNaN(date.getDay()) &&
@@ -831,6 +864,9 @@
         $scope.$on('$destroy', function unregisterListener() {
 
           unregisterDataSetWatcher();
+          unregisterDateMinLimitWatcher();
+          unregisterDateMaxLimitWatcher();
+          unregisterDateFormatWatcher();
           thisInput.off('focus click focusout blur');
           angular.element(theCalendar).off('mouseenter mouseleave focusin');
           angular.element($window).off('click focus focusin', onClickOnWindow);
