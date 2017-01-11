@@ -8,6 +8,7 @@ var uglify = require('gulp-uglify');
 var insertLines = require('gulp-insert-lines');
 var deleteLines = require('gulp-delete-lines');
 var removeEmptyLines = require('gulp-remove-empty-lines');
+var cleanCSS = require('gulp-clean-css');
 
 var themeScriptOrder = ['modernizr-2.6.2.min.js','jquery-1.11.0.min.js',
 'bootstrap.min.js','waypoints.min.js','owl.carousel.min.js','jquery.scrollTo.min.js',
@@ -87,12 +88,25 @@ gulp.task('vendor-scripts',function(){
 
 });
 
-gulp.task('production', ['vendor-scripts','theme-scripts', 'scripts'], function() {
+
+gulp.task('minify-css',function(){
+
+	gulp.src('assets/css/*.css')
+		.pipe(print())
+		.pipe(concat('style.min.css'))
+		.pipe(cleanCSS())
+		.pipe(gulp.dest('../public/assets/css'));
+
+
+});
+
+
+gulp.task('production', ['vendor-scripts','theme-scripts', 'scripts','minify-css'], function() {
 	
 	gulp.src(['!app/**/*.js', 'app/**/*']).pipe(gulp.dest('../public/app'));
-	gulp.src(['!assets/js/**/*', 'assets/**/*']).pipe(gulp.dest('../public/assets'));
-	
-	//Najzad modifikujemo index.html tako da izbacimo sve script tagove i ubacimo samo dva, jedan za vendor.min.js i drugi za all.min.js
+	gulp.src(['!assets/js/**/*', 'assets/**/*','!assets/css/**/*']).pipe(gulp.dest('../public/assets'));
+	gulp.src('assets/css/fonts/*').pipe(gulp.dest('../public/assets/css/fonts'));
+
 	gulp.src("index.html")
 		.pipe(deleteLines({
       		'filters': [
@@ -104,6 +118,18 @@ gulp.task('production', ['vendor-scripts','theme-scripts', 'scripts'], function(
 	      	'lineBefore': '\t\t<script type="text/javascript" src="assets/js/vendor.min.js"></script>\n' + 
 	      				  '\t\t<script type="text/javascript" src="assets/js/theme.min.js"></script>\n'+ 
 	      				  '\t\t<script type="text/javascript" src="assets/js/all.min.js"></script>'
+	    }))
+	    .pipe(deleteLines({
+
+	    	'filters': [
+      			/<link\s+href=\"assets/i
+  			]
+
+	    }))
+	    .pipe(insertLines({
+      		'after': /<head>$/,
+	      	'lineAfter': '\t\t<link href="assets/css/style.min.css" rel="stylesheet">\n'
+	      				 
 	    }))
 	    .pipe(removeEmptyLines({
 		    removeComments: true
