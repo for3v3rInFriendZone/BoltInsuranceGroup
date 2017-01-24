@@ -86,47 +86,22 @@
 
                         </div>
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <blockquote>
-                                        <p>
-                                         One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.
-                                     </p>
-                                     <span><h5 class="fa fa-quote-left"> John McIntyre</h5>
-                                     </blockquote>
-                                 </div>
-                                 <div class="col-md-3">
-                                    <blockquote>
-                                        <p>
-                                         The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream.
-                                     </p>
-                                     <span><h5 class="fa fa-quote-left"> John McIntyre</h5>
-
-                                     </blockquote>
-                                 </div>
-                                 <div class="col-md-3">
-                                    <blockquote>
-                                     <p>His room, a proper human room although a little too small, lay peacefully between its four familiar walls.</p>
-
-                                     <span><h5 class="fa fa-quote-left"> John McIntyre</h5>
-                                     </blockquote>
-                                 </div>
-                                 <div class="col-md-3">
-                                    <blockquote>
-                                        <p>
-                                         It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
-                                     </p>
-                                     <span><h5 class="fa fa-quote-left"> John McIntyre</h5>
-                                     </blockquote>
-                                 </div>
+                            <div class="row" ng-repeat="comm in listOfComments">
+                               <p>
+                                   {{comm.comment}}
+                               </p>
+                               <span><h5 class="fa fa-quote-left"> {{comm.name}} &nbsp {{comm.surname}}</h5>
+                               <hr/>                      
                              </div>
                          </div>
 
-                         <button type="button" class="btn btn-primary" translate="ADDYOURCOMMENT"> </button>
+                        <button type="button" ng-click="newComment()" class="btn btn-primary" translate="ADDYOURCOMMENT"> </button>
                      </div> <!-- /.12 -->
                  </div> <!-- /.container -->
 
              </div><!-- /.section -->
+             
+             
 
              <!-- *** TESTIMONIALS END *** -->
 
@@ -159,4 +134,4 @@
 
 
 
-        </div>
+</div>

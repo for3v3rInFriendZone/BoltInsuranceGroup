@@ -76,3 +76,7 @@ INSERT INTO insurance_user(address, firstname, jmbg, mail, passport, phone, surn
 INSERT INTO vehicle(owner_address, brand, chassis, owner_jmbg, owner_name, registration, owner_surname, year_of_production, type) VALUES ('SS 1', 'BMW', '213few','0802993880018', 'Pera', 'RU432', 'Petrovic', 2010, 2);
 
 INSERT INTO home(address, owner_jmbg, owner_name, owner_surname) VALUES ('SS 1', '080993880018', 'Pera', 'Petrovic');
+
+INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('Marko', 'Markovic', 'This was an amazing experiance');
+INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('John', 'Smith', 'This was an amazing experiance 2');
+INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('Seth', 'Sethic', 'This was an amazing experiance 3');

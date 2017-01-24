@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h3 class="modal-title text-center" translate="NEWCLIENTCOMMENT"></h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+    <div class="form-group">
+    	<div class="col-sm-8 col-sm-offset-2">
+    		<input class="form-control" type="text" ng-model="ccc.clientComment.name" id="ownerName" name="ownerName" placeholder="{{'COMMENTNAME'|translate}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-8 col-sm-offset-2">
+            <input class="form-control" type="text" ng-model="ccc.clientComment.surname" id="ownerSurname" name="ownerSurname" placeholder="{{'COMMENTSURNAME'|translate}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-8 col-sm-offset-2">
+            <textarea class="form-control" type="text" ng-model="ccc.clientComment.comment" id="ownerJmbg" name="ownerJmbg" placeholder="{{'COMMENTTEXT'|translate}}"> </textarea>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="modal-footer">
+	<div class="text-center">
+	    <button class="btn btn-success" type="button" ng-click="ccc.ok()" translate="OK"></button>
+	    <button class="btn btn-warning" type="button" ng-click="ccc.cancel()" translate="CANCEL"></button>
+	</div>
+</div>

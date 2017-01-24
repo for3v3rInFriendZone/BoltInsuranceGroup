@@ -180,7 +180,11 @@
 			HOUSEFLATINFO: "Input of house or flat informations",
 			USERINFOMODAL: "User informations",
 			INFOOWNERHOME: "Informations for owner of home/flat",
-			INFOOWNERVEHICLE: "Informations for owner of vehicle"
+			INFOOWNERVEHICLE: "Informations for owner of vehicle",
+			NEWCLIENTCOMMENT: "Please enter your comment here",
+			COMMENTNAME: "Your name",
+			COMMENTSURNAME: "Your surname",
+			COMMENTTEXT: "Leave your comment here"
 
 				
 				
@@ -237,7 +241,7 @@
 			JMBG: "JMBG",
 			PASSPORTNUMBER: "Broj pasoša",
 			OWNEROFINSURANCE: "Vlasnik osiguranja",
-			OK : "U redu",
+			OK : "Ok",
 			CANCEL: "Odustani",
 			PHONE2: "Broj telefona",
 			EMAIL2: "E-mail",
@@ -352,7 +356,11 @@
 			HOUSEFLATINFO: "Unos podataka o kući/stanu.",
 			USERINFOMODAL: "Informacije o korisniku.",
 			INFOOWNERHOME: "Informacije o vlasniku kuće/stana",
-			INFOOWNERVEHICLE: "Informacije o vlasniku vozila"
+			INFOOWNERVEHICLE: "Informacije o vlasniku vozila",
+			NEWCLIENTCOMMENT: "Ovde unesite Vaš komentar",
+			COMMENTNAME: "Vaše ime",
+			COMMENTSURNAME: "Vaše prezime",
+			COMMENTTEXT: "Vaš komentar"
 
 
 		});
