@@ -8,17 +8,6 @@
           	<hr style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
           	<div class="row">
           		<div class="col-md-8 col-md-offset-2">
-<!-- 		          	<div class="progress"> -->
-<!-- 			          	<div class="progress-bar form-control" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 25%; background-color: green;"> -->
-							
-<!-- 						</div> -->
-<!-- 						<div class="progress-bar form-control" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:25%; background-color: blue;"> -->
-<!-- 							<b style="color: white;" translate="STEP2"> </b> -->
-<!-- 						</div> -->
-<!-- 						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:0%"> -->
-<!-- 							Ovo je trece -->
-<!-- 						</div> -->
-<!-- 					</div> -->
 					<p class="text-center" style="color: green;" translate="PAYPALLPAGE"> </p>
 				</div>
 			</div>
@@ -40,31 +29,31 @@
 	                        <tbody>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="REGION"> </span>: <b translate="{{world}}"></b>
+										<span translate="REGION"> </span>: <b translate="{{pic.world}}"></b>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
-										<span translate="INSUREDSUM"> </span>: <b> {{money}}</b> <i class="fa fa-eur"> </i>
+										<span translate="INSUREDSUM"> </span>: <b> {{pic.money}}</b> <i class="fa fa-eur"> </i>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
 										<span translate="NUMBEROFINSURANCEUSERS"> </span>: <br/>
-										1. <span translate="KIDS"> </span>: <b> {{kids}}</b> <br/>
-										&nbsp 2. <span translate="GROWNUPS"> </span>:  <b> {{grownups}}</b> <br/>
-										3. <span translate="OLDS"> </span>:  <b> {{olds}}</b> <br/>
+										1. <span translate="KIDS"> </span>: <b> {{pic.kids}}</b> <br/>
+										&nbsp 2. <span translate="GROWNUPS"> </span>:  <b> {{pic.grownups}}</b> <br/>
+										3. <span translate="OLDS"> </span>:  <b> {{pic.olds}}</b> <br/>
 		                    		</td>
 						        </tr>
 						        <tr>
 		                    		<td class="text-center">
 										<span translate="EFFECTIVEDATE"> </span>: <br/>
-										<b> {{dt1 | date:'dd.MM.yyyy'}} </b> do <b> {{dt2 | date:'dd.MM.yyyy'}}</b>
+										<b> {{pic.dt1 | date:'dd.MM.yyyy'}} </b> do <b> {{pic.dt2 | date:'dd.MM.yyyy'}}</b>
 		                    		</td>
 						        </tr>
 						        <tr ng-if="sportCheckBox">
 		                    		<td class="text-center">
-										<span translate="SPORTCHOSEN"> </span>: <b> {{selectedSport.subname}}</b>
+										<span translate="SPORTCHOSEN"> </span>: <b> {{pic.selectedSport.subname}}</b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
@@ -93,22 +82,22 @@
 	                        <tbody>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="OWNERNAME"></span>: <b> {{homeOwnerName}}</b>
+										<span translate="OWNERNAME"></span>: <b> {{pic.homeOwnerName}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="OWNERSURNAME"></span>: <b> {{homeOwnerSurname}}</b>
+										<span translate="OWNERSURNAME"></span>: <b> {{pic.homeOwnerSurname}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="OWNERJMBG"></span>: <b> {{homeOwnerJmbg}}</b>
+										<span translate="OWNERJMBG"></span>: <b> {{pic.homeOwnerJmbg}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="ADDRESSOFHOME"></span>: <b> {{homeAdress}}</b>
+										<span translate="ADDRESSOFHOME"></span>: <b> {{pic.homeAdress}}</b>
 		                    		</td>
 		                    	</tr>
 		                    </tbody>
@@ -137,37 +126,37 @@
 	                         <tbody>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="OWNERNAME"></span>: <b> {{vehicleOwnerName}}</b>
+										<span translate="OWNERNAME"></span>: <b> {{pic.vehicleOwnerName}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="OWNERSURNAME"></span>: <b> {{vehicleOwnerSurname}}</b>
+										<span translate="OWNERSURNAME"></span>: <b> {{pic.vehicleOwnerSurname}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate="OWNERJMBG"></span>: <b> {{vehicleOwnerJmbg}}</b>
+										<span translate="OWNERJMBG"></span>: <b> {{pic.vehicleOwnerJmbg}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate=TYPEOFVEHICLE></span>: <b> {{vehicleType}}</b>
+										<span translate=TYPEOFVEHICLE></span>: <b> {{pic.vehicleType}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate=YEAROFMANUFACTURE></span>: <b> {{vehicleYear}}</b>
+										<span translate=YEAROFMANUFACTURE></span>: <b> {{pic.vehicleYear}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate=LICENCEPLATESNUMBER></span>: <b> {{vehiclePlates}}</b>
+										<span translate=LICENCEPLATESNUMBER></span>: <b> {{pic.vehiclePlates}}</b>
 		                    		</td>
 		                    	</tr>
 		                    	<tr>
 		                    		<td class="text-center">
-										<span translate=NUMBEROFCHASSIS></span>: <b> {{vehicleChassis}}</b>
+										<span translate=NUMBEROFCHASSIS></span>: <b> {{pic.vehicleChassis}}</b>
 		                    		</td>
 		                    	</tr>
 		                    </tbody>
@@ -189,7 +178,7 @@
 	                        <tbody>	                    					     
 						        <tr>
 		                    		<td class="warning text-center">
-										<span translate="YOURPRICE"> </span>: <b>{{totalPrice | number:2}} <i class="fa fa-eur"> </i> </b> 
+										<span translate="YOURPRICE"> </span>: <b>{{pic.totalPrice | number:2}} <i class="fa fa-eur"> </i> </b> 
 		                    		</td>
 						        </tr>
 		                    </tbody>

@@ -5,50 +5,55 @@
 		.module('bolt-insurance-group.insurance.payment')
 		.controller('PaymentInsuranceController', PaymentInsuranceController);
 
-	PaymentInsuranceController.$inject = ['$scope','localStorageService', '$state', 'InsuranceProgress'];
-	function PaymentInsuranceController($scope,localStorageService, $state, InsuranceProgress) {
+	PaymentInsuranceController.$inject = ['localStorageService', '$state', 'InsuranceProgress'];
+	function PaymentInsuranceController(localStorageService, $state, InsuranceProgress) {
 
 		var pic = this;
 		
-		$scope.world = localStorageService.cookie.get('world');
-		$scope.money = localStorageService.cookie.get('money');
-		$scope.kids = localStorageService.cookie.get('kids');
-		$scope.grownups = localStorageService.cookie.get('grownups');
-		$scope.olds = localStorageService.cookie.get('olds');
-		$scope.dt1 = new Date(parseInt(localStorageService.cookie.get('date1')));
-		$scope.dt2 = new Date(parseInt(localStorageService.cookie.get('date2')));
-		$scope.sportCheckBox = localStorageService.cookie.get('sportCheckBox');
-		$scope.selectedSport = localStorageService.cookie.get('selectedSport');
-		$scope.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
-		$scope.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
-		$scope.towing = localStorageService.cookie.get('towingCheckBox');
-		$scope.repair = localStorageService.cookie.get('repairCheckBox');
-		$scope.hotel = localStorageService.cookie.get('hotelCheckBox');
-		$scope.alternative = localStorageService.cookie.get('alternativeCheckBox');
-		$scope.fire = localStorageService.cookie.get('fireCheckBox');
-		$scope.flood = localStorageService.cookie.get('floodCheckBox');
-		$scope.theft = localStorageService.cookie.get('theftCheckBox');
-		$scope.earthshaker = localStorageService.cookie.get('earthshakerCheckBox');
-		$scope.amount = parseFloat(localStorageService.cookie.get('amount'));
-		$scope.totalPrice = ($scope.amount + $scope.amount*0.2) / 120;
-		$scope.homeArea = localStorageService.cookie.get('homeArea');
-		$scope.ageOfHome = localStorageService.cookie.get('ageOfHome');
-		$scope.estimatedValueOfHome = localStorageService.cookie.get('estimatedValueOfHome');
-		$scope.homeOwnerName = localStorageService.cookie.get('homeOwnerName');
-		$scope.homeOwnerSurname = localStorageService.cookie.get('homeOwnerSurname');
-		$scope.homeOwnerJmbg = localStorageService.cookie.get('homeOwnerJmbg');
-		$scope.homeAdress = localStorageService.cookie.get('homeAdress');
-		$scope.vehicleOwnerName = localStorageService.cookie.get('vehicleOwnerName');
-		$scope.vehicleOwnerSurname = localStorageService.cookie.get('vehicleOwnerSurname');
-		$scope.vehicleOwnerJmbg = localStorageService.cookie.get('vehicleOwnerJmbg');
-		$scope.vehicleType = localStorageService.cookie.get('vehicleType');
-		$scope.vehicleYear = localStorageService.cookie.get('vehicleYear');
-		$scope.vehiclePlates = localStorageService.cookie.get('vehiclePlates');
-		$scope.vehicleChassis = localStorageService.cookie.get('vehicleChassis');
+		pic.world = localStorageService.cookie.get('world');
+		pic.money = localStorageService.cookie.get('money');
+		pic.kids = localStorageService.cookie.get('kids');
+		pic.grownups = localStorageService.cookie.get('grownups');
+		pic.olds = localStorageService.cookie.get('olds');
+		pic.dt1 = new Date(parseInt(localStorageService.cookie.get('date1')));
+		pic.dt2 = new Date(parseInt(localStorageService.cookie.get('date2')));
+		pic.sportCheckBox = localStorageService.cookie.get('sportCheckBox');
+		pic.selectedSport = localStorageService.cookie.get('selectedSport');
+		pic.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
+		pic.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
+		pic.towing = localStorageService.cookie.get('towingCheckBox');
+		pic.repair = localStorageService.cookie.get('repairCheckBox');
+		pic.hotel = localStorageService.cookie.get('hotelCheckBox');
+		pic.alternative = localStorageService.cookie.get('alternativeCheckBox');
+		pic.fire = localStorageService.cookie.get('fireCheckBox');
+		pic.flood = localStorageService.cookie.get('floodCheckBox');
+		pic.theft = localStorageService.cookie.get('theftCheckBox');
+		pic.earthshaker = localStorageService.cookie.get('earthshakerCheckBox');
+		pic.amount = parseFloat(localStorageService.cookie.get('amount'));
+		pic.totalPrice = (pic.amount + pic.amount*0.2) / 120;
+		pic.homeArea = localStorageService.cookie.get('homeArea');
+		pic.ageOfHome = localStorageService.cookie.get('ageOfHome');
+		pic.estimatedValueOfHome = localStorageService.cookie.get('estimatedValueOfHome');
+		pic.homeOwnerName = localStorageService.cookie.get('homeOwnerName');
+		pic.homeOwnerSurname = localStorageService.cookie.get('homeOwnerSurname');
+		pic.homeOwnerJmbg = localStorageService.cookie.get('homeOwnerJmbg');
+		pic.homeAdress = localStorageService.cookie.get('homeAdress');
+		pic.vehicleOwnerName = localStorageService.cookie.get('vehicleOwnerName');
+		pic.vehicleOwnerSurname = localStorageService.cookie.get('vehicleOwnerSurname');
+		pic.vehicleOwnerJmbg = localStorageService.cookie.get('vehicleOwnerJmbg');
+		pic.vehicleType = localStorageService.cookie.get('vehicleType');
+		pic.vehicleYear = localStorageService.cookie.get('vehicleYear');
+		pic.vehiclePlates = localStorageService.cookie.get('vehiclePlates');
+		pic.vehicleChassis = localStorageService.cookie.get('vehicleChassis');
 	
 		
-		//var current = (vic.homeCheckBox)?5:4;
-		InsuranceProgress.setCurrent(6);
+	
+		
+		var current = (pic.homeCheckBox && pic.roadCheckBox)?6:
+			(!pic.homeCheckBox && !pic.roadCheckBox)?4:5;
+		
+		
+		InsuranceProgress.setCurrent(current);
 		
 		pic.back = function() {
 			var home = localStorageService.cookie.get('homeCheckBox');
