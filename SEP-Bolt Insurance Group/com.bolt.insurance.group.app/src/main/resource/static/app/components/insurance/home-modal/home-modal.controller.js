@@ -11,8 +11,13 @@
 		var hic = this;
 		hic.next = next;
 		hic.removeErrors = removeErrors;
+		hic.home = {};
 		
 		hic.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
+		hic.home.ownername = localStorageService.cookie.get('homeOwnerName');
+		hic.home.ownersurname = localStorageService.cookie.get('homeOwnerSurname');
+		hic.home.ownerjmbg = localStorageService.cookie.get('homeOwnerJmbg');
+		hic.home.address = localStorageService.cookie.get('homeAdress');
 		
 		function next(){
 			if(jmbgValidation(hic.home)) {

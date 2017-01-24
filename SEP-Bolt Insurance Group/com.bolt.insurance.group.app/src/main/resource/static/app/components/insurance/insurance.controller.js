@@ -364,12 +364,25 @@
 				inc.ageofhome = '';
 				inc.estimatedvalueofhome = '';
 				
+				localStorageService.cookie.remove('homeOwnerName');
+				localStorageService.cookie.remove('homeOwnerSurname');
+				localStorageService.cookie.remove('homeOwnerJmbg');
+				localStorageService.cookie.remove('homeAdress');
+				
 			}
 			if(inc.roadCheckBox === false) {
 				inc.towing = false;
 				inc.repair = false;
 				inc.hotel = false;
 				inc.alternative = false;
+				
+				localStorageService.cookie.remove('vehicleOwnerName');
+				localStorageService.cookie.remove('vehicleOwnerSurname');
+				localStorageService.cookie.remove('vehicleOwnerJmbg');
+				localStorageService.cookie.remove('vehicleType');
+				localStorageService.cookie.remove('vehicleYear');
+				localStorageService.cookie.remove('vehiclePlates');
+				localStorageService.cookie.remove('vehicleChassis');
 				
 			}
 			if(inc.sportCheckBox === false) {

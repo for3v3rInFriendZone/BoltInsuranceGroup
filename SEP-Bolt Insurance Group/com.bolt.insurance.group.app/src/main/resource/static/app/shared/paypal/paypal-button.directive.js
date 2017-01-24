@@ -72,8 +72,8 @@
           if (currencyCodes.indexOf(currencyCode) < 0) { return err('unforeseen currency code!'); }
           if (buttonSizes.indexOf(buttonSize) < 0) { return err('unforeseen button size!'); }
           var imgSrc = 'http://www.paypalobjects.com/' + languageCode + '/i/btn/btn_buynow_' + buttonSize + '.gif';
-          var returnUrl = 'https://localhost:8443/#/insurance/payment_response_success';
-          var cancel_url = 'https://localhost:8443/#/insurance/payment_response_error';
+          var returnUrl = 'https://localhost:8443/#!/insurance/payment_response_success';
+          var cancel_url = 'https://localhost:8443/#!/insurance/payment_response_error';
           var template =
           '<form name="_xclick" action="' + action + '" method="post">' +
           '<input type="hidden" name="cmd" value="_xclick">' +

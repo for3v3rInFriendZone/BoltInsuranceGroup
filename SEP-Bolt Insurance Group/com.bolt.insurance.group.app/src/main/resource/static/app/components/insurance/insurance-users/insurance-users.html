@@ -47,16 +47,16 @@
 							<thead>
 								<th class="success text-center" translate="NAME"></th>
 								<th class="success text-center" translate="SURNAME"></th>
-								<th class="success text-center" translate="JMBG"></th>
-								<th class="success text-center" translate="PASSPORTNUMBER"></th>
+								<th class="success text-center" translate="ADDRESS"></th>
+								<th class="success text-center" translate="PHONE"></th>
 								<th class="success text-center" translate="REMOVE"></th>
 							</thead>
 							<tbody>
 								<tr ng-repeat="user in iuc.users | orderBy:'user.surname'">
 									<td>{{user.firstName}}</td>
 									<td>{{user.surname}}</td>
-									<td>{{user.jmbg}}</td>
-									<td>{{user.passport}}</td>
+									<td>{{user.address}}</td>
+									<td>{{user.phone}}</td>
 									<td><i style="font-size: 22px;"
 										ng-click="iuc.removeUser($index)" class="fa fa-trash-o"> </i></td>
 								</tr>

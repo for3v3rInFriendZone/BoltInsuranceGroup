@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.json.JSONObject;
@@ -71,6 +72,15 @@ public class ApiInsuranceController {
         
 		List<Insurance> insurances = (List<Insurance>) insuranceService.findAll();
 		return new ResponseEntity<List<Insurance>>(insurances, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/secret", method = RequestMethod.GET)
+	public ResponseEntity<InsuranceDto> getDecryptSecret() throws ParseException, URISyntaxException {
+        
+		InsuranceDto inDto = new InsuranceDto();
+		inDto.setSecret(ResourceBundle.getBundle("application").getString("secret.cookie"));
+		
+		return new ResponseEntity<InsuranceDto>(inDto, HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")

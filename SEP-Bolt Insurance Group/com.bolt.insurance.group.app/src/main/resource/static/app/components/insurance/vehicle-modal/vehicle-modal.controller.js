@@ -12,6 +12,13 @@
 		vic.vehicle = {};
 		
 		vic.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
+		vic.vehicle.ownername = localStorageService.cookie.get('vehicleOwnerName');
+		vic.vehicle.ownersurname = localStorageService.cookie.get('vehicleOwnerSurname');
+		vic.vehicle.ownerjmbg = localStorageService.cookie.get('vehicleOwnerJmbg');
+		vic.vehicle.typeofvehicle = localStorageService.cookie.get('vehicleType');
+		vic.vehicle.yearofmanufacture = localStorageService.cookie.get('vehicleYear');
+		vic.vehicle.licenceplatesnumber = localStorageService.cookie.get('vehiclePlates');
+		vic.vehicle.numberofchassis = localStorageService.cookie.get('vehicleChassis');
 		
 		vic.next = function(){
 			

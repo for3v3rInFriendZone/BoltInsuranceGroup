@@ -5,10 +5,9 @@
 		.module('bolt-insurance-group.insurance.insurance-users')
 		.controller('InsuranceUsersController', InsuranceUsersController);
 
-	InsuranceUsersController.$inject = ['userModal', '$state', 'localStorageService','InsuranceProgress'];
-	function InsuranceUsersController(userModal, $state, localStorageService,InsuranceProgress) {
+	InsuranceUsersController.$inject = ['$http', 'userModal', '$state', 'localStorageService','InsuranceProgress', '$crypto'];
+	function InsuranceUsersController($http, userModal, $state, localStorageService,InsuranceProgress, $crypto) {
 		var iuc = this;
-		
 		
 		iuc.preEditedUser = {};
 		iuc.noMoreUsers = true;
@@ -31,11 +30,17 @@
 				if(iuc.users == null) {
 					iuc.users = [];
 				}
-				iuc.users.push(data);
+				
+				$http.get('https://localhost:8443/insurance/secret')
+				.then(function(response) {
+					 data.jmbg = $crypto.encrypt(data.jmbg,  response.data.secret);
+					 data.passport = $crypto.encrypt(data.passport,  response.data.secret);
+					 iuc.users.push(data);
+					 localStorageService.cookie.set('listOfUsers', iuc.users, 1, true); 
+				});
+				
 				iuc.usersFlag = false;
-				
-				localStorageService.cookie.set('listOfUsers', iuc.users, 1, true);
-				
+
 				iuc.kids = localStorageService.cookie.get('kidsNumber');
 				iuc.grownups = localStorageService.cookie.get('grownupsNumber');
 				iuc.olds = localStorageService.cookie.get('oldsNumber');
@@ -92,34 +97,39 @@
 		}  
 		
 		function calculateYearsFromJMBG(user) {	
-		    var bornDate = user.jmbg;
-		    var status = '';
+			$http.get('https://localhost:8443/insurance/secret')
+			.then(function(response) {
 				
-			if(parseInt(bornDate.substring(4,7)) < 800){
-				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/2" + bornDate.substring(4,7);
-			}else{
-				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/1" + bornDate.substring(4,7);
-			}
+				 	var bornDate = $crypto.decrypt(user.jmbg, response.data.secret);
+				 	var status = '';
+						
+					if(parseInt(bornDate.substring(4,7)) < 800){
+						bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/2" + bornDate.substring(4,7);
+					}else{
+						bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/1" + bornDate.substring(4,7);
+					}
+						
+					bornDate = new Date(bornDate.substring(6,10), parseInt(bornDate.substring(3,5))-1, bornDate.substring(0,2));
+					var today = new Date();
+					var checkDate = today - bornDate;
+						
+					var years = Math.floor(checkDate / 31556952000);
+						
+					if(years < 18) {
+							iuc.kids = parseInt(iuc.kids);
+							iuc.kids = iuc.kids + 1;
+							localStorageService.cookie.set('kidsNumber', iuc.kids, 1, true);
+					}else if(years >= 18 && years < 60) {
+							iuc.grownups = parseInt(iuc.grownups);
+							iuc.grownups = iuc.grownups + 1;
+							localStorageService.cookie.set('grownupsNumber', iuc.grownups, 1, true);
+					}else{
+							iuc.olds = parseInt(iuc.olds);
+							iuc.olds = iuc.olds + 1;
+							localStorageService.cookie.set('oldsNumber', iuc.olds, 1, true);
+					}
 				
-			bornDate = new Date(bornDate.substring(6,10), parseInt(bornDate.substring(3,5))-1, bornDate.substring(0,2));
-			var today = new Date();
-			var checkDate = today - bornDate;
-				
-			var years = Math.floor(checkDate / 31556952000);
-				
-			if(years < 18) {
-					iuc.kids = parseInt(iuc.kids);
-					iuc.kids = iuc.kids + 1;
-					localStorageService.cookie.set('kidsNumber', iuc.kids, 1, true);
-			}else if(years >= 18 && years < 60) {
-					iuc.grownups = parseInt(iuc.grownups);
-					iuc.grownups = iuc.grownups + 1;
-					localStorageService.cookie.set('grownupsNumber', iuc.grownups, 1, true);
-			}else{
-					iuc.olds = parseInt(iuc.olds);
-					iuc.olds = iuc.olds + 1;
-					localStorageService.cookie.set('oldsNumber', iuc.olds, 1, true);
-			}
+			});
 		}
 		
 		InsuranceProgress.setCurrent(3);

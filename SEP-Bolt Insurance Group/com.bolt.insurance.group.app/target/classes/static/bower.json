@@ -26,7 +26,9 @@
     "angularjs-datepicker": "^2.1.7",
     "angular-fancy-modal": "^0.1.4",
     "angular-local-storage": "^0.5.2",
-    "angular-sanitize": "^1.6.1"
+    "angular-sanitize": "^1.6.1",
+    "angular-cryptography": "^1.0.1",
+    "angular-animate": "^1.6.1"
   },
   "resolutions": {
     "angular": "^1.5.8"
