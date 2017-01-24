@@ -39,6 +39,18 @@
 				    </div>
 				    <div class="form-group">
 				        <div class="col-sm-8 col-sm-offset-2">
+				        	<label for="ownerAddress" class="col-sm-2 control-label" translate="ADDRESSOFHOME"></label>
+				        	<div class="col-sm-8">
+				            	<div ng-class="{'has-error': vic.form.ownerAddress.$error.required && vic.submitted}">
+				            	 	<input class="form-control" type="text" ng-model="vic.vehicle.ownerAddress" id="ownerAddress" name="ownerAddress" placeholder="{{'ADDRESSOFHOME'|translate}}" required/>
+				            	</div>
+				            </div>
+				            <br/><br/>
+				        	<p class="text-center" ng-show="(vic.form.ownerSurname.$touched && vic.form.ownerSurname.$error.required) || (vic.form.ownerSurname.$error.required && vic.submitted)" style="color: red;" translate="OWNERSURNAMEFORM"> </p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <div class="col-sm-8 col-sm-offset-2">
 				            <label for="ownerJmbg" class="col-sm-2 control-label" translate="OWNERJMBG"></label>
 				            <div class="col-sm-8">
 					            <div ng-class="{'has-error': vic.form.ownerJmbg.$error.required && vic.submitted}"> 
@@ -57,6 +69,18 @@
 				    		<div class="col-sm-8">
 				    			<div ng-class="{'has-error': vic.form.type.$error.required && vic.submitted}"> 
 				    				<input class="form-control" type="text" ng-model="vic.vehicle.typeofvehicle" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}" required/> 
+				    			</div>
+				    		</div>
+				    		<br/><br/>
+				        	<p class="text-center" ng-show="(vic.form.type.$touched && vic.form.type.$error.required) || (vic.form.type.$error.required && vic.submitted)" style="color: red;" translate="TYPEOFVEHICLEFORM"></p>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				    	<div class="col-sm-8 col-sm-offset-2">
+				    		<label for="vehicleBrand" class="col-sm-2 control-label" translate="VEHICLEBRAND"></label>
+				    		<div class="col-sm-8">
+				    			<div ng-class="{'has-error': vic.form.type.$error.required && vic.submitted}"> 
+				    				<input class="form-control" type="text" ng-model="vic.vehicle.vehicleBrand" id="type" name="type" placeholder="{{'VEHICLEBRAND'|translate}}" required/> 
 				    			</div>
 				    		</div>
 				    		<br/><br/>

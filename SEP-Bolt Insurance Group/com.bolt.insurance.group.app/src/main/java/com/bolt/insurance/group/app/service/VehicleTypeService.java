@@ -15,4 +15,6 @@ public interface VehicleTypeService {
 	public void delete(VehicleType vehicleType);
 	
 	public void deleteAll();
+	
+	public VehicleType findByName(String name);
 }

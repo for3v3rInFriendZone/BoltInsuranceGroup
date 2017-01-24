@@ -114,10 +114,9 @@ public class User implements Serializable{
 		this.mail = mail;
 	}
 
-	public User(long id, String firstName, String surname, String jmbg, String address, String passport,
+	public User(String firstName, String surname, String jmbg, String address, String passport,
 			String phone, String mail) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.surname = surname;
 		this.jmbg = jmbg;

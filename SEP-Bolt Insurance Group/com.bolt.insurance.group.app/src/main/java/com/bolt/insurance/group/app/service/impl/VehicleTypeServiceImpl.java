@@ -43,4 +43,9 @@ public class VehicleTypeServiceImpl implements VehicleTypeService{
 		vehicleTypeRepository.deleteAll();
 	}
 
+	@Override
+	public VehicleType findByName(String name) {
+		return vehicleTypeRepository.findByName(name);
+	}
+
 }

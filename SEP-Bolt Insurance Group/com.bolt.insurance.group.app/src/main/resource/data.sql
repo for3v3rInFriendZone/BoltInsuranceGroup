@@ -69,10 +69,11 @@ INSERT INTO vehicle_type (name) VALUES ('kupe');
 INSERT INTO vehicle_type (name) VALUES ('limuzina');
 INSERT INTO vehicle_type (name) VALUES ('hecbek');
 
-INSERT INTO insurance_user(address, firstname, jmbg, mail, passport, phone, surname) VALUES ('SS 1', 'Petar', '0802993880018', 'pera@mail.com', '123456789', '1231568', 'Petrovic');
-INSERT INTO insurance_user(address, firstname, jmbg, mail, passport, phone, surname) VALUES ('SS 1', 'Marko', '0802000880018', 'marko@mail.com', '133456789', '12901568', 'Petrovic');
-INSERT INTO insurance_user(address, firstname, jmbg, mail, passport, phone, surname) VALUES ('SS 1', 'Djoka', '0802943880018', 'djoka@mail.com', '123456389', '12315468', 'Petrovic');
 
-INSERT INTO vehicle(owner_address, brand, chassis, owner_jmbg, owner_name, registration, owner_surname, year_of_production, type) VALUES ('SS 1', 'BMW', '213few','0802993880018', 'Pera', 'RU432', 'Petrovic', 2010, 2);
+--INSERT INTO insurance_user(address, firstname, jmbg, mail, passport, phone, surname) VALUES ('SS 1', 'Petar', '0802993880018', 'pera@mail.com', '123456789', '1231568', 'Petrovic');
+--INSERT INTO insurance_user(address, firstname, jmbg, mail, passport, phone, surname) VALUES ('SS 1', 'Marko', '0802000880018', 'marko@mail.com', '133456789', '12901568', 'Petrovic');
+--INSERT INTO insurance_user(address, firstname, jmbg, mail, passport, phone, surname) VALUES ('SS 1', 'Djoka', '0802943880018', 'djoka@mail.com', '123456389', '12315468', 'Petrovic');
 
-INSERT INTO home(address, owner_jmbg, owner_name, owner_surname) VALUES ('SS 1', '080993880018', 'Pera', 'Petrovic');
+--INSERT INTO vehicle(owner_address, brand, chassis, owner_jmbg, owner_name, registration, owner_surname, year_of_production, type) VALUES ('SS 1', 'BMW', '213few','0802993880018', 'Pera', 'RU432', 'Petrovic', 2010, 2);
+
+--INSERT INTO home(address, owner_jmbg, owner_name, owner_surname) VALUES ('SS 1', '080993880018', 'Pera', 'Petrovic');

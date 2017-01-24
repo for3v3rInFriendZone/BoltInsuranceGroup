@@ -180,8 +180,8 @@
 			HOUSEFLATINFO: "Input of house or flat informations",
 			USERINFOMODAL: "User informations",
 			INFOOWNERHOME: "Informations for owner of home/flat",
-			INFOOWNERVEHICLE: "Informations for owner of vehicle"
-
+			INFOOWNERVEHICLE: "Informations for owner of vehicle",
+			VEHICLEBRAND: "Brand"
 				
 				
 		});
@@ -352,8 +352,8 @@
 			HOUSEFLATINFO: "Unos podataka o kući/stanu.",
 			USERINFOMODAL: "Informacije o korisniku.",
 			INFOOWNERHOME: "Informacije o vlasniku kuće/stana",
-			INFOOWNERVEHICLE: "Informacije o vlasniku vozila"
-
+			INFOOWNERVEHICLE: "Informacije o vlasniku vozila",
+			VEHICLEBRAND: "Marka"
 
 		});
 
