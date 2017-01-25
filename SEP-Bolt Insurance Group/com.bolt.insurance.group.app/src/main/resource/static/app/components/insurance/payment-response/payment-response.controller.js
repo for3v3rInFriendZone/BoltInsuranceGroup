@@ -9,6 +9,8 @@
 	PaymentResponseController.$inject = ['$http', '$scope', '$translate', 'localStorageService', '$crypto', 'PaymentFactory'];
 	function PaymentResponseController($http, $scope, $translate, localStorageService, $crypto, PaymentFactory) {
 
+		var prc = this;
+		
 		$scope.animateElementIn = function($el) {
 
 			var animation = $el.attr('data-animation');
@@ -66,7 +68,8 @@
 	            vehiclePlates: localStorageService.cookie.get('vehiclePlates'),
 	            vehicleChassis: localStorageService.cookie.get('vehicleChassis'),
 	            vehicleOwnerAddress: localStorageService.cookie.get('ownerAddress'),
-	            vehicleBrand: localStorageService.cookie.get('vehicleBrand')
+	            vehicleBrand: localStorageService.cookie.get('vehicleBrand'),
+	            success: prc.success
   	  		}
 	
     		$http.post('https://localhost:8443/insurance/', payload)
@@ -74,15 +77,6 @@
   	  			localStorageService.cookie.clearAll();
   	  		});
   	    });
-  		
-  		
-  		/*
-			
-		*/
-  		
-  		
-  		
-		
 	}
 
 })();

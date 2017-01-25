@@ -5,10 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_OF_INSURANCE")
+@NamedQuery(name = "findUsers", query = "SELECT u FROM UserOfInsurance u WHERE u.userOfInsuranceId.insurance.id = :id")
 public class UserOfInsurance implements Serializable{
 
 	/**
@@ -30,6 +32,14 @@ public class UserOfInsurance implements Serializable{
 		this.owner = owner;
 	}
 
+	public UserOfInsuranceId getUserOfInsuranceId() {
+		return userOfInsuranceId;
+	}
+
+	public void setUserOfInsuranceId(UserOfInsuranceId userOfInsuranceId) {
+		this.userOfInsuranceId = userOfInsuranceId;
+	}
+	
 	public UserOfInsurance(UserOfInsuranceId userOfInsuranceId, boolean owner) {
 		super();
 		this.userOfInsuranceId = userOfInsuranceId;

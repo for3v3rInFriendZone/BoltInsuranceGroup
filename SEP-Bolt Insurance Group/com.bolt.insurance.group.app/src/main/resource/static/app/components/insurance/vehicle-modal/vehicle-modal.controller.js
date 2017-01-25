@@ -27,7 +27,6 @@
 			vic.vehicleTypes = data.data;
 		});
 		
-		
 		vic.next = function(){
 			
 			if(jmbgValidation(vic.vehicle)) {
@@ -111,6 +110,5 @@
 		
 		var current = (vic.homeCheckBox)?5:4;
 		InsuranceProgress.setCurrent(current);
-		
 	}
 })();

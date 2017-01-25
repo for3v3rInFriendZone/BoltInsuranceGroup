@@ -36,6 +36,7 @@ import com.bolt.insurance.group.app.model.VehicleType;
 import com.bolt.insurance.group.app.service.DroolsService;
 import com.bolt.insurance.group.app.service.HomeService;
 import com.bolt.insurance.group.app.service.InsuranceService;
+import com.bolt.insurance.group.app.service.MailService;
 import com.bolt.insurance.group.app.service.RiskService;
 import com.bolt.insurance.group.app.service.SubgroupService;
 import com.bolt.insurance.group.app.service.TypeService;
@@ -78,6 +79,9 @@ public class ApiInsuranceController {
 	
 	@Autowired
 	UserOfInsuranceService userOfInsuranceService;
+	
+	@Autowired
+	MailService mailService;
 	
 	public ConverteFromModelToDto cfmtd = new ConverteFromModelToDto();
 	private StatefulKnowledgeSession ksession = null;
@@ -461,9 +465,37 @@ public class ApiInsuranceController {
 			userOfInsuranceService.save(new UserOfInsurance(new UserOfInsuranceId(users.get(i), insurance), false));
 		}
 		
-		return null;
+		
+		mailService.send(insurance);
+		
+		return new ResponseEntity<Insurance>(HttpStatus.CREATED);
 	}
 
+	@RequestMapping(value = "/error", method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<Insurance> errorMessages(@RequestBody String payload){
+		
+		String clearPayload = Jsoup.clean(payload, Whitelist.basic());
+		
+		JSONObject json = new JSONObject(clearPayload);
+		
+		List<User> users = new ArrayList<User>();
+		
+		for(int i = 0; i < json.getJSONArray("userList").length(); i++){
+			
+			if(i == 0 && (((JSONObject)(json.getJSONArray("userList").get(i))).getString("email").equals("")
+					|| ((JSONObject)(json.getJSONArray("userList").get(i))).getString("email") == null)){
+				return new ResponseEntity<Insurance>(HttpStatus.FORBIDDEN);
+			}
+			
+			mailService.errorMail(((JSONObject)(json.getJSONArray("userList").get(i))).getString("email"));
+			
+			break;
+		}
+		
+		
+		return new ResponseEntity<Insurance>(HttpStatus.OK);	
+	}
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Insurance> getInsurance(@PathVariable Long id) {
 
