@@ -12,6 +12,7 @@
 		var inc = this;
 		$window.scrollTo(0, 0);
 		
+		
 		inc.world = localStorageService.cookie.get('world');
 		inc.money = localStorageService.cookie.get('money');
 		inc.kids = localStorageService.cookie.get('kids');
@@ -284,6 +285,16 @@
 			$fancyModal.open({ templateUrl: 'app/components/insurance/insurance-info/homeInsuranceInfo.html'});   
 		};
 		
+		/**
+		 * Setting a session id for a new user
+		 */
+		function generateSessionId(){
+			return Math.floor((Math.random()*6)+1);
+		}
+		
+		/**
+		 * Checking if form is valid
+		 */
 		inc.submitForm = function() {
 			inc.submitted = true;
 			

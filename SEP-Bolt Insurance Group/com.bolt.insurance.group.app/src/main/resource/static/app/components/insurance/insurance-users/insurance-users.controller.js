@@ -13,6 +13,12 @@
 		iuc.noMoreUsers = true;
 		iuc.submitForm = submitForm;
 		
+		if(localStorageService.cookie.get('world') == null || localStorageService.cookie.get('world') == undefined) {
+			alert('Your session has been timed out. You will be redirected to home page');
+			localStorageService.cookie.clearAll();
+			$state.go('home');
+		}
+		
 		iuc.users = localStorageService.cookie.get('listOfUsers');
 		iuc.kids = localStorageService.cookie.get('kidsNumber');
 		iuc.grownups = localStorageService.cookie.get('grownupsNumber');

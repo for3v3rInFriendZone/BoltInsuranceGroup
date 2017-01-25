@@ -11,6 +11,12 @@
 		var vic = this;
 		vic.vehicle = {};
 		
+		if(localStorageService.cookie.get('listOfUsers') == null || localStorageService.cookie.get('listOfUsers') == undefined || localStorageService.cookie.get('listOfUsers').length == 0) {
+			alert('Your session has been timed out. You will be redirected to home page');
+			localStorageService.cookie.clearAll();
+			$state.go('home');
+		}
+		
 		vic.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
 		vic.vehicle.ownername = localStorageService.cookie.get('vehicleOwnerName');
 		vic.vehicle.ownersurname = localStorageService.cookie.get('vehicleOwnerSurname');

@@ -10,6 +10,11 @@
 
 		var pic = this;
 		
+		if(localStorageService.cookie.get('listOfUsers') == null || localStorageService.cookie.get('listOfUsers') == undefined || localStorageService.cookie.get('listOfUsers').length == 0) {
+			alert('Your session has been timed out. You will be redirected to home page');
+			$state.go('home');
+		}
+		
 		$scope.world = localStorageService.cookie.get('world');
 		$scope.money = localStorageService.cookie.get('money');
 		$scope.kids = localStorageService.cookie.get('kids');

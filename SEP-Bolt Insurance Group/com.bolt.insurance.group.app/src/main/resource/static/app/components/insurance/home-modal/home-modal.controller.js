@@ -13,6 +13,12 @@
 		hic.removeErrors = removeErrors;
 		hic.home = {};
 		
+		if(localStorageService.cookie.get('listOfUsers') == null || localStorageService.cookie.get('listOfUsers') == undefined || localStorageService.cookie.get('listOfUsers').length == 0) {
+			alert('Your session has been timed out. You will be redirected to home page');
+			localStorageService.cookie.clearAll();
+			$state.go('home');
+		}
+		
 		hic.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
 		hic.home.ownername = localStorageService.cookie.get('homeOwnerName');
 		hic.home.ownersurname = localStorageService.cookie.get('homeOwnerSurname');

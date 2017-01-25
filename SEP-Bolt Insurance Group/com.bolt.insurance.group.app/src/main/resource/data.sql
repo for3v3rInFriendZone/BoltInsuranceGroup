@@ -77,6 +77,6 @@ INSERT INTO vehicle(owner_address, brand, chassis, owner_jmbg, owner_name, regis
 
 INSERT INTO home(address, owner_jmbg, owner_name, owner_surname) VALUES ('SS 1', '080993880018', 'Pera', 'Petrovic');
 
-INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('Marko', 'Markovic', 'This was an amazing experiance');
-INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('John', 'Smith', 'This was an amazing experiance 2');
-INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('Seth', 'Sethic', 'This was an amazing experiance 3');
+INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('Marko', 'Markovic', 'This was an amazing experience for me thanks to Bolt.');
+INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('John', 'Smith', 'We were so safe because of everything Bolt did.');
+INSERT INTO comment_of_client (client_name, client_surname, comment) VALUES ('Dragan', 'Torbica', 'Fala ovoj osiguravajućoj kući ko bratu najrođenijem, pogotovo što nisam morao da plaćam u švajcarcima. Smilji, moja dva sina i dijete smo se super proveli i osjećali se sigurno kao u zavičaju.');

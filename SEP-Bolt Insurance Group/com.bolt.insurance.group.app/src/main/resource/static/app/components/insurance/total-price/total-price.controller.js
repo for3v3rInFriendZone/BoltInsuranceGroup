@@ -8,7 +8,13 @@
 	TotalPriceController.$inject = ['$scope', '$translate', 'localStorageService', '$http', '$state','InsuranceProgress'];
 	function TotalPriceController($scope, $translate, localStorageService, $http, $state,InsuranceProgress) {
 		var tpc = this;
-
+		
+		if(localStorageService.cookie.get('world') == null || localStorageService.cookie.get('world') == undefined) {
+			alert('Your session has been timed out. You will be redirected to home page');
+			localStorageService.cookie.clearAll();
+			$state.go('home');
+		}
+		
 		var payload = {
 				world: localStorageService.cookie.get('world'), 
 				money: localStorageService.cookie.get('money'),

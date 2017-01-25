@@ -24,7 +24,7 @@ public class ClientCommentController {
 		List<ClientComment> homes = (List<ClientComment>) clientService.findAll();
 		return new ResponseEntity<List<ClientComment>>(homes, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<ClientComment> saveClientComment(@RequestBody ClientComment comment) {
 

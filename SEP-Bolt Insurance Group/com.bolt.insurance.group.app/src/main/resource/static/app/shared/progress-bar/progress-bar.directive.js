@@ -27,7 +27,7 @@
 							var count = i+1;
 							if(count==state.current){
 								
-								template+='<b style="color: black;" translate="STEP"></b>' + '<b style="color: black;"> '+count+'</b>';
+								//template+='<b style="color: black;" translate="STEP"></b>' + '<b style="color: black;"> '+count+'</b>';
 							}
 							template+='</div>';
 						}

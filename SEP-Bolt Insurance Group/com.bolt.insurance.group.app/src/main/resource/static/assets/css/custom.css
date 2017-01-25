@@ -14,10 +14,15 @@
 	border:1px solid #a94442;
 }
 
-input[type="text"], input[type="email"], option {
+input[type="text"], input[type="email"], option, textarea[type="text"] {
 	background-color: #e5eef7;
 }
 
 body { 
     padding-top: 65px; 
+}
+
+textarea[type="text"] {
+	resize: none;
+	height: 275px;
 }
