@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance.home-modal')
 		.controller('HomeInsuranceController', HomeInsuranceController);
 
-	HomeInsuranceController.$inject = ['$scope', '$state', 'localStorageService', 'InsuranceProgress'];
-	function HomeInsuranceController($scope, $state, localStorageService, InsuranceProgress) {
+	HomeInsuranceController.$inject = ['$scope', '$http','$state', 'localStorageService', 'InsuranceProgress', '$crypto'];
+	function HomeInsuranceController($scope, $http, $state, localStorageService, InsuranceProgress, $crypto) {
 		
 		var hic = this;
 		hic.next = next;
@@ -35,9 +35,12 @@
 				return;
 			}
 			
+			$http.get('https://localhost:8443/insurance/secret')
+			.then(function(response) {
+				 localStorageService.cookie.set('homeOwnerJmbg', $crypto.encrypt(hic.home.ownerjmbg, response.data.secret), 1, true);
+			});
 			localStorageService.cookie.set('homeOwnerName', hic.home.ownername, 1, true);
 			localStorageService.cookie.set('homeOwnerSurname', hic.home.ownersurname, 1, true);
-			localStorageService.cookie.set('homeOwnerJmbg', hic.home.ownerjmbg, 1, true);
 			localStorageService.cookie.set('homeAdress', hic.home.address, 1, true);
 			
 			if(hic.roadCheckBox){

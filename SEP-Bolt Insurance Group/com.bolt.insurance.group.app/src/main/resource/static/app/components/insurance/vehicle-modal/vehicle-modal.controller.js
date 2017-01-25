@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance.vehicle-modal')
 		.controller('VehicleInsuranceController', VehicleInsuranceController);
 
-	VehicleInsuranceController.$inject = ['$scope','localStorageService', '$state', 'InsuranceProgress'];
-	function VehicleInsuranceController($scope,localStorageService, $state, InsuranceProgress) {
+	VehicleInsuranceController.$inject = ['$scope', '$http','localStorageService', '$state', 'InsuranceProgress', '$crypto'];
+	function VehicleInsuranceController($scope, $http, localStorageService, $state, InsuranceProgress, $crypto) {
 
 		var vic = this;
 		vic.vehicle = {};
@@ -39,7 +39,11 @@
 			
 			localStorageService.cookie.set('vehicleOwnerName', vic.vehicle.ownername, 1, true);
 			localStorageService.cookie.set('vehicleOwnerSurname', vic.vehicle.ownersurname, 1, true);
-			localStorageService.cookie.set('vehicleOwnerJmbg', vic.vehicle.ownerjmbg, 1, true);
+			$http.get('https://localhost:8443/insurance/secret')
+			.then(function(response) {
+				 localStorageService.cookie.set('vehicleOwnerJmbg', $crypto.encrypt(vic.vehicle.ownerjmbg, response.data.secret), 1, true);
+			});
+			
 			localStorageService.cookie.set('vehicleType', vic.vehicle.typeofvehicle, 1, true);
 			localStorageService.cookie.set('vehicleYear', vic.vehicle.yearofmanufacture, 1, true);
 			localStorageService.cookie.set('vehiclePlates', vic.vehicle.licenceplatesnumber, 1, true);
