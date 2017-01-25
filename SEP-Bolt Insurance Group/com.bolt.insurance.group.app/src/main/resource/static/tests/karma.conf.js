@@ -47,7 +47,7 @@ module.exports = function(config) {
 'app/components/insurance/insurance.route.js',
 'app/components/insurance/insurance.service.js',
 'app/components/insurance/insurance.service.spec.js',
-//'app/components/insurance/insurance.controller.spec.js',
+'app/components/insurance/insurance.controller.spec.js',
 'app/components/insurance/user-modal/user-modal.module.js',
 'app/components/insurance/user-modal/user-modal.factory.js',
 'app/components/insurance/user-modal/user-modal.controller.js',
@@ -91,8 +91,16 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    reporters: ['spec'],
+    specReporter: {
+        maxLogLines: 5,         // limit number of lines logged per test 
+        suppressErrorSummary: true,  // do not print error summary 
+        suppressFailed: false,  // do not print information about failed tests 
+        suppressPassed: false,  // do not print information about passed tests 
+        suppressSkipped: false,  // do not print information about skipped tests 
+        showSpecTiming: true // print the time elapsed for each spec 
+      },
+      plugins: [ "karma-chrome-launcher","karma-jasmine","karma-spec-reporter"],
 
     // web server port
     port: 9876,

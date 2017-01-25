@@ -1,4 +1,4 @@
-describe("PaymentController",function(){
+describe("PaymentController\n",function(){
 	var paymentCtrl;
 	
 	beforeEach(module('bolt-insurance-group.insurance.payment'));
@@ -58,7 +58,7 @@ describe("PaymentController",function(){
 	}));
 	
 	
-	it('should change states',inject(function($state,localStorageService){
+	it(' should change states',inject(function($state,localStorageService){
 		
 		localStorageService.cookie.set('homeCheckBox',true);
 		localStorageService.cookie.set('roadCheckBox',true);
