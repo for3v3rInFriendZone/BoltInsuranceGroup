@@ -1,120 +1,20 @@
 describe("InsuranceController\n",function(){
-	var insuranceCtrl,scope,$httpBackend,$fancyModal,$state,InsuranceProgress;
+	var insuranceCtrl,scope,$httpBackend,$fancyModal,$state,InsuranceProgress,$translate;
 	var spec = this;
 	beforeEach(module('bolt-insurance-group.insurance'));
-	// Mock services
-	beforeEach(module(function($provide){
-		$provide.factory('localStorageService', function(){
-			return {
-				
-				cookie: {
-					count:0,
-					isSupported:true,
-					get: function(mock){
-						
-						var obj = this.storage[mock];
-						
-						if(typeof obj !== 'undefined'){
-							return obj;
-						}else{
-							return 'mock value ' + this.count++;
-						}
-					
-					},
-					storage:{
-						
-						money:'',
-						kids:'',
-						grownups:'',
-						olds:'',
-						date1:'',
-						date2:'',
-						sportCheckBox:false,
-						selectedSport:false,
-						homeCheckBox:false,
-						roadCheckBox:false,
-						towingCheckBox:false,
-						repairCheckBox:false,
-						hotelCheckBox:false,
-						alternativeCheckBox:false,
-						fireCheckBox:false,
-						floodCheckBox:false,
-						theftCheckBox:false,
-						earthshakerCheckBox:false,
-						homeArea:'',
-						ageOfHome:'',
-						estimatedValueOfHome:''
-					},
-					set: function(name,value){
-						
-						this.storage[name] = value;
-						
-					}
-			
-				}
-				
-			}
-		});
-		$provide.factory('$state', function(){
-			return {
-				current:'payment',
-				go:function(newState){
-					this.current = newState; 
-				}
-			
-			};
-				
-		
-		});
-		$provide.factory('InsuranceProgress', function(){
-			return {
-				setSteps:function(){},
-				setCurrent:function(){},
-				addStep:function(){},
-				removeStep:function(){}
-			};
-		});
-		$provide.factory('$translate', function(){
-			return {
-				current:'en',
-				use:function(key){
-					if(key){
-						this.current = key;
-					}else{
-						return this.current;
-					}
-					
-				}
-				
-			};
-		});
-		$provide.factory('$fancyModal', function(){
-			return {
-				open:function(obj){
-					
-				}
-			
-			};
-				
-		
-		});
-	}));	
-	
-	beforeEach(inject(function(_$httpBackend_){
-		$httpBackend = _$httpBackend_;
-	}));
-	
-	
+
+
 	// Create controller
-	beforeEach(inject(function($rootScope,$controller,localStorageService, _$state_, _InsuranceProgress_,$translate,_$fancyModal_) {
-		$fancyModal = _$fancyModal_;
-		$state = _$state_;
-		InsuranceProgress = _InsuranceProgress_;
+	beforeEach(inject(function($rootScope,$controller,MockGenerator) {
+		$fancyModal = MockGenerator.$fancyModalMock();
+		$state = MockGenerator.$stateMock();
+		InsuranceProgress = MockGenerator.InsuranceProgressMock();
+		$translate = MockGenerator.$translateMock();
 		scope = $rootScope.$new();
 		insuranceCtrl = $controller("InsuranceController", {
 			
 			$scope:scope,
-			localStorageService:localStorageService,
+			localStorageService:MockGenerator.localStorageServiceMock(),
 			$state:$state,
 			InsuranceProgress:InsuranceProgress,
 			$translate:$translate,
@@ -123,7 +23,7 @@ describe("InsuranceController\n",function(){
 	}));
 	
 	
-	it(' should be able to change language',inject(function($state,localStorageService,$translate){
+	it(' should be able to change language',inject(function(){
 		
 		expect($translate.use()).toEqual('en');
 		scope.changeLanguage('sr');

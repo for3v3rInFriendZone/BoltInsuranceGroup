@@ -62,6 +62,7 @@ module.exports = function(config) {
 'app/components/insurance/vehicle-modal/vehicle-modal.service.js',
 'app/components/insurance/total-price/total-price.module.js',
 'app/components/insurance/total-price/total-price.controller.js',
+'app/components/insurance/total-price/total-price.controller.spec.js',
 'app/components/insurance/insurance-users/insurance-users.module.js',
 'app/components/insurance/insurance-users/insurance-users.controller.js',
 'app/components/insurance/payment-response/payment-response.module.js',
@@ -73,7 +74,8 @@ module.exports = function(config) {
 'app/shared/i18n/i18n.config.js',
 'app/shared/paypal/paypal-button.directive.js',
 'app/shared/progress-bar/progress-bar.directive.js',
-'app/shared/progress-bar/progress-bar.service.js'
+'app/shared/progress-bar/progress-bar.service.js',
+'app/shared/tests/mock-generator.service.js'
     ],
 
 
