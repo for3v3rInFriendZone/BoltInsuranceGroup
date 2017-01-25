@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance.insurance-users')
 		.controller('InsuranceUsersController', InsuranceUsersController);
 
-	InsuranceUsersController.$inject = ['userModal', '$state', 'localStorageService','InsuranceProgress'];
-	function InsuranceUsersController(userModal, $state, localStorageService,InsuranceProgress) {
+	InsuranceUsersController.$inject = ['$rootScope','userModal', '$state', 'localStorageService','InsuranceProgress'];
+	function InsuranceUsersController($rootScope,userModal, $state, localStorageService,InsuranceProgress) {
 		var iuc = this;
 		
 		
@@ -50,31 +50,31 @@
 		 * When user informations are changed in database, it needs to be
 		 * changed on view.
 		 */
-		iuc.editUser = function(userId) {
-			
-			iuc.preEditedUser = {};
-			for (var i = 0; i < iuc.users.length; i++) {
-				if (i == userId) {
-					iuc.preEditedUser = angular.copy(iuc.users[i]);
-				}
-			}
-			
-			userModal.edit(iuc.users, userId).then(function(data) {
-				for (var i = 0; i < iuc.users.length; i++) {
-					if (iuc.users[i].id === data.id) {
-						iuc.users[i] = data;
-						break;
-					}
-				}
-			}, function(){
-				for (var i = 0; i < iuc.users.length; i++) {
-					if (i == userId) {
-						iuc.users[i] = iuc.preEditedUser;
-						break;
-					}
-				}
-			});
-		}
+//		iuc.editUser = function(userId) {
+//			
+//			iuc.preEditedUser = {};
+//			for (var i = 0; i < iuc.users.length; i++) {
+//				if (i == userId) {
+//					iuc.preEditedUser = angular.copy(iuc.users[i]);
+//				}
+//			}
+//			
+//			userModal.edit(iuc.users, userId).then(function(data) {
+//				for (var i = 0; i < iuc.users.length; i++) {
+//					if (iuc.users[i].id === data.id) {
+//						iuc.users[i] = data;
+//						break;
+//					}
+//				}
+//			}, function(){
+//				for (var i = 0; i < iuc.users.length; i++) {
+//					if (i == userId) {
+//						iuc.users[i] = iuc.preEditedUser;
+//						break;
+//					}
+//				}
+//			});
+//		}
 		
 		/**
 		 * Removing a selected user.
@@ -121,6 +121,8 @@
 					localStorageService.cookie.set('oldsNumber', iuc.olds, 1, true);
 			}
 		}
+		
+		iuc.calculateYearsFromJMBG = calculateYearsFromJMBG;
 		
 		InsuranceProgress.setCurrent(3);
 		

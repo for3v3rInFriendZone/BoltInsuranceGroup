@@ -5,9 +5,10 @@
 		.module('bolt-insurance-group.insurance')
 		.service('MockGenerator', MockGenerator);
 
-
-	function MockGenerator() {
+	MockGenerator.$inject = ['$q'];
+	function MockGenerator($q) {
 		
+		    
 		return {
 			
 			InsuranceProgressMock:function(){
@@ -62,9 +63,13 @@
 							earthshakerCheckBox:false,
 							homeArea:'',
 							ageOfHome:'',
-							estimatedValueOfHome:''
+							estimatedValueOfHome:'',
+							kidsNumber:'0',
+							grownupsNumber:'0',
+							oldsNumber:'0',
+							listOfUsers:[]
 						},
-						set: function(name,value){
+						set: function(name,value,a,b){
 							
 							this.storage[name] = value;
 							
@@ -113,10 +118,17 @@
 				};
 				
 				
+			},
+			
+
+			
+			userModalMock:function(){
+				// timeout returns promise
+				return{
+					open:function(){
+					}
+				}	
 			}
-		
-			
-			
 		}
 			
 		
