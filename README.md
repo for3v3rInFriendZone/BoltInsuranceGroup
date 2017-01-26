@@ -1,17 +1,24 @@
+
 ## Bolt Insurance Group
 _Bolt insurance group_ is a web application for online insurance purchasing. It has a web shop interface with simple and understandable insurance options for buyer to choose. [PayPal](https://www.paypal.com/) functionality is implemented into a application, so every paypal user can purchase an insurance from this insurance company.	 
-### Table of contents:	
--[Starting note](#Starting note)
-### Starting note	
-To whom it may concern, this is **NOT** a commerical project. It is only a college project with specification developed by college professor and his teachings assistants. Developers are students from [FTN](http://www.ftn.uns.ac.rs/n1386094394/faculty-of-technical-sciences) college.
+## Table of contents:
+- [Starting note](#starting-note)	
+- [Contributors](#contributors)	
+- [Licence](#licence)	
 
-### Contributors
+## Starting note	
+To whom it may concern, this is **NOT** a commerical project. It is only a college project with specification developed by college professor and his teachings assistants. [Developers](#contributors) are students from [FTN](http://www.ftn.uns.ac.rs/n1386094394/faculty-of-technical-sciences) college.	
+
+## How to use this application?
+Visit our [Wiki](https://github.com/for3v3rInFriendZone/BoltInsuranceGroup/wiki) page for detailed info about using this app.
+
+## Contributors
 1.Jan Šulja		
 2.Marko Striško ([e-mail](mailto:strile93@gmail.com))	
 3.Dejan Urošević	
 4.Svetislav Marjanović
 
-### Licence	
+## Licence
 The FTN License
 
 Copyright (c) 2016 Bolt Insurance Group
