@@ -1,6 +1,7 @@
 
 ## Bolt Insurance Group
-_Bolt insurance group_ is a web application for online insurance purchasing. It has a web shop interface with simple and understandable insurance options for buyer to choose. [PayPal](https://www.paypal.com/) functionality is implemented into a application, so every paypal user can purchase an insurance from this insurance company.	 
+_Bolt insurance group_ is a web application for online insurance purchasing. It has a web shop interface with simple and understandable insurance options for buyer to choose. [PayPal](https://www.paypal.com/) functionality is implemented into a application, so every paypal user can purchase an insurance from this insurance company.   
+It has a support for Serbian and English language.
 ## Table of contents:
 - [Starting note](#starting-note)	
 - [How to use it?](#how-to-use-this-application)
