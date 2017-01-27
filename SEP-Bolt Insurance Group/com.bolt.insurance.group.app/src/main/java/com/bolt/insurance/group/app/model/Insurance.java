@@ -1,6 +1,7 @@
 package com.bolt.insurance.group.app.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +56,19 @@ public class Insurance implements Serializable{
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "INSURANCE_RISK")
-	private List<Risk> risks;
+	private List<Risk> risks = new ArrayList<Risk>();
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "SUBGROUP_RISK")
+	private List<Subgroup> subgroups = new ArrayList<Subgroup>();
+
+	public List<Subgroup> getSubgroups() {
+		return subgroups;
+	}
+
+	public void setSubgroups(List<Subgroup> subgroups) {
+		this.subgroups = subgroups;
+	}
 
 	public long getId() {
 		return id;

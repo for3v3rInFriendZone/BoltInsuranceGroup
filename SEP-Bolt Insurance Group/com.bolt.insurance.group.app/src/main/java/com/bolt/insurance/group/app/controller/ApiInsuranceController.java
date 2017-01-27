@@ -2,9 +2,13 @@ package com.bolt.insurance.group.app.controller;
 
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.jws.soap.SOAPBinding.Use;
 
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.json.JSONObject;
@@ -22,13 +26,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bolt.insurance.group.app.dto.InsuranceDto;
 import com.bolt.insurance.group.app.dto.PersonsDto;
 import com.bolt.insurance.group.app.dto.RiskDto;
+import com.bolt.insurance.group.app.model.Home;
 import com.bolt.insurance.group.app.model.Insurance;
 import com.bolt.insurance.group.app.model.Subgroup;
+import com.bolt.insurance.group.app.model.Type;
+import com.bolt.insurance.group.app.model.User;
+import com.bolt.insurance.group.app.model.UserOfInsurance;
+import com.bolt.insurance.group.app.model.UserOfInsuranceId;
+import com.bolt.insurance.group.app.model.Vehicle;
+import com.bolt.insurance.group.app.model.VehicleType;
 import com.bolt.insurance.group.app.service.DroolsService;
 import com.bolt.insurance.group.app.service.HomeService;
 import com.bolt.insurance.group.app.service.InsuranceService;
+import com.bolt.insurance.group.app.service.MailService;
 import com.bolt.insurance.group.app.service.RiskService;
 import com.bolt.insurance.group.app.service.SubgroupService;
+import com.bolt.insurance.group.app.service.TypeService;
+import com.bolt.insurance.group.app.service.UserOfInsuranceService;
+import com.bolt.insurance.group.app.service.UserService;
+import com.bolt.insurance.group.app.service.VehicleService;
+import com.bolt.insurance.group.app.service.VehicleTypeService;
 import com.bolt.insurance.group.app.util.ConverteFromModelToDto;
 
 @RestController
@@ -50,16 +67,76 @@ public class ApiInsuranceController {
 	@Autowired
 	DroolsService droolsService;
 	
+	@Autowired
+	VehicleTypeService vehicleTypeService;
+	
+	@Autowired
+	TypeService typeService;
+	
+	@Autowired
+	VehicleService vehicleService;
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	UserOfInsuranceService userOfInsuranceService;
+	
+	@Autowired
+	MailService mailService;
+	
 	public ConverteFromModelToDto cfmtd = new ConverteFromModelToDto();
 	private StatefulKnowledgeSession ksession = null;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Insurance> saveInsurance(@RequestBody Insurance insurance) {
+	public ResponseEntity<Insurance> saveInsurance(@RequestBody String payload) {
 
-		Insurance newInsurance = insuranceService.save(insurance);
-		return new ResponseEntity<Insurance>(newInsurance, HttpStatus.CREATED);
+		String clearPayload = Jsoup.clean(payload, Whitelist.basic());
+		
+		JSONObject json = new JSONObject(clearPayload);
+		
+		boolean success = false;
+		
+		try {
+			success = json.getBoolean("success");
+		} catch (Exception e) {
+			success = false;
+		}
+		
+		ArrayList<User> users = (ArrayList<User>) userOfInsuranceService.createList(json);
+		
+		if(users == null){
+			return new ResponseEntity<Insurance>(HttpStatus.FORBIDDEN);
+		} else if(!success){
+			mailService.errorMail(users.get(0).getMail());
+			return new ResponseEntity<Insurance>(HttpStatus.FORBIDDEN);
+		}
+		
+		Insurance insurance = insuranceService.createInsurance(json);
+		
+		if(insurance == null){
+			mailService.errorMail(users.get(0).getMail());
+			return new ResponseEntity<Insurance>(HttpStatus.FORBIDDEN);
+		}
+		
+		insuranceService.save(insurance);
+		
+		for(int i = 0; i < users.size(); i++){
+			userService.save(users.get(i));
+			
+			if(i == 0){
+				userOfInsuranceService.save(new UserOfInsurance(new UserOfInsuranceId(users.get(i), insurance), true));
+				continue;
+			}
+			
+			userOfInsuranceService.save(new UserOfInsurance(new UserOfInsuranceId(users.get(i), insurance), false));
+		}
+		
+		mailService.send(insurance);
+		
+		return new ResponseEntity<Insurance>(HttpStatus.CREATED);
 	}
-
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Insurance> getInsurance(@PathVariable Long id) {
 
@@ -386,19 +463,12 @@ public class ApiInsuranceController {
 				InsuranceDto.getRisks().add(rd9);
 				InsuranceDto.getRisks().add(rd10);
 			}
-		
-			
+
 			ksession = droolsService.getSession();
 
-			
-			System.out.println(ksession.getId() + "*************");
 			ksession.insert(InsuranceDto); 
 	        ksession.fireAllRules();  
 	        ksession.dispose();	
-	        
-	        System.out.println("Cena bez popusta: " + InsuranceDto.getPrice());
-	        System.out.println("Cena sa popustom: " + InsuranceDto.getDiscountPrice());
-	        System.out.println("Cena osiguranja: " + InsuranceDto.getAmount());
 			
 		} catch (Exception e) {
 			return new ResponseEntity<InsuranceDto>(HttpStatus.FORBIDDEN);

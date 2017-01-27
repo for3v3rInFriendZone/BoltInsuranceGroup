@@ -185,8 +185,8 @@
 			NEWCLIENTCOMMENT: "Please enter your comment here",
 			COMMENTNAME: "Your name",
 			COMMENTSURNAME: "Your surname",
-			COMMENTTEXT: "Leave your comment here"
-
+			COMMENTTEXT: "Leave your comment here",
+			VEHICLEBRAND: "Brand"
 				
 				
 		});
@@ -362,7 +362,8 @@
 			NEWCLIENTCOMMENT: "Ovde unesite Vaš komentar",
 			COMMENTNAME: "Vaše ime",
 			COMMENTSURNAME: "Vaše prezime",
-			COMMENTTEXT: "Vaš komentar"
+			COMMENTTEXT: "Vaš komentar",
+			VEHICLEBRAND: "Marka"
 
 
 		});

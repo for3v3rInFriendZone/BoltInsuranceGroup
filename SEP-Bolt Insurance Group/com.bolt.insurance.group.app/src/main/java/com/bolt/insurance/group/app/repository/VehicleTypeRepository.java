@@ -8,4 +8,5 @@ import com.bolt.insurance.group.app.model.VehicleType;
 @Repository
 public interface VehicleTypeRepository extends CrudRepository<VehicleType, Long>{
 
+	public VehicleType findByName(String name);
 }

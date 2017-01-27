@@ -32,7 +32,7 @@ public class Home implements Serializable{
 	private String surname;
 	
 	@NotNull
-	@Column(name = "OWNER_JMBG", unique = true, length = 13)
+	@Column(name = "OWNER_JMBG", length = 13)
 	private String jmbg;
 	
 	@NotNull

@@ -1,5 +1,7 @@
 package com.bolt.insurance.group.app.service;
 
+import org.json.JSONObject;
+
 import com.bolt.insurance.group.app.model.Insurance;
 
 public interface InsuranceService {
@@ -18,5 +20,5 @@ public interface InsuranceService {
 	
 	public int calculateDays(long statDate, long endDate);
 	
-
+	public Insurance createInsurance(JSONObject json);
 }
