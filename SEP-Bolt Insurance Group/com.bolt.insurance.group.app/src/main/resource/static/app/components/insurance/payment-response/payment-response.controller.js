@@ -37,6 +37,8 @@
   	    	for(var i = 0; i < $scope.listOfUser.length; i++){
 				$scope.listOfUser[i].jmbg = $crypto.decrypt($scope.listOfUser[i].jmbg, result);
 				$scope.listOfUser[i].passport = $crypto.decrypt($scope.listOfUser[i].passport, result);
+				$scope.vehicleOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('vehicleOwnerJmbg'), result);
+				$scope.homeOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('homeOwnerJmbg'), result);
 			}
   	    	
   	    	var payload = {
@@ -66,11 +68,11 @@
 	  	  		amount: localStorageService.cookie.get('amount'),
 	            homeOwnerName: localStorageService.cookie.get('homeOwnerName'),
 	            homeOwnerSurname: localStorageService.cookie.get('homeOwnerSurname'),
-	            homeOwnerJmbg: localStorageService.cookie.get('homeOwnerJmbg'),
+	            homeOwnerJmbg: $scope.homeOwnerJmbg,
 	            homeAdress: localStorageService.cookie.get('homeAdress'),
 	            vehicleOwnerName: localStorageService.cookie.get('vehicleOwnerName'),
 	            vehicleOwnerSurname: localStorageService.cookie.get('vehicleOwnerSurname'),
-	            vehicleOwnerJmbg: localStorageService.cookie.get('vehicleOwnerJmbg'),
+	            vehicleOwnerJmbg: $scope.vehicleOwnerJmbg,
 	            vehicleType: localStorageService.cookie.get('vehicleType'),
 	            vehicleYear: localStorageService.cookie.get('vehicleYear'),
 	            vehiclePlates: localStorageService.cookie.get('vehiclePlates'),
