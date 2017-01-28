@@ -62,6 +62,7 @@ module.exports = function(config) {
 'app/components/insurance/vehicle-modal/vehicle-modal.module.js',
 'app/components/insurance/vehicle-modal/vehicle-modal.factory.js',
 'app/components/insurance/vehicle-modal/vehicle-modal.controller.js',
+'app/components/insurance/vehicle-modal/vehicle-modal.controller.spec.js',
 'app/components/insurance/vehicle-modal/vehicle-modal.service.js',
 'app/components/insurance/total-price/total-price.module.js',
 'app/components/insurance/total-price/total-price.controller.js',
