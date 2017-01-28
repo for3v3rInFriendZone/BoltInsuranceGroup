@@ -68,7 +68,8 @@
 				    		<label for="ownerJmbg" class="col-sm-2 control-label" translate="TYPEOFVEHICLE"></label>
 				    		<div class="col-sm-8">
 				    			<div ng-class="{'has-error': vic.form.type.$error.required && vic.submitted}"> 
-				    				<input class="form-control" type="text" ng-model="vic.vehicle.typeofvehicle" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}" required/> 
+				    				<!-- <input class="form-control" type="text" ng-model="vic.vehicle.typeofvehicle" id="type" name="type" placeholder="{{'TYPEOFVEHICLE'|translate}}" required/>  -->
+				    				<select class="form-control" ng-options="type as type.name for type in vic.vehicleTypes track by type.name" ng-model="vic.vehicle.typeofvehicle" required></select>
 				    			</div>
 				    		</div>
 				    		<br/><br/>

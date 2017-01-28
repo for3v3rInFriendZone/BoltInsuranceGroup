@@ -22,7 +22,16 @@
 		hic.roadCheckBox = localStorageService.cookie.get('roadCheckBox');
 		hic.home.ownername = localStorageService.cookie.get('homeOwnerName');
 		hic.home.ownersurname = localStorageService.cookie.get('homeOwnerSurname');
-		hic.home.ownerjmbg = localStorageService.cookie.get('homeOwnerJmbg');
+		
+		if(localStorageService.cookie.get('homeOwnerJmbg') == null || localStorageService.cookie.get('homeOwnerJmbg') == undefined){
+			hic.home.ownerjmbg = localStorageService.cookie.get('homeOwnerJmbg');
+		} else{
+			$http.get('https://localhost:8443/insurance/secret')
+			.then(function(response) {
+				hic.home.ownerjmbg = $crypto.decrypt(localStorageService.cookie.get('homeOwnerJmbg'), response.data.secret);
+			});
+		}
+		
 		hic.home.address = localStorageService.cookie.get('homeAdress');
 		
 		function next(){

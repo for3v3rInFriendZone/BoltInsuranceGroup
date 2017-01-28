@@ -95,6 +95,8 @@
     		$http.post('https://localhost:8443/insurance/', payload)
   	  		.then(function(response) {
   	  			localStorageService.cookie.clearAll();
+  	  		}, function(data){
+  	  			localStorageService.cookie.clearAll();
   	  		});
   	    });
 	}

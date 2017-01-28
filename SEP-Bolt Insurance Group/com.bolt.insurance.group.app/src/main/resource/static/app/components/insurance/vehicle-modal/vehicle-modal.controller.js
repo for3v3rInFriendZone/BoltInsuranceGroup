@@ -20,7 +20,16 @@
 		vic.homeCheckBox = localStorageService.cookie.get('homeCheckBox');
 		vic.vehicle.ownername = localStorageService.cookie.get('vehicleOwnerName');
 		vic.vehicle.ownersurname = localStorageService.cookie.get('vehicleOwnerSurname');
-		vic.vehicle.ownerjmbg = localStorageService.cookie.get('vehicleOwnerJmbg');
+		
+		if(localStorageService.cookie.get('vehicleOwnerJmbg') == null || localStorageService.cookie.get('vehicleOwnerJmbg') == undefined){
+			vic.vehicle.ownerjmbg = localStorageService.cookie.get('vehicleOwnerJmbg');
+		} else {
+			$http.get('https://localhost:8443/insurance/secret')
+			.then(function(response) {
+				vic.vehicle.ownerjmbg = $crypto.decrypt(localStorageService.cookie.get('vehicleOwnerJmbg'), response.data.secret);
+			});
+		}
+		
 		vic.vehicle.typeofvehicle = localStorageService.cookie.get('vehicleType');
 		vic.vehicle.yearofmanufacture = localStorageService.cookie.get('vehicleYear');
 		vic.vehicle.licenceplatesnumber = localStorageService.cookie.get('vehiclePlates');
@@ -46,6 +55,7 @@
 			
 			localStorageService.cookie.set('vehicleOwnerName', vic.vehicle.ownername, 1, true);
 			localStorageService.cookie.set('vehicleOwnerSurname', vic.vehicle.ownersurname, 1, true);
+			
 			$http.get('https://localhost:8443/insurance/secret')
 			.then(function(response) {
 				 localStorageService.cookie.set('vehicleOwnerJmbg', $crypto.encrypt(vic.vehicle.ownerjmbg, response.data.secret), 1, true);

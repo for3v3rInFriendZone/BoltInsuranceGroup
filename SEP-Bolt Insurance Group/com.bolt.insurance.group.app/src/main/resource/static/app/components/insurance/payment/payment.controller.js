@@ -41,18 +41,30 @@
 		$scope.estimatedValueOfHome = localStorageService.cookie.get('estimatedValueOfHome');
 		$scope.homeOwnerName = localStorageService.cookie.get('homeOwnerName');
 		$scope.homeOwnerSurname = localStorageService.cookie.get('homeOwnerSurname');
-		$http.get('https://localhost:8443/insurance/secret')
-		.then(function(response) {
-			$scope.homeOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('homeOwnerJmbg'), response.data.secret);
-		});
+		
+		if(localStorageService.cookie.get('homeOwnerJmbg') == null || localStorageService.cookie.get('homeOwnerJmbg') == undefined){
+			$scope.homeOwnerJmbg = localStorageService.cookie.get('homeOwnerJmbg');
+		} else {
+			$http.get('https://localhost:8443/insurance/secret')
+			.then(function(response) {
+				$scope.homeOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('homeOwnerJmbg'), response.data.secret);
+			});
+		}
+		
 		
 		$scope.homeAdress = localStorageService.cookie.get('homeAdress');
 		$scope.vehicleOwnerName = localStorageService.cookie.get('vehicleOwnerName');
 		$scope.vehicleOwnerSurname = localStorageService.cookie.get('vehicleOwnerSurname');
-		$http.get('https://localhost:8443/insurance/secret')
-		.then(function(response) {
-			$scope.vehicleOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('vehicleOwnerJmbg'), response.data.secret);
-		});
+		
+		if(localStorageService.cookie.get('vehicleOwnerJmbg') == null || localStorageService.cookie.get('vehicleOwnerJmbg') == undefined){
+			$scope.vehicleOwnerJmbg = localStorageService.cookie.get('vehicleOwnerJmbg');
+		} else {
+			$http.get('https://localhost:8443/insurance/secret')
+			.then(function(response) {
+				$scope.vehicleOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('vehicleOwnerJmbg'), response.data.secret);
+			});
+		}
+		
 		$scope.vehicleType = localStorageService.cookie.get('vehicleType');
 		$scope.vehicleYear = localStorageService.cookie.get('vehicleYear');
 		$scope.vehiclePlates = localStorageService.cookie.get('vehiclePlates');

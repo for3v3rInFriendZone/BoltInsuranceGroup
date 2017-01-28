@@ -263,7 +263,8 @@ public class InsuranceServiceImpl implements InsuranceService {
 
 				vehicle.setBrand(json.getString("vehicleBrand"));
 
-				VehicleType vt = vehicleTypeService.findByName(json.getString("vehicleType"));
+				JSONObject vehicleType = json.getJSONObject("vehicleType");
+				VehicleType vt = vehicleTypeService.findByName(vehicleType.getString("name"));
 
 				if (vt == null) {
 					return null;
