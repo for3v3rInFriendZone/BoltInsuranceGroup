@@ -95,8 +95,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 		Insurance insurance = new Insurance();
 
 		// starost
-		insurance.getRisks().add(riskService.findOne(1L));
-
+		
 		// region*****************
 		Subgroup worldSubgroup = subgroupService.findBySubname(json.getString("world"));
 
@@ -104,7 +103,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 			return null;
 		}
 
-		insurance.getRisks().add(riskService.findOne(2L));
+		
 		insurance.getSubgroups().add(worldSubgroup);
 
 		// novac****************
@@ -114,7 +113,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 			return null;
 		}
 
-		insurance.getRisks().add(riskService.findOne(10L));
+		
 		insurance.getSubgroups().add(moneySubgroup);
 
 		// trajanje*************
@@ -126,8 +125,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 				return null;
 			}
 
-			insurance.getRisks().add(riskService.findOne(3L));
-
+			
 			insurance.setStartDate(new Date(startDate));
 			insurance.setEndDate(new Date(endDate));
 		} catch (Exception e) {
@@ -153,7 +151,6 @@ public class InsuranceServiceImpl implements InsuranceService {
 				return null;
 			}
 
-			insurance.getRisks().add(riskService.findOne(4L));
 			insurance.getSubgroups().add(sportSubgroup);
 		}
 
@@ -203,7 +200,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 				return null;
 			}
 
-			insurance.getRisks().add(riskService.findOne(9L));
+			
 
 			if (hotel) {
 				insurance.getSubgroups().add(subgroupService.findBySubname("smestaj"));
@@ -307,7 +304,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 					return null;
 				}
 
-				insurance.getRisks().add(riskService.findOne(5L));
+				
 				insurance.getSubgroups().add(areaSubgruop);
 
 				int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -317,10 +314,10 @@ public class InsuranceServiceImpl implements InsuranceService {
 					return null;
 				}
 
-				insurance.getRisks().add(riskService.findOne(6L));
+				
 				insurance.getSubgroups().add(homeService.checkHouseAge(year - homeYear));
 
-				insurance.getRisks().add(riskService.findOne(7L));
+				
 				insurance.getSubgroups().add(
 						homeService.checkHouseEstimateValue(Integer.parseInt(json.getString("estimatedvalueofhome"))));
 			} catch (Exception e) {
@@ -363,7 +360,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 				return null;
 			}
 
-			insurance.getRisks().add(riskService.findOne(8L));
+			
 
 			if (theft) {
 				insurance.getSubgroups().add(subgroupService.findBySubname("pljacka"));

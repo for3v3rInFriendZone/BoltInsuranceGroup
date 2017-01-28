@@ -174,7 +174,6 @@ public class ApiInsuranceController {
 		editedInsurance.setAmount(insurance.getAmount());
 		editedInsurance.setEndDate(insurance.getEndDate());
 		editedInsurance.setHome(insurance.getHome());
-		editedInsurance.setRisks(insurance.getRisks());
 		editedInsurance.setStartDate(insurance.getStartDate());
 		editedInsurance.setType(insurance.getType());
 		editedInsurance.setVehicle(insurance.getVehicle());

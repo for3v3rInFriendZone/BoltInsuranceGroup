@@ -38,9 +38,6 @@ public class Risk implements Serializable{
 	@JoinColumn(name = "PRICE", nullable = false)
 	private Price price;
 	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "risks")
-	private List<Insurance> insurances;
-
 	public long getId() {
 		return id;
 	}
@@ -73,21 +70,12 @@ public class Risk implements Serializable{
 		this.price = price;
 	}
 
-	public List<Insurance> getInsurances() {
-		return insurances;
-	}
-
-	public void setInsurances(List<Insurance> insurances) {
-		this.insurances = insurances;
-	}
-
-	public Risk(long id, String name, Type type, Price price, List<Insurance> insurances) {
+	public Risk(long id, String name, Type type, Price price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.price = price;
-		this.insurances = insurances;
 	}
 
 	public Risk() {

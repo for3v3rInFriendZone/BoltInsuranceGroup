@@ -55,10 +55,6 @@ public class Insurance implements Serializable{
 	private Vehicle vehicle;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "INSURANCE_RISK")
-	private List<Risk> risks = new ArrayList<Risk>();
-	
-	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "SUBGROUP_RISK")
 	private List<Subgroup> subgroups = new ArrayList<Subgroup>();
 
@@ -126,16 +122,7 @@ public class Insurance implements Serializable{
 		this.vehicle = vehicle;
 	}
 
-	public List<Risk> getRisks() {
-		return risks;
-	}
-
-	public void setRisks(List<Risk> risks) {
-		this.risks = risks;
-	}
-
-	public Insurance(long id, Date startDate, Date endDate, double amount, Type type, Home home, Vehicle vehicle,
-			List<Risk> risks) {
+	public Insurance(long id, Date startDate, Date endDate, double amount, Type type, Home home, Vehicle vehicle) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
@@ -144,7 +131,6 @@ public class Insurance implements Serializable{
 		this.type = type;
 		this.home = home;
 		this.vehicle = vehicle;
-		this.risks = risks;
 	}
 
 	public Insurance() {

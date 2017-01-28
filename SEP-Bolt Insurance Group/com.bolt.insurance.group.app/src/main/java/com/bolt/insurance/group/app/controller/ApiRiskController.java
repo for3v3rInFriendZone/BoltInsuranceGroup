@@ -53,7 +53,6 @@ public class ApiRiskController {
 	public ResponseEntity<Risk> editRisk(@RequestBody Risk risk) {
 
 		Risk editedRisk = riskService.findOne(risk.getId());
-		editedRisk.setInsurances(risk.getInsurances());
 		editedRisk.setName(risk.getName());
 		editedRisk.setPrice(risk.getPrice());
 		editedRisk.setType(risk.getType());

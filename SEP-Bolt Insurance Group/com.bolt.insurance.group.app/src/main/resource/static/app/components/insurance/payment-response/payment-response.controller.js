@@ -37,9 +37,19 @@
   	    	for(var i = 0; i < $scope.listOfUser.length; i++){
 				$scope.listOfUser[i].jmbg = $crypto.decrypt($scope.listOfUser[i].jmbg, result);
 				$scope.listOfUser[i].passport = $crypto.decrypt($scope.listOfUser[i].passport, result);
-				$scope.vehicleOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('vehicleOwnerJmbg'), result);
-				$scope.homeOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('homeOwnerJmbg'), result);
 			}
+  	    	
+  	    	if(localStorageService.cookie.get('vehicleOwnerJmbg') == null || localStorageService.cookie.get('vehicleOwnerJmbg') == undefined){
+  	    		$scope.vehicleOwnerJmbg = null;
+  	    	}else{
+  	    		$scope.vehicleOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('vehicleOwnerJmbg'), result);
+  	    	}
+  	    	
+  	    	if(localStorageService.cookie.get('homeOwnerJmbg') == null || localStorageService.cookie.get('homeOwnerJmbg') == undefined){
+  	    		$scope.homeOwnerJmbg = null;
+  	    	}else{
+  	    		$scope.homeOwnerJmbg = $crypto.decrypt(localStorageService.cookie.get('homeOwnerJmbg'), result);
+  	    	}
   	    	
   	    	var payload = {
   	    		world: localStorageService.cookie.get('world'), 
