@@ -7,8 +7,8 @@
 		.controller('PaymentResponseController', PaymentResponseController);
 
 
-	PaymentResponseController.$inject = ['$http', '$scope', '$translate', 'localStorageService', '$crypto', 'PaymentFactory'];
-	function PaymentResponseController($http, $scope, $translate, localStorageService, $crypto, PaymentFactory) {
+	PaymentResponseController.$inject = ['$http', '$scope', '$translate', 'localStorageService', '$crypto', 'PaymentFactory', 'commentModal', '$state'];
+	function PaymentResponseController($http, $scope, $translate, localStorageService, $crypto, PaymentFactory, commentModal, $state) {
 
 		var prc = this;
 		

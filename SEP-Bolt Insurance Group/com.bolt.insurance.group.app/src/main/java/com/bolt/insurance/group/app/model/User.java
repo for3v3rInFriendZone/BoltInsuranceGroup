@@ -33,7 +33,7 @@ public class User implements Serializable{
 	private String surname;
 	
 	@NotNull
-	@Column(name = "JMBG", unique = true, length = 13)
+	@Column(name = "JMBG", length = 13)
 	private String jmbg;
 	
 	@NotNull
@@ -41,7 +41,7 @@ public class User implements Serializable{
 	private String address;
 	
 	@NotNull
-	@Column(name = "PASSPORT", unique = true, length = 9)
+	@Column(name = "PASSPORT", length = 9)
 	private String passport;
 	
 	@Column(name = "PHONE")

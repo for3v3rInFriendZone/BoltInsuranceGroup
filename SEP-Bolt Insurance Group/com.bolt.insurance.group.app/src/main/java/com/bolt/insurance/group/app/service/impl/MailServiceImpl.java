@@ -58,23 +58,23 @@ public class MailServiceImpl implements MailService{
 				}
 			}
 			
-			messages = messages + System.lineSeparator() + System.lineSeparator() + "We wish to inform you that your purchase was successful." + System.lineSeparator();
+			messages = messages + System.lineSeparator() + System.lineSeparator() + "We wish to inform you that your purchase was SUCCESSFUL." + System.lineSeparator();
 			
-			messages = messages + System.lineSeparator() + "You are travel from: " + sdf.format(insurance.getStartDate()) + " to " + sdf.format(insurance.getEndDate()) + "." + System.lineSeparator();
+			messages = messages + System.lineSeparator() + "You are traveling from: " + sdf.format(insurance.getStartDate()) + " to " + sdf.format(insurance.getEndDate()) + "." + System.lineSeparator();
 			
-			messages = messages + System.lineSeparator() + "Your risks is: " + System.lineSeparator() + System.lineSeparator();
+			messages = messages + System.lineSeparator() + "Your risks are: " + System.lineSeparator() + System.lineSeparator();
 			
 			for(int i = 0; i < insurance.getSubgroups().size(); i++){
 				if(insurance.getSubgroups().get(i).getRisk().getName().equals("region")){
 					if(insurance.getSubgroups().get(i).getSubname().equals("EUNA")){
-						messages = messages + "Risk: region and subgroup Europe and North America" + System.lineSeparator();
+						messages = messages + "Risk: region and subgroup - Europe and North America" + System.lineSeparator();
 					}else if(insurance.getSubgroups().get(i).getSubname().equals("EUNAA")){
-						messages = messages + "Risk: region and subgroup Europe, North America and Asia" + System.lineSeparator();
+						messages = messages + "Risk: region and subgroup - Europe, North America and Asia" + System.lineSeparator();
 					}else if(insurance.getSubgroups().get(i).getSubname().equals("WHOLEWORLD")){
-						messages = messages + "Risk: region and subgroup Whole world" + System.lineSeparator();
+						messages = messages + "Risk: region and subgroup - Whole world" + System.lineSeparator();
 					}
 				}else if(insurance.getSubgroups().get(i).getRisk().getName().equals("sport")){
-					messages = messages + "Risk: sport and subgroup " + insurance.getSubgroups().get(i).getSubname() + System.lineSeparator();
+					messages = messages + "Risk: sport and subgroup - " + insurance.getSubgroups().get(i).getSubname() + System.lineSeparator();
 				}
 			}
 			
@@ -88,11 +88,11 @@ public class MailServiceImpl implements MailService{
 					}else if(insurance.getSubgroups().get(i).getRisk().getName().equals("procenjena_vrednost")){
 						messages = messages + "Risk: procenjena vrednost " + insurance.getSubgroups().get(i).getSubname() + System.lineSeparator(); 
 					}else if(insurance.getSubgroups().get(i).getRisk().getName().equals("vrsta_osiguranja")){
-						messages = messages + "Risk: vrsta osiguranja " + insurance.getSubgroups().get(i).getSubname() + System.lineSeparator();
+						messages = messages + "Risk: vrsta osiguranja - " + insurance.getSubgroups().get(i).getSubname() + System.lineSeparator();
 					}
 				}
 				
-				messages = messages + "Home owner " + insurance.getHome().getName() + " " + insurance.getHome().getSurname() + " jmbg " + insurance.getHome().getJmbg() + " address " + insurance.getHome().getAddress() + System.lineSeparator();
+				messages = messages + "Home owner: " + insurance.getHome().getName() + " " + insurance.getHome().getSurname() + " jmbg: " + insurance.getHome().getJmbg() + " address: " + insurance.getHome().getAddress() + System.lineSeparator();
 			}
 			
 			if(insurance.getVehicle() != null){
@@ -102,7 +102,7 @@ public class MailServiceImpl implements MailService{
 						messages = messages + "Risk: paket " + insurance.getSubgroups().get(i).getSubname() + System.lineSeparator();
 					}
 				}
-				messages = messages + "Vehicle owner " + insurance.getVehicle().getName() + " " + insurance.getVehicle().getSurname() + " jmbg " + insurance.getVehicle().getJmbg() + System.lineSeparator();
+				messages = messages + "Vehicle owner: " + insurance.getVehicle().getName() + " " + insurance.getVehicle().getSurname() + " jmbg: " + insurance.getVehicle().getJmbg() + System.lineSeparator();
 				messages = messages + "Vehicle information " + System.lineSeparator();
 				messages = messages + "Vehicle type: " + insurance.getVehicle().getType().getName() + System.lineSeparator();
 				messages = messages + "Vehicle brand: " + insurance.getVehicle().getBrand() + System.lineSeparator();
@@ -114,7 +114,7 @@ public class MailServiceImpl implements MailService{
 			messages = messages + System.lineSeparator() + "People on insurance: " + System.lineSeparator() + System.lineSeparator();
 			
 			for(int i = 0; i < users.size(); i++){
-				messages = messages + "Name: " + users.get(i).getUserOfInsuranceId().getUser().getFirstName() + " " + users.get(i).getUserOfInsuranceId().getUser().getSurname() + " Jmbg: " + users.get(i).getUserOfInsuranceId().getUser().getJmbg() + " Passport " + users.get(i).getUserOfInsuranceId().getUser().getPassport() + System.lineSeparator(); 
+				messages = messages + "Name: " + users.get(i).getUserOfInsuranceId().getUser().getFirstName() + " " + users.get(i).getUserOfInsuranceId().getUser().getSurname() + " Jmbg: " + users.get(i).getUserOfInsuranceId().getUser().getJmbg() + " Passport number: " + users.get(i).getUserOfInsuranceId().getUser().getPassport() + System.lineSeparator(); 
 			}
 			
 			messages = messages + System.lineSeparator() + "All the best, " + System.lineSeparator() + "Bolt Insurance Team";
@@ -131,7 +131,7 @@ public class MailServiceImpl implements MailService{
 
 	@Override
 	public void errorMail(String email) {
-		String messages = "Dear, " + System.lineSeparator() + "We wish to inform you that your purchase was unsuccessful, please try again." + System.lineSeparator() + "All the best," + System.lineSeparator() + "Bolt Insurance Team";
+		String messages = "Dear, " + System.lineSeparator() + "We wish to inform you that your purchase was UNSUCCESSFUL, please try again." + System.lineSeparator() + "All the best," + System.lineSeparator() + "Bolt Insurance Team";
 		MimeMessage mail = mailSender.createMimeMessage();
 		try {
 			MimeMessageHelper helper = new MimeMessageHelper(mail, true);
