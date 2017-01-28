@@ -5,8 +5,8 @@
 		.module('bolt-insurance-group.insurance.home-modal')
 		.controller('HomeInsuranceController', HomeInsuranceController);
 
-	HomeInsuranceController.$inject = ['$scope', '$state', 'localStorageService', 'InsuranceProgress'];
-	function HomeInsuranceController($scope, $state, localStorageService, InsuranceProgress) {
+	HomeInsuranceController.$inject = [ '$state', 'localStorageService', 'InsuranceProgress'];
+	function HomeInsuranceController( $state, localStorageService, InsuranceProgress) {
 		
 		var hic = this;
 		hic.next = next;

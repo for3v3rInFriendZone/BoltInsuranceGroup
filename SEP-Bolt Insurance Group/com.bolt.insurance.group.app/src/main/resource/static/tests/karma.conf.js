@@ -57,6 +57,7 @@ module.exports = function(config) {
 'app/components/insurance/home-modal/home-modal.module.js',
 'app/components/insurance/home-modal/home-modal.factory.js',
 'app/components/insurance/home-modal/home-modal.controller.js',
+'app/components/insurance/home-modal/home-modal.controller.spec.js',
 'app/components/insurance/home-modal/home-modal.service.js',
 'app/components/insurance/vehicle-modal/vehicle-modal.module.js',
 'app/components/insurance/vehicle-modal/vehicle-modal.factory.js',
