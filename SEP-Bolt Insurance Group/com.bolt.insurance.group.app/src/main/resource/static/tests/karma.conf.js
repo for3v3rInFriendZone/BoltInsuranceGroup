@@ -50,6 +50,7 @@ module.exports = function(config) {
 'app/components/insurance/insurance.controller.spec.js',
 'app/components/insurance/user-modal/user-modal.module.js',
 'app/components/insurance/user-modal/user-modal.factory.js',
+'app/components/insurance/user-modal/user-modal.factory.spec.js',
 'app/components/insurance/user-modal/user-modal.controller.js',
 'app/components/insurance/user-modal/user-modal.controller.spec.js',
 'app/components/insurance/user-modal/user-modal.service.js',

@@ -137,6 +137,11 @@
 				}
 			},
 			UserMock : function() {
+			},
+			$uibModalMock:function(){
+				return{
+					open:function(){}
+				}
 			}
 
 		// $uibModalInstance, items, User
