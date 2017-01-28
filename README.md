@@ -1,6 +1,7 @@
 
 ## Bolt Insurance Group
-_Bolt insurance group_ is a web application for online insurance purchasing. It has a web shop interface with simple and understandable insurance options for buyer to choose. [PayPal](https://www.paypal.com/) functionality is implemented into a application, so every paypal user can purchase an insurance from this insurance company.	 
+_Bolt insurance group_ is a web application for online insurance purchasing. It has a web shop interface with simple and understandable insurance options for buyer to choose. [PayPal](https://www.paypal.com/) functionality is implemented into a application, so every paypal user can purchase an insurance from this insurance company.   
+It has a support for Serbian and English language.
 ## Table of contents:
 - [Starting note](#starting-note)	
 - [How to use it?](#how-to-use-this-application)
@@ -14,10 +15,10 @@ To whom it may concern, this is **NOT** a commerical project. It is only a colle
 Visit our [Wiki](https://github.com/for3v3rInFriendZone/BoltInsuranceGroup/wiki) page for detailed info about using this app.
 
 ## Contributors
-1.Jan Šulja		
+1.Jan Šulja		([e-mail](mailto:shuky11@rocketmail.com))	
 2.Marko Striško ([e-mail](mailto:strile93@gmail.com))	
-3.Dejan Urošević	
-4.Svetislav Marjanović
+3.Dejan Urošević ([e-mail](mailto:dejansuca@gmail.com))	
+4.Svetislav Marjanović ([e-mail](mailto:svetaftn93@gmail.com))
 
 ## Licence
 The FTN License
@@ -28,5 +29,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.	
-	
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
