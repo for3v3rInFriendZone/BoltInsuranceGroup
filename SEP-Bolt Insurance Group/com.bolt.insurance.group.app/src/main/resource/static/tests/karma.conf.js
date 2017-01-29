@@ -78,6 +78,7 @@ module.exports = function(config) {
 'app/shared/i18n/i18n.module.js',
 'app/shared/i18n/i18n.config.js',
 'app/shared/paypal/paypal-button.directive.js',
+'app/shared/paypal/paypal-button.directive.spec.js',
 'app/shared/progress-bar/progress-bar.directive.js',
 'app/shared/progress-bar/progress-bar.service.js',
 'app/shared/tests/mock-generator.service.js'

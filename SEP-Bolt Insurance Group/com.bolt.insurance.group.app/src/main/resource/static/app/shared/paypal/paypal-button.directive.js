@@ -54,7 +54,7 @@
           var name = this.name;
           function err(reason) {
           	element.replaceWith('<span style="background-color:red; color:black; padding:.5em;">' + name + ': ' + reason + '</span>');
-          	console.log(element.context);
+          	//console.log(element.context);
           }
           var action = attrs.action || 'https://www.sandbox.paypal.com/cgi-bin/webscr';
           var business = attrs.business;
