@@ -4,12 +4,6 @@ describe('Directive --> bigPaypalButton\n', function() {
 
 	beforeEach(module('bolt-insurance-group.insurance'));
 
-//	beforeEach(inject(function(_$compile_,_$rootScope_) {
-//		$compile = _$compile_;
-//		$rootScope = _$rootScope_;
-//		$scope = $rootScope;
-//	}));
-
 	beforeEach(module(function($provide){
 		$provide.factory('localStorageService',function(){
 			return{
@@ -28,15 +22,6 @@ describe('Directive --> bigPaypalButton\n', function() {
 		$rootScope = _$rootScope_;
 	  }));
 	
-//	it('should compile element', function() {
-//		var element = '<big-paypal-button business="acquier@gmail.com" '
-//				+ 'language-code="en_US" currency-code="EUR"'
-//				+ ' item-name="insurance"></big-paypal-button>';
-//		
-//		expect(function() {
-//            $compile(element);
-//        }).not.toThrow();
-//	});
 	
 	it(' should generate form', function() {
 	
