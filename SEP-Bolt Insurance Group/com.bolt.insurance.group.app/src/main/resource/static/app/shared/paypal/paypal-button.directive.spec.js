@@ -93,7 +93,7 @@ describe('Directive --> bigPaypalButton\n', function() {
 				+ ' ></big-paypal-button>');
 		$compile(element)(scope);
 	    scope.$digest();
-		var formElement = element.find('form');
+		var formElement = element.find('.progress-bar');
 		expect(formElement.length).toEqual(0);
 
 	});

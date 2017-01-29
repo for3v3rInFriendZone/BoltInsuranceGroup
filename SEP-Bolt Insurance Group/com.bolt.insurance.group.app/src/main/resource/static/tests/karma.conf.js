@@ -80,6 +80,7 @@ module.exports = function(config) {
 'app/shared/paypal/paypal-button.directive.js',
 'app/shared/paypal/paypal-button.directive.spec.js',
 'app/shared/progress-bar/progress-bar.directive.js',
+'app/shared/progress-bar/progress-bar.directive.spec.js',
 'app/shared/progress-bar/progress-bar.service.js',
 'app/shared/tests/mock-generator.service.js'
     ],

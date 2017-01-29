@@ -33,8 +33,10 @@
 						}
 						template+='</div>';		
 						var el = $compile(template)(scope);
-						currentElement.replaceWith(el);
-	            	 	currentElement = el;
+						// currentElement.replaceWith(el);
+	     //        	 	currentElement = el;
+	     				currentElement.empty();
+	     				currentElement.append(el);
 	            	 
 				},true);
 			}
