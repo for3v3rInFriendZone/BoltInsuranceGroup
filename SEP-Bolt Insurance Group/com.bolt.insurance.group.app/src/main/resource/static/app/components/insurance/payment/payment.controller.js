@@ -5,6 +5,7 @@
 		.module('bolt-insurance-group.insurance.payment')
 		.controller('PaymentInsuranceController', PaymentInsuranceController);
 
+
 	PaymentInsuranceController.$inject = ['$scope', '$http', 'localStorageService', '$state', 'InsuranceProgress', '$crypto'];
 	function PaymentInsuranceController($scope, $http, localStorageService, $state, InsuranceProgress, $crypto) {
 
@@ -69,10 +70,16 @@
 		$scope.vehicleYear = localStorageService.cookie.get('vehicleYear');
 		$scope.vehiclePlates = localStorageService.cookie.get('vehiclePlates');
 		$scope.vehicleChassis = localStorageService.cookie.get('vehicleChassis');
+
 	
 		
-		//var current = (vic.homeCheckBox)?5:4;
-		InsuranceProgress.setCurrent(6);
+	
+		
+		var current = (pic.homeCheckBox && pic.roadCheckBox)?6:
+			(!pic.homeCheckBox && !pic.roadCheckBox)?4:5;
+		
+		
+		InsuranceProgress.setCurrent(current);
 		
 		pic.back = function() {
 			var home = localStorageService.cookie.get('homeCheckBox');

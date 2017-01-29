@@ -17,6 +17,7 @@
 		umc.listOfUsers = items.list;
 		umc.status = items.status;
 		umc.removeErrors = removeErrors;
+		umc.jmbgValidation = jmbgValidation;
 		umc.submitted = {
 				kids: false,
 				grownups: false,

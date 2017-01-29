@@ -5,8 +5,9 @@
 		.module('bolt-insurance-group.insurance.vehicle-modal')
 		.controller('VehicleInsuranceController', VehicleInsuranceController);
 
-	VehicleInsuranceController.$inject = ['$scope', '$http','localStorageService', '$state', 'InsuranceProgress', '$crypto'];
-	function VehicleInsuranceController($scope, $http, localStorageService, $state, InsuranceProgress, $crypto) {
+	VehicleInsuranceController.$inject = ['localStorageService', '$state', 'InsuranceProgress'];
+	function VehicleInsuranceController(localStorageService, $state, InsuranceProgress) {
+
 
 		var vic = this;
 		vic.vehicle = {};

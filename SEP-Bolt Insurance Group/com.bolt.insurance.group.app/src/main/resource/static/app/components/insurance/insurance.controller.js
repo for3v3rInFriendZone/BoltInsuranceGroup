@@ -109,67 +109,67 @@
 			}
 		};
 
-		/**
-		 * Opening a modal dialog for a user
-		 */
-		inc.newUser = function() {			
-			userModal.open().then(function(data) {
-				inc.users.push(data);			
-				inc.calculateYearsFromJMBG(data);
-			});
-		};
+//		/**
+//		 * Opening a modal dialog for a user
+//		 */
+//		inc.newUser = function() {			
+//			userModal.open().then(function(data) {
+//				inc.users.push(data);			
+//				inc.calculateYearsFromJMBG(data);
+//			});
+//		};
+//
+//		/**
+//		 * Opening modal dialog for a home
+//		 */
+//		inc.newHome = function() {
+//			homeModal.open().then(function(data) {
+//				inc.homeindicator = 1;
+//				inc.homeInsurance = false;
+//				inc.home = data;
+//			});
+//		};
+//
+//		/**
+//		 * Opening modal dialog for a vehicle
+//		 */
+//		inc.newVehicle = function() {
+//			vehicleModal.open().then(function(data) {
+//				inc.vehicleindicator = 1;
+//				inc.roadInsurance = false;
+//				inc.vehicle = data;
+//			});
+//		};
 
-		/**
-		 * Opening modal dialog for a home
-		 */
-		inc.newHome = function() {
-			homeModal.open().then(function(data) {
-				inc.homeindicator = 1;
-				inc.homeInsurance = false;
-				inc.home = data;
-			});
-		};
-
-		/**
-		 * Opening modal dialog for a vehicle
-		 */
-		inc.newVehicle = function() {
-			vehicleModal.open().then(function(data) {
-				inc.vehicleindicator = 1;
-				inc.roadInsurance = false;
-				inc.vehicle = data;
-			});
-		};
-
-		/**
-		 * When user informations are changed in database, it needs to be
-		 * changed on view.
-		 */
-		inc.editUser = function(userId) {
-			
-			inc.preEditedUser = {};
-			for (var i = 0; i < inc.users.length; i++) {
-				if (i == userId) {
-					inc.preEditedUser = angular.copy(inc.users[i]);
-				}
-			}
-			
-			userModal.edit(inc.users, userId).then(function(data) {
-				for (var i = 0; i < inc.users.length; i++) {
-					if (inc.users[i].id === data.id) {
-						inc.users[i] = data;
-						break;
-					}
-				}
-			}, function(){
-				for (var i = 0; i < inc.users.length; i++) {
-					if (i == userId) {
-						inc.users[i] = inc.preEditedUser;
-						break;
-					}
-				}
-			});
-		};
+//		/**
+//		 * When user informations are changed in database, it needs to be
+//		 * changed on view.
+//		 */
+//		inc.editUser = function(userId) {
+//			
+//			inc.preEditedUser = {};
+//			for (var i = 0; i < inc.users.length; i++) {
+//				if (i == userId) {
+//					inc.preEditedUser = angular.copy(inc.users[i]);
+//				}
+//			}
+//			
+//			userModal.edit(inc.users, userId).then(function(data) {
+//				for (var i = 0; i < inc.users.length; i++) {
+//					if (inc.users[i].id === data.id) {
+//						inc.users[i] = data;
+//						break;
+//					}
+//				}
+//			}, function(){
+//				for (var i = 0; i < inc.users.length; i++) {
+//					if (i == userId) {
+//						inc.users[i] = inc.preEditedUser;
+//						break;
+//					}
+//				}
+//			});
+//		};
 
 		/**
 		 * Change locale language
@@ -178,12 +178,12 @@
 			$translate.use(key);
 		};
 
-		/**
-		 * Removing a selected user.
-		 */
-		inc.removeUser = function(index) {
-			inc.users.splice(index, 1);
-		};
+//		/**
+//		 * Removing a selected user.
+//		 */
+//		inc.removeUser = function(index) {
+//			inc.users.splice(index, 1);
+//		};
 
 		/**
 		 * Getting data for a sport risk.
@@ -246,33 +246,33 @@
 			inc.vehicle = {};
 		};
 		  
-		inc.calculateYearsFromJMBG = function(user){	
-		    var bornDate = user.jmbg;
-				
-			if(parseInt(bornDate.substring(4,7)) < 800){
-				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/2" + bornDate.substring(4,7);
-			}else{
-				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/1" + bornDate.substring(4,7);
-			}
-				
-			bornDate = new Date(bornDate.substring(6,10), parseInt(bornDate.substring(3,5))-1, bornDate.substring(0,2));
-			var today = new Date();
-			var checkDate = today - bornDate;
-				
-			var years = Math.floor(checkDate / 31556952000);
-				
-			if(years < 18) {
-				inc.personCollection.below18 = inc.personCollection.below18+1;
-			}else if(years >= 18 && years < 60) {
-				inc.personCollection.inBetween18And60 = inc.personCollection.inBetween18And60+1;
-			}else{
-				inc.personCollection.after60 = inc.personCollection.after60+1;
-			}
-		    
-			
-			return inc.personCollection;
-				
-		};
+//		inc.calculateYearsFromJMBG = function(user){	
+//		    var bornDate = user.jmbg;
+//				
+//			if(parseInt(bornDate.substring(4,7)) < 800){
+//				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/2" + bornDate.substring(4,7);
+//			}else{
+//				bornDate = bornDate.substring(0,2) + "/" + bornDate.substring(2,4) + "/1" + bornDate.substring(4,7);
+//			}
+//				
+//			bornDate = new Date(bornDate.substring(6,10), parseInt(bornDate.substring(3,5))-1, bornDate.substring(0,2));
+//			var today = new Date();
+//			var checkDate = today - bornDate;
+//				
+//			var years = Math.floor(checkDate / 31556952000);
+//				
+//			if(years < 18) {
+//				inc.personCollection.below18 = inc.personCollection.below18+1;
+//			}else if(years >= 18 && years < 60) {
+//				inc.personCollection.inBetween18And60 = inc.personCollection.inBetween18And60+1;
+//			}else{
+//				inc.personCollection.after60 = inc.personCollection.after60+1;
+//			}
+//		    
+//			
+//			return inc.personCollection;
+//				
+//		};
 		
 		/**
 		 * Opens dialog for more information about vehicle insurance
@@ -297,7 +297,7 @@
 		 */
 		inc.submitForm = function() {
 			inc.submitted = true;
-			
+		
 			if((inc.kids === '' || inc.kids === 0 || inc.kids === null) && (inc.grownups === '' || inc.grownups === 0 || inc.grownups === null) && (inc.olds === '' || inc.olds === 0 || inc.olds === null)) {
 				inc.submittedUsers = true;
 			} 

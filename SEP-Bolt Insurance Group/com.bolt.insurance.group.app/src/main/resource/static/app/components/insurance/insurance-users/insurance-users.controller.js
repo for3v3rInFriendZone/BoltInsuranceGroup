@@ -5,8 +5,10 @@
 		.module('bolt-insurance-group.insurance.insurance-users')
 		.controller('InsuranceUsersController', InsuranceUsersController);
 
+
 	InsuranceUsersController.$inject = ['$http', 'userModal', '$state', 'localStorageService','InsuranceProgress', '$crypto'];
 	function InsuranceUsersController($http, userModal, $state, localStorageService,InsuranceProgress, $crypto) {
+
 		var iuc = this;
 		
 		iuc.preEditedUser = {};
@@ -61,31 +63,31 @@
 		 * When user informations are changed in database, it needs to be
 		 * changed on view.
 		 */
-		iuc.editUser = function(userId) {
-			
-			iuc.preEditedUser = {};
-			for (var i = 0; i < iuc.users.length; i++) {
-				if (i == userId) {
-					iuc.preEditedUser = angular.copy(iuc.users[i]);
-				}
-			}
-			
-			userModal.edit(iuc.users, userId).then(function(data) {
-				for (var i = 0; i < iuc.users.length; i++) {
-					if (iuc.users[i].id === data.id) {
-						iuc.users[i] = data;
-						break;
-					}
-				}
-			}, function(){
-				for (var i = 0; i < iuc.users.length; i++) {
-					if (i == userId) {
-						iuc.users[i] = iuc.preEditedUser;
-						break;
-					}
-				}
-			});
-		}
+//		iuc.editUser = function(userId) {
+//			
+//			iuc.preEditedUser = {};
+//			for (var i = 0; i < iuc.users.length; i++) {
+//				if (i == userId) {
+//					iuc.preEditedUser = angular.copy(iuc.users[i]);
+//				}
+//			}
+//			
+//			userModal.edit(iuc.users, userId).then(function(data) {
+//				for (var i = 0; i < iuc.users.length; i++) {
+//					if (iuc.users[i].id === data.id) {
+//						iuc.users[i] = data;
+//						break;
+//					}
+//				}
+//			}, function(){
+//				for (var i = 0; i < iuc.users.length; i++) {
+//					if (i == userId) {
+//						iuc.users[i] = iuc.preEditedUser;
+//						break;
+//					}
+//				}
+//			});
+//		}
 		
 		/**
 		 * Removing a selected user.
@@ -137,6 +139,8 @@
 				
 			});
 		}
+		
+		iuc.calculateYearsFromJMBG = calculateYearsFromJMBG;
 		
 		InsuranceProgress.setCurrent(3);
 		

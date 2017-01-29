@@ -5,6 +5,7 @@
 		.module('bolt-insurance-group.insurance.home-modal')
 		.controller('HomeInsuranceController', HomeInsuranceController);
 
+
 	HomeInsuranceController.$inject = ['$scope', '$http','$state', 'localStorageService', 'InsuranceProgress', '$crypto'];
 	function HomeInsuranceController($scope, $http, $state, localStorageService, InsuranceProgress, $crypto) {
 		
