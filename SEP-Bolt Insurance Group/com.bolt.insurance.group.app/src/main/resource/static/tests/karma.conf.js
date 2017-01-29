@@ -82,6 +82,7 @@ module.exports = function(config) {
 'app/shared/progress-bar/progress-bar.directive.js',
 'app/shared/progress-bar/progress-bar.directive.spec.js',
 'app/shared/progress-bar/progress-bar.service.js',
+'app/shared/progress-bar/progress-bar.service.spec.js',
 'app/shared/tests/mock-generator.service.js'
     ],
 
