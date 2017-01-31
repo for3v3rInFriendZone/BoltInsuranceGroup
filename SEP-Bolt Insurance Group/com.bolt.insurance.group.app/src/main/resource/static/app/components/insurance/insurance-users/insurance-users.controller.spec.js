@@ -1,12 +1,12 @@
 describe(
 		'InsuranceUsersController\n',
 		function() {
-			var iuc, InsuranceProgress, localStorageService, $state, userModal, rootScope;
+			var iuc, InsuranceProgress, localStorageService, $state, userModal,$httpBackend,$crypto;
 			beforeEach(module('bolt-insurance-group.insurance'));
 
-			beforeEach(inject(function($rootScope, $controller, MockGenerator) {
-
-				rootScope = $rootScope;
+			beforeEach(inject(function($controller, MockGenerator,_$httpBackend_) {
+				$crypto = MockGenerator.$cryptoMock();
+				$httpBackend = _$httpBackend_;
 				InsuranceProgress = MockGenerator.InsuranceProgressMock();
 				localStorageService = MockGenerator.localStorageServiceMock();
 				$state = MockGenerator.$stateMock();
@@ -17,7 +17,7 @@ describe(
 					localStorageService : localStorageService,
 					$state : $state,
 					userModal : userModal,
-					$rootScope : rootScope
+					$crypto:$crypto
 
 				});
 
@@ -47,9 +47,10 @@ describe(
 				expect(localStorageService.cookie.get('listOfUsers').length)
 						.toBe(0);
 
-				iuc.users = null;
+				$httpBackend.expectGET('https://localhost:8443/insurance/secret').respond({secret:'password'});
 				iuc.newUser();
 
+				$httpBackend.flush();
 				expect(userModal.open).toHaveBeenCalled();
 				expect(localStorageService.cookie.get('listOfUsers').length)
 						.toBe(1);
@@ -103,7 +104,7 @@ describe(
 				
 				iuc.removeUser(0);
 				
-				expect(iuc.grownups).toBe(1);
+				expect(iuc.grownups).toBe("0");
 				expect(iuc.users.length).toBe(1);
 				expect(iuc.noMoreUsers).toBe(true);
 				expect(storage.set).toHaveBeenCalled();
@@ -140,10 +141,14 @@ describe(
 				iuc.grownups = '4';
 				iuc.kids = '2';
 				
+				$httpBackend.expectGET('https://localhost:8443/insurance/secret').respond({secret:'password'});
 				iuc.calculateYearsFromJMBG(user1);
+				$httpBackend.flush();
 				expect(iuc.grownups).toBe(5);
 				
+				$httpBackend.expectGET('https://localhost:8443/insurance/secret').respond({secret:'password'});
 				iuc.calculateYearsFromJMBG(user2);
+				$httpBackend.flush();
 				expect(iuc.kids).toBe(3);
 				
 			});

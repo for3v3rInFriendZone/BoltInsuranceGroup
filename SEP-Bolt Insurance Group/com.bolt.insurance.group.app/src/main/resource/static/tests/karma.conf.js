@@ -73,7 +73,7 @@ module.exports = function(config) {
 //'app/components/insurance/total-price/total-price.controller.spec.js',
 'app/components/insurance/insurance-users/insurance-users.module.js',
 'app/components/insurance/insurance-users/insurance-users.controller.js',
-//'app/components/insurance/insurance-users/insurance-users.controller.spec.js',
+'app/components/insurance/insurance-users/insurance-users.controller.spec.js',
 'app/components/insurance/payment-response/payment-response.module.js',
 'app/components/insurance/payment-response/payment-response.controller.js',
 'app/components/insurance/payment/payment.module.js',

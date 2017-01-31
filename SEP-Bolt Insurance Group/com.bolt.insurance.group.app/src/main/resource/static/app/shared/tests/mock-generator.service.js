@@ -67,16 +67,7 @@
 							kidsNumber : '0',
 							grownupsNumber : '0',
 							oldsNumber : '0',
-							homeOwnerJmbg:'0712986850023',
-							listOfUsers : [  {
-								address : "Bulevar Oslobodjenja ",
-								email : "a@Q.COM",
-								firstName : "name",
-								jmbg : "0712986850023",
-								passport : "323423445",
-								phone : "234234",
-								surname : "lastname"
-							}]
+							listOfUsers : []
 						},
 						set : function(name, value, a, b) {
 

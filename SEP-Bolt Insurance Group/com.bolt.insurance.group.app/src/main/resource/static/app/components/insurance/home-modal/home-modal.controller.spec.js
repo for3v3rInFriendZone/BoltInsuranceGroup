@@ -11,7 +11,16 @@ describe('HomeModalController\n',function(){
 		$httpBackend = _$httpBackend_;
 
 		$httpBackend.when('GET', 'https://localhost:8443/insurance/secret').respond({secret:"password"});
-
+		localStorageService.cookie.set('listOfUsers',[ {
+								address : "Bulevar Oslobodjenja ",
+								email : "a@Q.COM",
+								firstName : "name",
+								jmbg : "0712986850023",
+								passport : "323423445",
+								phone : "234234",
+								surname : "lastname"
+							}])
+		localStorageService.cookie.set('homeOwnerJmbg',"0712986850023")
 		hic = $controller('HomeInsuranceController',{
 			localStorageService: localStorageService,
 			$state: $state,
