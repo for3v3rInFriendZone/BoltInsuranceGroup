@@ -78,7 +78,7 @@ module.exports = function(config) {
 'app/components/insurance/payment-response/payment-response.controller.js',
 'app/components/insurance/payment/payment.module.js',
 'app/components/insurance/payment/payment.controller.js',
-//'app/components/insurance/payment/payment.controller.spec.js',
+'app/components/insurance/payment/payment.controller.spec.js',
 'app/shared/i18n/i18n.module.js',
 'app/shared/i18n/i18n.config.js',
 'app/shared/paypal/paypal-button.directive.js',
