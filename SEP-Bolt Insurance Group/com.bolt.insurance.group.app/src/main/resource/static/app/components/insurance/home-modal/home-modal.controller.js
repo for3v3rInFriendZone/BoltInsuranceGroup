@@ -6,8 +6,8 @@
 		.controller('HomeInsuranceController', HomeInsuranceController);
 
 
-	HomeInsuranceController.$inject = ['$scope', '$http','$state', 'localStorageService', 'InsuranceProgress', '$crypto'];
-	function HomeInsuranceController($scope, $http, $state, localStorageService, InsuranceProgress, $crypto) {
+	HomeInsuranceController.$inject = ['$http','$state', 'localStorageService', 'InsuranceProgress', '$crypto'];
+	function HomeInsuranceController($http, $state, localStorageService, InsuranceProgress, $crypto) {
 		
 		var hic = this;
 		hic.next = next;
@@ -57,7 +57,7 @@
 				$state.go('vehicleinsurance');
 			}else{
 				$state.go('payment');
-			}
+			} 
 			
 		}
 		

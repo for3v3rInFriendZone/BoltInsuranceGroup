@@ -2,7 +2,7 @@
 	"use strict";
 
 	angular.module('bolt-insurance-group.insurance').service('MockGenerator',
-			MockGenerator);
+		MockGenerator);
 
 	MockGenerator.$inject = [ '$q' ];
 	function MockGenerator($q) {
@@ -67,12 +67,27 @@
 							kidsNumber : '0',
 							grownupsNumber : '0',
 							oldsNumber : '0',
-							listOfUsers : []
+							homeOwnerJmbg:'0712986850023',
+							listOfUsers : [  {
+								address : "Bulevar Oslobodjenja ",
+								email : "a@Q.COM",
+								firstName : "name",
+								jmbg : "0712986850023",
+								passport : "323423445",
+								phone : "234234",
+								surname : "lastname"
+							}]
 						},
 						set : function(name, value, a, b) {
 
 							this.storage[name] = value;
 
+						},
+						remove: function(name){
+							delete this.storage[name];
+						},
+						clearAll: function(){
+							this.storage = {};
 						}
 
 					}
@@ -142,12 +157,26 @@
 				return{
 					open:function(){}
 				}
+			},
+			$cryptoMock:function(){
+
+				return {
+
+					encrypt:function(data,key){
+						return data;
+					},
+					decrypt:function(data,key){
+						return data;
+					}
+
+				}
+
 			}
 
 		// $uibModalInstance, items, User
 
-		}
-
 	}
+
+}
 
 })();
