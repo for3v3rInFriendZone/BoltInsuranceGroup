@@ -162,6 +162,32 @@
 
 				}
 
+			},
+			$httpMock:function(){
+
+				return {
+
+					get:function(url){
+
+						return{
+
+							then:function(callback){
+
+								callback({
+
+									data:["t1","t2"],
+									secret:"password"
+
+								})
+
+							}
+
+						}
+
+					}
+
+				}
+
 			}
 
 		// $uibModalInstance, items, User

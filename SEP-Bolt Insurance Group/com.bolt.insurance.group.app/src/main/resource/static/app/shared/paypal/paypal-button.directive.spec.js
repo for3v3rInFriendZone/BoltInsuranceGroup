@@ -46,11 +46,11 @@ describe('Directive --> bigPaypalButton\n', function() {
 		
 		expect(inputElements[1].name).toEqual('return');
 		expect(inputElements[1].type).toEqual('hidden');
-		expect(inputElements[1].value).toEqual('https://localhost:8443/#/insurance/payment_response_success');
+		expect(inputElements[1].value).toEqual('https://localhost:8443/#!/insurance/payment_response_success');
 		
 		expect(inputElements[2].name).toEqual('cancel_return');
 		expect(inputElements[2].type).toEqual('hidden');
-		expect(inputElements[2].value).toEqual('https://localhost:8443/#/insurance/payment_response_error');
+		expect(inputElements[2].value).toEqual('https://localhost:8443/#!/insurance/payment_response_error');
 		
 		expect(inputElements[3].name).toEqual('business');
 		expect(inputElements[3].type).toEqual('hidden');

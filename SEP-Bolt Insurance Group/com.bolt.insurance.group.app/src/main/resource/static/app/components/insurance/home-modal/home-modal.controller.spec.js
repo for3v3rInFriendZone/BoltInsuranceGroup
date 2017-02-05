@@ -19,7 +19,7 @@ describe('HomeModalController\n',function(){
 								passport : "323423445",
 								phone : "234234",
 								surname : "lastname"
-							}])
+							}]);
 		localStorageService.cookie.set('homeOwnerJmbg',"0712986850023")
 		hic = $controller('HomeInsuranceController',{
 			localStorageService: localStorageService,

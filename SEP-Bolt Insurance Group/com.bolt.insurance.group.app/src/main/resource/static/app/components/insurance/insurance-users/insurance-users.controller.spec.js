@@ -75,11 +75,6 @@ describe(
 				expect(iuc.noMoreUsers).not.toBeFalsy();
 			});
 
-			it(' <<-- should be able to edit user -->> NOT YET IMPLEMENTED',
-					function() {
-
-					});
-
 			it(' should remove user', function() {
 				var storage = localStorageService.cookie;
 				spyOn(storage,'set');

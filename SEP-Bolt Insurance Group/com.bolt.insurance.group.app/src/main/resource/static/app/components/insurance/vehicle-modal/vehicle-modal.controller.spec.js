@@ -3,17 +3,38 @@ describe('VehicleModalController\n',function(){
 	
 	beforeEach(module('bolt-insurance-group.insurance'));
 	
+
+
 	beforeEach(inject(function($controller,MockGenerator){
 		localStorageService = MockGenerator.localStorageServiceMock();
 		$state = MockGenerator.$stateMock();
 		InsuranceProgress = MockGenerator.InsuranceProgressMock();
+		$http = MockGenerator.$httpMock();
+		$crypto = MockGenerator.$cryptoMock();
+	
+		localStorageService.cookie.set('listOfUsers',[ {
+								address : "Bulevar Oslobodjenja ",
+								email : "a@Q.COM",
+								firstName : "name",
+								jmbg : "0712986850023",
+								passport : "323423445",
+								phone : "234234",
+								surname : "lastname"
+							}]);
+		localStorageService.cookie.set('vehicleOwnerJmbg',"0712986850023");
+
+
 		vic = $controller('VehicleInsuranceController',{
 			localStorageService: localStorageService,
 			$state: $state,
-			InsuranceProgress: InsuranceProgress
+			InsuranceProgress: InsuranceProgress,
+			$http: $http,
+			$crypto: $crypto
 		});
-		
+	
+
 	}));
+	
 	
 	
 	it(' should validate, submit form and go to next state',function(){
