@@ -10,9 +10,6 @@ var deleteLines = require('gulp-delete-lines');
 var removeEmptyLines = require('gulp-remove-empty-lines');
 var cleanCSS = require('gulp-clean-css');
 
-var themeScriptOrder = ['modernizr-2.6.2.min.js','jquery-1.11.0.min.js',
-'bootstrap.min.js','waypoints.min.js','owl.carousel.min.js','jquery.scrollTo.min.js',
-'front.js'];
 
 var vendorFiles=['angular/angular.js',
 'angular-ui-router/release/angular-ui-router.js',
@@ -27,7 +24,9 @@ var vendorFiles=['angular/angular.js',
 'angular-fancy-modal/dist/angular-fancy-modal.js',
 'angular-local-storage/dist/angular-local-storage.js',
 'angular-translate/angular-translate.js',
-'angular-sanitize/angular-sanitize.js'];
+'angular-sanitize/angular-sanitize.js',
+'angular-cryptography/mdo-angular-cryptography.js',
+'cryptojslib/rollups/aes.js'];
 
 var addPathPrefix = function(orderedPaths){
 	scriptPaths = [];
@@ -57,7 +56,7 @@ gulp.task('default',['hint','watch']);
 //Application js minification
 gulp.task('scripts',function(){
 
-	gulp.src('app/**/*.js')
+	gulp.src(['app/**/*.js','!app/**/*.spec.js'])
 		.pipe(gNgFileSort())
 		.pipe(print())
 		.pipe(concat('all.min.js'))
@@ -67,15 +66,6 @@ gulp.task('scripts',function(){
 
 });
 
-//Template script minification
-gulp.task('theme-scripts',function(){
-
-	gulp.src(addPathPrefix(themeScriptOrder))
-		.pipe(print())
-		.pipe(concat('theme.min.js'))
-		.pipe(gulp.dest('../public/assets/js'));
-
-});
 
 //Vendor script minification
 gulp.task('vendor-scripts',function(){
@@ -100,8 +90,16 @@ gulp.task('minify-css',function(){
 
 });
 
+gulp.task('icons',function(){
+	
+	gulp.src('*.ico')
+		.pipe(print())
+		.pipe(gulp.dest('../public'))
+	
+});
 
-gulp.task('production', ['vendor-scripts','theme-scripts', 'scripts','minify-css'], function() {
+
+gulp.task('production', ['vendor-scripts', 'scripts','minify-css','icons'], function() {
 	
 	gulp.src(['!app/**/*.js', 'app/**/*']).pipe(gulp.dest('../public/app'));
 	gulp.src(['!assets/js/**/*', 'assets/**/*','!assets/css/**/*']).pipe(gulp.dest('../public/assets'));
@@ -116,7 +114,6 @@ gulp.task('production', ['vendor-scripts','theme-scripts', 'scripts','minify-css
   		.pipe(insertLines({
       		'before': /<\/body>$/,
 	      	'lineBefore': '\t\t<script type="text/javascript" src="assets/js/vendor.min.js"></script>\n' + 
-	      				  '\t\t<script type="text/javascript" src="assets/js/theme.min.js"></script>\n'+ 
 	      				  '\t\t<script type="text/javascript" src="assets/js/all.min.js"></script>'
 	    }))
 	    .pipe(deleteLines({

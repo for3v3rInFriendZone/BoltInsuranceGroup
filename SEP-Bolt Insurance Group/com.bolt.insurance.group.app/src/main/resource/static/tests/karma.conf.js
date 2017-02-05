@@ -15,7 +15,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'assets/js/modernizr-2.6.2.min.js',
         'assets/js/angular/angular.js',
          'assets/js/angular-ui-router/release/angular-ui-router.js',
         'assets/js/angular-scroll/angular-scroll.js',
@@ -31,12 +30,6 @@ module.exports = function(config) {
         'assets/js/angular-fancy-modal/dist/angular-fancy-modal.js',
         'assets/js/angular-local-storage/dist/angular-local-storage.js',
         'assets/js/angular-cryptography/mdo-angular-cryptography.js',
-        'assets/js/jquery-1.11.0.min.js',
-        'assets/js/bootstrap.min.js',
-        'assets/js/waypoints.min.js',
-        'assets/js/owl.carousel.min.js',
-        'assets/js/jquery.scrollTo.min.js',
-        'assets/js/front.js',
         'assets/js/angular-mocks/angular-mocks.js',
         'app/app.module.js',
 'app/components/core/core.module.js',
@@ -50,7 +43,6 @@ module.exports = function(config) {
 'app/components/insurance/insurance.controller.js',
 'app/components/insurance/insurance.route.js',
 'app/components/insurance/insurance.service.js',
-'app/components/insurance/insurance.service.spec.js',
 'app/components/insurance/insurance.controller.spec.js',
 'app/components/insurance/user-modal/user-modal.module.js',
 'app/components/insurance/user-modal/user-modal.factory.js',
