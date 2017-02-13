@@ -39,7 +39,7 @@ public class Vehicle implements Serializable{
 	private String address;
 	
 	@NotNull
-	@Column(name = "OWNER_JMBG", unique = true, length = 13)
+	@Column(name = "OWNER_JMBG", length = 13)
 	private String jmbg;
 	
 	@NotNull
