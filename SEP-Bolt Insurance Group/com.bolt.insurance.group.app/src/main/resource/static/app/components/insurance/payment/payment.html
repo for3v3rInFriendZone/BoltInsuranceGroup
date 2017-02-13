@@ -63,7 +63,7 @@
 	                    <br/>
 	                    <br/>
 	                    
-	                    <table class="table table-hover" ng-if="homeCheckBox">
+	                    <table class="table table-hover" ng-if="pic.homeCheckBox">
 	                        <thead>
 	                        	<th class="success text-center" translate="INSURANCEHOMEORFLAT">
 	                        	</th>
@@ -71,7 +71,11 @@
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										<span translate="PROTECTIONAGAINST"></span>: <b ng-if="fire" translate="FIRE"></b> <b ng-if="flood" translate="FLOOD"></b> <b ng-if="theft" translate="THEFT"></b> <b ng-if="earthshaker" translate="EARTHSHAKE"></b>
+										<span translate="PROTECTIONAGAINST"></span>: 
+										<b ng-if="pic.fire" translate="FIRE"></b> 
+										<b ng-if="pic.flood" translate="FLOOD"></b> 
+										<b ng-if="pic.theft" translate="THEFT"></b> 
+										<b ng-if="pic.earthshaker" translate="EARTHSHAKE"></b>
 		                    		</td>
 		                    	</tr>
 		                    </tbody>
@@ -103,11 +107,11 @@
 		                    </tbody>
 	                    </table>           
 
-	                    <hr ng-if="homeCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+	                    <hr ng-if="pic.homeCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 	                    <br/>
 	                    <br/>
 	                    
-	                    <table class="table table-hover " ng-if="roadCheckBox">
+	                    <table class="table table-hover " ng-if="pic.roadCheckBox">
 	                        <thead>
 	                        	<th class="success text-center" translate="ROADINSURANCE">
 	                        	</th>
@@ -115,7 +119,11 @@
 	                        <tbody>	                    
 						        <tr>
 		                    		<td class="text-center">
-										<span translate="ROADASSISTANCEPACKAGE"> </span>: <b ng-if="towing" translate="TOWING"></b> <b ng-if="repair" translate="REPAIR"></b> <b ng-if="hotel" translate="HOTEL"></b> <b ng-if="alternative" translate="ALTERNATIVEVEHICLE"></b>
+										<span translate="ROADASSISTANCEPACKAGE"> </span>: 
+										<b ng-if="pic.towing" translate="TOWING"></b> 
+										<b ng-if="pic.repair" translate="REPAIR"></b> 
+										<b ng-if="pic.hotel" translate="HOTEL"></b> 
+										<b ng-if="pic.alternative" translate="ALTERNATIVEVEHICLE"></b>
 		                    		</td>
 						        </tr>
 		                    </tbody>
@@ -142,7 +150,7 @@
 		                    	<tr>
 		                    		<td class="text-center">
 
-										<span translate=TYPEOFVEHICLE></span>: <b> {{vehicleType.name}}</b>
+										<span translate=TYPEOFVEHICLE></span>: <b> {{pic.vehicleType.name}}</b>
 
 		                    		</td>
 		                    	</tr>
@@ -164,7 +172,7 @@
 		                    </tbody>
 	                    </table>
 	                    
-	                    <hr ng-if="roadCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
+	                    <hr ng-if="pic.roadCheckBox" style="border: 1; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(135, 206, 250, 0.75), rgba(0, 0, 0, 0));" />
 	                    <br/>
 	                    <br/>
 					</div>

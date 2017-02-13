@@ -1,1 +1,1 @@
-npm install && bower update && gulp production && npm test
+npm install && bower update && npm install gulp -g && gulp production && npm test
